@@ -201,8 +201,7 @@
         _onDownloadTemplate: function(evt) {
           //Retrieve dashboard details
           var args = evt.target.dataArgs;
-          console.log ('Download: ' + args.definition.guid);
-          window.open('../data/template/args.download_link');
+          window.open('/' + args.metadata.template_src);
         }
 
 

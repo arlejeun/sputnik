@@ -96,11 +96,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <google-codelab-step label="Insights" duration="2">
                 <h2>[[item.definition.name]]</h2>
-                <p>[[item.definition.description]]</p>
                 <section>
+                    <p>[[item.definition.description]]</p>
                     <s-html html="[[item.shtml]]"></s-html>
                     <a href="/[[item.metadata.image_src]]" title="[[item.definition.name]]" target="_blank">
-                        <img src="/[[item.metadata.image_src]]" style="max-width: 624px"></img>
+                        <img src="/[[item.metadata.image_src]]" style="padding-left:20px;max-width: 624px"></img>
                     </a>
 
                 </section>
@@ -178,79 +178,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <!--<resize-tester></resize-tester>-->
 
-                <h3>What you'll need</h3>
-                <p></p>
-                <ul>
+                <h3>Pre-requisites</h3>
+
+                 <ul>
                     <template is="dom-repeat" items="[[item.metadata.prerequisites]]">
                         <li>[[item]]</li>
                     </template>
                 </ul>
+
+                <p>In order to run this template, you need to configure all statistic types properly
+                in your Stat Server applications used by Pulse.</p>
+
+                <paper-button class="dashboard-reserve" on-tap="_onDownloadOptions" data-args="[[item]]">
+                    Download options
+                </paper-button>
+
                 <h3>Who developed this template?</h3>
+                <s-html html="[[item.metadata.contributor]]"></s-html>
                 <s-html html="[[item.metadata.author]]"></s-html>
 
             </google-codelab-step>
-
-<!--
-
-            <google-codelab-step label="Statistics" duration="3">
-                <h2>[[item.definition.name]]</h2>
-                <p>
-                  <s-html html="[[item.definition.description]]"></s-html>
-                </p>
-
-
-
-                <paper-divider class="divider-for-light-background"></paper-divider>
-            </google-codelab-step>
-    -->
-
-
-            <google-codelab-step label="Pre-requisites" duration="5">
-
-                <section>
-                    <s-html html="[[item.pre]]"></s-html>
-
-                    <s-html html="[[item.prerequisites.templates]]"></s-html>
-                    <div class="card-actions justified">
-                        <template is="dom-repeat" items="[[item.templates]]">
-                            <paper-button class="dashboard-reserve">[[item.label]]</paper-button>
-                        </template>
-                    </div>
-                </section>
-
-                <section>
-                    <h2>Environment settings</h2>
-                    <p>Genesys Pulse 8.5.106+ can import and export Pulse templates, dashboards and wallboards from one environment to another which enable users to package them and share them across environment.
-                        <br> We are currently using this approach to help administrators speed up the deployment phase:
-                        <br>
-                        <br>
-                        <b>Instructions to import Pulse dashboard</b>
-                        <br>
-                    </p>
-                    <div class="wrapper-video">
-                        <iframe src="https://player.vimeo.com/video/209254764?title=0&byline=0&portrait=0&color=b80007" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen class="embedded-video"></iframe>
-                    </div>
-
-                    <s-html html="[[item.pre]]"></s-html>
-
-                    <!--
-                    <aside class="special">
-                        <p>The dashboard can be downloaded from this website but keep in mind that when you import the dashboard into your environment, you might have to select the objects (agent group, queues) from your environment because the one used by our demo environment might not be available with your Genesys configuration.
-                            <br>
-                        </p>
-                        <p>
-                            <paper-button raised class="colored">
-                                <iron-icon icon="file-download"></iron-icon>
-                                <a href="[[item.download_link]]" target="_blank">
-                                    <b>Download [[item.title]]</b>
-                                </a>
-                            </paper-button>
-                        </p>
-                    </aside>-->
-
-                </section>
-            </google-codelab-step>
-
 
         </google-codelab>
 
@@ -381,10 +328,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         _replaceObjectType:function(item) {
             if (item =='SObjectAgent') return 'Agent';
-            else if (item == 'SObjectGroupAgents') return 'Agent Group';
-            else if (item == 'SObjectAgentPlace') return 'Place';
-            else if (item == 'SObjectGroupPlaces') return 'Place Group';
-            else return item;
+            if (item == 'SObjectGroupAgents') return 'Agent Group';
+            if (item == 'SObjectAgentPlace') return 'Place';
+            if (item == 'SObjectGroupPlaces') return 'Place Group';
+            if (item =='SObjectQueue') return 'Queue';
+            if (item == 'SObjectGroupQueues') return 'Queue Group';
+            if (item == 'SObjectRoutePoint') return 'Routing Point';
+            return item;
+        },
+
+        _onDownloadOptions: function(evt) {
+          //Retrieve dashboard details
+          var args = evt.target.dataArgs;
+          window.open('/'+ args.metadata.ss_option_src);
         }
 
     });
