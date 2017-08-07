@@ -135,17 +135,27 @@
             </div>
           </paper-toolbar>
 
-          <div class="container">
+
+            <div class="container">
+                    <template is="dom-repeat" items="[[_displayObjectTypes(item.definition.collector_def.allowed_object_type)]]">
+                        <paper-chip single-line="">
+                            <!--    <iron-icon slot="icon" icon="avatars:avatar-1"></iron-icon>-->
+                            <div slot="label">[[item]]</div>
+                        </paper-chip>
+                    </template>
+                     <star-rating read-only rate="[[item.rating]]"></star-rating>
+            </div>
+
+
+           <!-- <div class="container">
              <paper-chip single-line="">
-           <!--    <iron-icon slot="icon" icon="avatars:avatar-1"></iron-icon>-->
                 <div slot="label">Agent Group</div>
               </paper-chip>
               <paper-chip single-line="">
-            <!--    <iron-icon slot="icon" icon="avatars:avatar-1"></iron-icon> -->
+               <iron-icon slot="icon" icon="avatars:avatar-1"></iron-icon>
                 <div slot="label">Place Group</div>
               </paper-chip>
-              <star-rating read-only rate="4"></star-rating>
-          </div>
+          </div>-->
 
           <div class="card-content">[[item.definition.description]]
 
@@ -202,6 +212,21 @@
           //Retrieve dashboard details
           var args = evt.target.dataArgs;
           window.open('/' + args.metadata.template_src);
+        },
+
+         _displayObjectTypes: function(arr) {
+            return arr.map(this._replaceObjectType);
+        },
+
+        _replaceObjectType:function(item) {
+            if (item =='SObjectAgent') return 'Agent';
+            if (item == 'SObjectGroupAgents') return 'Agent Group';
+            if (item == 'SObjectAgentPlace') return 'Place';
+            if (item == 'SObjectGroupPlaces') return 'Place Group';
+            if (item =='SObjectQueue') return 'Queue';
+            if (item == 'SObjectGroupQueues') return 'Queue Group';
+            if (item == 'SObjectRoutePoint') return 'Routing Point';
+            return item;
         }
 
 

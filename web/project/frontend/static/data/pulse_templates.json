@@ -576,8 +576,8 @@
         ]
       }
     },
-    "meta": {
-        "slides":["/images/templates/Agent_KPIs/image_1.png","/images/templates/Agent_KPIs/image_2.png","/images/templates/Agent_KPIs/image_3.png"],
+    "metadata": {
+        "image_src":"pulse/upload/assets/screenshots/alejeune@genesys.com/templates/Agent_KPIs/image_1.png",
         "stats": [
             {"category":"Agent Status Duration", "desc":"Measure the overall time spent by a team, skill center or a customer representative in a specific status (logged in, available, not ready, after call work,..)", "ex":["Login Time","Ready Time (break, lunch, offline)", "Not Ready Time", "ACW Time.."]},
             {"category":"Agent KPIs", "desc":"Measure the overall time spent by a team, skill center or a customer representative in a specific status (logged in, available, not ready, after call work,..)", "ex":["Login Time","Ready Time (break, lunch, offline)", "Not Ready Time", "ACW Time.."]},
