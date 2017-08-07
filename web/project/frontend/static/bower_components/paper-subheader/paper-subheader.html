@@ -1,0 +1,46 @@
+<!doctype html>
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-styles/paper-styles.html">
+
+<!--
+A Material Design sub headers
+
+### Example
+
+```html
+<paper-subheader>Sub header without icon</paper-toggle-subheader>
+```
+
+@demo demo/index.html
+-->
+<dom-module id="paper-subheader">
+
+	<template>
+		<style>
+			:host {
+				color: var(--secondary-text-color);
+				padding: 0 16px;
+				min-height: 40px;
+				height: 40px;
+				@apply(--layout-horizontal);
+				@apply(--layout-center);
+				@apply(--paper-font-body1);
+				cursor: default;
+			}
+		</style>
+
+		<content></content>
+	</template>
+</dom-module>
+
+<script>
+
+(function() {
+
+	Polymer({
+		is: 'paper-subheader'
+	});
+
+})();
+
+</script>

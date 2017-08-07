@@ -1,0 +1,31 @@
+<link rel="import" href="{{ url_for('static', filename='bower_components/paper-button/paper-button.html')}}">
+<link rel="import" href="{{ url_for('static', filename='bower_components/paper-input/paper-input.html')}}">
+
+
+{% extends "base.html" %}
+{% block content %}
+        <h2>You are in protected write page!</h2>
+
+        <h1>Hello, {{ user.nickname }}!</h1>
+
+        <iron-form id="form3">
+			    <paper-input name="name" label="Name" value="{{ user.nickname}}" required></paper-input>
+			    <paper-button raised onclick="form3.submit()">Submit</paper-button>
+			    <paper-button raised onclick="form3.reset()">Reset</paper-button>
+			  <div class="output"></div>
+		</iron-form>
+
+        {% raw %}
+
+        <h1>Hello, {{ user.nickname }}!</h1>
+
+        	<iron-form id="form3">
+			    <paper-input name="name" label="Name" value="{{ user.nickname}}" required></paper-input>
+			    <paper-button raised onclick="form3.submit()">Submit</paper-button>
+			    <paper-button raised onclick="form3.reset()">Reset</paper-button>
+			  <div class="output"></div>
+			</iron-form>
+
+        {% endraw %}
+
+{% endblock %}

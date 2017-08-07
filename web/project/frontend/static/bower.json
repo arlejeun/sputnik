@@ -1,0 +1,54 @@
+{
+  "name": "Genesys-analytics-market",
+  "authors": [
+    "Arnaud Lejeune"
+  ],
+  "license": "https://polymer.github.io/LICENSE.txt",
+
+  "dependencies": {
+
+    "polymer": "polymer/polymer#^1.4.0",
+
+    "app-layout": "polymerelements/app-layout#^0.10.0",
+    "app-route": "polymerelements/app-route#^0.9.1",
+
+    "codelab-components":"arlejeun/codelab-components#^2.0.3",
+
+    "iron-accordions":"alijaya/iron-accordions#^1.1.0",
+    "iron-form": "polymerelements/iron-form#^1.0.0",
+    "iron-icons":"PolymerElements/iron-icons#^1.2.0",
+    "iron-icon": "polymerelements/iron-icon#^1.0.0",
+    "iron-iconset-svg": "polymerelements/iron-iconset-svg#^1.0.0",
+    "iron-localstorage": "polymerelements/iron-localstorage#^1.0.0",
+    "iron-list":"PolymerElements/iron-list#^1.4.5",
+    "iron-media-query": "polymerelements/iron-media-query#^1.0.0",
+    "iron-overlay-behavior": "polymerelements/iron-overlay-behavior#^1.0.0",
+    "iron-pages": "polymerelements/iron-pages#^1.0.0",
+    "iron-selector": "polymerelements/iron-selector#^1.0.0",
+
+    "l2t-paper-slider":"Link2Twenty/l2t-paper-slider#^1.3.1",
+
+    "paper-button":"PolymerElements/paper-button#^1.0.14",
+    "paper-card":"PolymerElements/paper-card#^1.1",
+    "paper-chip":"bendavis78/paper-chip#^1.1",
+    "paper-divider":"WebPaperElements/paper-divider",
+    "paper-fab":"PolymerElements/paper-fab#^1.2.0",
+    "paper-icon-button": "polymerelements/paper-icon-button#^1.0.0",
+    "paper-input":"PolymerElements/paper-input#^1.1",
+    "paper-item":"PolymerElements/paper-item#^1.2.1",
+    "paper-menu":"PolymerElements/paper-menu#^1.2.2",
+    "paper-spinner": "polymerelements/paper-spinner#^1.0.0",
+    "paper-subheader":"collaborne/paper-subheader",
+    "paper-toast":"PolymerElements/paper-toast#^1.3.0",
+    "paper-toolbar":"PolymerElements/paper-toolbar#^1.1.7",
+    "poly-filter":"vguillou/poly-filter#^1.3.0",
+    "star-rating":"acordeonl/star-rating",
+    "s-html":"StartPolymer/s-html#^0.1.3",
+    "show-json":"arlejeun/show-json"
+
+  },
+  "devDependencies": {
+    "web-component-tester": "^4.0.0"
+  },
+  "private": true
+}

@@ -1,0 +1,191 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-subheader/paper-subheader.html">
+<link rel="import" href="../bower_components/poly-filter/poly-filter.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/poly-filter/demo/demo-list.html">
+
+<link rel="import" href="gsys-view404.html">
+<link rel="import" href="pulse-dashboard-elt.html">
+<link rel="import" href="gsys-detail-dashboard.html">
+<link rel="import" href="shared-styles.html">
+
+
+
+<dom-module id="gsys-pulse-dashboards">
+
+  <template>
+
+      <style include="shared-styles app-grid-style" is="custom-style">
+
+        :host {
+          --app-grid-columns: 3;
+          --app-grid-gutter:20px;
+        }
+
+        ul {
+          list-style: none;
+        }
+
+        @media (max-width: 840px) {
+            :host {
+              --app-grid-columns: 2;
+              --app-grid-gutter:10px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :host {
+              --app-grid-columns: 1;
+              --app-grid-gutter:0px;
+            }
+        }
+
+      </style>
+
+      <app-route
+        id="appRoute"
+        route="[[route]]"
+        pattern="/:dashboardId"
+        data="{{routeData}}">
+      </app-route>
+
+    <!--
+      market-category-data provides the dashbaord category data for dashboards and wallboard.
+    -->
+
+      <market-category-data
+        id="categoryData"
+        category-name="[[_computeCategoryName(route)]]"
+        category="{{category}}"
+        failure="{{failure}}">
+      </market-category-data>
+
+
+      <template is="dom-if" if="[[!_getTemplateID(route)]]" hidden$="[[failure]]">
+          <paper-toolbar class="subheader">
+            <span class="title"></span>
+            <paper-input label="search for dashboard" value="{{filterString}}"></paper-input>
+          </paper-toolbar>
+
+          <div class="vertical-section">
+                <poly-filter
+                  array-to-filter="[[_getListItems(category.items)]]"
+                  filter="[[filterString]]"
+                  filtered-array="{{filteredItems}}"
+                  filterDebounceDelay="300">
+                </poly-filter>
+          </div>
+      </template>
+
+
+      <ul class="app-grid">
+            <template is="dom-repeat" items="[[_getListItems(filteredItems)]]">
+               <li class="item">
+                  <pulse-dashboard-elt item="[[item]]"></pulse-dashboard-elt>
+                </li>
+            </template>
+      </ul>
+
+      <template is="dom-if" if="[[_getTemplateID(route)]]" hidden$="[[failure]]">
+          <gsys-detail-dashboard id='detail' route="[[route]]"></gsys-detail-dashboard>
+      </template>
+
+
+    </template>
+
+  <script>
+
+      Polymer({
+
+        is:"gsys-pulse-dashboards",
+
+        properties:{
+          category: Object,
+          route: Object,
+          failure: Boolean
+      },
+
+      observers: [
+        '_categoryChanged(category, visible)',
+        '_routeChanged(route, routeData)',
+        '_viewChanged(routeData.dashboardId)'
+      ],
+
+       ready: function() {
+       },
+
+      _computeCategoryName: function(route){
+        //Check prefix route is /pulse/dashboards
+        if (!!route.prefix && route.prefix.replace(/\//g,"_").slice(1)=='pulse_dashboards') {
+          if (route.path) {
+            console.log("Search for a specific Dashboard: " + route.path);
+          } else {
+            return 'pulse_dashboards';
+          }
+        }
+      },
+
+      //Not called
+      _routeChanged: function(changeRecord, data) {
+          if (changeRecord) {
+            console.log('Path changed!' + changeRecord.path);
+          }
+
+      },
+
+      _viewChanged: function(view) {
+        console.log('View loaded!' + view);
+      },
+
+      _getTemplateID: function(route) {
+          console.log(route);
+          return  (route.prefix=='/pulse/dashboards' & route.path != "")
+      },
+
+      _categoryChanged: function(category, visible) {
+        if (visible) {
+          this.debounce('change-section', function() {
+            // Notify the category and the page's title
+            this.fire('change-section', {
+              category: category.name,
+              title: category.title
+            });
+          });
+        }
+      },
+
+      _itemChanged:function() {
+        console.log("Dashboard changed");
+      },
+
+      _getListItems: function(items) {
+
+        // Return placeholder items when the items haven't loaded yet.
+        //return items || [{},{},{},{},{},{},{},{},{},{}];
+          return items;
+
+      },
+
+      _getItemHref: function(item) {
+        // By returning null when `itemId` is undefined, the href attribute won't be set and
+        // the link will be disabled.
+        return item.name ? ['/detail', this.category.name, item.name].join('/') : null;
+      },
+
+        _refreshGrid: function() {
+          this.debounce('refreshGrid', function () {
+             console.log('_refreshGrid' + this.$.grid.applyResponsive);
+            this.$.grid.applyResponsive(this.$.grid.currentScreenformat, this.$.grid.currentScreenformat);
+          }, 300);
+        }
+
+      });
+  </script>
+
+</dom-module>

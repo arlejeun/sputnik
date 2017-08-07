@@ -1,0 +1,29 @@
+{% from "_form_macros.html" import render_field_with_errors, render_field %}
+
+{% block content %}
+
+<div class="add-recipe">
+  <div class="page-header">
+    <h2>Add New Dashboard photos</h2>
+  </div>
+  <form action="{{ url_for('add_photos') }}" method="post" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    {{ form.hidden_tag() }}
+
+    <dl>
+      {{ render_field(form.dashboard_title, placeholder="Enter dashboard Title") }}
+      {{ render_field(form.dashboard_short_desc, placeholder="Enter short dashboard Description") }}
+      {{ render_field(form.dashboard_image) }}
+      {{ render_field(form.dashboard_export) }}
+      {{ render_field(form.dashboard_overview) }}
+      {{ render_field(form.dashboard_features) }}
+      {{ render_field(form.dashboard_prerequisites) }}
+      <br/>
+      {{form.dashboard_tags}}
+
+    </dl>
+    <button class="btn btn-sm btn-success" type="submit">Add Dashboard</button>
+  </form>
+</div>
+
+{% endblock %}

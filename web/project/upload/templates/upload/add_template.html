@@ -1,0 +1,25 @@
+{% from "_form_macros.html" import render_field_with_errors, render_field %}
+
+{% block content %}
+
+<div class="add-recipe">
+  <div class="page-header">
+    <h2>Add new Visualization</h2>
+  </div>
+  <form action="{{ url_for('upload.add_template') }}" method="post" enctype="multipart/form-data">
+
+    {{ form.csrf_token }}
+    {{ form.hidden_tag() }}
+
+    <dl>
+      {{ render_field(form.template_export, placeholder="Select Template definition export") }}
+      {{ render_field(form.template_image, placeholder="Upload the expanded view of your template")}}
+      {{ render_field(form.ss_options_export) }}
+      {{ render_field(form.template_rating) }}
+
+    </dl>
+    <button class="btn btn-sm btn-success" type="submit">Add Visualization</button>
+  </form>
+</div>
+
+{% endblock %}

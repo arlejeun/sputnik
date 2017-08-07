@@ -1,0 +1,102 @@
+<!doctype html>
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-styles/paper-styles.html">
+
+<!--
+A Material Design sub headers that can be toggle between active and inactive state
+
+### Example
+
+```html
+<paper-toggle-subheader
+  active={{showHelp}}
+  icon-inactive='help-outline'
+  icon-active='close'>
+  Sub header with toggle icon
+</paper-toggle-subheader>
+```
+
+@demo demo/index.html
+-->
+<dom-module id="paper-toggle-subheader">
+
+	<template>
+		<style>
+			:host {
+				color: var(--secondary-text-color);
+				padding: 0 16px;
+				min-height: 40px;
+				height: 40px;
+				@apply(--layout-horizontal);
+				@apply(--layout-center);
+				@apply(--paper-font-body1);
+				cursor: default;
+			}
+		</style>
+
+		<div class="flex"><content></content></div>
+		<paper-icon-button id="togglebutton" on-tap="_toggle" icon="[[_icon]]" hidden="[[!_icon]]"></paper-icon-button>
+	</template>
+
+</dom-module>
+
+<script>
+
+(function() {
+
+	Polymer({
+		is: 'paper-toggle-subheader',
+		properties: {
+			/**
+	         * Fired when the user toggles from the inactive to the active state.
+	         *
+	         * @event toggle-active
+	         */
+
+			 /**
+ 	         * Fired when the user toggles from the active to the inactive state.
+ 	         *
+ 	         * @event toggle-inactive
+ 	         */
+
+			/**
+			 * True if the toggle is active
+			 */
+			active: {
+				type: Boolean,
+				value: false,
+				notify: true
+			},
+
+			/**
+			 * Icon that is shown if the element is in active state
+			 */
+			iconActive: String,
+
+			/**
+			 * Icon that is shown if the element is in inactive state
+			 */
+			iconInactive: String,
+
+			_icon: {
+				type: String,
+				computed: '_computeIcon(active,iconActive,iconInactive)'
+			}
+		},
+
+		// Private methods
+		_toggle: function() {
+			this.active = !this.active;
+
+			this.fire(this.active ? 'toggle-active' : 'toggle-inactive');
+		},
+		_computeIcon: function(active,iconActive,iconInactive) {
+			return active ? iconActive : iconInactive;
+		}
+	});
+
+})();
+
+</script>

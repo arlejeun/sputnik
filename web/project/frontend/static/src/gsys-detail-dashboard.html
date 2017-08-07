@@ -1,0 +1,367 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../bower_components/paper-divider/paper-divider.html">
+
+<link rel="import" href="../bower_components/star-rating/star-rating.html">
+<link rel="import" href="../bower_components/l2t-paper-slider/l2t-paper-slider.html">
+<link rel="import" href="../bower_components/s-html/s-html.html">
+
+<link rel="import" href="market-category-data.html">
+<link rel="import" href="shared-styles.html">
+
+<link rel="import" href="../bower_components/codelab-components/google-codelab.html">
+<link rel="import" href="../bower_components/codelab-components/google-codelab-survey.html">
+<link rel="import" href="../bower_components/codelab-components/google-codelab-step.html">
+
+<dom-module id="gsys-detail-dashboard">
+    <template>
+
+        <style include="shared-styles app-grid-style" is="custom-style">
+
+        .vimeo {
+            background-color: #000;
+            margin-bottom: 30px;
+            position: relative;
+            padding-top: 56.25%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .vimeo img {
+            width: 100%;
+            top: -16.82%;
+            left: 0;
+            opacity: 0.7;
+        }
+        .vimeo .play-button {
+            width: 90px;
+            height: 60px;
+            background-color: #333;
+            box-shadow: 0 0 30px rgba( 0,0,0,0.6 );
+            z-index: 1;
+            opacity: 0.8;
+            border-radius: 6px;
+        }
+        .vimeo .play-button:before {
+            content: "";
+            border-style: solid;
+            border-width: 15px 0 15px 26.0px;
+            border-color: transparent transparent transparent #fff;
+        }
+        .vimeo img,
+        .vimeo .play-button {
+            cursor: pointer;
+        }
+        .vimeo img,
+        .vimeo iframe,
+        .vimeo .play-button,
+        .vimeo .play-button:before {
+            position: absolute;
+        }
+        .vimeo .play-button,
+        .vimeo .play-button:before {
+            top: 50%;
+            left: 50%;
+            transform: translate3d( -50%, -50%, 0 );
+        }
+        .vimeo iframe {
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 28px;
+            margin: 0;
+        }
+
+        wrapper-video {
+            max-width: 680px;
+        }
+
+        .embedded-video {
+            height:100%;
+            width:100%;
+        }
+
+        paper-divider.divider-for-light-background {
+            --paper-divider-color: #1976d2;
+        }
+
+        :host(aside.special:host)
+            {
+                border-color: #6a6;
+                background: #ded;
+                color: #464;
+            }
+
+
+        .slider-image {
+               background-repeat: no-repeat;
+        }
+
+        .dashboard-reserve {
+              color: var(--google-blue-500);
+        }
+
+        @media (min-width: 500px) {
+
+            l2t-paper-slider {
+            --paper-slide-dot:#666;
+            --paper-slide-dot-selected:#1976d2;
+            --paper-slide-height:550px;
+            /*--paper-slide-width:640px;*/
+            }
+
+            .wrapper-video {
+                height:300px;
+                width:500px;
+                margin-left: 100px;
+            }
+
+        }
+
+        @media (max-width: 500px) {
+            .slider-image {
+                background-size: 315px 240px;
+            }
+            l2t-paper-slider {
+            --paper-slide-dot:#666;
+            --paper-slide-dot-selected:#1976d2;
+            --paper-slide-height:300px;
+            /*--paper-slide-width:640px;*/
+            }
+            .wrapper-video {
+                height:120px;
+                width:240px;
+                margin-left: 40px;
+            }
+        }
+
+        .survey{
+            postion:relative;
+        }
+
+
+        </style>
+        <!--
+            app-route provides the name of the category and the item.
+        -->
+        <app-route route="[[route]]" pattern="/:dashboardId" data="{{routeData}}"></app-route>
+
+        <market-category-data id="categoryData"
+            category-name="pulse_dashboards"
+            item-name="{{_getDashboardName(routeData.dashboardId)}}"
+            item="{{item}}"
+            failure="{{failure}}">
+        </market-category-data>
+
+         <google-codelab title="Build Pulse Dashboards" environment="web" last-updated="2017-04-18" noToolbar=true noHighlight=true>
+
+            <google-codelab-step label="Overview" duration="2">
+
+                <h2>{{item.title}}</h2>
+                <p>
+                    <br>
+                            {{item.short_desc}}
+                    <br><br>
+                        <a href="[[item.image_src]]" title="[[item.title]]" target="_blank">
+                            <img src="[[item.image_src]]" style="max-width: 624px"></img>
+                        </a>
+                </p>
+
+                <h3>What you'll learn</h3>
+
+                <ul class="checklist">
+                    <template is="dom-repeat" items="[[item.overview.goals]]">
+                        <li>[[item]]</li>
+                    </template>
+                </ul>
+
+                <h3>What you'll need</h3>
+                <p></p>
+                <ul>
+                    <template is="dom-repeat" items="[[item.overview.prerequisites]]">
+                        <li>[[item]]</li>
+                    </template>
+                </ul>
+
+                <h3>Who developed this dashboard?</h3>
+                    <s-html html="[[item.overview.author]]"></s-html>
+            </google-codelab-step>
+
+            <google-codelab-step label="Features" duration="3">
+                <h2>[[item.title]]</h2>
+                <s-html html="[[item.features.intro]]"></s-html>
+                <template is="dom-repeat" items="[[item.features.widgets]]">
+                 <section>
+                    <s-html html="[[item.shtml]]"></s-html>
+                    <template is="dom-if" if="[[item.slides]]">
+                    <l2t-paper-slider  total-slides="3">
+                        <template is="dom-repeat" items="[[item.slides]]">
+                            <paper-slide class="slider-image" style="background-image: url([[item]]);"></paper-slide>
+                        </template>
+                    </l2t-paper-slider>
+                    </template>
+                </section>
+                <paper-divider class="divider-for-light-background"></paper-divider>
+                </template>
+            </google-codelab-step>
+
+
+            <google-codelab-step label="Pre-requisites" duration="5">
+                <section>
+                    <s-html html="[[item.prerequisites.templates]]"></s-html>
+
+                    <div class="card-actions justified">
+                        <template is="dom-repeat" items="[[item.templates]]" as="template">
+                            <paper-button on-tap="_onLookTemplate" data-args="[[template]]" class="dashboard-reserve">[[template.label]]</paper-button>
+                        </template>
+                    </div>
+
+                </section>
+
+                <section>
+
+                    <h2>Environment settings</h2>
+
+                        <p>Genesys Pulse 8.5.106+ can import and export Pulse templates, dashboards and wallboards from one environment to another which enable users to package them and share them across environment.
+                        <br>
+                        We are currently using this approach to help administrators speed up the deployment phase:<br><br>
+
+                        <b>Instructions to import Pulse dashboard</b><br>
+                        </p>
+
+                        <div class="vimeo">
+                            <iframe src="https://player.vimeo.com/video/209254764?title=0&byline=0&portrait=0&color=b80007" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen class="embedded-video"></iframe>
+                        </div>
+
+
+                    <aside class="special">
+
+                        <p>The dashboard can be downloaded from this website but keep in mind that when you import the dashboard into your environment, you might have to select the objects (agent group, queues) from your environment because the one used by our demo environment might not be available with your Genesys configuration.<br></p>
+
+                        <p>
+                            <paper-button raised class="colored">
+                                <iron-icon icon="file-download"></iron-icon>
+                                <a href="[[item.download_link]]" target="_blank">
+                                    <b>Download [[item.title]]</b>
+                                </a>
+                            </paper-button>
+                        </p>
+                    </aside>
+
+                    </section>
+            </google-codelab-step>
+
+            <google-codelab-step  label="Feedback" duration="2">
+
+            <div class="survey">
+
+                <google-codelab-survey>
+                  <h4>How would rate your experience with Polymer?</h4>
+                  <paper-radio-group>
+                    <paper-radio-button name="novice">Novice</paper-radio-button>
+                    <paper-radio-button name="intermediate">Intermediate</paper-radio-button>
+                    <paper-radio-button name="advanced">Advanced</paper-radio-button>
+                  </paper-radio-group>
+                </google-codelab-survey>
+
+                <h4>Would you recommend this dashboard for your organization?</h4>
+                    <star-rating rate=[[item.rating]]>
+                    </star-rating>
+            </div>
+
+            </google-codelab-step>
+
+
+        </google-codelab>
+
+
+    </template>
+
+    <script>
+    Polymer({
+
+        is: 'gsys-detail-dashboard',
+
+        properties: {
+            item: Object,
+            dashboardId: String,
+            route: Object,
+            routeData: Object,
+            visible: Boolean,
+            offline: {
+                type: Boolean,
+                observer: '_offlineChanged'
+            },
+            failure: Boolean
+        },
+
+        observers: [
+            '_itemChanged(item)',
+            //'_routeChanged(route)',
+            //'_viewChanged(routeData)'
+        ],
+
+
+        _onLookTemplate: function(evt) {
+          //Retrieve dashboard details
+          var args = evt.target.dataArgs;
+          this.fire('look-template',args);
+
+        },
+
+        _itemChanged:function(item) {
+          //console.log(JSON.stringify(item));
+
+
+          return item;
+        },
+
+
+        _getDashboardName:function(dashboardId) {
+          console.log(dashboardId);
+          //setup unique id for survey
+          //this._getSurveyEltId(dashboardId);
+          return dashboardId;
+        },
+
+        _getSurveyEltId: function(name) {
+            var mySurveys = this.getElementsByTagName('google-codelab-survey');
+            for (i = 0; i < mySurveys.length; i++) {
+                mySurveys[i].setAttribute('survey-id', name + '-' +i);
+            }
+        },
+
+
+        _tryReconnect: function() {
+            this.$.categoryData.refresh();
+        },
+
+        _offlineChanged: function(offline) {
+            if (!offline) {
+                this._tryReconnect();
+            }
+        }
+
+    });
+    </script>
+
+
+</dom-module>

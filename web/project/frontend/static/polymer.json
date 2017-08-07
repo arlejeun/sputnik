@@ -1,0 +1,18 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/market-app.html",
+  "fragments": [
+    "src/gsys-pulse.html",
+    "src/gsys-insights.html",
+    "src/gsys-view404.html"
+  ],
+  "sourceGlobs": [
+    "src/**/*",
+    "images/**/*",
+    "bower.json"
+  ],
+  "includeDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}

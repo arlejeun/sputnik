@@ -1,0 +1,160 @@
+<link rel="import" href="polymer.html">
+<link rel="import" href="iron-resizable-behavior.html">
+<link rel="import"  href="iron-grid.html">
+
+
+<link rel="import" href="shared-style.html">
+
+<dom-module id="resize-tester">
+  <template>
+    <style include="shared-styles">
+
+    #screenSize {
+
+      font-size : 80px;
+    }
+
+            .stat-grid {
+          display:flex;
+        }
+
+        .stat-row {
+            color: grey;
+            padding: 5px 5px 5px 5px;
+            line-height: 20px;
+            font-size: 9pt;
+        }
+
+        .stat-row ul li {
+            margin: 0px;
+            line-height: 14px;
+        }
+
+        div.stat-grid:nth-child(2n+1){
+          background-color: rgba(25, 118, 210, 0.18);
+        }
+
+        div.stat-grid:nth-child(2n){
+          background-color: white;
+        }
+
+    </style>
+
+   <span id="screenSize"> screenSize = {{screenSize}}</span>
+
+
+              <iron-grid log id="stat-grid" current-screenformat="{{screenSize}}">
+
+                  <template is="dom-repeat" items="[[stats]]">
+
+                    <div class='stat-grid'>
+                      <div class="xs4 s4 m2 l2 stat-row">
+                          <p>[[item.category]]</p>
+                      </div>
+                      <div class="xs8 s8 m5 l6 stat-row">
+                          <p>[[item.desc]]</p>
+                      </div>
+                      <div class="xs0 s0 m5 l4 stat-row">
+                        <ul>
+                        <template is="dom-repeat" items="[[item.ex]]">
+                              <li>[[item]]</li>
+                        </template>
+                        </ul>
+                      </div>
+                    </div>
+                  </template>
+
+                </iron-grid>
+
+
+              <iron-grid log current-screenformat="{{screenSize}}">
+
+                <div class="xs12">
+                    <div class="xs10 s12 m6 l3 xl5  example blue">
+                        <p>xs10 s12 m6 l3 xl5</p>
+                    </div>
+                </div>
+
+                <div class="xs12">
+
+                  <div class="xs12 s3 m2 example red">
+                      <p>xs12 s3 m2</p>
+                  </div>
+                  <div class="xs12 s6 m8 example red">
+                      <p>xs12 s6 m8</p>
+                  </div>
+                  <div class="xs12 s3 m2 example red">
+                      <p>xs12 s3 m2</p>
+                  </div>
+
+                </div>
+
+
+
+                <div class="xs12">
+                  <div class="xs12">
+                     if current screenSize is not managed, the last class is taken in account (here l3 with screenSize=xs)
+                   </div>
+
+                  <div class="s12 m6 l3 example purple">
+                      <p>s12 m6 l3</p>
+                  </div>
+                  <div class="s12 m6 l3 example purple">
+                      <p>s12 m6 l3</p>
+                  </div>
+                  <div class="s12 m6 l3 example purple">
+                      <p>s12 m6 l3</p>
+                  </div>
+                  <div class="s12 m6 l3 example purple">
+                      <p>s12 m6 l3</p>
+                  </div>
+
+               </div>
+
+               <div class="xs12">
+
+                  <div class="xs12 nested example blue">
+                          <div class="xs8 nested example blue">
+                             <div class="xs4 nested example blue">
+                                  <p>xs4 of xs8</p>
+                             </div>
+                             <div class="xs4 example blue">
+                                  <p>xs4 of xs8</p>
+                             </div>
+                              <div class="xs4 example blue">
+                                  <p>xs4 of xs8</p>
+                              </div>
+                          </div>
+                   </div>
+
+                </div>
+
+              </iron-grid>
+
+
+  </template>
+  <script>
+    Polymer({
+      is: "resize-tester",
+
+
+      properties: {
+         stats:Array
+
+
+      },
+
+      attached: function () {
+         this.stats = [
+              {"category":"Agent Status Duration", "desc":"Measure the overall time spent by a team, skill center or a customer representative in a specific status (logged in, available, not ready, after call work,..)", "ex":["Login Time","Ready Time (break, lunch, offline)", "Not Ready Time", "ACW Time.."]},
+              {"category":"Agent KPIs", "desc":"Measure the overall time spent by a team, skill center or a customer representative in a specific status (logged in, available, not ready, after call work,..)", "ex":["Login Time","Ready Time (break, lunch, offline)", "Not Ready Time", "ACW Time.."]},
+              {"category":"SL Performance", "desc":"Measure the overall time spent by a team, skill center or a customer representative in a specific status (logged in, available, not ready, after call work,..)", "ex":["Login Time","Ready Time (break, lunch, offline)", "Not Ready Time", "ACW Time.."]},
+              {"category":"Distribution Performance", "desc":"Measure the overall time spent by a team, skill center or a customer representative in a specific status (logged in, available, not ready, after call work,..)", "ex":["Login Time","Ready Time (break, lunch, offline)", "Not Ready Time", "ACW Time.."]}
+            ];
+      }
+
+
+
+    });
+  </script>
+</dom-module>

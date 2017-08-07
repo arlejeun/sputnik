@@ -1,0 +1,205 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-subheader/paper-subheader.html">
+<link rel="import" href="../bower_components/poly-filter/poly-filter.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/poly-filter/demo/demo-list.html">
+
+<link rel="import" href="pulse-visualization-elt.html">
+<link rel="import" href="shared-styles.html">
+<link rel="import" href="gsys-detail-visualization.html">
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
+
+
+  <dom-module id="gsys-pulse-visualizations">
+
+  <template>
+
+      <style include="shared-styles app-grid-style">
+
+        :host {
+          --app-grid-columns: 4;
+          --app-grid-gutter:20px;
+        }
+
+        ul {
+          padding: 20px;
+          list-style: none;
+        }
+
+        .item {
+        }
+
+        @media (max-width: 1500px) {
+            :host {
+              --app-grid-columns: 3;
+              --app-grid-gutter:10px;
+            }
+        }
+
+        @media (max-width: 840px) {
+            :host {
+              --app-grid-columns: 2;
+              --app-grid-gutter:5px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :host {
+              --app-grid-columns: 1;
+              --app-grid-gutter:0px;
+            }
+        }
+
+
+      </style>
+
+          <app-route
+            id="appRoute"
+            route="[[route]]"
+            pattern="/:visualizationId"
+            data="{{routeData}}"
+            use-hash-as-path>
+          </app-route>
+
+    <!--
+      shop-category-data provides the category data for a given category name.
+    -->
+
+      <market-category-data
+        id="categoryData"
+        category-name="[[_computeCategoryName(route)]]"
+        category="{{category}}"
+        failure="{{failure}}">
+      </market-category-data>
+
+      <template is="dom-if" if="[[!_getTemplateID(route)]]" hidden$="[[failure]]">
+          <paper-toolbar class="subheader">
+            <span class="title"></span>
+            <paper-input label="search for visualization" value="{{filterString}}"></paper-input>
+          </paper-toolbar>
+
+          <div class="vertical-section">
+            <poly-filter
+              array-to-filter="[[_getListItems(category.items)]]"
+              filter="[[filterString]]"
+              filtered-array="{{filteredItems}}"
+              filterDebounceDelay="300">
+            </poly-filter>
+          </div>
+      </template>
+
+
+          <ul class="app-grid">
+            <template is="dom-repeat" items="[[_getListItems(filteredItems)]]">
+               <li class="item">
+                  <pulse-visualization-elt item="[[item]]"></pulse-visualization-elt>
+                </li>
+            </template>
+          </ul>
+
+
+          <template is="dom-if" if="[[_getTemplateID(route)]]" hidden$="[[failure]]">
+              <gsys-detail-visualization route="[[route]]"></gsys-detail-visualization>
+          </template>
+
+
+
+
+    </template>
+
+  <script>
+
+      Polymer({
+
+        is:"gsys-pulse-visualizations",
+
+        properties:{
+          category: Object,
+          route: Object,
+          routeData: Object,
+          visible: Boolean,
+          failure: Boolean
+      },
+
+
+
+      observers: [
+        '_categoryChanged(category, visible)',
+        '_routeChanged(route, routeData)',
+        '_viewChanged(routeData.visualizationId)'
+      ],
+
+      listeners: {
+        'explore-visualization': '_onExploreVisualization',
+      },
+
+
+      _computeCategoryName: function(route){
+           //Check prefix route is /pulse/dashboards
+          if (!!route.prefix && route.prefix.replace(/\//g,"_").slice(1)=='pulse_visualizations') {
+            if (route.path) {
+              //console.log("Search for a specific visualization: " + route.path);
+            } else {
+              return 'pulse_visualizations';
+            }
+          }
+        },
+
+      //Not called
+      _routeChanged: function(changeRecord, data) {
+          if (changeRecord) {
+            //console.log('Path changed!' + changeRecord.path);
+          }
+
+      },
+
+      _categoryChanged: function(category, visible) {
+        if (visible) {
+          this.debounce('change-section', function() {
+            // Notify the category and the page's title
+            this.fire('change-section', {
+              category: category.name,
+              title: category.title
+            });
+          });
+        }
+      },
+
+      _getTemplateID: function(route) {
+          //console.log(route);
+          return  (route.prefix=='/pulse/visualizations' & route.path != "")
+      },
+
+      _getListItems: function(items) {
+        // Return placeholder items when the items haven't loaded yet.
+        //return items || [{},{},{},{},{},{},{},{},{},{}];
+        return items;
+      },
+
+      _getItemHref: function(item) {
+        // By returning null when `itemId` is undefined, the href attribute won't be set and
+        // the link will be disabled.
+        return item.name ? ['/detail', this.category.name, item.name].join('/') : null;
+      },
+
+      _refreshGrid: function() {
+        this.debounce('refreshGrid', function () {
+           //console.log('_refreshGrid' + this.$.grid.applyResponsive);
+          this.$.grid.applyResponsive(this.$.grid.currentScreenformat, this.$.grid.currentScreenformat);
+        }, 300);
+      },
+
+
+      _showPage404: function() {
+          this.page = 'view404';
+      }
+
+      });
+  </script>
+
+</dom-module>

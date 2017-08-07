@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+	<head>
+	    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<link rel="import" href="../../iron-icons/iron-icons.html">
+		<link rel="import" href="../paper-subheader.html">
+		<link rel="import" href="../paper-toggle-subheader.html">
+		<title>Demo</title>
+	</head>
+
+	<body>
+		<template is="dom-bind">
+			<paper-toggle-subheader icon-inactive="help-outline" icon-active="close" on-toggle-active="_onActive" on-toggle-inactive="_onInactive">Sub header with toggle icon</paper-toggle-subheader>
+
+			<paper-subheader>Sub header without icon</paper-subheader>
+		</template>
+
+		<script>
+			var scope = document.querySelector("template[is=dom-bind]");
+			scope._onActive = function() {
+				alert('Toggled to active');
+			};
+			scope._onInactive = function() {
+				alert('Toggled to inactive');
+			};
+		</script>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<head>
+		<title>paper-toggle-subheader</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+		<script src="../../iron-test-helpers/mock-interactions.js"></script>
+
+		<link rel="import" href="../paper-toggle-subheader.html">
+		<link rel="import" href="../../test-fixture/test-fixture.html">
+	</head>
+	<body>
+
+		<test-fixture id="TrivialElement">
+			<template>
+				<paper-toggle-subheader></paper-toggle-subheader>
+			</template>
+		</test-fixture>
+
+		<script>
+			suite('<paper-toggle-subheader>', function() {
+				suite('toggle behavior', function() {
+					var element;
+
+					setup(function() {
+						element = fixture('TrivialElement');
+					});
+
+					test('Defaults to in-active', function() {
+						expect(element.active).to.be.eql(false);
+					});
+
+					test('Tap toggles the active property', function() {
+						element.active = false;
+
+						MockInteractions.tap(element.$.togglebutton);
+						expect(element.active).to.be.eql(true);
+
+						MockInteractions.tap(element.$.togglebutton);
+						expect(element.active).to.be.eql(false);
+					});
+				});
+			});
+		</script>
+
+	</body>
+</html>

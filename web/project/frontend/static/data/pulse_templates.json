@@ -1,0 +1,1839 @@
+[
+  {
+    "state": {
+      "body_hash_1": -902677614,
+      "uscn": 648,
+      "body_hash_2": -902677614
+    },
+    "definition": {
+      "name": "Agent KPIs",
+      "description": "Agents manage many transactions and states in addition or related to answered calls. Viewing all the data in a single report provides the supervisor with an understanding of agent's performance as a function of first call resolution.",
+      "proxy_access_object": {
+        "name": "",
+        "dbid": 0
+      },
+      "refresh_interval": 60,
+      "guid": "000000000000-0000-0000-0000-00000001",
+      "layout_type": "ltPCREGULAR",
+      "column": [
+        {
+          "id": "_Object$ID",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vINT",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectID"
+            ]
+          },
+          "is_delta_key": true
+        },
+        {
+          "id": "_Object$Type",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vINT",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectType"
+            ]
+          },
+          "is_delta_key": true
+        },
+        {
+          "format": "string",
+          "id": "_Object$Name",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectName"
+            ]
+          }
+        },
+        {
+          "format": "time",
+          "id": "Login_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total time that monitored agents were logged in. This metric does not include logged-in time when the switch is disconnected from Stat Server. When this metric is applied to an Agent Group, this metric calculates the total login time for all the agents belonging to the specified group.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Login Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Login_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Ready_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total time this agent spent waiting for the next call. The total duration of all WaitForNextCall statuses that completed for a particular agent during the reporting interval. When this metric is applied to an Agent Group, this metric calculates the total ready time for all the agents belonging to the specified group.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Ready Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Wait_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Not_Ready_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total time that an agent's DN completed being in NotReadyForNextCall status during the reporting interval. When this metric is applied to an Agent Group, this metric calculates the total not ready time for all the agents belonging to the specified group.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Not Ready Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Not_Ready_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Break_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total of time an agent was not available to handle incoming interactions because he was not Ready with Reason Break.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Break Time",
+          "statistic": {
+            "filter": "MOTIF_Break",
+            "stat_type_name": "Total_Not_Ready_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Lunch_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total of time an agent was not available to handle incoming interactions because he was not Ready with Reason Lunch.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Lunch Time",
+          "statistic": {
+            "filter": "MOTIF_Lunch",
+            "stat_type_name": "Total_Not_Ready_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Others_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total of time an agent was not available to handle incoming interactions because he was not Ready with Reason different from Break and Lunch.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Offline Time",
+          "statistic": {
+            "filter": "MOTIF_Others",
+            "stat_type_name": "Total_Not_Ready_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Ring_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total amount of time that calls were ringing on an agent's phone.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Ringing Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Ringing_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Dialing_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total amount of time that calls were dialing on an agent's phone.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Dialing Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Dialing_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Handle_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total time agents spend handling inbound, internal or outbound calls.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Handle Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Handle_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Inbound_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total time agents spend handling inbound calls.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "In Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Inbound_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Outbound_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total time agents spend handling outbound calls.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Out Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Outbound_time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Hold_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total time agents spend on hold.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Hold Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Hold_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "ACW_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total time an agent's DN(s) completed being in AfterCallWork status during the reporting interval. This typically represents the time an agent spent doing follow-up work after calls.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "ACW Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Work_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Consult_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total time agents spend handling consultative calls.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Consult Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Consult_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Internal_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total time agents spend handling internal calls.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Internal Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Internal_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Offered",
+          "type": "ctSTATSERVER",
+          "description": "The total number of calls offered to an agent.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Offered",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Calls_Offered",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Answered",
+          "type": "ctSTATSERVER",
+          "description": "The total number of incoming calls answered by the agent.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Answered",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "CallsAnswered",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Answered_Last_Hr",
+          "type": "ctSTATSERVER",
+          "description": "The total number of incoming calls answered by the agent in the last hour.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Answered (last Hr)",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "CallsAnswered",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60,
+            "time_profile": "LastHour"
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Abandoned_From_Ringing",
+          "type": "ctSTATSERVER",
+          "description": "The total number of calls abaondoned while agent desktop was ringing.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Abandoned Ringing",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "AbandonedFromRinging",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Dropped",
+          "type": "ctSTATSERVER",
+          "description": "The total number of calls forwarded from one agent desktop to another (RONA).",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Calls Dropped",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Calls_Forced_Off",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Outbound_Calls",
+          "type": "ctSTATSERVER",
+          "description": "The total number of outbound calls handled by the agent.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Out",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Calls_Outbound",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Internal_Calls",
+          "type": "ctSTATSERVER",
+          "description": "The total number of internal calls handled by the agent.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Internal",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Calls_Internal",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Held",
+          "type": "ctSTATSERVER",
+          "description": "The total number of calls put on hold by the agent.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Held",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Total_Number_on_Hold",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Transferred_Made",
+          "type": "ctSTATSERVER",
+          "description": "The total number of voice interactions transferred by this agent during the reporting interval.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Transfers Made",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Transfers_Made",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Consult_Made",
+          "type": "ctSTATSERVER",
+          "description": "The total number of voice consultations made by this agent.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Consult Made",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Calls_Consult_Made",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Short_Talk",
+          "type": "ctSTATSERVER",
+          "description": "The total number of times this agent's DN completed being in Call status of less then specified duration (10s).",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Short Talk < 10s",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Short_Talk",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60,
+            "time_range": "Range0-10"
+          }
+        },
+        {
+          "format": "time",
+          "id": "Avg_Handle_Time",
+          "type": "ctSTATSERVER",
+          "description": "The average handling time represents the total time an agent spends handling inbound, outbound, internal, consultation, on hold and after call work tasks divided by the total number of inboud, outbound and internal calls.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "AHT",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Average_Handle_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Avg_ACW_Time",
+          "type": "ctSTATSERVER",
+          "description": "The average After-Call-Work time represents the total time an agent spends on ACW status divided by the total number of time this agent was on ACW.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Avg ACW Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Average_ACW_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Avg_Hold_Time",
+          "type": "ctSTATSERVER",
+          "description": "The average Hold time represents the total time an agent spends on Hold status divided by the total number of time this agent put customer on hold.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Avg Hold Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Average_Hold_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Avg_In_Time",
+          "type": "ctSTATSERVER",
+          "description": "The average In time represents the total time an agent spends handling an incoming calls divided by the total number of time this agent was handling inbound calls.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Avg In Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Average_In_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Avg_Out_Time",
+          "type": "ctSTATSERVER",
+          "description": "The average Out time represents the total time an agent spends handling an outbound calls divided by the total number of time this agent was handling outbound calls.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Avg Out Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Average_Out_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Avg_Ring_Time",
+          "type": "ctSTATSERVER",
+          "description": "The average Ring time represents the total time an agent desktop was ringing divided by the total number of time this agent desktop was ringing.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Avg Ring Time",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Average_Ringing_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "percent",
+          "id": "Agent_Occupancy",
+          "type": "ctSTATSERVER",
+          "description": "The percent of time an agent spends handling calls versus their total login time.",
+          "category": "ccMEASURE",
+          "vt": "vDBL",
+          "label": "Agent Occupancy",
+          "statistic": {
+            "filter": "VoiceCall",
+            "stat_type_name": "Agent_Occupancy",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        }
+      ],
+      "enable_delta_snapshots": false,
+      "default_widget_body": {
+        "label": "Agent KPIs",
+        "view": [
+          {
+            "type": "BarView",
+            "column_selector": [
+              "Login_Time"
+            ]
+          }
+        ],
+        "size_y": 2,
+        "size_x": 1
+      },
+      "collector_def": {
+        "allowed_object_type": [
+          "SObjectAgent",
+          "SObjectAgentPlace",
+          "SObjectGroupAgents",
+          "SObjectGroupPlaces"
+        ]
+      }
+    },
+    "meta": {
+        "slides":["/images/templates/Agent_KPIs/image_1.png","/images/templates/Agent_KPIs/image_2.png","/images/templates/Agent_KPIs/image_3.png"],
+        "stats": [
+            {"category":"Agent Status Duration", "desc":"Measure the overall time spent by a team, skill center or a customer representative in a specific status (logged in, available, not ready, after call work,..)", "ex":["Login Time","Ready Time (break, lunch, offline)", "Not Ready Time", "ACW Time.."]},
+            {"category":"Agent KPIs", "desc":"Measure the overall time spent by a team, skill center or a customer representative in a specific status (logged in, available, not ready, after call work,..)", "ex":["Login Time","Ready Time (break, lunch, offline)", "Not Ready Time", "ACW Time.."]},
+            {"category":"SL Performance", "desc":"Measure the overall time spent by a team, skill center or a customer representative in a specific status (logged in, available, not ready, after call work,..)", "ex":["Login Time","Ready Time (break, lunch, offline)", "Not Ready Time", "ACW Time.."]},
+            {"category":"Distribution Performance", "desc":"Measure the overall time spent by a team, skill center or a customer representative in a specific status (logged in, available, not ready, after call work,..)", "ex":["Login Time","Ready Time (break, lunch, offline)", "Not Ready Time", "ACW Time.."]}
+        ],
+        "prerequisites":["No prerequisites for this template"],
+        "author":"Pulse Team"
+    }
+
+  },
+  {
+    "state": {
+      "body_hash_1": -718147061,
+      "uscn": 647,
+      "body_hash_2": -718147061
+    },
+    "definition": {
+      "name": "Agent Group Status",
+      "description": "Agents are provided logins or devices and are assigned to media that match their skills. With this report, the supervisor can ensure the agents are logged in where they should be and managing the media for which they are responsible.",
+      "proxy_access_object": {
+        "name": "",
+        "dbid": 0
+      },
+      "refresh_interval": 60,
+      "guid": "000000000000-0000-0000-0000-00000002",
+      "layout_type": "ltPCREGULAR",
+      "column": [
+        {
+          "id": "_Object$ID",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vINT",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectID"
+            ]
+          },
+          "is_delta_key": true
+        },
+        {
+          "id": "_Object$Type",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vINT",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectType"
+            ]
+          },
+          "is_delta_key": true
+        },
+        {
+          "format": "string",
+          "id": "_Object$Name",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectName"
+            ]
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_Logged_In",
+          "type": "ctSTATSERVER",
+          "description": "The number of agents that are currently logged in at all the DNs within a specified agent group, or at all the DNs at places within the specified place group.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Logged In",
+          "statistic": {
+            "stat_type_name": "CurrAgentsLoggedIn",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_Ready",
+          "type": "ctSTATSERVER",
+          "description": "The number of agents who are currently in the Ready state. Typically, it represents the total number of agents waiting for customer interactions or specific tasks.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Ready",
+          "statistic": {
+            "stat_type_name": "CurrentReadyAgents",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_Not_Ready",
+          "type": "ctSTATSERVER",
+          "description": "The number of agents who are currently logged in and who are currently in the NotReady state. Typically, it represents the total number of agents not available to handle incoming interactions.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Not Ready",
+          "statistic": {
+            "stat_type_name": "CurrNumberNotReadyStatuses",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_Break",
+          "type": "ctSTATSERVER",
+          "description": "The number of agents who are in Not Ready state with Reason Break.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Break",
+          "statistic": {
+            "filter": "MOTIF_Break",
+            "stat_type_name": "CurrNumberNotReadyStatuses",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_Lunch",
+          "type": "ctSTATSERVER",
+          "description": "The number of agents who are in Not Ready state with Reason Lunch.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Lunch",
+          "statistic": {
+            "filter": "MOTIF_Lunch",
+            "stat_type_name": "CurrNumberNotReadyStatuses",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_Others",
+          "type": "ctSTATSERVER",
+          "description": "The number of agents who are in Not Ready state with Reason different from Lunch and Break.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Offline",
+          "statistic": {
+            "filter": "MOTIF_Others",
+            "stat_type_name": "CurrNumberNotReadyStatuses",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_ACW",
+          "type": "ctSTATSERVER",
+          "description": "The current number of agents in the AfterCallWork status. Typically this status happens when an agent is no longer talking with the customer but still requires additional time to handle properly customer requests.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "ACW",
+          "statistic": {
+            "stat_type_name": "CurrNumberACWStatuses",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_Consult",
+          "type": "ctSTATSERVER",
+          "description": "The current number of agents in CallConsult status (participating in consultation calls).",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Consult",
+          "statistic": {
+            "stat_type_name": "CurrNumberConsultStatuses",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_Dialing",
+          "type": "ctSTATSERVER",
+          "description": "The current number of agents in CallDialing status (dialing calls).",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Dialing",
+          "statistic": {
+            "stat_type_name": "CurrNumberDialingStatuses",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_On_Hold",
+          "type": "ctSTATSERVER",
+          "description": "The current number of agents in CallOnHold status; that is, where the agent has one or more calls on hold.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "On Hold",
+          "statistic": {
+            "stat_type_name": "CurrNumberHoldStatuses",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_Inbound",
+          "type": "ctSTATSERVER",
+          "description": "The current number of agents in CallInbound status; that is, where the agent is conducting one or more inbound calls.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Inbound",
+          "statistic": {
+            "stat_type_name": "CurrNumberInboundStatuses",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_Outbound",
+          "type": "ctSTATSERVER",
+          "description": "The current number of agents in CallOutbound status; that is, where the agent is conducting one or more outbound calls.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Outbound",
+          "statistic": {
+            "stat_type_name": "CurrNumberOutboundStatuses",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_Internal",
+          "type": "ctSTATSERVER",
+          "description": "The current number of agents in CallInternal status; that is, where the agent is conducting one or more internal calls.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Internal",
+          "statistic": {
+            "stat_type_name": "CurrNumberInternalStatuses",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_Ringing",
+          "type": "ctSTATSERVER",
+          "description": "The current number of agents in CallRinging status; that is, where one or more calls are waiting to be answered by an agent.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Ringing",
+          "statistic": {
+            "stat_type_name": "CurrNumberRingingStatuses",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Current_Agents_Logged_Out",
+          "type": "ctSTATSERVER",
+          "description": "The number of agents that are currently logged out from Genesys environment.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Logged Out",
+          "statistic": {
+            "stat_type_name": "CurrAgentsLoggedOut",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "percent",
+          "id": "Perc_Ready",
+          "type": "ctSTATSERVER",
+          "description": "The percentage of agents ready to handle customers calls.",
+          "category": "ccMEASURE",
+          "vt": "vDBL",
+          "label": "% Ready",
+          "statistic": {
+            "stat_type_name": "CurrAgentsPercReady",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "percent",
+          "id": "Perc_Not_Ready",
+          "type": "ctSTATSERVER",
+          "description": "The percentage of agents in a not ready status.",
+          "category": "ccMEASURE",
+          "vt": "vDBL",
+          "label": "% Not Ready",
+          "statistic": {
+            "stat_type_name": "CurrAgentsPercNotReady",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "percent",
+          "id": "Perc_Inbound",
+          "type": "ctSTATSERVER",
+          "description": "The percentage of agents handling customer calls.",
+          "category": "ccMEASURE",
+          "vt": "vDBL",
+          "label": "% Inbound",
+          "statistic": {
+            "stat_type_name": "CurrAgentsPercInbound",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        }
+      ],
+      "enable_delta_snapshots": false,
+      "default_widget_body": {
+        "label": "Agent Group Status",
+        "view": [
+          {
+            "type": "BarView",
+            "column_selector": [
+              "Current_Agents_Logged_In"
+            ]
+          }
+        ],
+        "size_y": 2,
+        "size_x": 1
+      },
+      "collector_def": {
+        "allowed_object_type": [
+          "SObjectGroupAgents",
+          "SObjectGroupPlaces"
+        ]
+      }
+    }
+  },
+  {
+    "state": {
+      "body_hash_1": 1193146891,
+      "uscn": 649,
+      "body_hash_2": 1193146891
+    },
+    "definition": {
+      "name": "Agent Login",
+      "description": "This report provides a quick analysis indicating some kind of action and provides the primary view used to determine if the contact center is meeting criteria or level of service that customers expect.",
+      "proxy_access_object": {
+        "name": "",
+        "dbid": 0
+      },
+      "refresh_interval": 60,
+      "guid": "000000000000-0000-0000-0000-00000003",
+      "layout_type": "ltPCREGULAR",
+      "column": [
+        {
+          "id": "_Object$ID",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vINT",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectID"
+            ]
+          },
+          "is_delta_key": true
+        },
+        {
+          "id": "_Object$Type",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vINT",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectType"
+            ]
+          },
+          "is_delta_key": true
+        },
+        {
+          "format": "string",
+          "id": "_Object$Name",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectName"
+            ]
+          }
+        },
+        {
+          "format": "string",
+          "id": "Current_Status",
+          "type": "ctSTATSERVER",
+          "description": "The current state (status) of a specified agent. Some examples of an agent's status include CallInbound, CallOutbound, and CallConsult.",
+          "category": "ccMEASURE",
+          "vt": "vSTR",
+          "label": "Current Status",
+          "show_state_icon": true,
+          "statistic": {
+            "stat_type_name": "ExtendedCurrentStatus",
+            "notification_mode": "SChangesBasedNotification",
+            "adm_software_reasons": true,
+            "adm_hardware_reasons": true
+          }
+        },
+        {
+          "format": "time",
+          "id": "Status_Time",
+          "type": "ctFORMULA",
+          "description": "The time agent spent in Current State.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "formula": {
+            "type": "ftPCSCRIPT",
+            "text": [
+              "Result = G.GetStatusDuration(Data.Current_Status.Value);"
+            ]
+          },
+          "label": "Time in Status"
+        },
+        {
+          "format": "time",
+          "id": "Login_Time",
+          "type": "ctSTATSERVER",
+          "description": "The total time that monitored agents were logged in. Applied to GroupAgents and GroupPlaces, this stat type calculates the total login time for all the agents belonging to the specified group.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Login Time",
+          "statistic": {
+            "stat_type_name": "Total_Login_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Continuous_Login_Time",
+          "type": "ctSTATSERVER",
+          "description": "Current continuous time Agent remained logged in. Applied to GroupAgents and GroupPlaces this statistics calculates total of all Agents (Places) in the Group.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Continuous Login Time",
+          "statistic": {
+            "stat_type_name": "Continuous_Login_Time",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "string",
+          "id": "Reason",
+          "type": "ctFORMULA",
+          "description": "Reason(s) selected by Agent.",
+          "category": "ccMEASURE",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCSCRIPT",
+            "text": [
+              "Result = G.GetReasonCodes(Data.Current_Status.Value);"
+            ]
+          },
+          "label": "Reason"
+        },
+        {
+          "format": "string",
+          "id": "EmployeeId",
+          "type": "ctFORMULA",
+          "description": "Agent's Employee ID.",
+          "category": "ccMEASURE",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCSCRIPT",
+            "text": [
+              "Result = G.GetEmployeeId(Data.Current_Status.Value);"
+            ]
+          },
+          "label": "Employee Id"
+        },
+        {
+          "format": "string",
+          "id": "Place",
+          "type": "ctFORMULA",
+          "description": "Agent's Place.",
+          "category": "ccMEASURE",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCSCRIPT",
+            "text": [
+              "Result = G.GetPlace(Data.Current_Status.Value);"
+            ]
+          },
+          "label": "Place"
+        },
+        {
+          "format": "string",
+          "id": "Switch",
+          "type": "ctFORMULA",
+          "description": "Agent's Switch.",
+          "category": "ccMEASURE",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCSCRIPT",
+            "text": [
+              "Result = G.GetSwitch(Data.Current_Status.Value);"
+            ]
+          },
+          "label": "Switch"
+        },
+        {
+          "format": "string",
+          "id": "LoginId",
+          "type": "ctFORMULA",
+          "description": "Agent's Login ID.",
+          "category": "ccMEASURE",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCSCRIPT",
+            "text": [
+              "Result = G.GetLoginId(Data.Current_Status.Value);"
+            ]
+          },
+          "label": "Login Id"
+        },
+        {
+          "format": "string",
+          "id": "Extension",
+          "type": "ctFORMULA",
+          "description": "Agent's Extension.",
+          "category": "ccMEASURE",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCSCRIPT",
+            "text": [
+              "Result = G.GetExtension(Data.Current_Status.Value);"
+            ]
+          },
+          "label": "Extension"
+        },
+        {
+          "format": "string",
+          "id": "Position",
+          "type": "ctFORMULA",
+          "description": "Agent's Position.",
+          "category": "ccMEASURE",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCSCRIPT",
+            "text": [
+              "Result = G.GetPosition(Data.Current_Status.Value);"
+            ]
+          },
+          "label": "Position"
+        },
+        {
+          "format": "string",
+          "id": "Current_Status_KVP",
+          "type": "ctSTATSERVER",
+          "description": "The current state (status) of a specified agent to use in formulas for KVPs (Service Type, Service Sub Type, Customer Segment, Business Result).",
+          "category": "ccMEASURE",
+          "vt": "vSTR",
+          "label": "Current Status KVP",
+          "show_state_icon": true,
+          "statistic": {
+            "stat_type_name": "ExtendedCurrentStatus",
+            "notification_mode": "SChangesBasedNotification",
+            "adm_user_data": true
+          }
+        },
+        {
+          "format": "string",
+          "id": "Service_Type",
+          "type": "ctFORMULA",
+          "description": "Service Type associated to the call segmentation. Must be defined in the callflow as KVP.",
+          "category": "ccMEASURE",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCSCRIPT",
+            "text": [
+              "Result = G.GetServiceType(Data.Current_Status_KVP.Value);"
+            ]
+          },
+          "label": "Service Type"
+        },
+        {
+          "format": "string",
+          "id": "Service_SubType",
+          "type": "ctFORMULA",
+          "description": "Service Sub Type associated to the call segmentation. Must be defined in the callflow as KVP.",
+          "category": "ccMEASURE",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCSCRIPT",
+            "text": [
+              "Result = G.GetServiceSubType(Data.Current_Status_KVP.Value);"
+            ]
+          },
+          "label": "Service Sub Type"
+        },
+        {
+          "format": "string",
+          "id": "Customer_Segment",
+          "type": "ctFORMULA",
+          "description": "Customer Segment associated to the call segmentation. Must be defined in the callflow as KVP.",
+          "category": "ccMEASURE",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCSCRIPT",
+            "text": [
+              "Result = G.GetCustomerSegment(Data.Current_Status_KVP.Value);"
+            ]
+          },
+          "label": "Customer Segment"
+        },
+        {
+          "format": "string",
+          "id": "Business_Result",
+          "type": "ctFORMULA",
+          "description": "Business Result associated to the call segmentation. Must be defined in the callflow as KVP.",
+          "category": "ccMEASURE",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCSCRIPT",
+            "text": [
+              "Result = G.GetBusinessResult(Data.Current_Status_KVP.Value);"
+            ]
+          },
+          "label": "Business Result"
+        }
+      ],
+      "enable_delta_snapshots": false,
+      "default_widget_body": {
+        "column_visibility": [
+          {
+            "column_id": "Current_Status_KVP",
+            "visibility": "vHIDDENINWIDGET"
+          }
+        ],
+        "label": "Agent Login",
+        "view": [
+          {
+            "type": "MiniGridView",
+            "column_selector": [
+              "Login_Time"
+            ]
+          }
+        ],
+        "size_y": 2,
+        "size_x": 2
+      },
+      "collector_def": {
+        "allowed_object_type": [
+          "SObjectAgent"
+        ]
+      }
+    }
+  },
+  {
+    "state": {
+      "body_hash_1": 609354960,
+      "uscn": 651,
+      "body_hash_2": 609354960
+    },
+    "definition": {
+      "name": "Campaign Activity",
+      "description": "Monitor the activity associated with outbound campaigns.",
+      "proxy_access_object": {
+        "name": "",
+        "dbid": 0
+      },
+      "refresh_interval": 60,
+      "guid": "000000000000-0000-0000-0000-00000004",
+      "layout_type": "ltPCREGULAR",
+      "column": [
+        {
+          "id": "_Object$ID",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vINT",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectID"
+            ]
+          },
+          "is_delta_key": true
+        },
+        {
+          "id": "_Object$Type",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vINT",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectType"
+            ]
+          },
+          "is_delta_key": true
+        },
+        {
+          "format": "string",
+          "id": "_Object$Name",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectName"
+            ]
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Hit_Ratio",
+          "type": "ctSTATSERVER",
+          "description": "The percentage of successful dialing attempts initiated by a Campaign Manager with a call result of Answer (DialAnswer)-that is, a call is answered by a human voice-relative to the number of all dialing attempts made (DialMade) during the same time period.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Hit Ratio",
+          "statistic": {
+            "stat_type_name": "CampHitRatio",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Campaign_Estimated_time_to_Complete",
+          "type": "ctSTATSERVER",
+          "description": "The estimated time, in minutes, to complete a campaign or calling list.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Estimated Time",
+          "statistic": {
+            "stat_type_name": "CampEstimatedTimeToComplete",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Records_Completed",
+          "type": "ctSTATSERVER",
+          "description": "The total number of leads from calling lists (counting records from the same lead as one record) processed to the point that no further action will be taken.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Records Completed",
+          "statistic": {
+            "stat_type_name": "CampRecordsCompleted",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Dialed_Abandoned",
+          "type": "ctSTATSERVER",
+          "description": "The total number of dialing attempts with a call result of Abandon. CampAbandoned statistics pertain to a specified campaign or to a specified calling list.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Dialed Abandoned",
+          "statistic": {
+            "stat_type_name": "CampAbandoned",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Dialed_Answering_Machine",
+          "type": "ctSTATSERVER",
+          "description": "The total number of unsuccessful dialing attempts initiated by a Campaign Manager with a call result of Answering Machine Detected; that is, the Campaign Manager dropped the call because an answering machine was detected on the called party's side.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Dialed Answering Machine",
+          "statistic": {
+            "stat_type_name": "CampAnsweringMachine",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Answers",
+          "type": "ctSTATSERVER",
+          "description": "The total number of dialing attempts initiated by a Campaign Manager with a call result of Answer (when a call is answered by a human voice). In some contact centers, the call result can also mean Right Party Contacted; that is, the call is answered by a live person who is not the Wrong Party.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Answers",
+          "statistic": {
+            "stat_type_name": "CampAnswers",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Attempt_Busies",
+          "type": "ctSTATSERVER",
+          "description": "The total number of unsuccessful dialing attempts initiated by a Campaign Manager with a call result of Busy; that is, the call does not go through because of a busy signal for the called party.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Attempt Busies",
+          "statistic": {
+            "stat_type_name": "CampBusy",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Attempts_Cancelled",
+          "type": "ctSTATSERVER",
+          "description": "The total number of unsuccessful dialing attempts initiated by a Campaign Manager with a call result of Cancel.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Attempts Cancelled",
+          "statistic": {
+            "stat_type_name": "CampCancel",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Attempts_made",
+          "type": "ctSTATSERVER",
+          "description": "Total number of all dialing attempts made (initiated) by a Campaign Manager with any call results.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Attempts made",
+          "statistic": {
+            "stat_type_name": "CampDialMade",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_DoNotCall_Results",
+          "type": "ctSTATSERVER",
+          "description": "The total number of completed dialing attempts initiated by a Campaign Manager with a call result of DoNotCall; that is, the customer asked to be put onto the 'Do not call list' when the call was intercepted by an operator. This case is also considered as an unsuccessful dial attempt.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "DoNotCall Results",
+          "statistic": {
+            "stat_type_name": "CampDoNotCall",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Dropped_Results",
+          "type": "ctSTATSERVER",
+          "description": "The total number of unsuccessful dialing attempts initiated by a Campaign Manager with a call result of Dropped. Dropped calls are those that are answered at the destination but then abandoned in the queue because no agent is available to take them.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Dropped Results",
+          "statistic": {
+            "stat_type_name": "CampDropped",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Fax_Modem_Results",
+          "type": "ctSTATSERVER",
+          "description": "The total number of unsuccessful dialing attempts initiated by a Campaign Manager with a call result of Fax Detected or Modem Detected.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Fax Modem Results",
+          "statistic": {
+            "stat_type_name": "CampFaxModem",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_No_Answer_Result",
+          "type": "ctSTATSERVER",
+          "description": "The total number of unsuccessful dialing attempts initiated by a Campaign Manager with a call result of No Answer.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "No Answer Result",
+          "statistic": {
+            "stat_type_name": "CampNoAnswer",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Wrong_Party_Result",
+          "type": "ctSTATSERVER",
+          "description": "The total number of unsuccessful dialing attempts initiated by a Campaign Manager with a call result of Wrong Party; that is, the call is answered by a live person but not the intended person.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Wrong Party Result",
+          "statistic": {
+            "stat_type_name": "CampNoRPC",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_SIT_Detected",
+          "type": "ctSTATSERVER",
+          "description": "The total number of unsuccessful dialing attempts initiated by a Campaign Manager with a call result of DIALSITDetected. A Special Information Tone (SIT) identifies a network-provided announcement and precedes a machine-generated announcement when, for instance, a telephone number is invalid, no circuit is available, or a recorded operator message intercepts a call.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "SIT Detected",
+          "statistic": {
+            "stat_type_name": "CampSITDetected",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        }
+      ],
+      "enable_delta_snapshots": false,
+      "collector_def": {
+        "allowed_object_type": [
+          "SObjectCallingList",
+          "SObjectCampaign"
+        ]
+      }
+    }
+  },
+  {
+    "state": {
+      "body_hash_1": -1956088599,
+      "uscn": 652,
+      "body_hash_2": -1956088599
+    },
+    "definition": {
+      "name": "Campaign Callback Status",
+      "description": "A report presenting information related to campaign initiated callbacks.",
+      "proxy_access_object": {
+        "name": "",
+        "dbid": 0
+      },
+      "refresh_interval": 60,
+      "guid": "000000000000-0000-0000-0000-00000005",
+      "layout_type": "ltPCREGULAR",
+      "column": [
+        {
+          "id": "_Object$ID",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vINT",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectID"
+            ]
+          },
+          "is_delta_key": true
+        },
+        {
+          "id": "_Object$Type",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vINT",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectType"
+            ]
+          },
+          "is_delta_key": true
+        },
+        {
+          "format": "string",
+          "id": "_Object$Name",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectName"
+            ]
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Callbacks_Completed",
+          "type": "ctSTATSERVER",
+          "description": "The total number of callbacks completed. The completion of a callback only indicates that the callback was performed; it does not indicate that the callback was completed successfully.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Completed",
+          "statistic": {
+            "stat_type_name": "CampCallbacksCompleted",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Callbacks_Missed",
+          "type": "ctSTATSERVER",
+          "description": "The total number of callbacks missed. A callback is considered as 'missed' if it is scheduled for a certain period of time, but for some reason the callback is not performed.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Missed",
+          "statistic": {
+            "stat_type_name": "CampCallbacksMissed",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Callbacks_Scheduled",
+          "type": "ctSTATSERVER",
+          "description": "The total number of callbacks scheduled.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Scheduled",
+          "statistic": {
+            "stat_type_name": "CampCallbacksScheduled",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Personal_Callbacks_Completed",
+          "type": "ctSTATSERVER",
+          "description": "Total number of personal callbacks completed. Completion of a personal callback only indicates that the callback was performed; it does not indicate if the callback was completed successfully.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Personal Completed",
+          "statistic": {
+            "stat_type_name": "CampPersonalCallbacksCompleted",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Personal_Callbacks_Missed",
+          "type": "ctSTATSERVER",
+          "description": "Total number of personal callbacks missed. A personal callback is missed, for example, because all outbound trunks are busy at the time of a scheduled callback or because an agent for whom a callback is assigned is busy or not logged in at the time of the scheduled personal callback.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Personal Missed",
+          "statistic": {
+            "stat_type_name": "CampPersonalCallbacksMissed",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "integer",
+          "id": "Campaign_Personal_Callbacks_Scheduled",
+          "type": "ctSTATSERVER",
+          "description": "The total number of personal callbacks scheduled.",
+          "category": "ccMEASURE",
+          "vt": "vINT",
+          "label": "Personal Scheduled",
+          "statistic": {
+            "stat_type_name": "CampPersonalCallbacksScheduled",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        }
+      ],
+      "enable_delta_snapshots": false,
+      "collector_def": {
+        "allowed_object_type": [
+          "SObjectCallingList",
+          "SObjectCampaign",
+          "SObjectCampaignCallingList"
+        ]
+      }
+    }
+  },
+  {
+    "state": {
+      "body_hash_1": 901443949,
+      "uscn": 653,
+      "body_hash_2": 901443949
+    },
+    "definition": {
+      "name": "Campaign Group Activity",
+      "description": "Monitor the activity associated with outbound Campaign Groups.",
+      "proxy_access_object": {
+        "name": "",
+        "dbid": 0
+      },
+      "refresh_interval": 60,
+      "guid": "000000000000-0000-0000-0000-00000006",
+      "layout_type": "ltPCREGULAR",
+      "column": [
+        {
+          "id": "_Object$ID",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vINT",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectID"
+            ]
+          },
+          "is_delta_key": true
+        },
+        {
+          "id": "_Object$Type",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vINT",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectType"
+            ]
+          },
+          "is_delta_key": true
+        },
+        {
+          "format": "string",
+          "id": "_Object$Name",
+          "type": "ctFORMULA",
+          "category": "ccDIMENSION",
+          "vt": "vSTR",
+          "formula": {
+            "type": "ftPCREFERENCE",
+            "text": [
+              "Object.ObjectName"
+            ]
+          }
+        },
+        {
+          "format": "time",
+          "id": "Campaign_Activated",
+          "type": "ctSTATSERVER",
+          "description": "The total amount of time that a specific campaign group was in StatusActivated status. StatusActivated status indicates that the campaign has been loaded for a specified group, but that no dialing has yet occurred.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Activated",
+          "statistic": {
+            "stat_type_name": "CampGrActivatedDuration",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Campaign_Deactivated",
+          "type": "ctSTATSERVER",
+          "description": "The total amount of time that a specific campaign group stays in deactivated status. StatusDeactivated status indicates that a campaign has not been loaded for the specified campaign group.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Deactivated",
+          "statistic": {
+            "stat_type_name": "CampGrDeactivatedDuration",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Campaign_Running",
+          "type": "ctSTATSERVER",
+          "description": "The total amount of time that a specific campaign group stays in StatusRunning status. StatusRunning status means that a campaign is loaded for a specified group and that dialing is in progress.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Running",
+          "statistic": {
+            "stat_type_name": "CampGrRunningDuration",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Campaign_System_Error",
+          "type": "ctSTATSERVER",
+          "description": "The total time during which a specified campaign group has been in the SystemError system condition. This system condition indicates that a system error such as a switch failure or a software problem prevents the campaign from running and that dialing has stopped.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "System Error",
+          "statistic": {
+            "stat_type_name": "CampGrSystemErrorDuration",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Campaign_Waiting_Agents",
+          "type": "ctSTATSERVER",
+          "description": "The total time during which a specified campaign group has been in the WaitingAgents system condition. WaitingAgents system condition indicates that no agents are available to run the campaign and dialing has stopped.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Waiting Agents",
+          "statistic": {
+            "stat_type_name": "CampGrWaitingAgentsDuration",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Campaign_Waiting_Ports",
+          "type": "ctSTATSERVER",
+          "description": "The total time during which a specified campaign group has been in the WaitingPorts system condition. This system condition indicates that no ports are available to initiate new calls and that dialing has stopped.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Waiting Ports",
+          "statistic": {
+            "stat_type_name": "CampGrWaitingPortDuration",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        },
+        {
+          "format": "time",
+          "id": "Campaign_Waiting_Records",
+          "type": "ctSTATSERVER",
+          "description": "The total time during which a specified campaign group has been in the WaitingRecords system condition. This system condition indicates that the campaign is out of records and that dialing has stopped.",
+          "category": "ccMEASURE",
+          "vt": "vLONG",
+          "label": "Waiting Records",
+          "statistic": {
+            "stat_type_name": "CampGrWaitingRecordsDuration",
+            "notification_mode": "STimeBasedNotification",
+            "notification_interval": 60
+          }
+        }
+      ],
+      "enable_delta_snapshots": false,
+      "collector_def": {
+        "allowed_object_type": [
+          "SObjectCampaignGroup"
+        ]
+      }
+    }
+  }
+]

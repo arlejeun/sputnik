@@ -1,0 +1,392 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="market-category-data.html">
+<link rel="import" href="../bower_components/s-html/s-html.html">
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/codelab-components/syntax-style.html">
+<link rel="import" href="../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../bower_components/star-rating/star-rating.html">
+<link rel="import" href="../bower_components/paper-divider/paper-divider.html">
+<link rel="import" href="../bower_components/iron-accordions/iron-accordions.html">
+<link rel="import" href="../bower_components/iron-accordions/iron-accordion.html">
+<link rel="import" href="../bower_components/show-json/show-json.html">
+<link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../bower_components/codelab-components/google-codelab.html">
+<link rel="import" href="../bower_components/codelab-components/google-codelab-survey.html">
+<link rel="import" href="../bower_components/codelab-components/google-codelab-step.html">
+<link rel="import" href="style-detail-template.html">
+
+
+
+<dom-module id="gsys-detail-template">
+
+    <template>
+
+        <style include="style-detail-template syntax-style app-grid-style" is="custom-style">
+
+            :host {
+              --app-grid-columns: 4;
+              --app-grid-expandible-item-columns:2;
+              --app-grid-gutter:0px;
+              --app-grid-item-height:auto;
+            }
+
+            .item.desc {
+              @apply --app-grid-expandible-item;
+            }
+
+            ul {
+              padding: 0;
+              margin: 0px;
+             /* list-style: none;*/
+            }
+
+            .item {
+              background-color: white;
+              margin: 0px;
+            }
+
+            :host-context(google-codelab:not([theme="minimal"])) .instructions ::content aside.tip,
+            :host-context(google-codelab:not([theme="minimal"])) .instructions ::content aside.special
+            {
+                border-color: #6a6;
+                background: #ded;
+                color: #464;
+            }
+
+            @media (max-width: 640px) {
+                :host {
+                    --app-grid-columns: 3;
+                }
+
+                .item.ex {
+                    display:none;
+                }
+
+            }
+
+
+        </style>
+        <!--
+            app-route provides the name of the category and the item.
+        -->
+        <app-route route="[[route]]" pattern="/:templateId" data="{{routeData}}"></app-route>
+
+        <market-category-data id="categoryData" category-name="pulse_templates" item-name="{{_getItemName(routeData.templateId)}}" item="{{item}}" failure="{{failure}}">
+        </market-category-data>
+
+        <google-codelab title="Pulse Template" environment="web" last-updated="2017-04-18" noToolbar=true noHighlight=true>
+
+            <google-codelab-step label="Insights" duration="2">
+                <h2>[[item.definition.name]]</h2>
+                <p>[[item.definition.description]]</p>
+                <section>
+                    <s-html html="[[item.shtml]]"></s-html>
+                    <a href="[[item.metadata.slides.0]]" title="[[item.definition.name]]" target="_blank">
+                        <img src="[[item.metadata.slides.0]]" style="max-width: 624px"></img>
+                    </a>
+
+                </section>
+
+                <ul class="checklist">
+                    <template is="dom-repeat" items="[[item.overview.goals]]">
+                        <li>[[item]]</li>
+                    </template>
+                </ul>
+
+                <h3>Dimensions</h3>
+                <p>See below the list of available dimensions with the template.</p>
+
+                <div class="container">
+                    <template is="dom-repeat" items="[[_displayObjectTypes(item.definition.collector_def.allowed_object_type)]]">
+                        <paper-chip single-line="">
+                            <!--    <iron-icon slot="icon" icon="avatars:avatar-1"></iron-icon>-->
+                            <div slot="label">[[item]]</div>
+                        </paper-chip>
+                    </template>
+                </div>
+
+                <h3>Statistics overview</h3>
+                <p>See below the description of statistics grouped by business objective groups available with the template.</p>
+
+
+                <ul class="app-grid">
+                    <template is="dom-repeat" items="[[item.metadata.stats]]">
+                            <li class="item">[[item.category]]</li>
+                            <li class="item desc">[[item.desc]]</li>
+                            <li class="item ex">
+                                <ul style="padding:0 0 0 10px">
+                                 <template is="dom-repeat" items="[[item.ex]]">
+                                    <li style="padding:0px;margin:0px">[[item]]</li>
+                                </template>
+                                </ul>
+                            </li>
+                    </template>
+
+                </ul>
+
+                     <div style="margin:5px 10px 0 0" header>
+                    <template is="dom-repeat" items="[[_getStatisticsDefinition(item)]]" as="columns">
+                        <paper-chip on-click="_onStatClick" data-object="{{columns}}" single-line="">
+                            <div slot="label">[[columns.label]]</div>
+                        </paper-chip>
+                    </template>
+                </div>
+
+                <template is="dom-if" if="{{stat}}">
+                  <h3>Statistic Properties</h3>
+                    <aside class="special">
+                        <h4><u>Pulse Statistic Description</u></h4>
+                        <div style="margin:10px" id="statDesc"><b>[[stat.label]]</b> - [[stat.description]]</div>
+                        <ul class="checklist">
+                            <li>The statistic is displayed with [[stat.format]] format</li>
+                          <template is="dom-if" if="{{stat.statistic}}">
+                            <li>[[_getNotificationMode(stat.statistic)]]</li>
+                            <li>[[_getFilter(stat.statistic)]]</li>
+                            <li>[[_getTimeProfile(stat.statistic)]]</li>
+                            <li>[[_getTimeRange(stat.statistic)]]</li>
+                          </template>
+                          <template is="dom-if" if="{{stat.formula}}">
+                            <li>[[_getFormula(stat.formula)]]</li>
+                          </template>
+                          <br>
+                          <p><i>Additional information can be found <a href="https://docs.genesys.com/Documentation/EZP/8.5.103/User/RTRStatProperties" target=_blank>here</a></i></p>
+                        </ul>
+                    </aside>
+                    <div style="background-color: black;">
+                        <show-json json='{{stat}}'></show-json>
+                    </div>
+
+                </template>
+
+                <!--<resize-tester></resize-tester>-->
+
+                <h3>What you'll need</h3>
+                <p></p>
+                <ul>
+                    <template is="dom-repeat" items="[[item.metadata.prerequisites]]">
+                        <li>[[item]]</li>
+                    </template>
+                </ul>
+                <h3>Who developed this template?</h3>
+                <s-html html="[[item.metadata.author]]"></s-html>
+
+            </google-codelab-step>
+
+<!--
+
+            <google-codelab-step label="Statistics" duration="3">
+                <h2>[[item.definition.name]]</h2>
+                <p>
+                  <s-html html="[[item.definition.description]]"></s-html>
+                </p>
+
+
+
+                <paper-divider class="divider-for-light-background"></paper-divider>
+            </google-codelab-step>
+    -->
+
+
+            <google-codelab-step label="Pre-requisites" duration="5">
+
+                <section>
+                    <s-html html="[[item.pre]]"></s-html>
+
+                    <s-html html="[[item.prerequisites.templates]]"></s-html>
+                    <div class="card-actions justified">
+                        <template is="dom-repeat" items="[[item.templates]]">
+                            <paper-button class="dashboard-reserve">[[item.label]]</paper-button>
+                        </template>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Environment settings</h2>
+                    <p>Genesys Pulse 8.5.106+ can import and export Pulse templates, dashboards and wallboards from one environment to another which enable users to package them and share them across environment.
+                        <br> We are currently using this approach to help administrators speed up the deployment phase:
+                        <br>
+                        <br>
+                        <b>Instructions to import Pulse dashboard</b>
+                        <br>
+                    </p>
+                    <div class="wrapper-video">
+                        <iframe src="https://player.vimeo.com/video/209254764?title=0&byline=0&portrait=0&color=b80007" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen class="embedded-video"></iframe>
+                    </div>
+
+                    <s-html html="[[item.pre]]"></s-html>
+
+                    <!--
+                    <aside class="special">
+                        <p>The dashboard can be downloaded from this website but keep in mind that when you import the dashboard into your environment, you might have to select the objects (agent group, queues) from your environment because the one used by our demo environment might not be available with your Genesys configuration.
+                            <br>
+                        </p>
+                        <p>
+                            <paper-button raised class="colored">
+                                <iron-icon icon="file-download"></iron-icon>
+                                <a href="[[item.download_link]]" target="_blank">
+                                    <b>Download [[item.title]]</b>
+                                </a>
+                            </paper-button>
+                        </p>
+                    </aside>-->
+
+                </section>
+            </google-codelab-step>
+
+
+        </google-codelab>
+
+
+    </template>
+    <script>
+    Polymer({
+
+        is: 'gsys-detail-template',
+
+        properties: {
+            item: Object,
+            templateId: String,
+            route: Object,
+            routeData: Object,
+            visible: Boolean,
+            offline: {
+                type: Boolean,
+                observer: '_offlineChanged'
+            },
+            failure: Boolean,
+            stat: Object,
+            statCode: {
+              type: String,
+              notify:true
+            }
+        },
+
+        observers: [
+            '_itemChanged(item)',
+        ],
+
+
+        attached: function() {
+        },
+
+        _refreshGrid: function() {
+          this.debounce('_refreshGrid1', function () {
+              console.log('_refreshGrid1' + this.$['stat-overview'].applyResponsive);
+              this.$['stat-overview'].applyResponsive(this.$['stat-overview'].currentScreenformat, this.$['stat-overview'].currentScreenformat);})
+        },
+
+        _getExampleKPIs: function(item) {
+          console.log(item);
+        },
+
+        _onStatClick: function(evt) {
+            this.stat = evt.currentTarget.dataObject;
+        },
+
+        _getNotificationMode:function(val){
+          if (!val) {
+            return;
+          }
+          else if (val.notification_mode == 'STimeBasedNotification') {
+              res = 'The statistic is updated by Genesys Stat Server with a Time-based notification every ' + val.notification_interval +'s' ;
+            } else if (val.notification_mode == 'SChangesBasedNotification') {
+              res = 'The statistic is updated by Genesys Stat Server with a Change-based notification';
+            } else {
+              res = val.notification_mode;
+            }
+            return res;
+        },
+
+        _getFilter: function(val) {
+           return val && val.filter ? 'The statistic is using the filter "' + val.filter + '"' : 'There is no filter associated with the statistic';
+        },
+
+        _getTimeProfile: function(val) {
+           return val && val.time_profile ? 'The statistic is using the time profile "' + val.time_profile + '"' : 'The statistic is using the default time profile and resets every night at midnight';
+        },
+
+        _getTimeRange: function(val) {
+           return val && val.time_range ? 'The statistic is using the time range "' + val.time_range + '"' : 'There is no time range associated with the statistic';
+        },
+
+        _getFormula: function (formula) {
+          return formula && formula.text['0'] ? 'The statistic is using a formula with the following expression ' + formula.text['0'] + '"' : 'The statistic is not using a formula';
+        },
+
+        getClassForItem: function(item, selected) {
+            return selected ? 'item expanded' : 'item';
+        },
+
+        _stringToEl: function (string) {
+            var parser = new DOMParser(),
+                content = 'text/html',
+                DOM = parser.parseFromString(string, content);
+            return DOM.body.childNodes;
+        },
+
+        _itemChanged: function(item) {
+            //console.log(JSON.stringify(item));
+            return item;
+        },
+
+        _getItemName: function(id) {
+            console.log(id);
+            return id;
+        },
+
+        _getTemplateName: function(item) {
+            console.log(item);
+        },
+
+        _getStatisticsDefinition: function(item) {
+          if (item) {
+            var filteredArray = item.definition.column.filter(function(item) {
+                return item.category == 'ccMEASURE'
+            });
+            return filteredArray;
+          }
+        },
+
+        _tryReconnect: function() {
+            this.$.categoryData.refresh();
+        },
+
+        _offlineChanged: function(offline) {
+            if (!offline) {
+                this._tryReconnect();
+            }
+        },
+
+        _displayObjectTypes: function(arr) {
+            return arr.map(this._replaceObjectType);
+        },
+
+        _replaceObjectType:function(item) {
+            if (item =='SObjectAgent') return 'Agent';
+            else if (item == 'SObjectGroupAgents') return 'Agent Group';
+            else if (item == 'SObjectAgentPlace') return 'Place';
+            else if (item == 'SObjectGroupPlaces') return 'Place Group';
+            else return item;
+        }
+
+    });
+    </script>
+</dom-module>

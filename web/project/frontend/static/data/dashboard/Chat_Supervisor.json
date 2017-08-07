@@ -1,0 +1,1406 @@
+// 20170324135557
+// http://216.38.144.156:8040/gax/api/wbrt/tabs/00505682723f-9a30-11e6-07ce-7b89461e
+
+{
+  "body": {
+    "type": "ttDashboard",
+    "description": "My Billing Dashboard - Arnaud Lejeune",
+    "position": [
+      {
+        "widget_guid": "00505682723f-9a30-11e6-07ce-7b84d94a",
+        "col": 0,
+        "row": 0
+      },
+      {
+        "widget_guid": "00505682723f-9a30-11e6-07ce-7b86fc2c",
+        "col": 1,
+        "row": 0
+      },
+      {
+        "widget_guid": "00505682723f-9a30-11e6-07ce-7b826848",
+        "col": 3,
+        "row": 0
+      },
+      {
+        "widget_guid": "00505682723f-a7cc-11e6-c30b-3b7e0578",
+        "col": 0,
+        "row": 2
+      },
+      {
+        "widget_guid": "00505682723f-b9d9-11e6-e965-de340ab2",
+        "col": 1,
+        "row": 2
+      },
+      {
+        "widget_guid": "00505682723f-b6f2-11e6-a758-59bd2f97",
+        "col": 3,
+        "row": 2
+      },
+      {
+        "widget_guid": "00505682723f-9a30-11e6-07ce-7b85eabb",
+        "col": 0,
+        "row": 3
+      },
+      {
+        "widget_guid": "00505682723f-9a30-11e6-07ce-7b880d9d",
+        "col": 0,
+        "row": 4
+      },
+      {
+        "widget_guid": "00505682723f-9a30-11e6-07ce-7b80ba97",
+        "col": 3,
+        "row": 4
+      }
+    ],
+    "guid": "00505682723f-9a30-11e6-07ce-7b89461e",
+    "widget": [
+      {
+        "body": {
+          "refresh_interval": 60,
+          "layout_guid": "00505682723f-ac82-11e5-a03f-31c955c8",
+          "guid": "00505682723f-9a30-11e6-07ce-7b84d94a",
+          "user_guid": "00505682723f-93e3-11e5-79d8-2da93a2a",
+          "layout_body_hash": -1872629273,
+          "threshold": [
+            {
+              "value": [
+                8.0,
+                2.147483647E9,
+                2.147483647E9
+              ],
+              "column_id": "Current_Agents_Logged_In"
+            }
+          ],
+          "column_visibility": [
+            {
+              "column_id": "$",
+              "visibility": "vVISIBLE"
+            },
+            {
+              "column_id": "Current_Agents_Consult",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_Dialing",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_On_Hold",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_Ringing",
+              "visibility": "vHIDDENINWIDGET"
+            }
+          ],
+          "label": "Agent Group Status",
+          "view": [
+            {
+              "type": "PagedDonutView",
+              "aggregation_function": "afSUM",
+              "subtype": "DonutView",
+              "view": [
+                {
+                  "type": "DonutView",
+                  "column_selector": [
+                    "Current_Agents_Logged_In"
+                  ]
+                },
+                {
+                  "type": "DonutView",
+                  "column_selector": [
+                    "Current_Agents_Ready"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridView",
+              "column_selector": [
+                "Current_Agents_Logged_In",
+                "Current_Agents_Ready",
+                "Current_Agents_Not_Ready",
+                "Current_Agents_Break",
+                "Current_Agents_Lunch",
+                "Current_Agents_Others",
+                "Current_Agents_ACW",
+                "Current_Agents_Inbound",
+                "Current_Agents_Outbound",
+                "Current_Agents_Internal",
+                "Current_Agents_Logged_Out",
+                "Perc_Ready",
+                "Perc_Not_Ready",
+                "Perc_Inbound",
+                "Working"
+              ],
+              "sorting": [
+                {
+                  "column_id": "_Object$Name",
+                  "is_asc": true
+                }
+              ]
+            },
+            {
+              "type": "LineChartView",
+              "column_selector": [
+                "Current_Agents_Logged_In"
+              ],
+              "row_selector": [
+                {
+                  "v": [
+                    "106",
+                    "124",
+                    "158"
+                  ],
+                  "k": "_Object$ID"
+                }
+              ]
+            }
+          ],
+          "active_view": "LineChartView",
+          "size_y": 2,
+          "size_x": 1
+        },
+        "body_hash": -443769626,
+        "uscn": 7208
+      },
+      {
+        "body": {
+          "refresh_interval": 60,
+          "layout_guid": "00505682723f-ac82-11e5-a03f-31c955c8",
+          "guid": "00505682723f-9a30-11e6-07ce-7b86fc2c",
+          "user_guid": "00505682723f-93e3-11e5-79d8-2da93a2a",
+          "layout_body_hash": -1872629273,
+          "column_visibility": [
+            {
+              "column_id": "$",
+              "visibility": "vVISIBLE"
+            },
+            {
+              "column_id": "Current_Agents_Consult",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_Dialing",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_On_Hold",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_Ringing",
+              "visibility": "vHIDDENINWIDGET"
+            }
+          ],
+          "label": "Agent Group Status - BU 1",
+          "view": [
+            {
+              "type": "PagedDonutView",
+              "column_selector": [
+                "Current_Agents_Ready",
+                "Current_Agents_Not_Ready",
+                "Current_Agents_ACW",
+                "Working",
+                "Current_Agents_Others",
+                "Current_Agents_Inbound",
+                "Current_Agents_Internal",
+                "Current_Agents_Outbound",
+                "Current_Agents_Break"
+              ],
+              "aggregation_function": "afSUM",
+              "subtype": "ObjDonutView",
+              "view": [
+                {
+                  "type": "ObjDonutView",
+                  "column_selector": [
+                    "Current_Agents_Ready",
+                    "Current_Agents_Not_Ready",
+                    "Current_Agents_ACW",
+                    "Working",
+                    "Current_Agents_Others",
+                    "Current_Agents_Inbound",
+                    "Current_Agents_Internal",
+                    "Current_Agents_Outbound",
+                    "Current_Agents_Break"
+                  ],
+                  "row_selector": [
+                    {
+                      "v": [
+                        "124"
+                      ],
+                      "k": "_Object$ID"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridView",
+              "filter": "",
+              "column_selector": [
+                "_Object$Name",
+                "Current_Agents_Logged_In",
+                "Current_Agents_Ready",
+                "Current_Agents_Not_Ready",
+                "Current_Agents_Break",
+                "Current_Agents_Lunch",
+                "Current_Agents_Others",
+                "Current_Agents_Internal",
+                "Current_Agents_Logged_Out",
+                "Perc_Ready",
+                "Perc_Not_Ready",
+                "Perc_Inbound",
+                "Working",
+                "Column Selector"
+              ],
+              "sorting": [
+                {
+                  "column_id": "_Object$Name",
+                  "is_asc": true
+                }
+              ],
+              "table_column_filter_enable": false
+            },
+            {
+              "type": "GroupedBarView",
+              "column_selector": [
+                "Current_Agents_Logged_In",
+                "Current_Agents_Ready",
+                "Current_Agents_Not_Ready",
+                "Current_Agents_Break",
+                "Current_Agents_Lunch",
+                "Current_Agents_Others",
+                "Current_Agents_ACW",
+                "Current_Agents_Inbound",
+                "Current_Agents_Outbound",
+                "Current_Agents_Internal",
+                "Current_Agents_Logged_Out",
+                "Perc_Ready",
+                "Perc_Not_Ready",
+                "Perc_Inbound",
+                "Working"
+              ],
+              "sorting": [
+                {
+                  "column_id": "alphabetically",
+                  "is_asc": false
+                }
+              ]
+            },
+            {
+              "type": "LineChartView",
+              "column_selector": [
+                "Current_Agents_Logged_In"
+              ],
+              "row_selector": [
+                {
+                  "v": [
+                    "106",
+                    "124",
+                    "158"
+                  ],
+                  "k": "_Object$ID"
+                }
+              ]
+            },
+            {
+              "type": "StackedBarView",
+              "column_selector": [
+                "$integer",
+                "Current_Agents_Logged_In",
+                "Current_Agents_Ready",
+                "Current_Agents_Not_Ready",
+                "Current_Agents_Break",
+                "Current_Agents_Lunch",
+                "Current_Agents_Others",
+                "Current_Agents_ACW",
+                "Current_Agents_Inbound",
+                "Current_Agents_Outbound",
+                "Current_Agents_Internal",
+                "Current_Agents_Logged_Out",
+                "Working"
+              ],
+              "sorting": [
+                {
+                  "column_id": "alphabetically",
+                  "is_asc": true
+                }
+              ]
+            }
+          ],
+          "active_view": "GridView",
+          "size_y": 2,
+          "size_x": 2
+        },
+        "body_hash": 13920449,
+        "uscn": 7156
+      },
+      {
+        "body": {
+          "refresh_interval": 60,
+          "layout_guid": "00505682723f-ac82-11e5-a041-023e178b",
+          "guid": "00505682723f-9a30-11e6-07ce-7b826848",
+          "user_guid": "00505682723f-93e3-11e5-79d8-2da93a2a",
+          "layout_body_hash": 768020397,
+          "threshold": [
+            {
+              "value": [
+                60.0,
+                80.0,
+                90.0
+              ],
+              "column_id": "Service_Level"
+            },
+            {
+              "value": [
+                40.0,
+                60.0,
+                80.0
+              ],
+              "column_id": "Service_Level_20s"
+            }
+          ],
+          "column_visibility": [
+            {
+              "column_id": "$",
+              "visibility": "vVISIBLE"
+            }
+          ],
+          "label": "Sales Queue KPIs",
+          "view": [
+            {
+              "type": "MiniLineChartView",
+              "time_range": "tr15Min",
+              "column_selector": [
+                "Answered",
+                "Service_Level_20s",
+                "Service_Level_60s"
+              ],
+              "row_selector": [
+                {
+                  "v": [
+                    "429"
+                  ],
+                  "k": "_Object$ID"
+                }
+              ],
+              "prop": [
+                {
+                  "v": {
+                    "vt": "vSTR",
+                    "v": "Service_Level_20s"
+                  },
+                  "k": "selectedForThreshold"
+                }
+              ]
+            },
+            {
+              "type": "GridView",
+              "column_selector": [
+                "Service_Level",
+                "Service_Level_10s",
+                "Service_Level_20s",
+                "Service_Level_30s",
+                "Service_Level_45s",
+                "Service_Level_60s",
+                "Distinct_Entered",
+                "Entered",
+                "Abandoned",
+                "Abandoned_From_Ringing",
+                "Cleared",
+                "Answered",
+                "Answered_less_10s",
+                "Answered_between_10s_and_20s",
+                "Answered_less_30s",
+                "Answered_less_60s",
+                "Current_Calls",
+                "Current_AWT",
+                "Max_Calls",
+                "Min_Calls",
+                "Forwarded",
+                "Curr_Max_Wait_Time",
+                "Max_Answer_Time",
+                "Average_Speed_Answer",
+                "Average_Handle_Time",
+                "Average_Wait_Abandoned",
+                "Average_Wait_Time",
+                "Percentage_Abandoned",
+                "Percentage_Cleared",
+                "Wait_Time",
+                "Current_Logged_In",
+                "Current_Ready",
+                "Percentage_Current_Ready"
+              ],
+              "sorting": [
+                {
+                  "column_id": "_Object$Name",
+                  "is_asc": true
+                }
+              ]
+            },
+            {
+              "type": "LineChartView",
+              "column_selector": [
+                "Answered"
+              ],
+              "row_selector": [
+                {
+                  "v": [
+                    "420",
+                    "421",
+                    "423",
+                    "428",
+                    "429",
+                    "430"
+                  ],
+                  "k": "_Object$ID"
+                }
+              ]
+            },
+            {
+              "type": "GroupedBarView",
+              "column_selector": [
+                "Service_Level",
+                "Service_Level_10s",
+                "Service_Level_20s",
+                "Service_Level_30s",
+                "Service_Level_45s",
+                "Service_Level_60s"
+              ],
+              "sorting": [
+                {
+                  "column_id": "alphabetically",
+                  "is_asc": false
+                }
+              ]
+            },
+            {
+              "type": "StackedBarView",
+              "column_selector": [
+                "Current_AWT",
+                "Curr_Max_Wait_Time",
+                "Max_Answer_Time",
+                "Average_Handle_Time",
+                "Average_Wait_Abandoned",
+                "Average_Wait_Time",
+                "Wait_Time"
+              ],
+              "sorting": [
+                {
+                  "column_id": "alphabetically",
+                  "is_asc": true
+                }
+              ]
+            }
+          ],
+          "active_view": "StackedBarView",
+          "size_y": 2,
+          "size_x": 3
+        },
+        "body_hash": -1675595645,
+        "uscn": 7630
+      },
+      {
+        "body": {
+          "refresh_interval": 60,
+          "layout_guid": "00505682723f-ac82-11e5-a03f-31c955c8",
+          "guid": "00505682723f-a7cc-11e6-c30b-3b7e0578",
+          "user_guid": "00505682723f-93e3-11e5-79d8-2da93a2a",
+          "layout_body_hash": -1872629273,
+          "threshold": [
+            {
+              "value": [
+                2.0,
+                3.0,
+                4.0
+              ],
+              "column_id": "Current_Agents_Ready"
+            }
+          ],
+          "column_visibility": [
+            {
+              "column_id": "$",
+              "visibility": "vVISIBLE"
+            },
+            {
+              "column_id": "Current_Agents_Consult",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_Dialing",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_On_Hold",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_Ringing",
+              "visibility": "vHIDDENINWIDGET"
+            }
+          ],
+          "label": "Agent Ready - BU1",
+          "view": [
+            {
+              "type": "PagedKPIView",
+              "aggregation_function": "afSUM",
+              "subtype": "KPIView",
+              "view": [
+                {
+                  "type": "KPIView",
+                  "column_selector": [
+                    "Current_Agents_Ready"
+                  ],
+                  "row_selector": [
+                    {
+                      "v": [
+                        "106"
+                      ],
+                      "k": "_Object$ID"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridView",
+              "filter": "",
+              "sorting": [
+                {
+                  "column_id": "_Object$Name",
+                  "is_asc": true
+                }
+              ],
+              "table_column_filter_enable": false
+            },
+            {
+              "type": "LineChartView",
+              "column_selector": [
+                "Current_Agents_Logged_In"
+              ],
+              "row_selector": [
+                {
+                  "v": [
+                    "106",
+                    "124",
+                    "158"
+                  ],
+                  "k": "_Object$ID"
+                }
+              ]
+            },
+            {
+              "type": "GroupedBarView",
+              "column_selector": [
+                "Current_Agents_Logged_In",
+                "Current_Agents_Ready",
+                "Current_Agents_Not_Ready",
+                "Current_Agents_Break",
+                "Current_Agents_Lunch",
+                "Current_Agents_Others",
+                "Current_Agents_ACW",
+                "Current_Agents_Inbound",
+                "Current_Agents_Outbound",
+                "Current_Agents_Internal",
+                "Current_Agents_Logged_Out",
+                "Perc_Ready",
+                "Perc_Not_Ready",
+                "Perc_Inbound",
+                "Working"
+              ],
+              "sorting": [
+                {
+                  "column_id": "alphabetically",
+                  "is_asc": false
+                }
+              ]
+            },
+            {
+              "type": "StackedBarView",
+              "column_selector": [
+                "$integer",
+                "Current_Agents_Logged_In",
+                "Current_Agents_Ready",
+                "Current_Agents_Not_Ready",
+                "Current_Agents_Break",
+                "Current_Agents_Lunch",
+                "Current_Agents_Others",
+                "Current_Agents_ACW",
+                "Current_Agents_Inbound",
+                "Current_Agents_Outbound",
+                "Current_Agents_Internal",
+                "Current_Agents_Logged_Out",
+                "Working"
+              ],
+              "sorting": [
+                {
+                  "column_id": "alphabetically",
+                  "is_asc": true
+                }
+              ]
+            }
+          ],
+          "active_view": "GridView",
+          "size_y": 1,
+          "size_x": 1
+        },
+        "body_hash": -1657658800,
+        "uscn": 4623
+      },
+      {
+        "body": {
+          "refresh_interval": 60,
+          "layout_guid": "00505682723f-ac82-11e5-a03f-31c955c8",
+          "guid": "00505682723f-b9d9-11e6-e965-de340ab2",
+          "user_guid": "00505682723f-93e3-11e5-79d8-2da93a2a",
+          "layout_body_hash": -1872629273,
+          "column_visibility": [
+            {
+              "column_id": "$",
+              "visibility": "vVISIBLE"
+            },
+            {
+              "column_id": "Current_Agents_Consult",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_Dialing",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_On_Hold",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_Ringing",
+              "visibility": "vHIDDENINWIDGET"
+            }
+          ],
+          "label": "Agent Group Status - BU 1",
+          "view": [
+            {
+              "type": "PagedDonutView",
+              "column_selector": [
+                "Current_Agents_Ready",
+                "Current_Agents_Not_Ready",
+                "Current_Agents_ACW",
+                "Working",
+                "Current_Agents_Others",
+                "Current_Agents_Inbound",
+                "Current_Agents_Internal",
+                "Current_Agents_Outbound",
+                "Current_Agents_Break"
+              ],
+              "aggregation_function": "afSUM",
+              "subtype": "ObjDonutView",
+              "view": [
+                {
+                  "type": "ObjDonutView",
+                  "column_selector": [
+                    "Current_Agents_Ready",
+                    "Current_Agents_Not_Ready",
+                    "Current_Agents_ACW",
+                    "Working",
+                    "Current_Agents_Others",
+                    "Current_Agents_Inbound",
+                    "Current_Agents_Internal",
+                    "Current_Agents_Outbound",
+                    "Current_Agents_Break"
+                  ],
+                  "row_selector": [
+                    {
+                      "v": [
+                        "106"
+                      ],
+                      "k": "_Object$ID"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "GridView",
+              "filter": "",
+              "column_selector": [
+                "_Object$Name",
+                "Current_Agents_Logged_In",
+                "Current_Agents_Ready",
+                "Current_Agents_Not_Ready",
+                "Current_Agents_Break",
+                "Current_Agents_Lunch",
+                "Current_Agents_Others",
+                "Current_Agents_Internal",
+                "Current_Agents_Logged_Out",
+                "Perc_Ready",
+                "Perc_Not_Ready",
+                "Perc_Inbound",
+                "Working",
+                "Column Selector"
+              ],
+              "sorting": [
+                {
+                  "column_id": "_Object$Name",
+                  "is_asc": true
+                }
+              ],
+              "table_column_filter_enable": false
+            },
+            {
+              "type": "GroupedBarView",
+              "column_selector": [
+                "Current_Agents_Logged_In",
+                "Current_Agents_Ready",
+                "Current_Agents_Not_Ready",
+                "Current_Agents_Break",
+                "Current_Agents_Lunch",
+                "Current_Agents_Others",
+                "Current_Agents_ACW",
+                "Current_Agents_Inbound",
+                "Current_Agents_Outbound",
+                "Current_Agents_Internal",
+                "Current_Agents_Logged_Out",
+                "Perc_Ready",
+                "Perc_Not_Ready",
+                "Perc_Inbound",
+                "Working"
+              ],
+              "sorting": [
+                {
+                  "column_id": "alphabetically",
+                  "is_asc": false
+                }
+              ]
+            },
+            {
+              "type": "LineChartView",
+              "column_selector": [
+                "Current_Agents_Logged_In"
+              ],
+              "row_selector": [
+                {
+                  "v": [
+                    "106",
+                    "124",
+                    "158"
+                  ],
+                  "k": "_Object$ID"
+                }
+              ]
+            },
+            {
+              "type": "StackedBarView",
+              "column_selector": [
+                "$integer",
+                "Current_Agents_Logged_In",
+                "Current_Agents_Ready",
+                "Current_Agents_Not_Ready",
+                "Current_Agents_Break",
+                "Current_Agents_Lunch",
+                "Current_Agents_Others",
+                "Current_Agents_ACW",
+                "Current_Agents_Inbound",
+                "Current_Agents_Outbound",
+                "Current_Agents_Internal",
+                "Current_Agents_Logged_Out",
+                "Working"
+              ],
+              "sorting": [
+                {
+                  "column_id": "alphabetically",
+                  "is_asc": true
+                }
+              ]
+            }
+          ],
+          "active_view": "GridView",
+          "size_y": 2,
+          "size_x": 2
+        },
+        "body_hash": 280424451,
+        "uscn": 5979
+      },
+      {
+        "body": {
+          "refresh_interval": 60,
+          "layout_guid": "00505682723f-ac82-11e5-a041-023e178b",
+          "guid": "00505682723f-b6f2-11e6-a758-59bd2f97",
+          "user_guid": "00505682723f-93e3-11e5-79d8-2da93a2a",
+          "layout_body_hash": 768020397,
+          "column_visibility": [
+            {
+              "column_id": "$",
+              "visibility": "vVISIBLE"
+            }
+          ],
+          "label": "Sales Queue KPIs",
+          "view": [
+            {
+              "type": "MiniLineChartView",
+              "time_range": "tr15Min",
+              "column_selector": [
+                "Answered",
+                "Service_Level_20s",
+                "Service_Level_60s"
+              ],
+              "row_selector": [
+                {
+                  "v": [
+                    "430"
+                  ],
+                  "k": "_Object$ID"
+                }
+              ],
+              "prop": [
+                {
+                  "v": {
+                    "vt": "vSTR",
+                    "v": "Service_Level_60s"
+                  },
+                  "k": "selectedForThreshold"
+                }
+              ]
+            },
+            {
+              "type": "GridView",
+              "filter": "",
+              "column_selector": [
+                "Service_Level",
+                "Service_Level_10s",
+                "Service_Level_20s",
+                "Service_Level_30s",
+                "Service_Level_45s",
+                "Service_Level_60s",
+                "Distinct_Entered",
+                "Entered",
+                "Abandoned",
+                "Abandoned_From_Ringing",
+                "Cleared",
+                "Answered",
+                "Answered_less_10s",
+                "Answered_between_10s_and_20s",
+                "Answered_less_30s",
+                "Answered_less_60s",
+                "Current_Calls",
+                "Current_AWT",
+                "Max_Calls",
+                "Min_Calls",
+                "Forwarded",
+                "Curr_Max_Wait_Time",
+                "Max_Answer_Time",
+                "Average_Speed_Answer",
+                "Average_Handle_Time",
+                "Average_Wait_Abandoned",
+                "Average_Wait_Time",
+                "Percentage_Abandoned",
+                "Percentage_Cleared",
+                "Wait_Time",
+                "Current_Logged_In",
+                "Current_Ready",
+                "Percentage_Current_Ready"
+              ],
+              "sorting": [
+                {
+                  "column_id": "_Object$Name",
+                  "is_asc": true
+                }
+              ],
+              "table_column_width": [
+                {
+                  "v": "167",
+                  "k": "_Object$Name"
+                }
+              ],
+              "table_column_filter_enable": false
+            },
+            {
+              "type": "GroupedBarView",
+              "column_selector": [
+                "Service_Level",
+                "Service_Level_60s",
+                "Distinct_Entered",
+                "Entered",
+                "Abandoned",
+                "Abandoned_From_Ringing",
+                "Cleared",
+                "Answered",
+                "Answered_less_10s",
+                "Answered_between_10s_and_20s",
+                "Answered_less_30s",
+                "Answered_less_60s",
+                "Current_Calls",
+                "Current_AWT",
+                "Max_Calls",
+                "Min_Calls",
+                "Forwarded",
+                "Curr_Max_Wait_Time",
+                "Max_Answer_Time",
+                "Average_Speed_Answer",
+                "Average_Handle_Time",
+                "Average_Wait_Abandoned",
+                "Average_Wait_Time",
+                "Percentage_Abandoned",
+                "Percentage_Cleared",
+                "Wait_Time",
+                "Current_Logged_In",
+                "Current_Ready",
+                "Percentage_Current_Ready"
+              ],
+              "sorting": [
+                {
+                  "column_id": "alphabetically",
+                  "is_asc": false
+                }
+              ]
+            },
+            {
+              "type": "LineChartView",
+              "column_selector": [
+                "Service_Level"
+              ],
+              "row_selector": [
+                {
+                  "v": [
+                    "420",
+                    "421",
+                    "423",
+                    "428",
+                    "429",
+                    "430"
+                  ],
+                  "k": "_Object$ID"
+                }
+              ]
+            },
+            {
+              "type": "StackedBarView",
+              "column_selector": [
+                "$number",
+                "Distinct_Entered",
+                "Abandoned",
+                "Answered",
+                "Current_Calls"
+              ],
+              "sorting": [
+                {
+                  "column_id": "alphabetically",
+                  "is_asc": true
+                }
+              ]
+            }
+          ],
+          "active_view": "GridView",
+          "size_y": 2,
+          "size_x": 3
+        },
+        "body_hash": 1345021136,
+        "uscn": 7634
+      },
+      {
+        "body": {
+          "refresh_interval": 60,
+          "layout_guid": "00505682723f-ac82-11e5-a03f-31c955c8",
+          "guid": "00505682723f-9a30-11e6-07ce-7b85eabb",
+          "user_guid": "00505682723f-93e3-11e5-79d8-2da93a2a",
+          "layout_body_hash": -1872629273,
+          "column_visibility": [
+            {
+              "column_id": "$",
+              "visibility": "vVISIBLE"
+            },
+            {
+              "column_id": "Current_Agents_Consult",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_Dialing",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_On_Hold",
+              "visibility": "vHIDDENINWIDGET"
+            },
+            {
+              "column_id": "Current_Agents_Ringing",
+              "visibility": "vHIDDENINWIDGET"
+            }
+          ],
+          "label": "Agent working - BU1",
+          "view": [
+            {
+              "type": "WallboardKPIView",
+              "time_range": "trHour",
+              "column_selector": [
+                "Working"
+              ],
+              "row_selector": [
+                {
+                  "v": [
+                    "106"
+                  ],
+                  "k": "_Object$ID"
+                }
+              ],
+              "subtype": "line"
+            }
+          ],
+          "size_y": 1,
+          "size_x": 1
+        },
+        "body_hash": 1021748102,
+        "uscn": 5929
+      },
+      {
+        "body": {
+          "refresh_interval": 60,
+          "layout_guid": "00505682723f-ac82-11e5-a041-023e178b",
+          "guid": "00505682723f-9a30-11e6-07ce-7b880d9d",
+          "user_guid": "00505682723f-93e3-11e5-79d8-2da93a2a",
+          "layout_body_hash": 768020397,
+          "threshold": [
+            {
+              "value": [
+                60.0,
+                79.0,
+                90.0
+              ],
+              "column_id": "Service_Level_10s"
+            },
+            {
+              "value": [
+                60.0,
+                87.0,
+                90.0
+              ],
+              "column_id": "Service_Level"
+            },
+            {
+              "value": [
+                40.0,
+                70.0,
+                80.0
+              ],
+              "column_id": "Service_Level_20s"
+            }
+          ],
+          "column_visibility": [
+            {
+              "column_id": "$",
+              "visibility": "vVISIBLE"
+            }
+          ],
+          "label": "Queue KPIs - v1",
+          "view": [
+            {
+              "type": "MiniGridView",
+              "column_selector": [
+                "Entered",
+                "Service_Level",
+                "Service_Level_20s",
+                "Answered",
+                "Average_Speed_Answer",
+                "Service_Level_60s",
+                "Current_Calls",
+                "Average_Wait_Time"
+              ],
+              "sorting": [
+                {
+                  "column_id": "Entered",
+                  "is_asc": false
+                }
+              ],
+              "table_column_width": [
+                {
+                  "v": "93",
+                  "k": "Service_Level"
+                },
+                {
+                  "v": "91",
+                  "k": "Service_Level_20s"
+                },
+                {
+                  "v": "80",
+                  "k": "Entered"
+                },
+                {
+                  "v": "96",
+                  "k": "Average_Wait_Time"
+                },
+                {
+                  "v": "117",
+                  "k": "Current_Calls"
+                },
+                {
+                  "v": "118",
+                  "k": "Average_Speed_Answer"
+                },
+                {
+                  "v": "121",
+                  "k": "Service_Level_60s"
+                },
+                {
+                  "v": "85",
+                  "k": "Answered"
+                }
+              ],
+              "table_column_filter_enable": false
+            },
+            {
+              "type": "GridView",
+              "filter": "",
+              "column_selector": [
+                "Service_Level",
+                "Service_Level_10s",
+                "Service_Level_20s",
+                "Service_Level_30s",
+                "Service_Level_45s",
+                "Service_Level_60s",
+                "Distinct_Entered",
+                "Entered",
+                "Abandoned",
+                "Abandoned_From_Ringing",
+                "Cleared",
+                "Answered",
+                "Answered_less_10s",
+                "Answered_between_10s_and_20s",
+                "Answered_less_30s",
+                "Answered_less_60s",
+                "Current_Calls",
+                "Current_AWT",
+                "Max_Calls",
+                "Min_Calls",
+                "Forwarded",
+                "Curr_Max_Wait_Time",
+                "Max_Answer_Time",
+                "Average_Speed_Answer",
+                "Average_Handle_Time",
+                "Average_Wait_Abandoned",
+                "Average_Wait_Time",
+                "Percentage_Abandoned",
+                "Percentage_Cleared",
+                "Wait_Time",
+                "Current_Logged_In",
+                "Current_Ready",
+                "Percentage_Current_Ready"
+              ],
+              "sorting": [
+                {
+                  "column_id": "_Object$Name",
+                  "is_asc": true
+                }
+              ],
+              "table_column_filter_enable": false
+            },
+            {
+              "type": "StackedBarView",
+              "column_selector": [
+                "Distinct_Entered",
+                "Entered",
+                "Abandoned",
+                "Abandoned_From_Ringing",
+                "Cleared",
+                "Answered",
+                "Answered_less_10s",
+                "Answered_between_10s_and_20s",
+                "Answered_less_30s",
+                "Answered_less_60s",
+                "Current_Calls",
+                "Max_Calls",
+                "Min_Calls",
+                "Forwarded",
+                "Current_Logged_In",
+                "Current_Ready"
+              ]
+            },
+            {
+              "type": "LineChartView",
+              "column_selector": [
+                "Service_Level"
+              ],
+              "row_selector": [
+                {
+                  "v": [
+                    "420",
+                    "421",
+                    "423",
+                    "428",
+                    "429",
+                    "430"
+                  ],
+                  "k": "_Object$ID"
+                }
+              ]
+            },
+            {
+              "type": "GroupedBarView",
+              "column_selector": [
+                "Service_Level",
+                "Service_Level_10s",
+                "Service_Level_20s",
+                "Service_Level_30s",
+                "Service_Level_45s",
+                "Service_Level_60s"
+              ],
+              "sorting": [
+                {
+                  "column_id": "alphabetically",
+                  "is_asc": true
+                }
+              ]
+            }
+          ],
+          "active_view": "LineChartView",
+          "size_y": 2,
+          "size_x": 3
+        },
+        "body_hash": -1370417635,
+        "uscn": 7632
+      },
+      {
+        "body": {
+          "layout_guid": "00505682723f-ac82-11e5-a041-023e178b",
+          "guid": "00505682723f-9a30-11e6-07ce-7b80ba97",
+          "user_guid": "00505682723f-93e3-11e5-79d8-2da93a2a",
+          "layout_body_hash": 768020397,
+          "column_visibility": [
+            {
+              "column_id": "$",
+              "visibility": "vVISIBLE"
+            }
+          ],
+          "label": "Sales Queue KPIs",
+          "view": [
+            {
+              "type": "MiniLineChartView",
+              "time_range": "trHour",
+              "column_selector": [
+                "Entered",
+                "Service_Level_20s",
+                "Service_Level_60s"
+              ],
+              "row_selector": [
+                {
+                  "v": [
+                    "428"
+                  ],
+                  "k": "_Object$ID"
+                }
+              ],
+              "prop": [
+                {
+                  "v": {
+                    "vt": "vSTR",
+                    "v": "Service_Level_60s"
+                  },
+                  "k": "selectedForThreshold"
+                }
+              ]
+            },
+            {
+              "type": "GridView",
+              "filter": "",
+              "sorting": [
+                {
+                  "column_id": "_Object$Name",
+                  "is_asc": true
+                }
+              ],
+              "table_column_filter_enable": false
+            },
+            {
+              "type": "GroupedBarView",
+              "column_selector": [
+                "Service_Level",
+                "Service_Level_60s",
+                "Distinct_Entered",
+                "Entered",
+                "Abandoned",
+                "Abandoned_From_Ringing",
+                "Cleared",
+                "Answered",
+                "Answered_less_10s",
+                "Answered_between_10s_and_20s",
+                "Answered_less_30s",
+                "Answered_less_60s",
+                "Current_Calls",
+                "Current_AWT",
+                "Max_Calls",
+                "Min_Calls",
+                "Forwarded",
+                "Curr_Max_Wait_Time",
+                "Max_Answer_Time",
+                "Average_Speed_Answer",
+                "Average_Handle_Time",
+                "Average_Wait_Abandoned",
+                "Average_Wait_Time",
+                "Percentage_Abandoned",
+                "Percentage_Cleared",
+                "Wait_Time",
+                "Current_Logged_In",
+                "Current_Ready",
+                "Percentage_Current_Ready"
+              ],
+              "sorting": [
+                {
+                  "column_id": "alphabetically",
+                  "is_asc": false
+                }
+              ]
+            },
+            {
+              "type": "LineChartView",
+              "column_selector": [
+                "Entered"
+              ],
+              "row_selector": [
+                {
+                  "v": [
+                    "420",
+                    "421",
+                    "423",
+                    "428",
+                    "429",
+                    "430"
+                  ],
+                  "k": "_Object$ID"
+                }
+              ]
+            },
+            {
+              "type": "StackedBarView",
+              "column_selector": [
+                "Distinct_Entered",
+                "Abandoned",
+                "Answered",
+                "Current_Calls"
+              ],
+              "sorting": [
+                {
+                  "column_id": "alphabetically",
+                  "is_asc": true
+                }
+              ]
+            }
+          ],
+          "active_view": "GridView",
+          "size_y": 2,
+          "size_x": 3
+        },
+        "body_hash": 1860671823,
+        "uscn": 7633
+      }
+    ],
+    "source_guid": "00505682723f-a7cc-11e6-dd13-260d1f48",
+    "title": "BU-1 Billing",
+    "user_guid": "00505682723f-93e3-11e5-79d8-2da93a2a",
+    "header_color": "#222529",
+    "header_text_color": "#ffffff",
+    "active": false
+  },
+  "record": {
+    "timestamp": 1490379178,
+    "username": "default                                                                                                                                                                                                                                                        "
+  },
+  "body_hash": -1784607388,
+  "uscn": 57370
+}

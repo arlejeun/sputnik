@@ -1,0 +1,212 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="market-category-data.html">
+<link rel="import" href="../bower_components/s-html/s-html.html">
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/codelab-components/syntax-style.html">
+<link rel="import" href="../bower_components/iron-icons/communication-icons.html">
+<link rel="import" href="../bower_components/iron-icons/hardware-icons.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../bower_components/star-rating/star-rating.html">
+<link rel="import" href="../bower_components/paper-divider/paper-divider.html">
+<link rel="import" href="../bower_components/iron-accordions/iron-accordions.html">
+<link rel="import" href="../bower_components/iron-accordions/iron-accordion.html">
+<link rel="import" href="../bower_components/show-json/show-json.html">
+<link rel="import" href="../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../bower_components/codelab-components/google-codelab.html">
+<link rel="import" href="../bower_components/codelab-components/google-codelab-survey.html">
+<link rel="import" href="../bower_components/codelab-components/google-codelab-step.html">
+<link rel="import" href="style-detail-template.html">
+
+
+
+<dom-module id="gsys-detail-visualization">
+
+    <template>
+
+        <style include="style-detail-template syntax-style app-grid-style" is="custom-style">
+
+            :host {
+              --app-grid-columns: 4;
+              --app-grid-expandible-item-columns:2;
+              --app-grid-gutter:0px;
+              --app-grid-item-height:auto;
+            }
+
+            .item.desc {
+              @apply --app-grid-expandible-item;
+            }
+
+            ul {
+              padding: 0;
+              margin: 0px;
+             /* list-style: none;*/
+            }
+
+            .item {
+              background-color: white;
+              margin: 0px;
+            }
+
+            :host-context(google-codelab:not([theme="minimal"])) .instructions ::content aside.tip,
+            :host-context(google-codelab:not([theme="minimal"])) .instructions ::content aside.special
+            {
+                border-color: #6a6;
+                background: #ded;
+                color: #464;
+            }
+
+            @media (max-width: 640px) {
+                :host {
+                    --app-grid-columns: 3;
+                }
+
+                .item.ex {
+                    display:none;
+                }
+
+            }
+
+
+        </style>
+        <!--
+            app-route provides the name of the category and the item.
+        -->
+        <app-route route="[[route]]" pattern="/:templateId" data="{{routeData}}"></app-route>
+
+        <market-category-data id="categoryData" category-name="pulse_visualizations" item-name="{{_getItemName(routeData.templateId)}}" item="{{item}}" failure="{{failure}}">
+        </market-category-data>
+
+        <google-codelab title="Pulse Visualization" environment="web" last-updated="2017-04-18" noToolbar=true noHighlight=true>
+
+            <google-codelab-step label="Visualization" duration="2">
+                <h2>[[item.title]]</h2>
+
+                <section>
+                    <p>[[item.short_desc]]</p>
+                    <img src="/[[item.image_src]]" style="max-width: 624px"></img>
+                    <h3>Display options</h3>
+                    <p>[[item.desc]]</p>
+                    <a href="/[[item.image_edit]]" title="[[item.title]]" target="_blank">
+                        <img src="/[[item.image_edit]]" style="max-width: 624px"></img>
+                    </a>
+                </section>
+
+                <h3>Download plugin</h3>
+
+                <paper-button class="dashboard-reserve" on-tap="_onDownloadVisualization" data-args="[[item]]">[[item.title]] plugin</paper-button>
+
+                <h3>Who developed this template?</h3>
+                <s-html html="[[item.contributor]]"></s-html>
+
+            </google-codelab-step>
+
+
+        </google-codelab>
+
+
+    </template>
+    <script>
+    Polymer({
+
+        is: 'gsys-detail-visualization',
+
+        properties: {
+            item: Object,
+            templateId: String,
+            route: Object,
+            routeData: Object,
+            visible: Boolean,
+            offline: {
+                type: Boolean,
+                observer: '_offlineChanged'
+            },
+            failure: Boolean,
+            stat: Object,
+            statCode: {
+              type: String,
+              notify:true
+            }
+        },
+
+        observers: [
+            '_itemChanged(item)',
+        ],
+
+
+        attached: function() {
+        },
+
+        _refreshGrid: function() {
+          this.debounce('_refreshGrid1', function () {
+              console.log('_refreshGrid1' + this.$['stat-overview'].applyResponsive);
+              this.$['stat-overview'].applyResponsive(this.$['stat-overview'].currentScreenformat, this.$['stat-overview'].currentScreenformat);})
+        },
+
+
+        _stringToEl: function (string) {
+            var parser = new DOMParser(),
+                content = 'text/html',
+                DOM = parser.parseFromString(string, content);
+            return DOM.body.childNodes;
+        },
+
+        _itemChanged: function(item) {
+            //console.log(JSON.stringify(item));
+            return item;
+        },
+
+        _getItemName: function(id) {
+            console.log(id);
+            return id;
+        },
+
+        _getTemplateName: function(item) {
+            console.log(item);
+        },
+
+        _getImageSrc: function(item) {
+            console.log(item);
+            return item.image_edit;
+        },
+
+        _onDownloadVisualization: function(evt) {
+          //Retrieve dashboard details
+          var args = evt.target.dataArgs;
+          //console.log ('Download: ' + args.plugin_src);
+          window.open('/'+args.plugin_src);
+        },
+
+        _tryReconnect: function() {
+            this.$.categoryData.refresh();
+        },
+
+        _offlineChanged: function(offline) {
+            if (!offline) {
+                this._tryReconnect();
+            }
+        },
+
+        _displayObjectTypes: function(arr) {
+            return arr.map(this._replaceObjectType);
+        }
+
+
+    });
+    </script>
+</dom-module>

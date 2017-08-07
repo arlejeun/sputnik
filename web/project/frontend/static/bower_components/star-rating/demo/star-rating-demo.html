@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang='es'>
+    <head>
+        <title>
+            acorde.onl - Alicia Adorada
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=no">
+        <link rel="import" href="../star-rating.html">
+        <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+        <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    </head>
+    <style ></style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+        paper-icon-button {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
+    <body>
+        <div class="vertical-section-container centered">
+            <h3>Editable star-rating</h3>
+            <demo-snippet class="centered-demo">
+                <template>
+                    <star-rating rate="4"></star-rating>
+                </template>
+            </demo-snippet>
+            <h3>read only star rating</h3>
+            <demo-snippet class="centered-demo">
+                <template>
+                    <star-rating rate="3" read-only>
+                        <div votes>
+                            &nbsp (10)
+                        </div>
+                    </star-rating>
+                </template>
+            </demo-snippet>
+        </div>
+    </body>
+</html>

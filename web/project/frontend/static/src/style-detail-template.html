@@ -1,0 +1,182 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<!-- shared styles for all views -->
+<dom-module id="style-detail-template">
+  <template>
+    <style>
+
+      h1 {
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 28px;
+            margin: 0;
+        }
+
+        .embedded-video {
+            height: 100%;
+            width: 100%;
+        }
+
+
+        paper-divider.divider-for-light-background {
+            --paper-divider-color: #1976d2;
+        }
+
+        .slider-image {
+            background-repeat: no-repeat;
+        }
+
+        .dashboard-reserve {
+            color: var(--google-blue-500);
+        }
+
+        .pair {
+            background-color: rgba(25, 118, 210, 0.18);
+        }
+
+        .impair {
+            background-color: white;
+        }
+
+        .stat-grid {
+          display:flex;
+        }
+
+        .stat-row {
+            color: grey;
+            padding: 5px 5px 5px 5px;
+            line-height: 20px;
+            font-size: 9pt;
+        }
+
+        .stat-row ul li {
+            margin: 0px;
+            line-height: 14px;
+        }
+
+        div.stat-grid:nth-child(2n+1){
+          background-color: rgba(25, 118, 210, 0.18);
+        }
+
+        div.stat-grid:nth-child(2n){
+          background-color: white;
+        }
+
+        iron-list {
+            padding-top: 64px;
+            --iron-list-items-container: {
+                max-width: 800px;
+                margin: auto;
+                margin-top: 60px;
+                margin-bottom: 60px;
+                border-bottom: 1px solid #ddd;
+            }
+            ;
+        }
+
+        .item {
+            @apply(--layout-horizontal);
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .avatar {
+            height: 40px;
+            width: 40px;
+            border-radius: 20px;
+            box-sizing: border-box;
+            background-color: #DDD;
+        }
+
+        .pad {
+            padding: 0 16px;
+            @apply(--layout-flex);
+            @apply(--layout-vertical);
+        }
+
+        .primary {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .shortText,
+        .longText {
+            font-size: 14px;
+        }
+
+        .longText {
+            color: gray;
+            display: none;
+        }
+
+        .item:hover .shortText::after {
+            content: ' [+]';
+            color: gray;
+        }
+
+        .item.expanded:hover .shortText::after {
+            content: '';
+        }
+
+        .item.expanded .longText {
+            display: block;
+        }
+
+        .item.expanded:hover .longText::after {
+            content: ' [–]';
+        }
+
+        .spacer {
+            @apply(--layout-flex);
+        }
+
+        @media (min-width: 500px) {
+            l2t-paper-slider {
+                --paper-slide-dot: #666;
+                --paper-slide-dot-selected: #1976d2;
+                --paper-slide-height: 550px;
+                /*--paper-slide-width:640px;*/
+            }
+            .wrapper-video {
+                height: 300px;
+                width: 500px;
+                margin-left: 100px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .slider-image {
+                background-size: 315px 240px;
+            }
+            l2t-paper-slider {
+                --paper-slide-dot: #666;
+                --paper-slide-dot-selected: #1976d2;
+                --paper-slide-height: 300px;
+            }
+            .wrapper-video {
+                height: 120px;
+                width: 240px;
+                margin-left: 40px;
+            }
+        }
+
+        .survey {
+            postion: relative;
+        }
+
+    </style>
+  </template>
+</dom-module>

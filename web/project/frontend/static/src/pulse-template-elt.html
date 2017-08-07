@@ -1,0 +1,212 @@
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-chip/paper-chip.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/poly-filter/poly-filter.html">
+<link rel="import" href="../bower_components/poly-filter/demo/demo-list.html">
+<link rel="import" href="../bower_components/iron-accordions/iron-accordions.html">
+<link rel="import" href="../bower_components/iron-accordions/iron-accordion.html">
+<link rel="import" href="../bower_components/star-rating/star-rating.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
+
+<!--<link rel="import" href="../bower_components/iron-grid/iron-grid.html">-->
+
+
+
+<dom-module id="pulse-template-elt">
+
+  <template>
+
+  	<style is="custom-style" include="shared-styles app-grid-style">
+
+  		  :host {
+          --app-grid-columns: 2;
+          --app-grid-gutter:0px;
+        }
+
+        ul {
+          padding: 5px;
+          list-style: none;
+        }
+
+        .item {
+          text-align: justify;
+        }
+
+          .mycard {
+              margin: 15px 0px 5px 0px;
+                    padding: 15px;
+                    color: #757575;
+                    border-radius: 5px;
+                    background-color: #fff;
+                    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+            }
+
+          .container{
+            padding: 15px 0 0 5px;
+          }
+
+          .dashboard-header { @apply(--paper-font-headline); }
+          .dashboard-light { color: var(--paper-grey-600); }
+          .dashboard-location {
+            float: right;
+            font-size: 15px;
+            vertical-align: middle;
+          }
+          .dashboard-reserve {
+              color: var(--google-blue-500);
+              float: right;
+          }
+
+          iron-icon.star {
+            --iron-icon-width: 16px;
+            --iron-icon-height: 16px;
+            color: var(--paper-amber-500);
+          }
+          iron-icon.star:last-of-type { color: var(--paper-grey-500); }
+
+
+          .small{
+            font-size: 9pt;
+          }
+
+          .card-content{
+            font-size: 11pt;
+            padding: 16px 16px 0px 16px;
+          }
+
+          paper-toolbar.subheader {
+            margin: 20px 0px 40px 0px;
+            --paper-toolbar-background: #adc5ec;
+            --paper-toolbar-title: {
+              font-style: italic;
+              font-weight: bold;
+            };
+          }
+          paper-icon-button.favorite {
+              padding:5px;
+              --iron-icon: {
+                  background-color: #12c500;
+                  color:#333333;
+                  padding:5px;
+              };
+          }
+
+          paper-icon-button {
+              width: 48px;
+              height: 48px;
+              --iron-icon: {
+                border-radius: 50%;
+                background-color: #adc5ec;
+              };
+          }
+
+           paper-fab {
+              display: inline-block;
+              margin: 8px;
+            }
+
+            paper-fab[mini] {
+              --paper-fab-background: #FF5722;
+            }
+
+            paper-fab[label] {
+              font-size: 20px;
+              --paper-fab-background: #2196F3;
+            }
+
+            paper-card-header-image {
+              border: 20px;
+              border-color: black;
+            }
+
+    </style>
+
+
+      <div class="mycard">
+
+        <paper-card>
+
+          <paper-toolbar style="background:#e05f98">
+              <div title><b>[[item.definition.name]]</b><br>
+              <i>Refresh rate - [[item.definition.refresh_interval]]s / Regular</i>
+            </div>
+          </paper-toolbar>
+
+          <div class="container">
+             <paper-chip single-line="">
+           <!--    <iron-icon slot="icon" icon="avatars:avatar-1"></iron-icon>-->
+                <div slot="label">Agent Group</div>
+              </paper-chip>
+              <paper-chip single-line="">
+            <!--    <iron-icon slot="icon" icon="avatars:avatar-1"></iron-icon> -->
+                <div slot="label">Place Group</div>
+              </paper-chip>
+              <star-rating read-only rate="4"></star-rating>
+          </div>
+
+          <div class="card-content">[[item.definition.description]]
+
+              <iron-accordions id="nested">
+	              <iron-accordion>
+	                <h4 header>Available Statistics <iron-icon icon="icons:info"></iron-icon></h4>
+
+                  <ul class="app-grid">
+                    <template is="dom-repeat" items="[[item.definition.column]]" filter="isEmpty">
+                        <li class="item small">[[item.label]]</li>
+                    </template>
+                  </ul>
+
+              </iron-accordion>
+            </iron-accordions>
+
+          </div>
+
+          <div class="actions">
+
+            <paper-button class="dashboard-reserve" on-tap="_onExploreTemplate" data-args="[[item]]">Explore</paper-button>
+            <paper-button class="dashboard-reserve" on-tap="_onDownloadTemplate" data-args="[[item]]">Download</paper-button>
+
+          <div>
+
+        </paper-card>
+
+      </div>
+
+  </template>
+
+  <script>
+
+      Polymer({
+
+        is:"pulse-template-elt",
+
+        properties:{
+          item:Object
+        },
+
+        isEmpty: function(stat) {
+        	if (!stat) return false;
+        	return stat.label;
+        },
+
+        _onExploreTemplate: function(evt) {
+          //Retrieve template details
+          var args = evt.target.dataArgs;
+          this.fire('explore-template',args);
+        },
+
+        _onDownloadTemplate: function(evt) {
+          //Retrieve dashboard details
+          var args = evt.target.dataArgs;
+          console.log ('Download: ' + args.definition.guid);
+          window.open('../data/template/args.download_link');
+        }
+
+
+      });
+  </script>
+
+</dom-module>

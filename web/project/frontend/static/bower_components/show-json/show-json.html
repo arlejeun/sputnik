@@ -1,0 +1,120 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../marked-element/marked-element.html">
+<link rel="import" href="../prism-element/prism-highlighter.html">
+<link rel="import" href="../prism-element/prism-theme-default.html">
+<link rel="import" href="../paper-fab/paper-fab.html">
+<link rel="import" href="show-json-icons.html">
+
+<!--
+`show-json`
+show json w/ syntax higlighting
+
+### Styling
+Custom property | Description | Default
+----------------|-------------|----------
+`--show-json-action-bg-color` | copy button background color | `#2196F3`
+`--show-json-action-color` | copy button icon color | `white`
+
+@demo demo/index.html
+-->
+
+<dom-module id="show-json">
+  <template>
+    <style include="prism-theme-default">
+      :host {
+        display: block;
+        position: relative;
+        padding: 20px;
+      }
+      paper-fab {
+        background: var(--show-json-action-bg-color, #2196F3);
+        color: var(--show-json-action-color, white);
+        width: 33px;
+        height: 33px;
+      }
+      [hidden]{
+        display: none !important;
+      }
+      .markdown-html code {
+        white-space: pre-wrap; /* css-3 */
+        white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+        white-space: -pre-wrap; /* Opera 4-6 */
+        white-space: -o-pre-wrap; /* Opera 7 */
+        word-wrap: break-word; /* Internet Explorer 5.5+ */
+      }
+      
+    </style>
+
+    <prism-highlighter></prism-highlighter>
+
+    <!-- From https://github.com/PolymerElements/iron-demo-helpers/blob/master/demo-snippet.html#L110 -->
+    <paper-fab
+      id="copyButton"
+      hidden$="[[hideCopyButton]]"
+      mini
+      icon="showJson:content-copy"
+      title="copy to clipboard"
+      on-tap="_copyToClipboard">
+    </paper-fab>
+
+    <marked-element markdown=[[_markdown]]>
+      <div class="markdown-html code" id="code"></div>
+    </marked-element>
+
+  </template>
+  <script>
+    Polymer({
+      is: 'show-json',
+
+      properties: {
+        // json to highlight & make pretty
+        json: {
+          type: Object,
+        },
+        // hides copy button
+        hideCopyButton: {
+          type: Boolean,
+          value: false
+        },
+        _markdown: {
+          type: String
+        }
+      },
+
+      // observe all changes to json
+      observers: [
+        "_computeMarkdown(json.*)",
+      ],
+
+      _computeMarkdown: function(){
+        this._markdown = '```\n' + JSON.stringify(this.json, null, 2) + '\n' + '```';
+      },
+
+      _copyToClipboard: function() {
+        // From https://github.com/google/material-design-lite/blob/master/docs/_assets/snippets.js
+        var snipRange = document.createRange();
+        snipRange.selectNodeContents(this.$.code);
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(snipRange);
+        var result = false;
+        try {
+          result = document.execCommand('copy');
+          this.$.copyButton.icon = 'showJson:done';
+        } catch (err) {
+          // Copy command is not available
+          Polymer.Base._error(err);
+          this.$.copyButton.icon = 'showJson:error';
+        }
+        // Return to the copy button after a second.
+        setTimeout(this._resetCopyButtonState.bind(this), 1000);
+        selection.removeAllRanges();
+        return result;
+      },
+
+      _resetCopyButtonState: function() {
+        this.$.copyButton.icon = 'showJson:content-copy';
+      }
+    });
+  </script>
+</dom-module>

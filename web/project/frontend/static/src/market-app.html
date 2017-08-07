@@ -1,0 +1,271 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/paper-menu/paper-submenu.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+
+<link rel="import" href="gsys-detail-template.html">
+<link rel="import" href="gsys-view404.html">
+<link rel="import" href="my-icons.html">
+
+
+<dom-module id="market-app">
+
+  <template>
+    <style>
+
+      paper-menu {
+        border-left: 2px solid #ccc;
+        padding-left: 4px;
+      }
+
+      .paper-item-link {
+            color: inherit;
+            text-decoration: none;
+      }
+
+      .iron-selected {
+        color: grey;
+      }
+
+      :host {
+        --app-primary-color: #4285f4;
+        --app-secondary-color: black;
+
+        display: block;
+      }
+
+      app-header {
+        color: #fff;
+        background-color: var(--app-primary-color);
+      }
+      app-header paper-icon-button {
+        --paper-icon-button-ink-color: white;
+      }
+
+      .drawer-list {
+        margin: 0 20px;
+      }
+
+      .drawer-list a {
+        display: block;
+        padding: 0 16px;
+        text-decoration: none;
+        color: var(--app-secondary-color);
+        line-height: 40px;
+      }
+
+      .drawer-list a.iron-selected {
+        color: black;
+        font-weight: bold;
+      }
+    </style>
+
+    <app-location id="appLocation" route="{{route}}"></app-location>
+
+    <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+
+
+    <app-drawer-layout fullbleed force-narrow>
+    <!-- Drawer content -->
+        <app-drawer id="drawer">
+          <app-toolbar>Reporting & Analytics</app-toolbar>
+          <iron-selector selected="[[routeData.page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+
+              <!--Courtesy of http://jsbin.com/sutavom/edit?html,output-->
+              <paper-menu id="menu" on-iron-select="_menuItemSelected" multi>
+                <!--<paper-item xyz="0"></paper-item>-->
+                <paper-submenu xyz="1">
+
+                  <paper-item xyz="2" class="menu-trigger">Pulse  &rtri;</paper-item>
+
+                  <paper-menu class="menu-content">
+
+                        <a class="paper-item-link" name="pulse-dashboards" href="/pulse/dashboards">
+                          <paper-item xyz="a">Dashboards</paper-item>
+                        </a>
+
+                        <a class="paper-item-link" name="pulse-visualizations" href="/pulse/visualizations">
+                          <paper-item xyz="c">Visualizations</paper-item>
+                        </a>
+
+                        <a class="paper-item-link" name="pulse-templates" href="/pulse/templates">
+                          <paper-item xyz="c">Templates</paper-item>
+                        </a>
+                        <paper-item xyz="d">Contact Center Advisor</paper-item>
+                        <paper-item xyz="e">Frontline Advisor</paper-item>
+                        <paper-item xyz="f">Workforce Advisor</paper-item>
+                  </paper-menu>
+
+                </paper-submenu>
+
+                <paper-submenu xyz="5">
+                  <paper-item class="menu-trigger">CX Insigths &rtri;</paper-item>
+                  <paper-menu class="menu-content">
+                    <paper-item xyz="6">Dashboards</paper-item>
+                    <paper-item xyz="7">Reports</paper-item>
+                  </paper-menu>
+                </paper-submenu>
+              </paper-menu>
+          </iron-selector>
+        </app-drawer>
+
+      <!-- Main content -->
+      <app-header-layout has-scrolling-region>
+
+        <app-header condenses reveals effects="waterfall">
+          <app-toolbar>
+            <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
+            <div main-title>Reporting & Analytics</div>
+              <paper-icon-button icon="icons:dashboard" on-tap="_showDashboards"></paper-icon-button>
+              <paper-icon-button icon="icons:assessment" on-tap="_showTemplates"></paper-icon-button>
+              <paper-icon-button icon="icons:timeline" on-tap="_showVisualizations"></paper-icon-button>
+          </app-toolbar>
+        </app-header>
+
+        <iron-pages
+            selected="[[page]]"
+            attr-for-selected="name"
+            fallback-selection="view404"
+            role="main">
+          <gsys-pulse name="pulse" route="[[subroute]]"></gsys-pulse>
+          <gsys-insights name="insights" route="[[subroute]]"></gsys-insights>
+          <gsys-detail-template name="detail" route="[[subroute]]" category="pulse_wallboards"></gsys-detail-template>
+          <gsys-view404 name="view404"></gsys-view404>
+
+        </iron-pages>
+      </app-header-layout>
+    </app-drawer-layout>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'market-app',
+
+      properties: {
+        page: {
+          type: String,
+          reflectToAttribute: true,
+          observer: '_pageChanged',
+        }
+      },
+
+      observers: [
+        '_routePageChanged(routeData.page)',
+
+      ],
+
+      listeners: {
+        'explore-dashboard': '_onExploreDashboard',
+        'explore-template': '_onExploreTemplate',
+        'explore-visualization':'_onExploreVisualization',
+        'look-template':'_onLookTemplate'
+//      'google-codelab-survey-answer': '_onGoogleCodelabSurveyAnswer'
+      },
+
+      _menuItemSelected: function(e) {
+              var path = [];
+              var menu = this.$.menu;
+              while (menu && menu.localName === 'paper-menu') {
+                if (typeof menu.selected !== 'number') {
+                  path.push('NONE');
+                  break;
+                }
+                path.push(menu.selected);
+                var item = menu.selectedItem;
+                // find next menu somehow
+                menu = item && item.querySelector('paper-menu');
+              }
+              //console.log(path.join('-') + ' xyz: ' + e.detail.item.getAttribute('xyz'));
+      },
+
+      _routePageChanged: function(page) {
+        this.page = page || 'pulse';
+        // Scroll to the top of the page on every *route* change. Use `Polymer.AppLayout.scroll`
+        // with `behavior: 'silent'` to disable header scroll effects during the scroll.
+        //Polymer.AppLayout.scroll({ top: 0, behavior: 'silent' });
+
+        if (!this.$.drawer.persistent) {
+          this.$.drawer.close();
+        }
+      },
+
+      _pageChanged: function(page) {
+        var self = this;
+        // Load page import on demand. Show 404 page if fails
+        var routes = ["pulse", "insights", "view404"]
+        if (routes.indexOf(this.page) > -1) {
+            var resolvedPageUrl = this.resolveUrl('gsys-' + page + '.html');
+            this.importHref(resolvedPageUrl, null, this._showPage404, true);
+
+        } else {
+          this._showPage404();
+        }
+      },
+
+      _onExploreDashboard: function (evt) {
+        this.$.appLocation.set('__hash',0);
+        this.$.appLocation.set('path','pulse/dashboards/'+ evt.detail.name);
+      },
+
+      _onExploreVisualization: function (evt) {
+        this.$.appLocation.set('__hash',0);
+        this.$.appLocation.set('path','pulse/visualizations/'+ evt.detail.name);
+      },
+
+      _onExploreTemplate: function (evt) {
+        this.$.appLocation.set('__hash',0);
+        this.$.appLocation.set('path','pulse/templates/'+ evt.detail.definition.guid);
+
+      },
+
+       _onLookTemplate: function (evt) {
+        var pathName = 'pulse/templates/'+ evt.detail._id;
+        this.$.appLocation.set('path',pathName);
+      },
+
+      _showDashboards: function (evt) {
+        this.$.appLocation.set('path','pulse/dashboards');
+
+      },
+
+      _showTemplates: function (evt) {
+        this.$.appLocation.set('path','pulse/templates');
+
+      },
+
+       _showVisualizations: function (evt) {
+        this.$.appLocation.set('path','pulse/visualizations');
+
+      },
+
+      _showPage404: function() {
+          this.page = 'view404';
+      },
+    });
+  </script>
+</dom-module>

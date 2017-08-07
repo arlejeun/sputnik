@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="client-nojs">
+<head>
+<meta charset="UTF-8" />
+<title>File:Pulse 85105 OOBAgentGroupStatus.png - Genesys Documentation</title>
+<meta name="generator" content="MediaWiki 1.25.3" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch_desc.php" title="Genesys Documentation (en)" />
+<link rel="EditURI" type="application/rsd+xml" href="https://docs.genesys.com/api.php?action=rsd" />
+<link rel="alternate" hreflang="x-default" href="/File:Pulse_85105_OOBAgentGroupStatus.png" />
+<link rel="alternate" type="application/atom+xml" title="Genesys Documentation Atom feed" href="/index.php?title=Special:RecentChanges&amp;feed=atom" />
+<link rel="stylesheet" href="https://docs.genesys.com/load.php?debug=false&amp;lang=en&amp;modules=mediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.ui.button%7Cskins.genesys.styles&amp;only=styles&amp;skin=genesys&amp;*" />
+<link rel="stylesheet" href="/extensions/MultiStep/css/styles.css" />
+<link rel="stylesheet" href="/extensions/DisqusComments/styles.css" />
+<link rel="stylesheet" href="/extensions/MagnificPopup/styles.css" /><meta name="ResourceLoaderDynamicStyles" content="" />
+<link rel="stylesheet" href="https://docs.genesys.com/load.php?debug=false&amp;lang=en&amp;modules=site&amp;only=styles&amp;skin=genesys&amp;*" />
+<style>a:lang(ar),a:lang(kk-arab),a:lang(mzn),a:lang(ps),a:lang(ur){text-decoration:none}
+/* cache key: wikidb2:resourceloader:filter:minify-css:7:cef3009f3deea5821342e7f1cb60bea1 */</style>
+<script src="https://docs.genesys.com/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=genesys&amp;*"></script>
+<script>if(window.mw){
+mw.config.set({"wgCanonicalNamespace":"File","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":6,"wgPageName":"File:Pulse_85105_OOBAgentGroupStatus.png","wgTitle":"Pulse 85105 OOBAgentGroupStatus.png","wgCurRevisionId":420603,"wgRevisionId":420603,"wgArticleId":83110,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"File:Pulse_85105_OOBAgentGroupStatus.png","wgRelevantArticleId":83110,"wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgRestrictionUpload":[],"sfgAutocompleteValues":[],"sfgAutocompleteOnAllChars":false,"sfgFieldProperties":[],"sfgCargoFields":[],"sfgDependentFields":[],"sfgGridValues":[],"sfgGridParams":[],"sfgShowOnSelect":[],"sfgScriptPath":"/extensions/SemanticForms","edgValues":null,"sfgEDSettings":null,"wgCargoMapClusteringMinimum":80,"wgCargoMonthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"wgCargoMonthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgCargoWeekDays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"wgCargoWeekDaysShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"hidesig":true,"preview":true,"publish":false}});
+}</script><script>if(window.mw){
+mw.loader.implement("user.options",function($,jQuery){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens",function($,jQuery){mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\"});});
+/* cache key: wikidb2:resourceloader:filter:minify-js:7:a5c52c063dc436c1ca7c9f456936a5e9 */
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.page.startup","mediawiki.legacy.wikibits","mediawiki.legacy.ajax","d3.js","scrollNav.js","magnificPopup","tooltipster"]);
+}</script>
+</head>
+<body class="mediawiki ltr sitedir-ltr ns-6 ns-subject page-File_Pulse_85105_OOBAgentGroupStatus_png skin-genesys action-view">
+
+        <script type="text/javascript">
+        //////////////////////REDIRECT SCRIPT//////////////////////////
+        //Enter list of banned ips, each separated with a comma:
+        var bannedips=["none"]
+        var ip = "135.17.72.122"
+        var handleips=bannedips.join("|")
+        handleips=new RegExp(handleips, "i")
+        if (ip.search(handleips)!=-1){ 
+        alert("Redirecting...")
+        window.location.replace("http://www.genesys.com")
+            }
+            
+        ////////////////////////////////////////////////
+        </script>
+        
+
+<div id="header">
+    <div id="header-content">
+        <a href="/Documentation"><div id="header-logo" ><div>Genesys Docs</div></div></a>
+                <div id="header-search" > 
+            <form action="/index.php" id="header-search-form">
+        <input type='hidden' name="title" value="Special:Search"/>
+                
+        <input id="header-search-input" title="Search Genesys Documentation" accesskey="f" name="search" placeholder="">
+    </form>
+        </div>
+                <div id="header-products">
+            <div class="info" title="Click to expand">Quick Links</div>
+                        <div class="prod-link"><a id="header-selected-product" href="/Documentation/IW">Workspace Desktop Edition</a></div>
+            <div id="header-dropdown">
+                <div class="page-width">
+                    <h4>System Guides / Release Notes / Other</h4><a href="/Documentation/Best">Best Practices and White Papers</a><br/><a href="/Documentation/Options">Genesys Configuration Options</a><br/><a href="/Documentation/RN">Release Notes</a><br/><a href="/Documentation/System">System-Level Guides</a><br/><h4>Genesys Cloud</h4><a href="/Documentation/CXA">CX Analytics</a><br/><a href="/Documentation/CXB">CX Builder</a><br/><a href="/Documentation/PSAAS">Business and Enterprise Edition</a><br/><a href="/Documentation/HPE">Hosted Provider Edition</a><br/><a href="/Documentation/PEC">Premier Edition Cloud</a><br/><h4>Desktops and Gplus Adapters</h4><a href="/Documentation/Composer">Composer</a><br/><a href="/Documentation/AS">Genesys Agent Scripting</a><br/><a href="/Documentation/GD">Genesys Desktop</a><br/><a href="/Documentation/GRS">Genesys Rules System</a><br/><a href="/Documentation/SP">Genesys Softphone</a><br/><a href="/Documentation/GP">Gplus Adapters</a><br/><a href="/Documentation/IW">Interaction Workspace</a><br/><a href="/Documentation/HTCC">Web Services and Applications</a><br/><a href="/Documentation/IW">Workspace Desktop Edition</a><br/><a href="/Documentation/GC">Workspace Web Edition</a><br/><h4>Framework</h4><a href="/Documentation/GA">Genesys Administrator</a><br/><a href="/Documentation/LDS">Load Distribution Server</a><br/><a href="/Documentation/FR">Management Framework</a><br/><a href="/Documentation/Skype">Multimedia Connector for Skype for Business</a><br/><a href="/Documentation/FS">SIP Feature Server</a><br/><a href="/Documentation/SIPS">SIP Server</a><br/><a href="/Documentation/GSV">SIP Voicemail</a><br/><a href="/Documentation/TS">T-Servers</a><br/><h4>Digital</h4><a href="/Documentation/ES">eServices</a><br/><a href="/Documentation/CLBCK">Genesys Callback</a><br/><a href="/Documentation/GCB">Genesys Co-browse</a><br/><a href="/Documentation/GWC">Genesys Widgets</a><br/><a href="/Documentation/GWE">Genesys Web Engagement</a><br/><a href="/Documentation/GEM">Genesys Engagement Manager</a><br/><a href="/Documentation/WRTC">Genesys WebRTC Service</a><br/><a href="/Documentation/IWD">intelligent Workload Distribution</a><br/><a href="/Documentation/KC">Knowledge Center</a><br/><a href="/Documentation/LPA">LivePerson Adapter</a><br/><h4>Outbound</h4><a target="_blank"href="/Documentation/EGAG">Engage</a><br/><a href="/Documentation/POR">Genesys SMS Aggregation Service</a><br/><a href="/Documentation/OU">Outbound Contact</a><br/><a target="_blank"href="/Documentation/OCS">Outbound for Cloud</a><br/><h4>Performance Management - Advisors</h4><a href="/Documentation/PMA">Performance Advisors</a><br/><h4>Reporting</h4><a href="/Documentation/RT">CC Analyzer/CCPulse+</a><br/><a href="/Documentation/DES">Designer</a><br/><a href="/Documentation/GIM">Genesys Info Mart</a><br/><a href="/Documentation/GI2">Genesys Interactive Insights</a><br/><a href="/Documentation/ICON">Interaction Concentrator</a><br/><a href="/Documentation/LRM">License Reporting Manager</a><br/><a href="/Documentation/EZP">Genesys Pulse</a><br/><a href="/Documentation/RTME">Real-Time Metrics Engine</a><br/><a href="/Documentation/RAA">Reporting and Analytics Aggregates</a><br/><a href="/Documentation/RT">Reporting Templates</a><br/><h4>Routing</h4><a href="/Documentation/Composer">Composer</a><br/><a href="/Documentation/OS">Orchestration Server</a><br/><a href="/Documentation/R">Universal Routing</a><br/><a href="/Documentation/VC">Voice Callback</a><br/><h4>SDKs</h4><a href="/Documentation/GDP">Genesys Interaction SDK</a><br/><a href="/Documentation/GMS">Genesys Mobile Engagement</a><br/><a href="/Documentation/SDK">Genesys SDKs</a><br/><a href="/Documentation/PSDK">Platform SDK</a><br/><a href="/Documentation/STT">Simulator Test Toolkit</a><br/><a href="/Documentation/SESDK">SIP Endpoint SDK</a><br/><h4>Support</h4><a href="/Documentation/ST">Genesys Care (Support)</a><br/><h4>Voice Self Service</h4><a href="/Documentation/Composer">Composer</a><br/><a href="/Documentation/GAAP">Genesys App Automation Platform</a><br/><a href="/Documentation/MS">Genesys Media Server</a><br/><a href="/Documentation/GS">Genesys Studio</a><br/><a href="/Documentation/GVP">Genesys Voice Platform</a><br/><a href="/Documentation/IV">IVR Interface Option</a><br/><a href="/Documentation/VG">VoiceGenie</a><br/><a href="/Documentation/VTO">Voice Treatment Option</a><br/><h4>Workforce Optimization</h4><a href="/Documentation/CR">Genesys Interaction Recording</a><br/><a href="/Documentation/GSA">Genesys Skills Assessor</a><br/><a href="/Documentation/GTM">Genesys Training Manager</a><br/><a href="/Documentation/SPMI">Speech and Text Analytics</a><br/><a href="/Documentation/QM">Quality Management</a><br/><a href="/Documentation/WM">Workforce Management</a><br/><h4>Other Products</h4><a href="/Documentation/AC">AudioCodes</a><br/><a href="/Documentation/G1">Business Edition: Premise</a><br/><a href="/Documentation/CS">Context Services</a><br/><a href="/Documentation/CM">Conversation Manager</a><br/><a target="_blank"href="/Documentation/CCTI">Cloud CTI</a><br/><a href="/Documentation/CIP">Customer Interaction Portal</a><br/><a href="/Documentation/GEC">Genesys Expert Contact</a><br/><a href="/Documentation/GE">Genesys Express</a><br/><a href="/Documentation/GQM">Genesys Quality Management</a><br/><a href="/Documentation/GV">Genesys Video Gateway</a><br/><a href="/Documentation/Skype">Microsoft Skype for Business</a><br/><a href="/Documentation/ES">Social Engagement</a><br/><a href="/Documentation/UCC">UC Connector</a><br/>                </div>
+            </div>
+        </div>
+            </div> <!-- End header-content-->
+</div> <!-- End header-->
+
+
+
+<div id="page-body">
+<div id="page-body-content"> 
+<div id="left-sidebar">
+    </div> <!-- end left-sidebar -->
+
+<div id="main-content">
+    <a id="top"></a>
+     
+    <div id="bread-version">
+    <!-- Display breadcrumb -->
+    <div id="breadcrumb">
+        </div> <!-- End breadcrumb -->
+    
+     
+    </div> <!-- End bread-version -->
+    
+    <div id="contentSub"></div>
+            <div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>
+                <h1>File:Pulse 85105 OOBAgentGroupStatus.png</h1>
+           
+            
+    <div class="bookTitle" style="display: none;">
+        &nbsp;    </div>          
+    
+
+   <!-- Display the page content -->   
+   <!-- PUBSWIKI-1106 -->
+    <div id="mw-content-text"><ul id="filetoc"><li><a href="#file">File</a></li>
+<li><a href="#filehistory">File history</a></li>
+<li><a href="#filelinks">File usage</a></li></ul><div class="fullImageLink" id="file"><a href="/images/8/83/Pulse_85105_OOBAgentGroupStatus.png"><img alt="File:Pulse 85105 OOBAgentGroupStatus.png" src="/images/8/83/Pulse_85105_OOBAgentGroupStatus.png" width="737" height="599" /></a><div class="mw-filepage-resolutioninfo">Size of this preview: <a href="/images/8/83/Pulse_85105_OOBAgentGroupStatus.png" class="mw-thumbnail-link">737 × 599 pixels</a>. <span class="mw-filepage-other-resolutions">Other resolution: <a href="/images/8/83/Pulse_85105_OOBAgentGroupStatus.png" class="mw-thumbnail-link">295 × 240 pixels</a>.</span></div></div>
+<div class="fullMedia"><a href="/images/8/83/Pulse_85105_OOBAgentGroupStatus.png" class="internal" title="Pulse 85105 OOBAgentGroupStatus.png">Original file</a> ‎<span class="fileInfo">(1,006 × 818 pixels, file size: 168 KB, MIME type: <span class="mime-type">image/png</span>)</span>
+</div><div id="mw-imagepage-content" lang="en" dir="ltr" class="mw-content-ltr"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+
+</div><h2 id="filehistory">File history</h2>
+<div id="mw-imagepage-section-filehistory">
+<p>Click on a date/time to view the file as it appeared at that time.
+</p>
+<table class="wikitable filehistory">
+<tr><th></th><th>Date/Time</th><th>Thumbnail</th><th>Dimensions</th><th>User</th><th>Comment</th></tr>
+<tr><td>current</td><td class='filehistory-selected' style='white-space: nowrap;'><a href="/images/8/83/Pulse_85105_OOBAgentGroupStatus.png">06:38, 18 July 2016</a></td><td><a href="/images/8/83/Pulse_85105_OOBAgentGroupStatus.png"><img alt="Thumbnail for version as of 06:38, 18 July 2016" src="/images/8/83/Pulse_85105_OOBAgentGroupStatus.png" width="120" height="98" /></a></td><td>1,006 × 818 <span style="white-space: nowrap;">(168 KB)</span></td><td><a href="/index.php?title=User:Agriffin&amp;action=edit&amp;redlink=1" class="new mw-userlink" title="User:Agriffin (page does not exist)">Agriffin</a><span style="white-space: nowrap;"> <span class="mw-usertoollinks">(<a href="/index.php?title=User_talk:Agriffin&amp;action=edit&amp;redlink=1" class="new" title="User talk:Agriffin (page does not exist)">Talk</a> | <a href="/Special:Contributions/Agriffin" title="Special:Contributions/Agriffin">contribs</a>)</span></span></td><td dir="ltr"></td></tr>
+</table>
+
+</div>
+<ul>
+<li id="mw-imagepage-upload-disallowed">You cannot overwrite this file.</li>
+</ul>
+<h2 id="filelinks">File usage</h2>
+<div id='mw-imagepage-section-duplicates'>
+<p>The following 2 files are duplicates of this file (<a href="/Special:FileDuplicateSearch/Pulse_85105_OOBAgentGroupStatus.png" title="Special:FileDuplicateSearch/Pulse 85105 OOBAgentGroupStatus.png">more details</a>):
+</p><ul class='mw-imagepage-duplicates'>
+<li><a href="/File:Pulse_85104_OOBAgentGroupStatus.png" title="File:Pulse 85104 OOBAgentGroupStatus.png">File:Pulse 85104 OOBAgentGroupStatus.png</a> </li>
+<li><a href="/File:Pulse_85_OOBAgentGroupStatus.png" title="File:Pulse 85 OOBAgentGroupStatus.png">File:Pulse 85 OOBAgentGroupStatus.png</a> </li>
+</ul></div>
+<div id='mw-imagepage-section-linkstoimage'>
+<p>The following 4 pages link to this file:
+</p><ul class="mw-imagepage-linkstoimage">
+<li class="mw-imagepage-linkstoimage-ns100"><a href="/Documentation:EZP:User:RTRReports:8.5.103" title="Documentation:EZP:User:RTRReports:8.5.103">Documentation:EZP:User:RTRReports:8.5.103</a></li>
+<li class="mw-imagepage-linkstoimage-ns100"><a href="/Documentation:EZP:User:RTRReports:8.5.1draft" title="Documentation:EZP:User:RTRReports:8.5.1draft">Documentation:EZP:User:RTRReports:8.5.1draft</a></li>
+<li class="mw-imagepage-linkstoimage-ns100"><a href="/Documentation:PSAAS:Administrator:RTRReports:draft" title="Documentation:PSAAS:Administrator:RTRReports:draft">Documentation:PSAAS:Administrator:RTRReports:draft</a></li>
+<li class="mw-imagepage-linkstoimage-ns100"><a href="/Documentation:PSAAS:Supervisor:RTRReports:draft" title="Documentation:PSAAS:Supervisor:RTRReports:draft">Documentation:PSAAS:Supervisor:RTRReports:draft</a></li>
+</ul>
+</div>
+</div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="https://docs.genesys.com/index.php?title=File:Pulse_85105_OOBAgentGroupStatus.png&amp;oldid=420603">https://docs.genesys.com/index.php?title=File:Pulse_85105_OOBAgentGroupStatus.png&amp;oldid=420603</a>"</div>
+	
+</div> <!-- End main-content -->
+
+<div class="clear"></div>
+
+<!-- Display Previous/Next arrows -->
+
+</div> <!-- end page-body-content-->
+
+<div id="last-mod"> This page was last modified on 18 July 2016, at 06:38.</div></div> <!-- end page-body -->
+<div id="footer">
+    <div id="footer-content">
+        <div class="footer-col">
+            <h3>Contact</h3>
+            <ul>
+                <li><a href="/Contact_Us" target="_blank">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Genesys</h3>
+            <ul>
+                <li><a href="https://genesyspartner.force.com/customercare/GenesysCommunityLogin" target="_blank">Genesys Forums</a></li>
+                <li><a href="https://www.genesys.com/" target="_blank">Corporate Website</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Customer Care</h3>
+            <ul>
+                <li><a href="https://www.genesys.com/customer-care" target="_blank">Customer Care Website</a></li>
+                <li><a href="https://docs.genesys.com/Documentation/ST#t-0" target="_blank">Support Guide – On-Premises</a></li>
+                <li><a href="https://docs.genesys.com/Documentation/ST#t-1" target="_blank">Support Guide – Cloud</a></li>
+                <li><a href="https://docs.genesys.com/Special:Repository/GenesysCustomApplicationSupportProgram_Guide-v321-clean.pdf?id=da513a84-2155-42ef-9637-a90e9fef6f8b" target="_blank">Support Guide – Custom Apps</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Legal</h3>
+            <ul>
+                <li><a href="https://www.genesys.com/about-genesys/legal#tab3-tab" target="_blank">Legal Notices</a></li>
+                <li><a href="/Genesys_Documentation:General_Disclaimer">General Disclaimer</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="tools">
+        <ul>
+                    <li id="pt-login"><a href="/index.php?title=Special:UserLogin&amp;returnto=File%3APulse+85105+OOBAgentGroupStatus.png"Array>Log in</a></li>
+            </ul>
+    </div>
+</div>  <!-- End footer -->
+
+<script>if(window.jQuery)jQuery.ready();</script><script>if(window.mw){
+mw.loader.state({"skins.genesys.scripts":"loading","site":"loading","user":"ready","user.groups":"ready"});
+}</script>
+<script>if(window.mw){
+document.write("\u003Cscript src=\"https://docs.genesys.com/load.php?debug=false\u0026amp;lang=en\u0026amp;modules=skins.genesys.scripts\u0026amp;only=scripts\u0026amp;skin=genesys\u0026amp;*\"\u003E\u003C/script\u003E");
+}</script>
+<script>if(window.mw){
+mw.loader.load(["mediawiki.action.view.postEdit","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","genesysapi","GoogleAnalytics","RatingWidget"],null,true);
+}</script>
+<script src="/extensions/Tabber/Tabber.js?303"></script>
+<script type="text/javascript">
+function toggleDisplay( id, hidetext, showtext ) {
+        link = document.getElementById( id + "l" ).childNodes[0];
+        with( document.getElementById( id ).style ) {
+                if( display == "none" ) {
+                        display = "inline";
+                        link.nodeValue = hidetext;
+                } else {
+                        display = "none";
+                        link.nodeValue = showtext;
+                }
+        }
+}
+</script>
+<script type="text/javascript" src="/extensions/MultiStep/scripts/main.js"></script>
+
+<script type="text/javascript" src="/extensions/MagnificPopup/magnific.js"></script>
+
+<script>if(window.mw){
+document.write("\u003Cscript src=\"https://docs.genesys.com/load.php?debug=false\u0026amp;lang=en\u0026amp;modules=site\u0026amp;only=scripts\u0026amp;skin=genesys\u0026amp;*\"\u003E\u003C/script\u003E");
+}</script>
+<script>if(window.mw){
+mw.config.set({"wgBackendResponseTime":504});
+}</script>
+<script type="text/javascript">
+// Fix Title issue on Ponydocs Management pages
+</script>
+ <script src="/skins/Genesys/resources/js/marketo.js"></script> </body>
+</html>

@@ -1,0 +1,213 @@
+[{
+      "name":"Sales_Dashboard",
+      "title":"Inboud Sales Dashboard",
+      "image_src":"../../static/images/Pulse_Dashboard.png",
+      "rating":5,
+      "tags":["Pulse","Inbound","Voice","Smart","Cloud"],
+      "pricing_options":"$ - Free - Included with Genesys CIM",
+      "short_desc":"The Sales Supervisor Dashboard offers contact center managers and supervisors real-time access to the operational KPIs to monitor the status of your queues and gain actionable insights into your team performance.",
+      "templates":[
+                    {"label":"Queue KPIs", "_id":"00505682723f-8cae-11e7-08fc-aa9a508a"},
+                    {"label":"Agent Group Status", "_id":"000000000000-0000-0000-0000-00000001"}
+                  ],
+      "download_link": "/data/dashboard/Chat_Supervisor.json",
+      "overview": {
+          "goals" :["Visualize trends of service level across your queues and volume of customer calls with your organization today",
+                    "Identify at a glance and in real-time the distribution of your teams by status",
+                    "Measure the service level as well as other key performance indicators to measure the performance of your routing distribution"],
+          "prerequisites": ["Genesys CIM 8.1+", "Genesys Pulse 8.5.106+"],
+          "author": "<p class=\"s-html\">This dashboard was built by the Genesys Pulse Team.</p> <aside class=\"warning\"><p><b>Note:</b> This dashboard is not shipped out-of-box with Pulse but it is an example of what kind of dashboard can be used to monitor your service level across your queues.</p></aside>"
+      },
+      "features":{
+          "intro":"<section><p>Supervisors need to know at-a-glance what is happening in their contact centers. This dashboard helps users identify whether or not operational targets are met as well as manage agent workload across different teams for voice interactions.<br class=\"style-scope gsys-detail-dashboard\">This dashboard is made of several widgets which can be grouped into 3 categories:</p><ul class=\"checklist style-scope gsys-detail-dashboard\"><li class=\"style-scope gsys-detail-dashboard\">Sales Queue KPIs (Gold, Platinium, Silver)</li><li class=\"style-scope gsys-detail-dashboard\">Agent Group Status</li><li class=\"style-scope gsys-detail-dashboard\">Summary Queue KPIs</li></ul></section>",
+          "widgets":[
+              {"shtml":"<h2>Sales Queue KPIs</h2><p>The Sales Queue KPIs are showing the trends of the Service Level across your different queues or group of queues.</p><aside class=\"special style-scope gsys-detail-dashboard\"><p class=\"style-scope gsys-detail-dashboard\">In this dashboard, supervisors can monitor the intraday service level of the Sales queues by customer segment (Gold, Platinium, Sales). These line charts are displaying the volume of calls entered in the queues, the Service Level (SL) within 20s and within 60s to help supervisors understand if the current workload is efficiently being distributed to the agents.</p></aside>",
+               "slides":["/static/images/Sales_Dashboard/Sales_Gold_KPIs.png","/static/images/Sales_Dashboard/Sales_Platinium_KPIs.png","/static/images/Sales_Dashboard/Sales_Silver_KPIs.png"]},
+              {"shtml":"<h2>Agent Group Status</h2><p>This set of widgets shows a summary of KPIs to identify the current workforce available to manage the workload of the Contact Centers.<br></p><aside class=\"special\"><p>In this dashboard, supervisors can monitor their current agent availability in the Sales agent group as well as the current status of agents (on calls, on hold, waiting for calls,...). The  donut show the distribution of the agents by status and the sparkline KPIs widget show the trends of the number of agents currently ready and working.</p></aside><br><p><a href=\"/static/images/Sales_Dashboard/Agent_Group_Distribution.png\" target=\"_blank\" title=\"Agent Group Distribution\"><img alt=\"Agent Group Status\" src=\"/static/images/Sales_Dashboard/Agent_Group_Distribution.png\" style=\"max-width: 624px\"></a><br></p><p>Supervisors can easily change the visualization in the display options to show the number of the sales agent working or available over time for customer inquiries.<a href=\"/static/images/Sales_Dashboard/Agent_Group_Status.png\" target=\"_blank\" title=\"Agent Group Status\"><img alt=\"Agent Group Status\" src=\"/static/images/Sales_Dashboard/Agent_Group_Status.png\" style=\"max-width: 624px\"></img></a><br><br></p>"},
+              {"shtml":"<h2>Summary Queue KPIs</h2><p>The Summary Queue KPIs widget presents overall performance metrics for queues and/or group of queueus. It contains relevant information about: </p><ul><li><b>Service Level</b> - SL (10s, 20s, 30s, 45s, 60s)</li><li><b>Speed of Answer</b> - Answered (10s, 20s, 30s, 60s) </li><li><b>Interaction Volume</b> - Entered, Abandoned, Cleared, Answered</li><li><b>Current Activities</b> - Waiting, Oldest Call Waiting Time, Expected Waiting Time,...</li><li><b>Avergae KPIs</b> - AWT, AHT, ASA, AWA</li><li><b>Min & Max</b> - Max calls, Min calls within last hour</li></ul><br><p><a href=\"/static/images/Sales_Dashboard/Summary_Queue_KPIs.png\" target=\"_blank\" title=\"Summary Queue KPIs\"><img alt=\"Agent Group Status\" src=\"/static/images/Sales_Dashboard/Summary_Queue_KPIs.png\" style=\"max-width: 624px\"></img></a><br></p>"}
+          ]
+      },
+      "prerequisites": {
+          "templates":"<h2>Template requirements</h2><p>See below the list of the templates required with this dashboard and links to additional information.<aside class=\"warning\"><p>Make sure you review the dependencies on your applications (provisioning, callflow,...) for each template to ensure the consistency of the dashboard.</p></aside>"
+      }
+  },
+
+  {
+      "name":"Team_Leader_Dashboard",
+      "title":"Team Leader Dashboard",
+      "image_src":"../../static/images/Team_Leader_Dashboard.png",
+      "rating":4,
+      "tags":["Pulse","Inbound","Smart","Cloud"],
+      "pricing_options":"$ - Free - Included with Genesys CIM",
+      "short_desc":"The Team Leader dashboard helps you monitor in real-time your agent status as well as the kind of interaction your agents are handling right now. This dashboard also monitors operational agent KPIs to compare agent performance and identify the top performers of your team.",
+      "reviews":[],
+      "templates":[
+                    {"label":"Agent Group Status", "_id":"00505682723f-8cae-11e7-08fc-aa9a508a"},
+                    {"label":"Agent Login", "_id":"00505682723f-8cae-11e7-08fc-aa9a508a"},
+                    {"label":"Agent KPIs", "_id":"00505682723f-8cae-11e7-08fc-aa9a508a"}
+                  ],
+      "download_link": "../../data/dashboard/Chat_Supervisor.json",
+      "overview": {
+          "goals" :["Monitor the overall time spent by a team, skill center or a customer representative in a specific status",
+                    "Measure the distribution of agent status time spent by a team and skill center",
+                    "Quantify the volume of interactions handled by skill centers or customer representatives with the technical result",
+                    "Identify the best performers to handle customer inquiries within your teams"],
+
+          "prerequisites": ["Genesys CIM 8.1+", "Genesys Pulse 8.5.106+"],
+          "author": "<p>This dashboard was built by the Genesys Pulse Team. <aside class=\"warning\"><p><b>Note:</b> This dashboard is not shipped out-of-box with Pulse but it is an example of what kind of dashboard can be used to monitor your service level across your queues.</p></aside></p>"
+      },
+      "features":{
+          "intro":"<section class=\"style-scope gsys-detail-dashboard\"><p class=\"style-scope gsys-detail-dashboard\">The Team Leader dashboard helps you monitor in real-time your agent status as well as the kind of interaction your agents are handling right now. This dashboard also monitors operational agent KPIs to compare agent performance and identify the top performers of your team.</p></section>",
+          "widgets":[
+              {"shtml":"<section><h3>Agent Group Status</h3><p>In order to manage the workload across different teams, supervisors can monitor their employee availability and behavior in the Agent Group Status reports.<br> This report provides supervisors an at-a-glance view of available staffing and their current states. For example, see which agents are on calls, on hold, waiting for calls, or not ready with reason.<br><br><img alt=\"Agent Status - Team Leader\" src=\"/static/images/Team_Leader_Dashboard/01_Agent_Status.png\" style=\"max-width: 624px\"></a><br></p><section>"},
+              {"shtml":"<section><h3>Agent Login</h3><p>Supervisors need to make sure the agents are logged in where they should be and managing the media and business segmentation for which they are responsible. Pulse users can monitor each individual agent status as well as the properties of the handling interaction in the Agent Login report. <br> The grid shows the properties related to the call currently handled by agents. By default, it includes 4 KVPs:<ul><li>Service Type</li><li> Service Sub Type</li><li> Customer Segment</li><li>Business Result</li></ul><img alt=\"Agent Login - Team Leader\" src=\"/static/images/Team_Leader_Dashboard/02_Agent_Login.png\" style=\"max-width: 624px\"></p></section>"},
+              {"shtml":"<section><h3>Agent KPIs</h3><p>Supervisors can monitor the KPIs of an agent group in their contact center, compare the KPIs to assess their best performers and analyze Agent performance in the Agent KPI reports. See below a non-exhaustive list of relevant metrics: <ul><li>volume of customer inquiries handled by agent with their average handle time</li><li>ratio of transfers which indicates unresolved first contact customer inquiries</li><li>agent occupancy to identify the most available agents</li></ul><img alt=\"Agent KPIs - Team Leader\" src=\"/static/images/Team_Leader_Dashboard/03_Agent_KPIs.png\" style=\"max-width: 624px\"></p></section>"}
+          ]
+      },
+      "prerequisites": {
+          "templates":"<h2>Template requirements</h2><p>See below the list of the templates required with this dashboard and links to additional information. <br>Make sure to review the dependencies on your applications (provisioning, callflow,...) for each template to ensure the consistency of the dashboard</p>"
+      }
+  },
+
+  {
+      "name":"Engagement_Summary",
+      "title":"Web Engagement Summary View",
+      "image_src":"../../static/images/Engagement_Summary_Dashboard.png",
+      "rating":4,
+      "tags":["Pulse","Digital","Web Engagement"],
+      "pricing_options":"$ - Free - Included with Web Engagement",
+      "short_desc":"The expanded view shows a summary of all the customer engagements initiated from the website. Advanced capabilities are offered to monitor the volume of prospects over time while identifying the top categories visited by your customers.",
+      "features":"",
+      "reviews":[],
+      "templates":[
+                    {"label":"GWE Engagement Summary Today", "_id":"00505682723f-8cae-11e7-08fc-aa9a508a"}
+                  ],
+      "download_link": "../data/dashboard/Chat_Supervisor.json",
+
+      "overview": {
+          "goals" :["Measure the volume and trend of your customer engagements with your organization today",
+                    "Measure the distribution of the predefined web categories and identify the most impactful ones for your organization",
+                    "Identify the most visited resources (domains, pages, categories, rules) before engaging with your organization"],
+
+          "prerequisites": ["Genesys CIM 8.1+", "Genesys Pulse 8.5.106+","Genesys Web Engagement 8.5+"],
+          "author": "<p>This dashboard was built and is supported by the Genesys Web Engagement Team. <br> Additional information can be found in the technical documentation </p><ul><li><a href=\"https://docs.genesys.com/Documentation/GWE/latest/Report/funneldash\" target=\"_blank\">Engagement Summary Today Extended View</a></li><li><a href=\"https://docs.genesys.com/Documentation/GWE/latest/Report/Welcome\" target=\"_blank\">Genesys Web Engagement Reporting Guide</a></li></ul>"
+      },
+
+      "features":{
+          "intro":"<section class=\"style-scope gsys-detail-dashboard\"><h2 class=\"style-scope gsys-detail-dashboard\">Overview Timeline</h2><p class=\"style-scope gsys-detail-dashboard\">The Overview Timeline uses a grouped bar chart to display historical engagement information, with each group calculated on an hourly basis.</p><p class=\"style-scope gsys-detail-dashboard\">The information in this chart is derived from all events that have occurred within the time frame established by the time filter, which is set to <b class=\"style-scope gsys-detail-dashboard\">Today</b> by default. The metrics used in this chart are explained in the next section.</p><p class=\"style-scope gsys-detail-dashboard\"><a href=\"/static/images/Engagement_Summary_Dashboard/01_GWE_Engagement_Timeline.png\" target=\"_blank\" title=\"The Engagement Summary Overview Timeline\" class=\"style-scope gsys-detail-dashboard\"><img alt=\"The Engagement Summary Overview Timeline\" src=\"/static/images/Engagement_Summary_Dashboard/01_GWE_Engagement_Timeline.png\" style=\"max-width: 624px\" class=\"style-scope gsys-detail-dashboard\"></a><br class=\"style-scope gsys-detail-dashboard\"><br class=\"style-scope gsys-detail-dashboard\"></p></section>",
+          "widgets":[
+              {"shtml":"<section ><h2 >Overview - KPI Widget Set</h2><p >This set of KPI widgets shows a summary of important engagement statistics from within the time frame established by the <a target=\"_blank\" href=\"https://docs.genesys.com/Documentation/GWE/8.5.0/Report/extendedview#timefilter\" >time filter</a>. These statistics are used in the Overview Timeline described in the previous section.</p><aside class=\"warning\"><p ><b >Note:</b>These statistics are different from the ones displayed in the<a target=\"_blank\" href=\"https://docs.genesys.com/Documentation/GWE/8.5.0/Report/funnel\" > GWE - Engagement Summary Today</a> basic view.</p></aside><p ><a href=\"/static/images/Engagement_Summary_Dashboard/02_GWE_Kpi_Widgets.png\" target=\"_blank\" title=\"Overview Timeline KPI Widgets\" ><img alt=\"Overview Timeline KPI Widgets\" src=\"/static/images/Engagement_Summary_Dashboard/02_GWE_Kpi_Widgets.png\" style=\"max-width: 624px\" ></a><br ></p><div ><h3 ><u >KPI Metrics</u></h3><ul ><li ><b >Qualified For Engagement</b> - Total number of visits that have triggered a \"HotleadIdentifiedActionableEvent\" event from one of the rules set up for Web Engagemen</li><li ><b >Attempted Engagements</b> - Total number of visits that have led to an engagement offer (<b >Disposition</b> event)</li><li ><b >Accepted Engagements</b> - Total number of visits for which an engagement offer was accepted</li><li ><b >Ignored Engagements</b> - Total number of visits for which an engagement offer was ignored</li><li ><b >Declined Engagements</b> - Total number of visits for which an engagement offer was declined</li></ul><aside class=\"special\"><p ><b >Note:</b> A single visit may include more than one engagement attempt. For example, a banner ad could be followed by an offer to chat.</p></aside></div></section>"},
+              {"shtml":"<section class=\"style-scope gsys-detail-dashboard\"><h2 class=\"style-scope gsys-detail-dashboard\">Category Distribution</h2><p class=\"style-scope gsys-detail-dashboard\">The Engagement Summary Today extended view includes a widget that can be extremely useful when you need to understand how a <a target=\"_blank\" href=\"https://docs.genesys.com/Documentation/GWE/8.5.0/User/Category\" class=\"style-scope gsys-detail-dashboard\">category</a> leads to a certain result. This widget displays a sunburst of distributed categories within three layers:</p><ul class=\"style-scope gsys-detail-dashboard\"><li class=\"style-scope gsys-detail-dashboard\">Event Type (the <b class=\"style-scope gsys-detail-dashboard\">inner ring</b>)</li><li class=\"style-scope gsys-detail-dashboard\">Category Name (the <b class=\"style-scope gsys-detail-dashboard\">center ring</b>)</li><li class=\"style-scope gsys-detail-dashboard\">Result (the <b class=\"style-scope gsys-detail-dashboard\">outer ring</b>)</li></ul><p class=\"style-scope gsys-detail-dashboard\">These layers represent hierarchical data, starting from the innermost ring, and working outwards. As you work your way out, through the rings of the chart, the data that is adjacent to any given segment of an inner ring forms a subset of its data, as you can see if you take a close look at this example:<br class=\"style-scope gsys-detail-dashboard\"><br class=\"style-scope gsys-detail-dashboard\"></p><p class=\"style-scope gsys-detail-dashboard\"><a href=\"/static/images/Engagement_Summary_Dashboard/03_GWE_Category_Sunburst.png\" class=\"image style-scope gsys-detail-dashboard\" title=\"Category Sunburst\"><img alt=\"Category Sunburst\" src=\"/static/images/Engagement_Summary_Dashboard/03_GWE_Category_Sunburst.png\" style=\"max-width: 624px\" class=\"style-scope gsys-detail-dashboard\"></a><br class=\"style-scope gsys-detail-dashboard\"><br class=\"style-scope gsys-detail-dashboard\"></p><aside class=\"special style-scope gsys-detail-dashboard\"><p class=\"style-scope gsys-detail-dashboard\">Although sunbursts aren't intuitive to everyone, this one might be the best way to present the information you need.</p></aside></section>"},
+              {"shtml":"<section class=\"style-scope gsys-detail-dashboard\"><h2 class=\"style-scope gsys-detail-dashboard\">Top 5 Widget Set</h2><p class=\"style-scope gsys-detail-dashboard\">The widgets in this set show the number of hits for the Top 5:</p><ul class=\"style-scope gsys-detail-dashboard\"><li class=\"style-scope gsys-detail-dashboard\"><b class=\"style-scope gsys-detail-dashboard\">Domains</b> visited by customers during their journey</li><li class=\"style-scope gsys-detail-dashboard\"><b class=\"style-scope gsys-detail-dashboard\">Pages</b> they visited during their journey</li><li class=\"style-scope gsys-detail-dashboard\"><b class=\"style-scope gsys-detail-dashboard\">Categories</b> set up on the pages they visited</li><li class=\"style-scope gsys-detail-dashboard\"><b class=\"style-scope gsys-detail-dashboard\">Rules</b> they triggered</li></ul><p class=\"style-scope gsys-detail-dashboard\">These values are all based on the time frame established by the <a target=\"_blank\" href=\"https://docs.genesys.com/Documentation/GWE/8.5.0/Report/extendedview#timefilter\" class=\"style-scope gsys-detail-dashboard\">time filter</a>.</p><p class=\"style-scope gsys-detail-dashboard\"><a href=\"/static/images/Engagement_Summary_Dashboard/04_GWE_Summary_Top5.png\" target=\"_blank\" title=\"Overview Timeline KPI Widgets\" class=\"style-scope gsys-detail-dashboard\"><img alt=\"Overview Timeline KPI Widgets\" src=\"/static/images/Engagement_Summary_Dashboard/04_GWE_Summary_Top5.png\" style=\"max-width: 624px\" class=\"style-scope gsys-detail-dashboard\"></a><br class=\"style-scope gsys-detail-dashboard\"></p></section>"},
+              {"shtml":"<section class=\"style-scope gsys-detail-dashboard\"><h2 class=\"style-scope gsys-detail-dashboard\">Channels</h2><p class=\"style-scope gsys-detail-dashboard\">This widget shows trend data for chat and web callback engagements accepted within the given <a target=\"_blank\" href=\"https://docs.genesys.com/Documentation/GWE/8.5.0/Report/extendedview#timefilter\" class=\"style-scope gsys-detail-dashboard\">time frame</a>.</p><p class=\"style-scope gsys-detail-dashboard\"><a href=\"/static/images/Engagement_Summary_Dashboard/05_GWE_Offered_Channel_Trends.png\" target=\"_blank\" title=\"Offered Channel Trendlines\" class=\"style-scope gsys-detail-dashboard\"><img alt=\"Offered Channel Trendlines\" src=\"/static/images/Engagement_Summary_Dashboard/05_GWE_Offered_Channel_Trends.png\" style=\"max-width: 624px\" class=\"style-scope gsys-detail-dashboard\"></a></p></section>"}
+          ]
+      },
+
+      "prerequisites": {
+          "templates":"<h2>Template requirements</h2><aside class=\"special style-scope gsys-detail-dashboard\"><p>The dashboard can be downloaded from this website but keep in mind that when you import the dashboard into your environment, you might have to select the objects (agent group, queues) from your environment because the one used by our demo environment might not be available with your Genesys configuration.<br></p><p><paper-button class=\"colored\" role=\"button\" tabindex=\"0\" aria-disabled=\"false\" elevation=\"1\"><iron-icon icon=\"file-download\"></iron-icon><a target=\"_blank\" href=\"../data/dashboard/Chat_Supervisor.json\"><b>Download Web Engagement Summary View</b></a></paper-button></p></aside>"
+      }
+  },
+
+  {
+    "name":"Sales_wallboard_Name",
+    "title":"Inbound Sales Wallboard",
+    "image_src":"../../static/images/Sales_Wallboard/Wallboard_dark_theme.png",
+    "rating":2,
+    "tags":["Pulse","Inbound","wallboard"],
+    "pricing_options":"$ - Free - Included with CIM",
+    "short_desc":"Supervisors need to know at-a-glance what is happening in their contact centers. This dashboard helps users identify whether or not operational targets are met as well as manage agent workload across different teams for voice interactions.",
+    "reviews":[],
+    "templates":[],
+    "download_link": "../../data/dashboard/Chat_Supervisor.json",
+
+    "overview": {
+          "goals" :["Visualize trends of service level across your queues and volume of customer calls with your organization today",
+                    "Identify at a glance and in real-time the distribution of your teams by status",
+                    "Measure the service level as well as other key performance indicators to measure the performance of your routing distribution"],
+          "prerequisites": ["Genesys CIM 8.1+", "Genesys Pulse 8.5.106+"],
+          "author": "<p>This dashboard was built by the Genesys Pulse Team.</p> <aside class=\"warning\"><p><b>Note:</b> This wallboard is not shipped out-of-box with Pulse but it is an example of what kind of wallboard can be used to monitor your service level across your queues.</p></aside>"
+      },
+      "features":{
+          "intro":"<section><p>Supervisors need to know at-a-glance what is happening in their contact centers. This wallboard helps users identify whether or not operational targets are met as well as manage agent workload across different teams for voice interactions.<br><p>The wallboard presents overall performance metrics for queues and/or group of queues as well as agent performance metrics. It contains relevant information about: </p><ul><li><b>Service Level</b> - SL (10s, 20s, 30s, 45s, 60s)</li><li><b>Speed of Answer</b> - Answered (10s, 20s, 30s, 60s) </li><li><b>Interaction Volume</b> - Entered, Abandoned, Cleared, Answered</li><li><b>Agent Group Status</b> - Ready, Not Ready, ACW, Inbound, Outbound,...</li><li><b>Current Activities</b> - Waiting, Oldest Call Waiting Time, Expected Waiting Time,...</li><li><b>Avergae KPIs</b> - AWT, AHT, ASA, AWA</li><li><b>Min & Max</b> - Max calls, Min calls within last hour</li></ul><br></p></section>",
+          "widgets":[
+              {"shtml":"<h2>Sales Wallboard - White Theme</h2><p>This wallboard is using the dark theme to broadcast KPIs to agent on the floor in the Contact Centers.</p><p><a href=\"/static/images/Sales_Wallboard/Wallboard_white_theme.png\" target=\"_blank\" title=\"Wallboard White Theme\"><img alt=\"Wallboard White Theme\" src=\"/static/images/Sales_Wallboard/Wallboard_white_theme.png\" style=\"max-width: 624px\"></a><br></p>"},
+              {"shtml":"<h2>Sales Wallboard - Dark Theme</h2><p>This wallboard is using the dark theme to broadcast KPIs to agent on the floor in the Contact Centers.</p><p><a href=\"/static/images/Sales_Wallboard/Wallboard_dark_theme.png\" target=\"_blank\" title=\"Wallboard Dark Theme\"><img alt=\"Wallboard Dark Theme\" src=\"/static/images/Sales_Wallboard/Wallboard_dark_theme.png\" style=\"max-width: 624px\"></a><br></p>"},
+              {"shtml":"<h2>Edit widget</h2><p>Supervisors can easily change the visualization in the display options of the edit mode to show the number of the sales agent working or available over time for customer inquiries.<a href=\"/static/images/Sales_Dashboard/Agent_Group_Status.png\" target=\"_blank\" title=\"Agent Group Status\"><img alt=\"Agent Group Status\" src=\"/static/images/Sales_Dashboard/Agent_Group_Status.png\" style=\"max-width: 624px\"></img></a><br><br></p>"}
+          ]
+      },
+      "prerequisites": {
+          "templates":"<h2>Template requirements</h2><p>This example does not contain any specific templates because too many combinations could be offered. Any metric from any template could be used to generate the wallboard and broadcast the information to your audience.</p>"
+      }
+  },
+
+  {
+    "name":"Chat_Specific_Dashboard",
+    "title":"Chat Support Dashboard",
+    "image_src":"../../static/images/Pulse_Chat_Supervisor.jpg",
+    "rating":4,
+    "tags":["Pulse","Smart","eServices","Chat"],
+    "pricing_options":"$ - Free - Included with CIM",
+    "short_desc":"The Chat Support dashboard helps you monitor in real-time your agent status as well as the agent capacity and handle additional interactions to support customers engaging with chat interactions.",
+    "reviews":[],
+    "templates":[
+                  {"label":"Agent Group Status", "_id":"00505682723f-8cae-11e7-08fc-aa9a508a"},
+                  {"label":"Chat Service Level Performance", "_id":"00505682723f-8cae-11e7-08fc-aa9a508a"},
+                  {"label":"Chat Agent Activity", "_id":"00505682723f-8cae-11e7-08fc-aa9a508b"},
+                  {"label":"Chat Waiting Statistics", "_id":"00505682723f-8cae-11e7-08fc-aa9a508b"}],
+    "download_link": "../../data/dashboard/Chat_Supervisor.json",
+
+    "overview": {
+          "goals" :["Visualize at glance the current capacity of your skill centers to handle new chat inquiries based on your agent availability",
+                    "Monitor the concurrent chat interactions being served and the ratio of chat answered by your skill centers",
+                    "Visualize the trend of service level and chat interactions handled by skill centers or customer representatives",
+                    "Identify the best performers to handle chat requests and behaviors like who terminated the chat session first - agent or customer?"],
+
+          "prerequisites": ["Genesys CIM 8.1+", "Genesys Pulse 8.5.106+","Stat Server 8.5.106.04+","Chat Server 8.5.107.05","GMS 8.5.107+"],
+          "author": "<p>This dashboard was built by the Genesys Pulse and the eServices Teams. <aside class=\"warning\"><p><b>Note:</b> This dashboard is not shipped out-of-box with Pulse but it is an example of what kind of dashboard can be used to monitor your service level across your queues.</p></aside>"},
+      "features":{
+          "intro":"<section class=\"style-scope gsys-detail-dashboard\"><p class=\"style-scope gsys-detail-dashboard\">The Chat Support dashboard helps you monitor in real-time your agent status as well as the agent capacity to handle additional interactions to support customers engaging with chat interactions. This dashboard also monitors operational agent KPIs to compare agent performance and identify the top performers of your team to support chat customer interactions.</p></section>",
+          "widgets":[
+              {"shtml":"<section><h3>Agent Group Status</h3><p>In order to manage the workload across different teams, supervisors can monitor their employee availability and behavior in the Agent Group Status reports.<br> This report provides supervisors an at-a-glance view of available staffing and their current states. For example, see which agents are currently handling chat requests, waiting for customer inquiries, or not ready with reason.<br><br><img alt=\"Agent Status - Team Leader\" src=\"/static/images/Chat_Support_Dashboard/01_Agent_Group_Status.png\" style=\"max-width: 624px\"></a><br></p><section>"},
+              {"shtml":"<section><h3>Chat Service Level</h3><p>In this widget, supervisors can monitor the intraday service level of the Chat requests by origination page and referer. The break down can be visualized in the expanded view for additional information. This line chart is displaying the volume of chats answered in the environment, the Service Level (SL) and SL within 60s to help supervisors understand if the current workload is efficiently being distributed to the agents handling the chat inquiries. It helps supervisors to understand if the agents with the right skills can handle the different chat topics. By default, the chat topics are made of two 2 KVPs:<ul><li>Referer</li><li> Page title</li>/ul><img alt=\"Chat Service Level\" src=\"/static/images/Chat_Support_Dashboard/02_Service_Level_Trend.png\" style=\"max-width: 624px\"></p></section>"},
+              {"shtml":"<section><h3>Chat KPIs</h3><p>Supervisors can monitor the KPIs of your Chat activity in their contact center and analyze how many chats are being currently requested on your web site. See below a non-exhaustive list of relevant metrics: <ul><li>volume of customer chat inquiries being concurrently handled by your team</li><li>service level within 60 sec for chat inquiries</li><li>average response time for your team to handle customer chat inquiries</li><li>volume of current customer chat inquiries waiting in your system</li></ul><img alt=\"Chat KPIs\" src=\"/static/images/Chat_Support_Dashboard/03_Chat_KPIs.png\" style=\"max-width: 624px\"></p></section>"},
+              {"shtml":"<section><h3>Agent Capacity</h3><p>For a media like chat, agents can handle more than one interaction at a time so it is really important for Supervisors to understand at a glance what is the current capacity of their teams as well as the number of concurrent chats being handled to determine the agent and team occupancy..<img alt=\"Agent Capacity\" src=\"/static/images/Chat_Support_Dashboard/04_Agent_Capacity.png\" style=\"max-width: 624px\"></p></section>"},
+              {"shtml":"<section><h3>Chat Agent KPIs</h3><p>And finally, Supervisors can monitor the Agent Group KPIs in their contact center, compare the KPIs to assess their best performers and analyze Agent performance in the Chat Agent KPI reports. See below a non-exhaustive list of relevant metrics: <ul><li>volume of chat inquiries handled by agent with their average handle time</li><li>percentage of chat sessions being closed by an agent</li><li>agent occupancy to identify the most available agents</li></ul><img alt=\"Chat Agent KPIsr\" src=\"/static/images/Chat_Support_Dashboard/05_Chat_Agent_KPIs.png\" style=\"max-width: 624px\"></p></section>"}
+          ]},
+      "prerequisites": {
+          "templates":"<h2>Template requirements</h2><p>See below the list of the templates required with this dashboard and links to additional information. <br>Make sure to review the dependencies on your applications (provisioning, callflow,...) for each template to ensure the consistency of the dashboard</p>"
+      }
+
+  },
+
+  {
+      "name":"Web_Traffic_Today",
+      "title":"Web Traffic View",
+      "image_src":"../../static/images/Web_Traffic_Dashboard.png",
+      "rating":3,
+      "tags":["Pulse","Digital","Web Engagement"],
+      "pricing_options":"$ - Free - Included with Web Engagement",
+      "short_desc":"The expanded view shows a summary of all the customer engagements initiated from the website. Advanced capabilities are offered to monitor the volume of prospects over time while identifying the top categories visited by your customers.",
+      "overview": {
+          "goals" :["Identify where are your online visitors coming from?",
+                    "Measure the volume of visitors and pages viewed on your website",
+                    "Identify the most visited resources (domains, pages, categories, rules) before engaging with your organization"],
+
+          "prerequisites": ["Genesys CIM 8.1+", "Genesys Pulse 8.5.106+","Genesys Web Engagement 8.5+"],
+          "author": "<p>This dashboard was built and is supported by the Genesys Web Engagement Team. <br> Additional information can be found in the technical documentation </p><ul><li><a href=\"https://docs.genesys.com/Documentation/GWE/latest/Report/funneldash\" target=\"_blank\">Engagement Summary Today Extended View</a></li><li><a href=\"https://docs.genesys.com/Documentation/GWE/latest/Report/Welcome\" target=\"_blank\">Genesys Web Engagement Reporting Guide</a></li></ul>"
+      },
+
+      "features":{
+          "intro":"<section class=\"style-scope gsys-detail-dashboard\"><p class=\"style-scope gsys-detail-dashboard\">This view includes a heat map that displays important information about the locations of your visitors, using the time frame established by the time filter.</p> <aside class=\"warning\"> <p>Note: By default Web Engagement does not collect visitor IP addresses. If you want to analyze this data, you must have your system administrator turn this feature on explicitly.</p></aside><p class=\"style-scope gsys-detail-dashboard\"><a href=\"/static/images/Web_Traffic_Today/Gwe-pulse_heat_map.png\" target=\"_blank\" title=\"The Engagement Summary Overview Timeline\" class=\"style-scope gsys-detail-dashboard\"><img alt=\"The Engagement Summary Overview Timeline\" src=\"/static/images/Web_Traffic_Today/Gwe-pulse_heat_map.png\" style=\"max-width: 624px\" class=\"style-scope gsys-detail-dashboard\"></a><br class=\"style-scope gsys-detail-dashboard\"><br class=\"style-scope gsys-detail-dashboard\"></p></section>",
+          "widgets":[
+              {"shtml":"<section><h2>Top 5 Origins</h2><p>This widget shows the distribution of the top 5 origins. It helps supervisors identify whether or not to apply specific behaviors on the website based on the location of the customers.</p><aside class=\"warning\"><p ><b >Note:</b>These statistics are different from the ones displayed in the GWE - Engagement Summary Today basic view.</p></aside><p><a href=\"/static/images/Web_Traffic_Today/Gwe-top_5_origins.png\" target=\"_blank\" title=\"Top 5 origins\"> <img alt=\"Top 5 Origins\" src=\"/static/images/Web_Traffic_Today/Gwe-top_5_origins.png\" style=\"max-width: 400px\" ></a><br></p></section>"},
+              {"shtml":"<section><h2>Top 5 Domains</h2><p>This widget shows the distribution of the top 5 domains visited by the customers. It helps supervisors identify whether or not to apply specific offers (promotions, advertising, chat offer, webhooks..) based on the visited pages.</p><a href=\"/static/images/Web_Traffic_Today/Gwe-top_5_domains.png\" title=\"Top 5 Domains\"><img alt=\"Top 5 Domains\" src=\"/static/images/Web_Traffic_Today/Gwe-top_5_domains.png\" style=\"max-width: 400px\"></a><br><br></p></section>"},
+              {"shtml":"<section><h2>Web KPIs</h2><p>Those widgets monitor basic online KPIs to:</p><ul><li><b>Mobile vs Desktop</b> - visualize if the website is being accessed from a desktop or mobile devices</li><li><b>Languages</b> - identify which languages are being used by your online customers</li><li><b>Browsers</b> - identify which browsers are being used by online visitors</li></ul><p>These values are all based on the time frame established by the time filter.</p><p><a href=\"/static/images/Web_Traffic_Today/GWE-Widgets.png\" target=\"_blank\" title=\"Overview Web Traffic KPI Widgets\"><img alt=\"Overview Web Traffic KPI Widgets\" src=\"/static/images/Web_Traffic_Today/Gwe-Widgets.png\" style=\"max-width: 624px\"></a><br></p></section>"},
+              {"shtml":"<section><h2>Website Traffic</h2><p>This dashboard also includes a layered timeline graph that displays how many visitors have come to your site and how many pages they have viewed, using the time frame established by the time filter.</p><p><a href=\"/static/images/Web_Traffic_Today/Gwe-website-traffic.png\" target=\"_blank\" title=\"Website Traffic\"><img alt=\"Website Traffic\" src=\"/static/images/Web_Traffic_Today/Gwe-website_traffic.png\" style=\"max-width: 624px\"> </a></p></section>"}
+          ]
+      },
+
+      "reviews":[],
+      "templates":[
+                    {"label":"GWE Web Traffic Today", "_id":"00505682723f-8cae-11e7-08fc-aa9a508a"}
+                  ],
+      "download_link": "../data/dashboard/Chat_Supervisor.json"}]

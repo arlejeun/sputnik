@@ -1,0 +1,45 @@
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+
+  <dom-module id="pulse-template-data">
+
+  <template>
+
+          <!-- Request pulse templates definitions -->
+          <iron-ajax auto
+            url="../data/pulse_templates.json"
+            handle-as="json"
+            method="GET"
+            headers='{"Content-Type":"application/json"}'
+            last-response="[[pulseTemplates]]"
+            on-response="handleResponse">
+          </iron-ajax>
+
+
+  </template>
+
+  <script>
+
+      Polymer({
+
+        is:"pulse-template-data",
+
+        properties:{
+
+          pulseTemplates:{
+            type:Array,
+            //value: function(){return [{}];},
+            notify:true
+          }
+
+        },
+        handleResponse: function (data) {
+            this.pulseTemplates = data.detail.response;
+            this.templatesLoaded = true
+            console.log(this.pulseTemplates)
+        }
+
+
+      });
+  </script>
+
+</dom-module>
