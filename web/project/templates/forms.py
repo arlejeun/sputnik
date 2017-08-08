@@ -11,4 +11,4 @@ class AddTemplateForm(FlaskForm):
     ss_options_export = FileField('Template SS Options', validators=[FileRequired(), FileAllowed(upload_exported_options, 'Options only!')])
     template_rating = IntegerField('Rating 1-5')
     recaptcha = RecaptchaField('')
-    submit_button = SubmitField('Submit Visualization')
+    submit_button = SubmitField('Submit Template')
