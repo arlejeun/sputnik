@@ -42,3 +42,9 @@ UPLOADS_DEFAULT_DEST = os.path.realpath('.') + '/project/upload/assets/user/'
 #UPLOADS_SCREENSHOTS_URL = 'http://127.0.0.1:5000/pulse/upload/assets/screenshots/'
 UPLOADED_IMAGES_DEST = os.path.realpath('.') + '/project/upload/assets/user/'
 #UPLOADED_PLUGINS_URL = 'http://127.0.0.1:5000/pulse/upload/assets/plugins/'
+
+# Recaptcha
+RECAPTCHA_USE_SSL = False
+RECAPTCHA_PUBLIC_KEY = '6Lfol9cSAAAAADAkodaYl9wvQCwBMr3qGR_PPHcw'
+RECAPTCHA_PRIVATE_KEY = 'private'
+SECRET_KEY = 'devkey'

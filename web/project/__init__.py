@@ -9,6 +9,7 @@ from flask_script import Manager
 from flask_security import Security, MongoEngineUserDatastore
 from flask_security.utils import hash_password
 #from flask_principal import Permission, RoleNeed
+from flask_bootstrap import Bootstrap
 
 from wtforms.validators import DataRequired
 from flask_wtf.file import FileField, FileAllowed, FileRequired
@@ -45,6 +46,10 @@ app.config.from_object('project.settings')
 app.debug = True
 app.logger.info("Config: %s" % app.config['MONGO_DATABASE_URI'])
 
+
+# Add bootstrap
+Bootstrap(app)
+
 # Register blueprints
 register_blueprints(app)
 
@@ -55,6 +60,7 @@ register_uploadsets(app, upload_jar_plugins, upload_images,
 # Set up mongo DB and user roles
 from models import db, User, Role
 db.init_app(app)
+
 
 
 # Setup Flask-Security

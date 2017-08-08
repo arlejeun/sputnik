@@ -1,27 +1,22 @@
-{% from "_form_macros.html" import render_field_with_errors, render_field %}
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
 
 {% block content %}
 
-<div class="add-recipe">
-  <div class="page-header">
-    <h2>Add new Visualization</h2>
-  </div>
-  <form action="{{ url_for('upload.add_visualization') }}" method="post" enctype="multipart/form-data">
-    {{ form.csrf_token }}
-    {{ form.hidden_tag() }}
+{{util.flashed_messages(dismissible=True)}}
 
-    <dl>
-      {{ render_field(form.vis_title, placeholder="Enter Visualization Title") }}
-      {{ render_field(form.vis_short_desc, placeholder="Enter short visualization Description") }}
-      {{ render_field(form.vis_desc, placeholder="Enter visualization Description") }}
-      {{ render_field(form.vis_image) }}
-      {{ render_field(form.vis_options) }}
-      {{ render_field(form.vis_manifest) }}
-      {{ render_field(form.vis_rating) }}
+<div class="container">
+  <h1>Add Pulse visualization</h1>
+  <br>
 
-    </dl>
-    <button class="btn btn-sm btn-success" type="submit">Add Visualization</button>
-  </form>
+  {{ wtf.quick_form(form, action=url_for('upload.add_visualization'), form_type='horizontal', button_map={'submit_button': 'primary'})}}
+
 </div>
+{% endblock %}
 
+{% block head %}
+{{super()}}
+{{fixes.ie8()}}
 {% endblock %}

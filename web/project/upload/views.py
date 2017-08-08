@@ -21,7 +21,11 @@ editor_permission = Permission(RoleNeed('editor'))
 @login_required
 #@admin_permission.require(http_exception=403)
 def add_visualization():
+
     form = AddVisualizationForm()
+
+#    if form.validate_on_submit(): # to get error messages to the browser
+
     if request.method == 'POST' and 'vis_image' in request.files:
         filename1 = upload_images.save(request.files['vis_image'], current_user.email)
         filename2 = upload_images.save(request.files['vis_options'], current_user.email)
@@ -45,6 +49,7 @@ def add_visualization():
         viz.save()
 
         return redirect(url_for('upload.complete', user_email=current_user.email))
+
     return render_template('upload/add_visualization.html', form=form)
 
 
@@ -89,6 +94,7 @@ def add_template():
 
 
 
+'''
 # Route that will process the file upload
 @blueprint.route('/', methods=['GET','POST'])
 @login_required
@@ -110,6 +116,7 @@ def upload():
 
         return redirect(url_for('upload.complete', user_email=current_user.email))
     return render_template('upload/post.html', form=form)
+'''
 
 
 @blueprint.route("/files/<user_email>", methods=['GET', 'POST'])
