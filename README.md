@@ -22,7 +22,6 @@ Go to your favorite web browser and open:
 
 - Flask - web framework
 - Jinga2 - templating engine
-- SQLAlchemy - ORM (Object Relational Mapper)
 - Flask-Bcrypt - password hashing
 - Flask-Login - support for user management
 - Flask-Security
@@ -34,7 +33,3 @@ This application is written using Python 2.7.  The database used is MongoDB.
 Docker is the recommended tool for running in development and production nut not yet available.
 
 ## Unit Testing
-
-
-For running a specific module:
-    % nose2 -v project.tests.test_recipes_api
