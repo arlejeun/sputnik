@@ -4,6 +4,7 @@ from flask_security import login_user, login_required, LoginForm,http_auth_requi
 #from flask_login import login_user, login_required
 from models import User
 from flask_principal import Permission, RoleNeed
+from flask_security import current_user
 
 # Create a permission with a single Need, in this case a RoleNeed.
 admin_permission = Permission(RoleNeed('admin'))
@@ -12,8 +13,12 @@ editor_permission = Permission(RoleNeed('editor'))
 # Views
 @app.route('/')
 def home():
-    #return render_template('index.html')
+    #return render_template('welcome.html', user=current_user)
     return redirect(url_for('dashboards.get_dashboard_list'))
+
+@app.route('/test')
+def test():
+    return render_template('index.html', user=current_user)
 
 @app.route('/lost')
 def lost():

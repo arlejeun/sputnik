@@ -31,6 +31,9 @@ class User(db.Document, UserMixin):
     def validate_login(password_hash, password):
         return check_password_hash(password_hash, password)
 
+    def get_roles(self):
+        return [r.name.encode("utf-8") for r in self.roles]
+
 
 class Dashboards (db.Document, object):
 

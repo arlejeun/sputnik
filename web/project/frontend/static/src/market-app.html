@@ -44,6 +44,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             text-decoration: none;
       }
 
+      .authen-name {
+        padding-right: 30px;
+        padding-top:20px;
+        font-style: italic;
+        font-stretch: semi-expanded;
+        color: darkgrey;
+      }
+
+      .authen-role {
+        padding-right: 30px;
+        font-style: italic;
+        font-stretch: semi-expanded;
+        color: grey;
+      }
+
       .iron-selected {
         color: grey;
       }
@@ -94,6 +109,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <!-- Drawer content -->
         <app-drawer id="drawer">
           <app-toolbar>Reporting & Analytics</app-toolbar>
+            <div class="authen-name" align="right">{{user}}</div>
+            <div class="authen-role" align="right">{{_roleChanged(role)}}</div>
+
           <iron-selector selected="[[routeData.page]]" attr-for-selected="name" class="drawer-list" role="navigation">
 
               <!--Courtesy of http://jsbin.com/sutavom/edit?html,output-->
@@ -141,9 +159,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <app-toolbar>
             <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
             <div main-title>Reporting & Analytics</div>
+
               <paper-icon-button icon="icons:dashboard" on-tap="_showDashboards"></paper-icon-button>
               <paper-icon-button icon="icons:assessment" on-tap="_showTemplates"></paper-icon-button>
               <paper-icon-button icon="icons:timeline" on-tap="_showVisualizations"></paper-icon-button>
+              <div style="margin-left: 20px;"></div>
+
+              <template is="dom-if" if="{{isloggedIn(user)}}">
+                <paper-icon-button icon="icons:lock" on-tap="_logout"></paper-icon-button>
+              </template>
+
+              <template is="dom-if" if="{{!isloggedIn(user)}}">
+                <paper-icon-button icon="icons:lock-open" on-tap="_login"></paper-icon-button>
+              </template>
+
+
           </app-toolbar>
         </app-header>
 
@@ -154,7 +184,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             role="main">
           <gsys-pulse name="pulse" route="[[subroute]]"></gsys-pulse>
           <gsys-insights name="insights" route="[[subroute]]"></gsys-insights>
-          <gsys-detail-template name="detail" route="[[subroute]]" category="pulse_wallboards"></gsys-detail-template>
+          <<gsys-detail-template name="detail" route="[[subroute]]" category="pulse_wallboards"></gsys-detail-template>
           <gsys-view404 name="view404"></gsys-view404>
 
         </iron-pages>
@@ -170,12 +200,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         page: {
           type: String,
           reflectToAttribute: true,
-          observer: '_pageChanged',
+          observer: '_pageChanged'
+        },
+        role: {
+           type: String,
+           reflectToAttribute:true,
+           observer: '_roleChanged'
         }
       },
 
       observers: [
-        '_routePageChanged(routeData.page)',
+        '_routePageChanged(routeData.page)'
 
       ],
 
@@ -214,6 +249,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       },
 
+      isloggedIn: function(user) {
+        return user != 'anonymous';
+      },
+
       _pageChanged: function(page) {
         var self = this;
         // Load page import on demand. Show 404 page if fails
@@ -225,6 +264,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         } else {
           this._showPage404();
         }
+      },
+
+      _roleChanged: function(role) {
+        var self= this;
+        if (role.includes('admin')) return 'admin';
+        if (role.includes('editor')) return 'editor';
+        return 'user';
       },
 
       _onExploreDashboard: function (evt) {
@@ -251,6 +297,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _showDashboards: function (evt) {
         this.$.appLocation.set('path','pulse/dashboards');
 
+      },
+
+      _logout: function (evt) {
+        //this.$.appLocation.set('path','/logout');
+        location.href= '/logout';
+      },
+
+      _login: function (evt) {
+        //this.$.appLocation.set('path','/login');
+        location.href= '/login';
       },
 
       _showTemplates: function (evt) {
