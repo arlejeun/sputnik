@@ -1,0 +1,27 @@
+{% from "_form_macros.html" import render_field_with_errors, render_field %}
+
+{% block content %}
+
+<div class="add-recipe">
+  <div class="page-header">
+    <h2>Add new Visualization</h2>
+  </div>
+  <form action="{{ url_for('upload.add_visualization') }}" method="post" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    {{ form.hidden_tag() }}
+
+    <dl>
+      {{ render_field(form.vis_title, placeholder="Enter Visualization Title") }}
+      {{ render_field(form.vis_short_desc, placeholder="Enter short visualization Description") }}
+      {{ render_field(form.vis_desc, placeholder="Enter visualization Description") }}
+      {{ render_field(form.vis_image) }}
+      {{ render_field(form.vis_options) }}
+      {{ render_field(form.vis_manifest) }}
+      {{ render_field(form.vis_rating) }}
+
+    </dl>
+    <button class="btn btn-sm btn-success" type="submit">Add Visualization</button>
+  </form>
+</div>
+
+{% endblock %}
