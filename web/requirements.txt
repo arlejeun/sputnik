@@ -6,6 +6,7 @@ Flask-Login==0.4.0
 Flask-Mail==0.9.1
 Flask-Uploads==0.2.1
 Flask-WTF==0.14
+Flask-Script==2.0.5
 gunicorn==19.6.0
 html5lib==0.9999999
 httplib2==0.10.3
