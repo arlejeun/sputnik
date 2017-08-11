@@ -7,6 +7,10 @@ Flask-Mail==0.9.1
 Flask-Uploads==0.2.1
 Flask-WTF==0.14
 Flask-Script==2.0.5
+Flask-Security==3.0.0
+Flask-Bootstrap==3.3.7.1
+Flask-Mongoengine==0.9.3
+Image==1.5.11
 gunicorn==19.6.0
 html5lib==0.9999999
 httplib2==0.10.3
