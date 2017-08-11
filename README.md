@@ -6,6 +6,7 @@
 
 2. Run the project locally
 - % cd web
+- % pip install -r requirements.txt
 - % python run-dev.py
 - % cd ..
 
@@ -30,6 +31,6 @@ Go to your favorite web browser and open:
 
 This application is written using Python 2.7.  The database used is MongoDB.
 
-Docker is the recommended tool for running in development and production nut not yet available.
+Docker is the recommended tool for running in development and production but not yet available.
 
 ## Unit Testing
