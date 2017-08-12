@@ -56,15 +56,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         fallback-selection="view404"
         id="pulseContent">
 
-            <gsys-pulse-dashboards name="dashboards" route="[[subroute]]" category="[[routeData.category]]"></gsys-pulse-dashboards>
-            <gsys-pulse-templates name="templates" route="[[subroute]]" category="[[routeData.category]]"></gsys-pulse-templates>
-            <gsys-pulse-visualizations name="visualizations" route="[[subroute]]" category="[[routeData.category]]"></gsys-pulse-visualizations>
+            <gsys-pulse-dashboards name="dashboards" route="[[subroute]]" category="[[routeData.category]]" user="[[user]]" role="[[role]]"></gsys-pulse-dashboards>
+            <gsys-pulse-templates name="templates" route="[[subroute]]" category="[[routeData.category]]" user="[[user]]" role="[[role]]"></gsys-pulse-templates>
+            <gsys-pulse-visualizations name="visualizations" route="[[subroute]]" category="[[routeData.category]]" user="[[user]]" role="[[role]]"></gsys-pulse-visualizations>
 
             <gsys-view404 name="view404"></gsys-view404>
 
 
       </iron-pages>
-
 
   </template>
 
@@ -73,6 +72,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       is: 'gsys-pulse',
 
       properties: {
+
+        role: {
+           type: String,
+           reflectToAttribute:true,
+           observer: '_roleChanged'
+        }
+
 
       }
 

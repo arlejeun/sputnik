@@ -40,7 +40,12 @@
           }
           .dashboard-reserve {
               color: var(--google-blue-500);
-              float: right;
+              padding:5px;
+          }
+
+          .dashboard-delete {
+              color: var(--google-red-500);
+              padding:5px;
           }
 
           iron-icon.star {
@@ -68,22 +73,15 @@
               font-weight: bold;
             };
           }
-          paper-icon-button.favorite {
-              padding:5px;
-              --iron-icon: {
-                  background-color: #12c500;
-                  color:#333333;
-                  padding:5px;
-              };
+
+          paper-icon-button.actions {
+            color: var(--google-blue-500);
+            --paper-icon-button-ink-color: var(--paper-indigo-500);
           }
 
-          paper-icon-button {
-              width: 48px;
-              height: 48px;
-              --iron-icon: {
-                border-radius: 50%;
-                background-color: #adc5ec;
-              };
+          paper-icon-button.actions:hover {
+            background-color: var(--google-blue-500);
+            color: white;
           }
 
            paper-fab {
@@ -129,8 +127,27 @@
 
             </div>
 
-              <paper-button class="dashboard-reserve" on-tap="_onExploreVisualization" data-args="[[item]]">Explore</paper-button>
-              <paper-button class="dashboard-reserve" on-tap="_onDownloadVisualization" data-args="[[item]]">Download</paper-button>
+              <div class="card-actions" align="right">
+                <paper-icon-button icon="open-in-new" class="actions" on-tap="_onExploreVisualization" data-args="[[item]]"></paper-icon-button>
+                <paper-icon-button icon="cloud-download" class="actions" on-tap="_onDownloadVisualization" data-args="[[item]]"></paper-icon-button>
+
+                <template is="dom-if" if="{{_isAdmin(role)}}">
+                  <paper-icon-button icon="delete" class="actions" on-tap="_onDownloadVisualization" data-args="[[item]]"></paper-icon-button>
+                </template>
+
+              </div>
+
+            <!--<div class="card-actions">
+              <paper-button class="dashboard-reserve" on-tap="_onExploreVisualization" data-args="[[item]]"><iron-icon icon="open-in-new"></iron-icon></paper-button>
+              <paper-button class="dashboard-reserve" on-tap="_onDownloadVisualization" data-args="[[item]]"><iron-icon icon="cloud-download"></iron-icon></paper-button>
+
+              <template is="dom-if" if="{{_isAdmin(role)}}">
+                <paper-button class="dashboard-delete" on-tap="_onDownloadVisualization" data-args="[[item]]"><iron-icon icon="delete"></iron-icon></paper-button>
+              </template>
+            </div>
+            -->
+
+
 
          </paper-card>
 
@@ -160,6 +177,10 @@
           var args = evt.target.dataArgs;
           //console.log ('Download: ' + args.plugin_src);
           window.open('/'+args.plugin_src);
+        },
+
+        _isAdmin: function (role) {
+          return role == 'admin';
         }
 
       });

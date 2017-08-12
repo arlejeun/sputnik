@@ -97,16 +97,15 @@
           <ul class="app-grid">
             <template is="dom-repeat" items="[[_getListItems(filteredItems)]]">
                <li class="item">
-                  <pulse-visualization-elt item="[[item]]"></pulse-visualization-elt>
+                  <pulse-visualization-elt item="[[item]]" user="[[user]]" role="[[role]]"></pulse-visualization-elt>
                 </li>
             </template>
           </ul>
 
 
           <template is="dom-if" if="[[_getTemplateID(route)]]" hidden$="[[failure]]">
-              <gsys-detail-visualization route="[[route]]"></gsys-detail-visualization>
+              <gsys-detail-visualization route="[[route]]" user="[[user]]" role="[[role]]"></gsys-detail-visualization>
           </template>
-
 
 
 

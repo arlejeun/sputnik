@@ -110,7 +110,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <body>
 
     {% if (user.is_authenticated) %}
-    <market-app user={{user.email}} role="{{user.get_roles()}}" is-admin="{{user.has_role('admin')}}"></market-app>
+    <market-app user="{{user.email}}" role="{{user.get_roles()}}" is-admin="{{user.has_role('admin')}}"></market-app>
     {% endif %}
 
     {% if not (user.is_authenticated) %}
