@@ -41,7 +41,9 @@ def post_visualization_api():
 
 
 @viz_api.route('/<name>', methods=['DELETE'])
-@auth_token_required
+@login_required
+#@auth_token_required
+#@http_auth_required
 @admin_permission.require(http_exception=403)
 def delete_visualization_api(name):
     visualization = Visualizations.objects(name=name)

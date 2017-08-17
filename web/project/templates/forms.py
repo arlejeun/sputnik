@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import IntegerField, SubmitField
+from wtforms import IntegerField, SubmitField, FileField
 from wtforms.validators import DataRequired
-from flask_wtf.file import FileField, FileAllowed, FileRequired
+from flask_wtf.file import FileAllowed, FileRequired
 from project import upload_images, upload_exported_templates, upload_exported_options
 
 

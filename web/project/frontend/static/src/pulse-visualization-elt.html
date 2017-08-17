@@ -3,10 +3,12 @@
 <link rel="import" href="../bower_components/paper-chip/paper-chip.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/iron-accordions/iron-accordions.html">
 <link rel="import" href="../bower_components/iron-accordions/iron-accordion.html">
 <link rel="import" href="../bower_components/star-rating/star-rating.html">
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
 
 <link rel="import" href="gsys-detail-visualization.html">
 
@@ -17,6 +19,11 @@
 
   	<style is="custom-style" include="shared-styles">
 
+
+           #toast1 {
+             --paper-toast-background-color: red;
+             --paper-toast-color: white;
+           }
 
           .mycard {
               margin: 15px 0px 5px 0px;
@@ -29,7 +36,7 @@
 
           .container{
 	          padding: 15px 0 0 0;
-	        }
+	       }
 
           .dashboard-header { @apply(--paper-font-headline); }
           .dashboard-light { color: var(--paper-grey-600); }
@@ -106,6 +113,20 @@
     </style>
 
 
+        <iron-ajax
+            id="api-ajax"
+            url="/api/pulse/visualizations"
+            handle-as="json"
+            content-type="application/json"
+            method="DELETE"
+            body="[[params]]"
+            last-response="{{results}}"
+            on-response="_gotData"
+            on-error="_error">
+        </iron-ajax>
+
+       <paper-toast id="toast1" class="fit-bottom" text="This toast is red and fits bottom!"></paper-toast>
+
         <div class="mycard">
 
           <paper-card image="/[[item.image_src]]" alt="Visualization">
@@ -114,28 +135,25 @@
 
               <div class="dashboard-header">[[item.title]]
 
-                <div class="dashboard-location dashboard-light">
-
-                </div>
+                <div class="dashboard-location dashboard-light"></div>
+                 <star-rating rate=[[item.rating]] read-only></star-rating>
 
               </div>
 
-              <star-rating rate=[[item.rating]] read-only></star-rating>
-
               <!--<p>[[item.pricing_options]]</p>-->
-              <p class="dashboard-light">[[item.short_desc]]</p>
+              <!--<p class="dashboard-light">[[item.short_desc]]</p>-->
 
             </div>
 
               <div class="card-actions" align="right">
+
                 <paper-icon-button icon="open-in-new" class="actions" on-tap="_onExploreVisualization" data-args="[[item]]"></paper-icon-button>
                 <paper-icon-button icon="cloud-download" class="actions" on-tap="_onDownloadVisualization" data-args="[[item]]"></paper-icon-button>
-
                 <template is="dom-if" if="{{_isAdmin(role)}}">
-                  <paper-icon-button icon="delete" class="actions" on-tap="_onDownloadVisualization" data-args="[[item]]"></paper-icon-button>
+                  <paper-icon-button icon="delete" class="actions" on-tap="_onDeleteVisualization" data-args="[[item]]"></paper-icon-button>
                 </template>
 
-              </div>
+             </div>
 
             <!--<div class="card-actions">
               <paper-button class="dashboard-reserve" on-tap="_onExploreVisualization" data-args="[[item]]"><iron-icon icon="open-in-new"></iron-icon></paper-button>
@@ -147,8 +165,6 @@
             </div>
             -->
 
-
-
          </paper-card>
 
          </div>
@@ -156,34 +172,58 @@
 
   </template>
 
-  <script>
+    <script>
 
-      Polymer({
+        Polymer({
 
-        is:"pulse-visualization-elt",
+          is:"pulse-visualization-elt",
 
-        properties:{
-          item:Object
-        },
+          properties:{
+            item:Object
+          },
 
-        _onExploreVisualization: function(evt) {
-          //Retrieve visualization details
-          var args = evt.target.dataArgs;
-          this.fire('explore-visualization',args);
-        },
+          _onExploreVisualization: function(evt) {
+            //Retrieve visualization details
+            var args = evt.target.dataArgs;
+            this.fire('explore-visualization',args);
+          },
 
-        _onDownloadVisualization: function(evt) {
-          //Retrieve dashboard details
-          var args = evt.target.dataArgs;
-          //console.log ('Download: ' + args.plugin_src);
-          window.open('/'+args.plugin_src);
-        },
+          _onDownloadVisualization: function(evt) {
+            //Retrieve dashboard details
+            var args = evt.target.dataArgs;
+            //console.log ('Download: ' + args.plugin_src);
+            window.open('/'+args.plugin_src);
+          },
 
-        _isAdmin: function (role) {
-          return role == 'admin';
-        }
+          _onDeleteVisualization: function(evt) {
+            var args = evt.target.dataArgs;
+            console.log ('Delete Visualization: ');
+            console.log(args);
+            this.$['api-ajax'].url = "/api/pulse/visualizations/" + args.name;
+            //this.$['api-ajax'].params = {"userId":"1"};
+            Polymer.dom(this.root).querySelector('#api-ajax').generateRequest();
+            location.href= '/pulse/visualizations';
+          },
 
-      });
-  </script>
+
+        _gotData: function(e) {
+            //response data is in both this.results and e.detail.response
+            console.log(e.detail.response);
+            var resp = e.detail.response;
+            this.$.toast1.text = 'Pulse visualization deleted - ' + resp.result[0].title ;
+            this.$.toast1.open();
+            window.open('/pulse/visualizations');
+         },
+
+         _error: function() {
+            console.log('error visualization');
+         },
+
+         _isAdmin: function (role) {
+            return role == 'admin';
+         }
+
+        });
+    </script>
 
 </dom-module>

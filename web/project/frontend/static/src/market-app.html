@@ -291,6 +291,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.$.appLocation.set('path','pulse/visualizations/'+ evt.detail.name);
       },
 
+
       _onExploreTemplate: function (evt) {
         this.$.appLocation.set('__hash',0);
         this.$.appLocation.set('path','pulse/templates/'+ evt.detail.definition.guid);
@@ -300,11 +301,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        _onLookTemplate: function (evt) {
         var pathName = 'pulse/templates/'+ evt.detail._id;
         this.$.appLocation.set('path',pathName);
-      },
-
-      _showDashboards: function (evt) {
-        this.$.appLocation.set('path','pulse/dashboards');
-
       },
 
       _logout: function (evt) {
@@ -319,12 +315,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _showTemplates: function (evt) {
         this.$.appLocation.set('path','pulse/templates');
-
       },
 
-       _showVisualizations: function (evt) {
-        this.$.appLocation.set('path','pulse/visualizations');
+      _showDashboards: function (evt) {
+        this.$.appLocation.set('path','pulse/dashboards');
+      },
 
+      _showVisualizations: function (evt) {
+        this.$.appLocation.set('path','pulse/visualizations');
       },
 
       _showPage404: function() {
