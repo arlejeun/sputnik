@@ -9,7 +9,7 @@
 
     "polymer": "polymer/polymer#^1.4.0",
 
-    "app-layout": "polymerelements/app-layout#^0.10.0",
+    "app-layout": "polymerelements/app-layout#^0.10.7",
     "app-route": "polymerelements/app-route#^0.9.1",
 
     "codelab-components":"arlejeun/codelab-components#^2.0.3",
