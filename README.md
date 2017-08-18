@@ -7,8 +7,10 @@
 2. Run the project locally
 - % cd web
 - % pip install -r requirements.txt
+- % cd project/frontend/static
+- % bower install
+- % cd ../../..
 - % python run-dev.py
-- % cd ..
 
 Go to your favorite web browser and open:
     http://127.0.0.1:5000
