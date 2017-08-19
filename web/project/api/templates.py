@@ -29,9 +29,9 @@ def get_template_api(name):
 
 
 @temp_api.route('', methods=['POST'])
-#@http_auth_required
-@auth_token_required
+@http_auth_required
 @admin_permission.require(http_exception=403)
+#@auth_token_required
 def post_template_api():
     payload = request.json
     validfields = set(Templates._fields) & set(payload)

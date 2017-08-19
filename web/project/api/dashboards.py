@@ -29,9 +29,8 @@ def get_dashboard_api(name):
 
 
 @dashboard_api.route('', methods=['POST'])
-@dashboard_api.route('/', methods=['POST'])
+@http_auth_required
 @admin_permission.require(http_exception=403)
-@auth_token_required
 def post_dashboard_api():
     payload = request.json
     validfields = set(Dashboards._fields) & set(payload)
