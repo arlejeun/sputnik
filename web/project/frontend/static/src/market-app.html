@@ -152,31 +152,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </paper-submenu>
               </paper-menu>
           </iron-selector>
-        </app-drawer>
+
+    </app-drawer>
 
       <!-- Main content -->
       <app-header-layout has-scrolling-region>
 
         <app-header condenses reveals effects="waterfall">
-          <app-toolbar>
-            <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-            <div main-title>Reporting & Analytics</div>
 
-              <paper-icon-button icon="icons:dashboard" on-tap="_showDashboards"></paper-icon-button>
-              <paper-icon-button icon="icons:assessment" on-tap="_showTemplates"></paper-icon-button>
-              <paper-icon-button icon="icons:timeline" on-tap="_showVisualizations"></paper-icon-button>
-              <div style="margin-left: 20px;"></div>
+            <app-toolbar>
 
-              <template is="dom-if" if="{{isloggedIn(user)}}">
-                <paper-icon-button icon="icons:lock" on-tap="_logout"></paper-icon-button>
-              </template>
+                <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
 
-              <template is="dom-if" if="{{!isloggedIn(user)}}">
-                <paper-icon-button icon="icons:lock-open" on-tap="_login"></paper-icon-button>
-              </template>
+                <div main-title>Reporting & Analytics</div>
 
+                <paper-icon-button icon="icons:dashboard" on-tap="_showDashboards"></paper-icon-button>
+                <paper-icon-button icon="icons:assessment" on-tap="_showTemplates"></paper-icon-button>
+                <paper-icon-button icon="icons:timeline" on-tap="_showVisualizations"></paper-icon-button>
+                <div style="margin-left: 20px;"></div>
+
+                <template is="dom-if" if="{{isloggedIn(user)}}">
+                    <paper-icon-button icon="icons:lock" on-tap="_logout"></paper-icon-button>
+                </template>
+
+                <template is="dom-if" if="{{!isloggedIn(user)}}">
+                   <paper-icon-button icon="icons:lock-open" on-tap="_login"></paper-icon-button>
+                </template>
 
           </app-toolbar>
+
+
         </app-header>
 
         <iron-pages

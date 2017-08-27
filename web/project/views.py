@@ -10,15 +10,21 @@ from flask_security import current_user
 admin_permission = Permission(RoleNeed('admin'))
 editor_permission = Permission(RoleNeed('editor'))
 
+
 # Views
 @app.route('/')
 def home():
-    #return render_template('welcome.html', user=current_user)
-    return redirect(url_for('dashboards.get_dashboard_list'))
+    return app.send_static_file('index.html')
 
-@app.route('/test')
-def test():
-    return render_template('index.html', user=current_user)
+
+@app.route('/pulse')
+def pulse():
+    return redirect(url_for('dashboards.get_dashboard_list'))
+    #return render_template('index.html', user=current_user)
+
+#@app.route('/test')
+#def test():
+#    return render_template('index.html', user=current_user)
 
 @app.route('/lost')
 def lost():

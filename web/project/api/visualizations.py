@@ -2,8 +2,9 @@
 
 from flask_principal import Permission, RoleNeed
 from flask import json, jsonify, request, Blueprint, flash
-from flask_security import auth_token_required, http_auth_required, login_required
+from flask_security import auth_token_required, http_auth_required, login_required, current_user
 from ..models import db, Visualizations
+from mongoengine.queryset.visitor import Q
 
 
 viz_api = Blueprint('visualization_api', __name__, url_prefix='/api/pulse/visualizations')
@@ -16,7 +17,13 @@ editor_permission = Permission(RoleNeed('editor'))
 @viz_api.route('', methods=['GET'])
 @viz_api.route('/', methods=['GET'])
 def get_visualizations_api():
-    visualizations = Visualizations.objects.all()
+    if current_user.has_role('admin'):
+        visualizations = Visualizations.objects.all()
+    else:
+        #public_viz = Visualizations.objects.filter(status='draft')
+        visualizations = Visualizations.objects(Q(contributor='alejeune@genesys.com') | Q(status='public'))
+        #visualizations = own_viz
+
     return jsonify({'result': visualizations})
 
 
