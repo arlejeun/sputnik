@@ -1,0 +1,305 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="shared-styles.html">
+
+
+
+
+<dom-module id="landing-page">
+
+  <template>
+
+      <style include="shared-styles app-grid-style" is="custom-style">
+
+    app-header {
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.1);
+      --app-header-background-rear-layer: {
+        /* The header is blue when condensed */
+        background-color: blue;
+      };
+      --app-header-background-front-layer: {
+        background-image: url(/static/images/landing/Community-Genesys.jpg);
+      };
+      }
+
+
+    section {
+        padding: 38px 16px;
+      }
+      .container {
+        @apply --layout-horizontal;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .container > * {
+        @apply --layout-flex;
+      }
+      .container img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+      .container h3 {
+        font-size: 32px;
+        font-weight: 300;
+        margin: 24px 0;
+      }
+      .container p {
+        line-height: 1.5;
+      }
+      @media (max-width: 600px) {
+        .container {
+          @apply --layout-vertical;
+        }
+      }
+
+      header {
+        @apply --layout-vertical;
+        @apply --layout-center-center;
+        height: calc(100vh - 64px);
+        padding: 150px 16px;
+        color: white;
+        text-align: center;
+      }
+
+       header > h2 {
+        font-size: 56px;
+        font-weight: 300;
+        margin: 0;
+      }
+      header > p {
+        font-size: 32px;
+      }
+
+    .title {
+        width:60%;
+        margin:auto;
+        margin-top:100px;
+        text-align:center;
+    }
+
+     .title > h2 {
+        font-size: 56px;
+        font-weight: 300;
+        margin: 0;
+      }
+
+      .title > p {
+        font-size: 32px;
+      }
+
+    .title > p  {
+        padding-right:200px
+    }
+
+    .title > p >i {
+        color:#FF4F1F;
+    }
+
+    .legend > p > i {
+        padding-left:100px;
+        font-size:30px;
+        color:#FF4F1F;
+    }
+
+    paper-card {
+        color:grey;
+        font-size: 16px;
+    }
+
+    :host {
+          --app-grid-columns: 3;
+          --app-grid-gutter:60px;
+        }
+
+        ul {
+          list-style: none;
+        }
+
+        @media (max-width: 840px) {
+            :host {
+              --app-grid-columns: 2;
+              --app-grid-gutter:30px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :host {
+              --app-grid-columns: 1;
+              --app-grid-gutter:0px;
+            }
+        }
+
+        paper-card.redgen, paper-card.purple, paper-card.lime, paper-card.cyan {
+            color: white;
+            --paper-card-header-color: white;
+        }
+
+        .redgen {
+            background: #FF4F1F;
+        }
+
+        .purple {
+            background:#5d3e5d;
+        }
+
+
+    </style>
+
+    <app-header-layout>
+
+        <app-header style="height: 700px;" effects="parallax-background" condenses slot="header">
+
+            <app-toolbar>
+
+                <paper-icon-button src="/static/images/landing/logo_adaptive-G-Coloured.svg"></paper-icon-button>
+                <div main-title>GENESYS</div>
+
+                    <paper-icon-button icon="icons:dashboard" on-tap="_showDashboards"></paper-icon-button>
+                    <paper-icon-button icon="icons:assessment" on-tap="/pulse/templates"></paper-icon-button>
+                    <paper-icon-button icon="icons:timeline" on-tap="_showVisualizations"></paper-icon-button>
+                    <div style="margin-left: 20px;"></div>
+
+                    <template is="dom-if" if="{{isloggedIn(user)}}">
+                        <paper-icon-button icon="icons:lock" on-tap="_logout"></paper-icon-button>
+                    </template>
+
+                    <template is="dom-if" if="{{!isloggedIn(user)}}">
+                       <paper-icon-button icon="icons:lock-open" on-tap="_login"></paper-icon-button>
+                    </template>
+
+
+
+            </app-toolbar>
+
+            <app-toolbar>
+
+              <div class="title">
+                  <p>Welcome to our</p>
+                <h2>Dashboard Community
+                    <br>Center</h2>
+
+                 <div class="legend" style="padding-top:20px">
+                     <p><i>Stronger Together...</i></p>
+                 </div>
+
+
+              </div>
+
+            </app-toolbar>
+
+
+        </app-header>
+
+        <section id="about">
+
+        <div class="container">
+          <div>
+            <h3>Welcome</h3>
+            <p>We are glad to welcome you joining the Genesys Dashboard Community Center. The main idea behind this new concept is to help organizations share dashboards, KPIs and visualizations to analyze their business activities in a more efficient way with the Genesys Analytics portfolio.
+                <br>The Genesys Dashboard Community Center aims to ease the development of dashboards, empower our Genesys community to collaborate and share best practices among technical experts, worldwide partners and our customers.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pulse" style="padding-top:25px">
+
+             <ul class="app-grid" align="center">
+
+
+                 <li class="item">
+                    <a href="/pulse/dashboards">
+                     <paper-card heading="DASHBOARDS" class="redgen">
+                        <div class="card-content">
+                            Check out the list of dashboards curated by Genesys to help organizations quickly deploy dashboards with best practices of our Genesys community.
+                        </div>
+                        <div class="card-actions">
+                          <paper-icon-button icon="icons:dashboard" style="color:white;"></paper-icon-button>
+                          <span>Explore Dashboards</span>
+                        </div>
+
+                    </paper-card>
+                    </a>
+
+                </li>
+
+
+                <li class="item">
+                    <a href="/pulse/templates">
+                     <paper-card heading="DATASETS" class="purple">
+                        <div class="card-content">
+                            KPIs are at the core of any dashboards and the templates are a great way to consolidate a list of relevant KPIs for analyzing a specific domain of expertise.
+                        </div>
+                        <div class="card-actions">
+                          <paper-icon-button icon="icons:assessment" style="color:white;"></paper-icon-button>
+                          <span>Explore Templates</span>
+                        </div>
+
+                    </paper-card>
+                    </a>
+
+                </li>
+
+
+                 <li class="item">
+                    <a href="/pulse/visualizations">
+                     <paper-card heading="VISUALIZATIONS" class="redgen">
+                        <div class="card-content">
+                            Walk through our list of visualizations provided by the Genesys Community and enrich the Genesys Reporting & Analytics portfolio.
+                        </div>
+                        <div class="card-actions">
+                          <paper-icon-button icon="icons:timeline" style="color:white;"></paper-icon-button>
+                          <span>Explore Visualizations</span>
+                        </div>
+
+                    </paper-card>
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+
+      </section>
+
+
+
+      </app-header-layout>
+
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'landing-page',
+
+
+       _showTemplates: function (evt) {
+        location.href= '/pulse/templates';
+      },
+
+      _showDashboards: function (evt) {
+        location.href= '/pulse/dashboards';
+      },
+
+      _showVisualizations: function (evt) {
+        location.href= '/pulse/visualizations';
+      }
+
+    });
+  </script>
+
+</dom-module>
