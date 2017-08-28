@@ -119,6 +119,11 @@
         font-size: 16px;
     }
 
+    paper-icon-button.logo {
+        height: 46px;
+        width: 36px;
+    }
+
     :host {
           --app-grid-columns: 3;
           --app-grid-gutter:60px;
@@ -164,7 +169,7 @@
 
             <app-toolbar>
 
-                <paper-icon-button src="/static/images/landing/logo_adaptive-G-Coloured.svg"></paper-icon-button>
+                <paper-icon-button class="logo" src="/static/images/landing/logo_adaptive-G-Coloured.png"></paper-icon-button>
                 <div main-title>GENESYS</div>
 
                     <paper-icon-button icon="icons:dashboard" on-tap="_showDashboards"></paper-icon-button>
