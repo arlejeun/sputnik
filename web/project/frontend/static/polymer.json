@@ -1,18 +1,35 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/market-app.html",
+  "shell": "src/landing-page.html",
   "fragments": [
+    "src/market-app.html",
     "src/gsys-pulse.html",
-    "src/gsys-insights.html",
-    "src/gsys-view404.html"
+    "src/gsys-pulse-dashboards.html",
+    "src/gsys-pulse-templates.html",
+    "src/gsys-pulse-visualizations.html",
+    "src/market-category-data.html",
+    "src/shared-styles.html"
+
   ],
-  "sourceGlobs": [
-    "src/**/*",
-    "images/**/*",
-    "bower.json"
+  "sources": [
+   "src/**/*",
+   "images/**/*",
+   "data/**/*",
+   "bower.json",
+   "index.html"
   ],
-  "includeDependencies": [
+  "extraDependencies": [
     "manifest.json",
     "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ],
+  "lint": {
+    "rules": [
+      "polymer-2"
+    ]
+  },
+  "builds": [
+    {
+      "preset": "es6-bundled"
+    }
   ]
 }
