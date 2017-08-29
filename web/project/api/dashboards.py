@@ -41,7 +41,7 @@ def post_dashboard_api():
 
 
 @dashboard_api.route('/<name>', methods=['DELETE'])
-@auth_token_required
+@http_auth_required
 @admin_permission.require(http_exception=403)
 def delete_dashboard_api(name):
     dashboard = Dashboards.objects(name=name)
