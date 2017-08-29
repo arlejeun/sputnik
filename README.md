@@ -20,6 +20,13 @@ Go to your favorite web browser and open:
 - % docker-compose build
 - % docker-compose up -d
 
+4. Run the production build (make sure you have polymer-cli installed)
+- % cd project/frontend/static
+- % polymer build
+- % cd ../..
+- % vim settings.py // change STATIC_FOLDER
+- % cd ..
+- % python run-dev.py
 
 ## Key Python Modules Used
 

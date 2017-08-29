@@ -48,3 +48,8 @@ RECAPTCHA_USE_SSL = False
 RECAPTCHA_PUBLIC_KEY = '6Lfol9cSAAAAADAkodaYl9wvQCwBMr3qGR_PPHcw'
 RECAPTCHA_PRIVATE_KEY = 'private'
 SECRET_KEY = 'devkey'
+
+# Static content
+STATIC_FOLDER = 'frontend/static'
+# For production use:
+#STATIC_FOLDER = 'frontend/static/build/es6-bundled'

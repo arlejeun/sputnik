@@ -18,3 +18,4 @@ __pycache__/
 
 # Bower components
 bower_components/
+build/

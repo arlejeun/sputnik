@@ -16,7 +16,7 @@ from flask_wtf.file import FileField, FileAllowed, FileRequired
 from flask_uploads import UploadSet, configure_uploads, IMAGES, DATA
 from project.utils.uploadsets import upload_jar_plugins, upload_images, \
     upload_exported_dashboards, upload_exported_templates, upload_exported_options
-from project import upload, api, dashboards, visualizations, templates
+from project import upload, api, dashboards, visualizations, templates, settings
 
 
 def register_uploadsets(app, upload_jar_plugins, upload_images, upload_exported_dashboards,
@@ -40,7 +40,7 @@ def register_blueprints(app):
 
 
 # Create app
-app = Flask(__name__, static_folder='frontend/static', template_folder='frontend/templates')
+app = Flask(__name__, static_url_path='/static', static_folder=settings.STATIC_FOLDER, template_folder='frontend/templates')
 
 app.config.from_object('project.settings')
 app.debug = True
