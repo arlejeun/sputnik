@@ -1,17 +1,16 @@
 [{
-      "name":"Sales_Dashboard 1",
-      "title":"Inboud Sales Dashboard",
+      "name":"Sales_Dashboard",
+      "title":"Inbound Sales Dashboard",
       "image_src":"../../static/images/Pulse_Dashboard.png",
-      "rating":5,
-      "tags":["Pulse","Inbound","Voice","Smart","Cloud"],
-      "pricing_options":"$ - Free - Included with Genesys CIM",
+      "rating":3,
+      "tags":["Pulse","Inbound","Voice","Cloud"],
       "short_desc":"The Sales Supervisor Dashboard offers contact center managers and supervisors real-time access to the operational KPIs to monitor the status of your queues and gain actionable insights into your team performance.",
       "templates":[
-                    {"label":"Queue KPIs", "_id":"00505682723f-8cae-11e7-08fc-aa9a508a"},
-                    {"label":"Agent Group Status", "_id":"000000000000-0000-0000-0000-00000001"}
+                    {"label":"Queue KPIs", "_id":"00505682723f-ac82-11e5-a040-d3048daa"},
+                    {"label":"Agent Group Status", "_id":"00505682723f-ac82-11e5-a03f-0163a7f7"}
                   ],
-      "download_link": "/static/data/dashboard/Chat_Supervisor.json",
-      "ss_options_file": "//drive.google.com/file/d/0B82XQciEH8d-Y2tNVmlDWTZSX3M/view?usp=sharing",
+      "download_link": "/static/data/dashboard/inbound_sales/export_inbound_sales_dashboard.json",
+      "ss_options_file": "//drive.google.com/uc?export=download&id=0B82XQciEH8d-Y2tNVmlDWTZSX3M",
       "overview": {
           "goals" :["Visualize trends of service level across your queues and volume of customer calls with your organization today",
                     "Identify at a glance and in real-time the distribution of your teams by status",

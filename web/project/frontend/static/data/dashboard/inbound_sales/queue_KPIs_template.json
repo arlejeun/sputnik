@@ -1,0 +1,597 @@
+{
+  "state": {
+    "uscn": 164,
+    "body_hash_1": -1742057711,
+    "body_hash_2": -1742057711
+  },
+  "definition": {
+    "name": "Queue KPIs",
+    "description": "The ability to view a representation of all the agents assigned to a group and their current states provides supervisors a quick look at available staff and an at-a-glance view of their current states.",
+    "template_guid": "000000000000-0000-0000-0000-00000011",
+    "guid": "00505682723f-ac82-11e5-a040-d3048daa",
+    "layout_type": "ltPCREGULAR",
+    "column": [
+      {
+        "id": "_Object$ID",
+        "type": "ctFORMULA",
+        "category": "ccDIMENSION",
+        "vt": "vINT",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectID"
+          ]
+        },
+        "is_delta_key": true
+      },
+      {
+        "id": "_Object$Name",
+        "type": "ctFORMULA",
+        "format": "string",
+        "category": "ccDIMENSION",
+        "vt": "vSTR",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectName"
+          ]
+        }
+      },
+      {
+        "id": "_Object$Type",
+        "type": "ctFORMULA",
+        "category": "ccDIMENSION",
+        "vt": "vINT",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectType"
+          ]
+        },
+        "is_delta_key": true
+      },
+      {
+        "id": "Service_Level",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "description": "A ratio of calls answered to distinct calls entered queue or route point.",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "SL",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Service_Level"
+        }
+      },
+      {
+        "id": "Service_Level_10s",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "description": "A ratio of calls answered within 10 seconds to distinct calls entered queue or route point.",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "SL (10s)",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Service_Level",
+          "time_range": "Range0-10"
+        }
+      },
+      {
+        "id": "Service_Level_20s",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "description": "A ratio of calls answered within 20 seconds to distinct calls entered queue or route point.",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "SL (20s)",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Service_Level",
+          "time_range": "Range0-20"
+        }
+      },
+      {
+        "id": "Service_Level_30s",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "description": "A ratio of calls answered within 30 seconds to distinct calls entered queue or route point.",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "SL (30s)",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Service_Level",
+          "time_range": "Range0-30"
+        }
+      },
+      {
+        "id": "Service_Level_45s",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "description": "A ratio of calls answered within 45 seconds to distinct calls entered queue or route point.",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "SL (45s)",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Service_Level",
+          "time_range": "Range0-45"
+        }
+      },
+      {
+        "id": "Service_Level_60s",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "description": "A ratio of calls answered within 60 seconds to distinct calls entered queue or route point.",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "SL (60s)",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Service_Level",
+          "time_range": "Range0-60"
+        }
+      },
+      {
+        "id": "Distinct_Entered",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The total number of first entries of voice interactions on a specified queue or at a specified route point. Because the DistinguishByConnID option is turned on, Stat Server counts each call only once, even if an interaction entered a specified queue or route point or group of queues more than one time.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Distinct Entered",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Total_Calls_Entered"
+        }
+      },
+      {
+        "id": "Entered",
+        "type": "ctFORMULA",
+        "format": "integer",
+        "description": "The total number of calls entered on a specified queue or at a specified route point. Typically, you might have several calls entering in the same queue for one single voice interaction to change target after a specific timeout.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Entered",
+        "formula": {
+          "type": "ftPCSCRIPT",
+          "text": [
+            "Result = Data.Abandoned.Value + Data.Abandoned_From_Ringing.Value + Data.Answered.Value + Data.Cleared.Value + Data.Current_Calls.Value;"
+          ]
+        }
+      },
+      {
+        "id": "Abandoned",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The total number of virtual or live voice interactions abandoned on a specified queue or route point when a caller hangs up while waiting on that queue or at that route point or if the customer line is dropped for any reason. This metric does not include the voice interactions abandoned while ringing.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Abandoned",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Total_Calls_Abandoned"
+        }
+      },
+      {
+        "id": "Abandoned_From_Ringing",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The total number of virtual or live voice interactions abandoned while an agent desktop is ringing when the customer line is dropped for any reason.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Abandoned Ringing",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Total_Calls_Abandoned_Ringing"
+        }
+      },
+      {
+        "id": "Cleared",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The total number of voice interactions that were cleared from this virtual queue. The concept of cleared calls applies to routing strategies where an interaction may wait in a virtual queue for one of several targets to become available. When a target does become available, the call is distributed to that target and is 'cleared' from other targets.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Cleared",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Total_Cleared"
+        }
+      },
+      {
+        "id": "Answered",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The total number of virtual or live voice interactions distributed from a queue or route point directly to an agent and answered by an agent.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Answered",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Total_Calls_Answered"
+        }
+      },
+      {
+        "id": "Answered_less_10s",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The total number of virtual or live voice interactions distributed from a queue or route point directly to an agent and answered by an agent in less than 10 seconds.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Ans < 10s",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Total_Calls_Answered_In_Threshold",
+          "time_range": "Range0-10"
+        }
+      },
+      {
+        "id": "Answered_between_10s_and_20s",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The total number of virtual or live voice interactions distributed from a queue or route point directly to an agent and answered by an agent between 10 and 20 seconds.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Ans. 10 and 20s",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Total_Calls_Answered_In_Threshold",
+          "time_range": "Range10-20"
+        }
+      },
+      {
+        "id": "Answered_less_30s",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The total number of virtual or live voice interactions distributed from a queue or route point directly to an agent and answered by an agent in less than 30 seconds.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Ans. < 30s",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Total_Calls_Answered_In_Threshold",
+          "time_range": "Range0-30"
+        }
+      },
+      {
+        "id": "Answered_less_60s",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The total number of virtual or live voice interactions distributed from a queue or route point directly to an agent and answered by an agent in less than 60 seconds.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Ans. < 60s",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Total_Calls_Answered_In_Threshold",
+          "time_range": "Range0-60"
+        }
+      },
+      {
+        "id": "Current_Calls",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The total number of live (current) or virtual voice interactions currently waiting at a distribution DN, typically a VQ.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Current",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrNumberWaitingCalls"
+        }
+      },
+      {
+        "id": "Current_AWT",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "description": "The average time of live calls currently waiting at a distribution DN, typically a VQ.",
+        "category": "ccMEASURE",
+        "vt": "vLONG",
+        "label": "Current AWT",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrAvgCallWaitingTime"
+        }
+      },
+      {
+        "id": "Max_Calls",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The maximum number of voice interactions simultaneously waiting in this queue for the day.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Max Calls",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Maximum_Calls"
+        }
+      },
+      {
+        "id": "Min_Calls",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The minimum number of voice interactions simultaneously waiting in this queue during the last hour.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Min Calls",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Minimum_Calls",
+          "time_profile": "LastHour"
+        }
+      },
+      {
+        "id": "Forwarded",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The total number of live, voice interactions that were distributed from a distribution DN to an agent and then transferred to another destination by redirection or forwarding.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Forwarded",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Total_Forwarded"
+        }
+      },
+      {
+        "id": "Curr_Max_Wait_Time",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "description": "The maximum waiting time for live or virtual voice interactions currently on a queue or at a route point.",
+        "category": "ccMEASURE",
+        "vt": "vLONG",
+        "label": "Oldest Call Waiting",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrMaxCallWaitingTime"
+        }
+      },
+      {
+        "id": "Max_Answer_Time",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "description": "The maximum time that live or virtual voice interactions waited in a queue or at a route point before being answered by this agent.",
+        "category": "ccMEASURE",
+        "vt": "vLONG",
+        "label": "Max Answer Time",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Max_Time_To_Answer"
+        }
+      },
+      {
+        "id": "Average_Speed_Answer",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "description": "The average amount of time a voice call waits on a specified queue or at a specified route point before the interaction is answered.",
+        "category": "ccMEASURE",
+        "vt": "vLONG",
+        "label": "ASA",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "AverTimeAnswer"
+        }
+      },
+      {
+        "id": "Average_Handle_Time",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "description": "The average amount of time spent handling an Interaction distributed directly from this mediation DN.",
+        "category": "ccMEASURE",
+        "vt": "vLONG",
+        "label": "AHT",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "AverHandleTime"
+        }
+      },
+      {
+        "id": "Average_Wait_Abandoned",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "description": "The average amount of time a voice call waits on a specified queue or at a specified route point before the interaction is abandoned.",
+        "category": "ccMEASURE",
+        "vt": "vLONG",
+        "label": "AWA",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "AverWaitAbandonTime"
+        }
+      },
+      {
+        "id": "Average_Wait_Time",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "description": "The average amount of time an interaction waits on a specified queue or at a specified route point.",
+        "category": "ccMEASURE",
+        "vt": "vLONG",
+        "label": "AWT",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "QueueAverageWaitingTime"
+        }
+      },
+      {
+        "id": "Percentage_Abandoned",
+        "type": "ctFORMULA",
+        "format": "percent",
+        "description": "Percentage of calls that entered this queue or route point and were abandoned while in queue or while ringing on agent's DN. (it includes all calls entered in the queue).",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "% Abandoned",
+        "formula": {
+          "type": "ftPCSCRIPT",
+          "text": [
+            "if (Data.Entered.Value > 0) Result = 100 * Data.Abandoned.Value / Data.Entered.Value; else Result = 0;"
+          ]
+        }
+      },
+      {
+        "id": "Percentage_Cleared",
+        "type": "ctFORMULA",
+        "format": "percent",
+        "description": "Percentage of calls that entered this queue or route point and were cleared. (it includes all calls entered in the queue).",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "% Cleared",
+        "formula": {
+          "type": "ftPCSCRIPT",
+          "text": [
+            "if (Data.Entered.Value > 0) Result = 100 * Data.Cleared.Value / Data.Entered.Value; else Result = 0;"
+          ]
+        }
+      },
+      {
+        "id": "Wait_Time",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "description": "The total time calls waited in the queue.",
+        "category": "ccMEASURE",
+        "vt": "vLONG",
+        "label": "Wait Time",
+        "statistic": {
+          "filter": "VoiceCall",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "Total_Queue_Wait_Time"
+        }
+      },
+      {
+        "id": "Current_Logged_In",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The number of agents that are currently logged into a given queue.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Agents Logged In",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrAgentsLoggedInQueue"
+        }
+      },
+      {
+        "id": "Current_Ready",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The number of agents who are currently in the ready state and are logged in to the specified queue.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Agents Ready",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrAgentsReadyInQueue"
+        }
+      },
+      {
+        "id": "Percentage_Current_Ready",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "description": "The number of agents who are in the ready state versus the agents who are currently logged in to the specified queue.",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "% Agents Ready",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrAgentsReadyRatio"
+        }
+      }
+    ],
+    "collector_def": {
+      "allowed_object_type": [
+        "SObjectGroupQueues",
+        "SObjectQueue",
+        "SObjectRoutePoint"
+      ]
+    },
+    "proxy_access_object": {
+      "dbid": 0
+    },
+    "refresh_interval": 60,
+    "default_widget_body": {
+      "view": [
+        {
+          "type": "BarView",
+          "column_selector": [
+            "Service_Level"
+          ],
+          "sorting": [
+            {
+              "is_asc": true
+            }
+          ]
+        }
+      ],
+      "label": "Queue KPIs - v1",
+      "size_y": 2,
+      "size_x": 1,
+      "column_visibility": [
+        {
+          "column_id": "$",
+          "visibility": "vVISIBLE"
+        }
+      ]
+    },
+    "enable_delta_snapshots": false
+  },
+  "record": {
+    "timestamp": 1452806434,
+    "username": "default                                                                                                                                                                                                                                                        "
+  }
+}
