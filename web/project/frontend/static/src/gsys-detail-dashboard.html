@@ -100,7 +100,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
 
         paper-divider.divider-for-light-background {
-            --paper-divider-color: #1976d2;
+            --paper-divider-color: #ff4f1f;
         }
 
         :host(aside.special:host)
@@ -116,14 +116,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
 
         .dashboard-reserve {
-              color: var(--google-blue-500);
+              color: var(--genesys-purple);
         }
 
         @media (min-width: 500px) {
 
             l2t-paper-slider {
             --paper-slide-dot:#666;
-            --paper-slide-dot-selected:#1976d2;
+            --paper-slide-dot-selected:#ff4f1f;
             --paper-slide-height:550px;
             /*--paper-slide-width:640px;*/
             }
@@ -142,7 +142,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
             l2t-paper-slider {
             --paper-slide-dot:#666;
-            --paper-slide-dot-selected:#1976d2;
+            --paper-slide-dot-selected:#ff4f1f;
             --paper-slide-height:300px;
             /*--paper-slide-width:640px;*/
             }
@@ -228,11 +228,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <section>
                     <s-html html="[[item.prerequisites.templates]]"></s-html>
 
-                    <div class="card-actions justified">
-                        <template is="dom-repeat" items="[[item.templates]]" as="template">
-                            <paper-button on-tap="_onLookTemplate" data-args="[[template]]" class="dashboard-reserve">[[template.label]]</paper-button>
-                        </template>
-                    </div>
+
+                    <template is="dom-if" if="[[item.ss_options_file]]">
+
+                        <div class="card-actions justified">
+                            <template is="dom-repeat" items="[[item.templates]]" as="template">
+                                <paper-button on-tap="_onLookTemplate" data-args="[[template]]" class="dashboard-reserve">[[template.label]]</paper-button>
+                            </template>
+                        </div>
+                    </template>
+
+                    <template is="dom-if" if="[[item.ss_options_file]]">
+
+                        <aside class="special">
+                            <p>The templates used for this dashboard are relying on specific statistic types. Those statistics type can be downloaded and should be imported into your Genesys environment in the Stat Server options.<br></p>
+                            <p>
+                                <paper-button raised class="colored">
+                                    <iron-icon icon="file-download"></iron-icon>
+                                   <!-- <a href="[[item.ss_options_file]]" target="_blank">-->
+                                   <a href="//drive.google.com/uc?export=download&id=0B82XQciEH8d-Y2tNVmlDWTZSX3M" target="_blank">
+                                        <b>Download Stat Server Options</b>
+                                    </a>
+                                </paper-button>
+                            </p>
+                        </aside>
+                    </template>
 
                 </section>
 

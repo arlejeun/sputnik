@@ -1,5 +1,5 @@
 [{
-      "name":"Sales_Dashboard",
+      "name":"Sales_Dashboard 1",
       "title":"Inboud Sales Dashboard",
       "image_src":"../../static/images/Pulse_Dashboard.png",
       "rating":5,
@@ -10,7 +10,8 @@
                     {"label":"Queue KPIs", "_id":"00505682723f-8cae-11e7-08fc-aa9a508a"},
                     {"label":"Agent Group Status", "_id":"000000000000-0000-0000-0000-00000001"}
                   ],
-      "download_link": "/data/dashboard/Chat_Supervisor.json",
+      "download_link": "/static/data/dashboard/Chat_Supervisor.json",
+      "ss_options_file": "//drive.google.com/file/d/0B82XQciEH8d-Y2tNVmlDWTZSX3M/view?usp=sharing",
       "overview": {
           "goals" :["Visualize trends of service level across your queues and volume of customer calls with your organization today",
                     "Identify at a glance and in real-time the distribution of your teams by status",

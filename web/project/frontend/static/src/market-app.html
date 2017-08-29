@@ -66,7 +66,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       :host {
-        --app-primary-color: #4285f4;
+        --app-primary-color: #5d3e5d;
         --app-secondary-color: black;
 
         display: block;
@@ -166,6 +166,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <div main-title>Reporting & Analytics</div>
 
+                <paper-icon-button icon="icons:home" on-tap="_showHome"></paper-icon-button>
                 <paper-icon-button icon="icons:dashboard" on-tap="_showDashboards"></paper-icon-button>
                 <paper-icon-button icon="icons:assessment" on-tap="_showTemplates"></paper-icon-button>
                 <paper-icon-button icon="icons:timeline" on-tap="_showVisualizations"></paper-icon-button>
@@ -328,6 +329,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _showVisualizations: function (evt) {
         this.$.appLocation.set('path','pulse/visualizations');
+      },
+
+      _showHome: function (evt) {
+        location.href= '/';
       },
 
       _showPage404: function() {
