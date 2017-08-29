@@ -1,15 +1,13 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/landing-page.html",
+  "shell": "src/market-app.html",
   "fragments": [
-    "src/market-app.html",
     "src/gsys-pulse.html",
     "src/gsys-pulse-dashboards.html",
     "src/gsys-pulse-templates.html",
     "src/gsys-pulse-visualizations.html",
     "src/market-category-data.html",
     "src/shared-styles.html"
-
   ],
   "sources": [
    "src/**/*",
@@ -24,7 +22,7 @@
   ],
   "lint": {
     "rules": [
-      "polymer-2"
+      "polymer-1"
     ]
   },
   "builds": [
