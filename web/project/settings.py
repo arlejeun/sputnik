@@ -45,8 +45,8 @@ UPLOADED_IMAGES_DEST = os.path.realpath('.') + '/project/upload/assets/user/'
 
 # Recaptcha
 RECAPTCHA_USE_SSL = False
-RECAPTCHA_PUBLIC_KEY = '6Lfol9cSAAAAADAkodaYl9wvQCwBMr3qGR_PPHcw'
-RECAPTCHA_PRIVATE_KEY = 'private'
+RECAPTCHA_PUBLIC_KEY = '6LfdtC4UAAAAAHjjL08N7pE5FqgsD2x5zLcCh32Z'
+RECAPTCHA_PRIVATE_KEY = '6LfdtC4UAAAAANBcrLpuHfWYx2tsPJQtdgEbS7PG'
 SECRET_KEY = 'devkey'
 
 # Static content
