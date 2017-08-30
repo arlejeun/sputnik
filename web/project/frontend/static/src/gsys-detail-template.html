@@ -94,7 +94,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <google-codelab title="Pulse Template" environment="web" last-updated="2017-04-18" noToolbar=true noHighlight=true>
 
-            <google-codelab-step label="Insights" duration="2">
+            <google-codelab-step label="Dataset" duration="2">
                 <h2>[[item.definition.name]]</h2>
                 <section>
                     <p>[[item.definition.description]]</p>
@@ -189,9 +189,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <p>In order to run this template, you need to configure all statistic types properly
                 in your Stat Server applications used by Pulse.</p>
 
-                <paper-button class="dashboard-reserve" on-tap="_onDownloadOptions" data-args="[[item]]">
+                <!--<paper-button class="dashboard-reserve" on-tap="_onDownloadOptions" data-args="[[item]]">
                     Download options
-                </paper-button>
+                </paper-button>-->
+
+
+                <aside class="special">
+                        <p>The template is relying on specific statistic types. Those statistics type can be downloaded and should be imported into your Genesys environment in the Stat Server options.<br></p>
+                        <p>
+                            <paper-button raised class="colored" on-tap="_onDownloadOptions" data-args="[[item]]">
+                                <iron-icon icon="file-download"></iron-icon>
+                                    <b>Download Stat Server Options</b>
+                            </paper-button>
+                        </p>
+                </aside>
 
                 <h3>Who developed this template?</h3>
                 <s-html html="[[item.metadata.contributor]]"></s-html>

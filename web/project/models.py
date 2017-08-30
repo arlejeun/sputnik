@@ -52,6 +52,7 @@ class Dashboards (db.Document, object):
     features = db.DictField()
     prerequisites = db.DictField()
     download_link = db.StringField()
+    ss_options_file = db.StringField()
     pub_date = db.DateTimeField(default=datetime.datetime.now)
     templates = db.ListField()
     meta = {'strict': False}

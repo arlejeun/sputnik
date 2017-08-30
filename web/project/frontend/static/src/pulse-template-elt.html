@@ -56,14 +56,14 @@
             vertical-align: middle;
           }
           .dashboard-reserve {
-              color: var(--google-blue-500);
+              color: var(--genesys-red);
               float: right;
           }
 
           iron-icon.star {
             --iron-icon-width: 16px;
             --iron-icon-height: 16px;
-            color: var(--paper-amber-500);
+            color: var(--genesys-red);
           }
           iron-icon.star:last-of-type { color: var(--paper-grey-500); }
 
@@ -122,6 +122,12 @@
               border-color: black;
             }
 
+            star-rating {
+                --star-elt-color: {
+                    color: #FF4F1F;
+                }
+            }
+
     </style>
 
 
@@ -129,7 +135,7 @@
 
         <paper-card>
 
-          <paper-toolbar style="background:#e05f98">
+          <paper-toolbar style="background: rgb(117, 117, 117);">
               <div title><b>[[item.definition.name]]</b><br>
               <i>Refresh rate - [[item.definition.refresh_interval]]s / Regular</i>
             </div>

@@ -48,7 +48,9 @@ def add_visualization():
 
         viz.save()
 
-        return redirect(url_for('upload.complete', user_email=current_user.email))
+        #return redirect(url_for('upload.complete', user_email=current_user.email))
+        return redirect(url_for('visualizations.get_visualization_list'))
+
 
     return render_template('upload/add_visualization.html', form=form)
 
@@ -60,27 +62,37 @@ def add_template():
 
     form = AddTemplateForm()
 
-    if request.method == 'POST' and 'template_export' in request.files:
+    if request.method == 'POST' and 'template_export' in request.files and 'ss_options_export' in request.files:
 
         filename1 = upload_exported_templates.save(request.files['template_export'], current_user.email)
-        filename2 = upload_images.save(request.files['template_image'], current_user.email)
+
+        if request.files['template_image'].filename == '':
+            print "No available screenshot"
+            image_src = ''
+        else:
+            filename2 = upload_images.save(request.files['template_image'], current_user.email)
+            image_src = "{}{}/screenshots/{}".format(blueprint.url_prefix, blueprint.static_url_path, filename2)
+            image_src = image_src[1:]
+
         filename3 = upload_exported_options.save(request.files['ss_options_export'], current_user.email)
 
         template_src = "{}{}/definitions/{}".format(blueprint.url_prefix, blueprint.static_url_path, filename1)
         template_src = template_src[1:]
 
-        image_src = "{}{}/screenshots/{}".format(blueprint.url_prefix, blueprint.static_url_path, filename2)
-        image_src = image_src[1:]
+        template_src_file = "{}/definitions/{}".format(blueprint.static_folder, filename1)
 
         ss_option_src = "{}{}/options/{}".format(blueprint.url_prefix, blueprint.static_url_path, filename3)
         ss_option_src = ss_option_src[1:]
 
-        template_src_file = "{}/definitions/{}".format(blueprint.static_folder, filename1)
-
 
         with open(template_src_file) as fh:
             tmp = json.load(fh)
-            definition = tmp['template'][0]['definition']
+            if bool(tmp['definition']):
+                definition = tmp['definition']
+            elif bool(tmp['template'][0]['definition']):
+                definition = tmp['template'][0]['definition']
+            else:
+                print 'Template definition not accurate'
 
         metadata = {'image_src':image_src, 'contributor':current_user.email,
                     'template_src':template_src, 'ss_option_src':ss_option_src}
@@ -89,7 +101,9 @@ def add_template():
 
         template.save()
 
-        return redirect(url_for('upload.complete', user_email=current_user.email))
+        return redirect(url_for('templates.get_template_list'))
+        #return redirect(url_for('upload.complete', user_email=current_user.email))
+
     return render_template('upload/add_template.html', form=form)
 
 

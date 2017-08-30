@@ -46,12 +46,12 @@
             vertical-align: middle;
           }
           .dashboard-reserve {
-              color: var(--google-blue-500);
+              color: var(--genesys-purple);
               padding:5px;
           }
 
           .dashboard-delete {
-              color: var(--google-red-500);
+              color: var(--genesys-purple);
               padding:5px;
           }
 
@@ -62,6 +62,12 @@
           }
           iron-icon.star:last-of-type { color: var(--paper-grey-500); }
 
+
+           star-rating {
+                --star-elt-color: {
+                    color: #FF4F1F;
+                }
+            }
 
 	        .small{
 	        	font-size: 9pt;
@@ -88,12 +94,12 @@
           }
 
           paper-icon-button.actions {
-            color: var(--google-blue-500);
+            color: var(--genesys-purple);
             --paper-icon-button-ink-color: var(--paper-indigo-500);
           }
 
           paper-icon-button.actions:hover {
-            background-color: var(--google-blue-500);
+            background-color: var(--genesys-purple);
             color: white;
           }
 
@@ -114,6 +120,13 @@
             paper-card-header-image {
               border: 20px;
               border-color: black;
+            }
+
+
+            star-rating {
+                --star-elt-color: {
+                    color: var(--genesys-purple);
+                }
             }
 
     </style>
@@ -141,20 +154,23 @@
 
               <div class="dashboard-header">[[item.title]]
 
-                <div class="dashboard-location dashboard-light"></div>
-                 <star-rating rate=[[item.rating]] read-only></star-rating>
+                  <!--<div class="dashboard-location dashboard-light"></div>-->
+                  <star-rating rate=[[item.rating]] read-only></star-rating>
 
               </div>
 
               <!--<p>[[item.pricing_options]]</p>-->
-              <!--<p class="dashboard-light">[[item.short_desc]]</p>-->
+              <p class="dashboard-light">[[item.short_desc]]</p>
 
             </div>
 
               <div class="card-actions" align="right">
 
-                <paper-icon-button icon="open-in-new" class="actions" on-tap="_onExploreVisualization" data-args="[[item]]"></paper-icon-button>
-                <paper-icon-button icon="cloud-download" class="actions" on-tap="_onDownloadVisualization" data-args="[[item]]"></paper-icon-button>
+                <paper-button class="dashboard-reserve" on-tap="_onExploreVisualization" data-args="[[item]]">Explore</paper-button>
+                <paper-button class="dashboard-reserve" on-tap="_onDownloadVisualization" data-args="[[item]]">Download</paper-button>
+
+                <!--<paper-icon-button icon="open-in-new" class="actions" on-tap="_onExploreVisualization" data-args="[[item]]"></paper-icon-button>-->
+                <!--<paper-icon-button icon="cloud-download" class="actions" on-tap="_onDownloadVisualization" data-args="[[item]]"></paper-icon-button>-->
                 <template is="dom-if" if="{{_isAdmin(role)}}">
                   <paper-icon-button icon="delete" class="actions" on-tap="_onDeleteVisualization" data-args="[[item]]"></paper-icon-button>
                 </template>

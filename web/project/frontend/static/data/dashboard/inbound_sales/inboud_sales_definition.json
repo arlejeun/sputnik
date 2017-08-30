@@ -1,0 +1,33 @@
+{
+      "name":"Sales_Dashboard_v1",
+      "title":"Inbound Sales Dashboard",
+      "image_src":"../../static/images/Pulse_Dashboard.png",
+      "rating":3,
+      "tags":["Pulse","Inbound","Voice","Cloud"],
+      "short_desc":"The Sales Supervisor Dashboard offers contact center managers and supervisors real-time access to the operational KPIs to monitor the status of your queues and gain actionable insights into your team performance.",
+      "templates":[
+                    {"label":"Queue KPIs", "_id":"00505682723f-ac82-11e5-a040-d3048daa"},
+                    {"label":"Agent Group Status", "_id":"00505682723f-ac82-11e5-a03f-0163a7f7"}
+                  ],
+      "download_link": "//drive.google.com/uc?export=download&id=0B82XQciEH8d-NXM5dVpSMkgzc1k",
+      "ss_options_file": "//drive.google.com/uc?export=download&id=0B82XQciEH8d-Y2tNVmlDWTZSX3M",
+      "overview": {
+          "goals" :["Visualize trends of service level across your queues and volume of customer calls with your organization today",
+                    "Identify at a glance and in real-time the distribution of your teams by status",
+                    "Measure the service level as well as other key performance indicators to measure the performance of your routing distribution"],
+          "prerequisites": ["Genesys CIM 8.1+", "Genesys Pulse 8.5.106+"],
+          "author": "<p class=\"s-html\">This dashboard was built by the Genesys Pulse Team.</p> <aside class=\"warning\"><p><b>Note:</b> This dashboard is not shipped out-of-box with Pulse but it is an example of what kind of dashboard can be used to monitor your service level across your queues.</p></aside>"
+      },
+      "features":{
+          "intro":"<section><p>Supervisors need to know at-a-glance what is happening in their contact centers. This dashboard helps users identify whether or not operational targets are met as well as manage agent workload across different teams for voice interactions.<br class=\"style-scope gsys-detail-dashboard\">This dashboard is made of several widgets which can be grouped into 3 categories:</p><ul class=\"checklist style-scope gsys-detail-dashboard\"><li class=\"style-scope gsys-detail-dashboard\">Sales Queue KPIs (Gold, Platinium, Silver)</li><li class=\"style-scope gsys-detail-dashboard\">Agent Group Status</li><li class=\"style-scope gsys-detail-dashboard\">Summary Queue KPIs</li></ul></section>",
+          "widgets":[
+              {"shtml":"<h2>Sales Queue KPIs</h2><p>The Sales Queue KPIs are showing the trends of the Service Level across your different queues or group of queues.</p><aside class=\"special style-scope gsys-detail-dashboard\"><p class=\"style-scope gsys-detail-dashboard\">In this dashboard, supervisors can monitor the intraday service level of the Sales queues by customer segment (Gold, Platinium, Sales). These line charts are displaying the volume of calls entered in the queues, the Service Level (SL) within 20s and within 60s to help supervisors understand if the current workload is efficiently being distributed to the agents.</p></aside>",
+               "slides":["/static/images/Sales_Dashboard/Sales_Gold_KPIs.png","/static/images/Sales_Dashboard/Sales_Platinium_KPIs.png","/static/images/Sales_Dashboard/Sales_Silver_KPIs.png"]},
+              {"shtml":"<h2>Agent Group Status</h2><p>This set of widgets shows a summary of KPIs to identify the current workforce available to manage the workload of the Contact Centers.<br></p><aside class=\"special\"><p>In this dashboard, supervisors can monitor their current agent availability in the Sales agent group as well as the current status of agents (on calls, on hold, waiting for calls,...). The  donut show the distribution of the agents by status and the sparkline KPIs widget show the trends of the number of agents currently ready and working.</p></aside><br><p><a href=\"/static/images/Sales_Dashboard/Agent_Group_Distribution.png\" target=\"_blank\" title=\"Agent Group Distribution\"><img alt=\"Agent Group Status\" src=\"/static/images/Sales_Dashboard/Agent_Group_Distribution.png\" style=\"max-width: 624px\"></a><br></p><p>Supervisors can easily change the visualization in the display options to show the number of the sales agent working or available over time for customer inquiries.<a href=\"/static/images/Sales_Dashboard/Agent_Group_Status.png\" target=\"_blank\" title=\"Agent Group Status\"><img alt=\"Agent Group Status\" src=\"/static/images/Sales_Dashboard/Agent_Group_Status.png\" style=\"max-width: 624px\"></img></a><br><br></p>"},
+              {"shtml":"<h2>Summary Queue KPIs</h2><p>The Summary Queue KPIs widget presents overall performance metrics for queues and/or group of queueus. It contains relevant information about: </p><ul><li><b>Service Level</b> - SL (10s, 20s, 30s, 45s, 60s)</li><li><b>Speed of Answer</b> - Answered (10s, 20s, 30s, 60s) </li><li><b>Interaction Volume</b> - Entered, Abandoned, Cleared, Answered</li><li><b>Current Activities</b> - Waiting, Oldest Call Waiting Time, Expected Waiting Time,...</li><li><b>Avergae KPIs</b> - AWT, AHT, ASA, AWA</li><li><b>Min & Max</b> - Max calls, Min calls within last hour</li></ul><br><p><a href=\"/static/images/Sales_Dashboard/Summary_Queue_KPIs.png\" target=\"_blank\" title=\"Summary Queue KPIs\"><img alt=\"Agent Group Status\" src=\"/static/images/Sales_Dashboard/Summary_Queue_KPIs.png\" style=\"max-width: 624px\"></img></a><br></p>"}
+          ]
+      },
+      "prerequisites": {
+          "templates":"<h2>Template requirements</h2><p>See below the list of the templates required with this dashboard and links to additional information.<aside class=\"warning\"><p>Make sure you review the dependencies on your applications (provisioning, callflow,...) for each template to ensure the consistency of the dashboard.</p></aside>"
+      }
+  }

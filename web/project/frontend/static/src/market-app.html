@@ -192,7 +192,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             role="main">
           <gsys-pulse name="pulse" route="[[subroute]]" user="[[user]]" role="[[_roleChanged(role)]]"></gsys-pulse>
           <gsys-insights name="insights" route="[[subroute]]"></gsys-insights>
-          <gsys-detail-template name="detail" route="[[subroute]]" category="pulse_wallboards"></gsys-detail-template>
+          <!--<gsys-detail-template name="detail" route="[[subroute]]" category="pulse_wallboards"></gsys-detail-template>-->
           <gsys-view404 name="view404"></gsys-view404>
 
         </iron-pages>
@@ -320,15 +320,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       },
 
       _showTemplates: function (evt) {
-        this.$.appLocation.set('path','pulse/templates');
+        location.href= '/pulse/templates';
       },
 
       _showDashboards: function (evt) {
-        this.$.appLocation.set('path','pulse/dashboards');
+        //this.$.appLocation.set('path','pulse/dashboards');
+        location.href= '/pulse/dashboards';
       },
 
       _showVisualizations: function (evt) {
-        this.$.appLocation.set('path','pulse/visualizations');
+        //this.$.appLocation.set('path','pulse/visualizations');
+        location.href= '/pulse/visualizations';
       },
 
       _showHome: function (evt) {

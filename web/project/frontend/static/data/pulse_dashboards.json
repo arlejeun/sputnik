@@ -1,5 +1,5 @@
 [{
-      "name":"Sales_Dashboard",
+      "name":"Sales_Dashboard_v1",
       "title":"Inbound Sales Dashboard",
       "image_src":"../../static/images/Pulse_Dashboard.png",
       "rating":3,
@@ -9,7 +9,7 @@
                     {"label":"Queue KPIs", "_id":"00505682723f-ac82-11e5-a040-d3048daa"},
                     {"label":"Agent Group Status", "_id":"00505682723f-ac82-11e5-a03f-0163a7f7"}
                   ],
-      "download_link": "/static/data/dashboard/inbound_sales/export_inbound_sales_dashboard.json",
+      "download_link": "//drive.google.com/uc?export=download&id=0B82XQciEH8d-NXM5dVpSMkgzc1k",
       "ss_options_file": "//drive.google.com/uc?export=download&id=0B82XQciEH8d-Y2tNVmlDWTZSX3M",
       "overview": {
           "goals" :["Visualize trends of service level across your queues and volume of customer calls with your organization today",

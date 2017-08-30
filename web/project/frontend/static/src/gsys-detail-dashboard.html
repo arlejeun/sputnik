@@ -238,7 +238,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         </div>
                     </template>
 
-                    <template is="dom-if" if="[[item.ss_options_file]]">
+                    <!--<template is="dom-if" if="[[item.ss_options_file]]">-->
 
                         <aside class="special">
                             <p>The templates used for this dashboard are relying on specific statistic types. Those statistics type can be downloaded and should be imported into your Genesys environment in the Stat Server options.<br></p>
@@ -246,13 +246,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <paper-button raised class="colored">
                                     <iron-icon icon="file-download"></iron-icon>
                                    <!-- <a href="[[item.ss_options_file]]" target="_blank">-->
-                                   <a href="" target="_blank">
+                                   <a href="[[item.ss_options_file]]" target="_blank">
                                         <b>Download Stat Server Options</b>
                                     </a>
                                 </paper-button>
                             </p>
                         </aside>
-                    </template>
+
 
                 </section>
 
