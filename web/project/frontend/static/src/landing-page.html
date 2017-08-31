@@ -165,9 +165,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <paper-icon-button class="logo" src="/static/images/landing/logo_adaptive-G-Coloured.png"></paper-icon-button>
                 <div main-title>GENESYS</div>
 
-                    <paper-icon-button icon="icons:dashboard" on-tap="_showDashboards"></paper-icon-button>
-                    <paper-icon-button icon="icons:assessment" on-tap="_showTemplates"></paper-icon-button>
-                    <paper-icon-button icon="icons:timeline" on-tap="_showVisualizations"></paper-icon-button>
+                    <paper-icon-button title="Explore Dashboards" icon="icons:dashboard" on-tap="_showDashboards"></paper-icon-button>
+                    <paper-icon-button title="Explore Templates" icon="icons:assessment" on-tap="_showTemplates"></paper-icon-button>
+                    <paper-icon-button title="Explore Visualizations" icon="icons:timeline" on-tap="_showVisualizations"></paper-icon-button>
                     <div style="margin-left: 20px;"></div>
 
                     <template is="dom-if" if="{{isloggedIn(user)}}">

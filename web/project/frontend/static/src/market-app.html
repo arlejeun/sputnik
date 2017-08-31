@@ -166,10 +166,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <div main-title>Reporting & Analytics</div>
 
-                <paper-icon-button icon="icons:home" on-tap="_showHome"></paper-icon-button>
-                <paper-icon-button icon="icons:dashboard" on-tap="_showDashboards"></paper-icon-button>
-                <paper-icon-button icon="icons:assessment" on-tap="_showTemplates"></paper-icon-button>
-                <paper-icon-button icon="icons:timeline" on-tap="_showVisualizations"></paper-icon-button>
+                <paper-icon-button title="Home" icon="icons:home" on-tap="_showHome"></paper-icon-button>
+                <paper-icon-button title="Explore Dashboards" icon="icons:dashboard" on-tap="_showDashboards"></paper-icon-button>
+                <paper-icon-button title="Explore Templates" icon="icons:assessment" on-tap="_showTemplates"></paper-icon-button>
+                <paper-icon-button title="Explore Visualizations" icon="icons:timeline" on-tap="_showVisualizations"></paper-icon-button>
                 <div style="margin-left: 20px;"></div>
 
                 <template is="dom-if" if="{{isloggedIn(user)}}">
