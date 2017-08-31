@@ -8,7 +8,7 @@
     "polymer": "polymer/polymer#^1.4.0",
     "app-layout": "polymerelements/app-layout#^0.10.7",
     "app-route": "polymerelements/app-route#^0.9.1",
-    "codelab-components": "arlejeun/codelab-components#^2.0.7",
+    "codelab-components": "arlejeun/codelab-components#^2.0.8",
     "iron-accordions": "alijaya/iron-accordions#^1.1.0",
     "iron-form": "polymerelements/iron-form#^1.0.0",
     "iron-icons": "PolymerElements/iron-icons#^2.0.1",
