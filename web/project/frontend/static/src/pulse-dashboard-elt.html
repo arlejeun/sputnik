@@ -41,6 +41,11 @@
               float: right;
           }
 
+          .dashboard-reserve-greyed {
+              color: var( --paper-grey-400);
+              float: right;
+          }
+
           iron-icon.star {
             --iron-icon-width: 16px;
             --iron-icon-height: 16px;
@@ -109,11 +114,7 @@
                 }
             }
 
-           a paper-button,
-           a:active paper-button,
-           a:visited paper-button {
-             color: #ff3d00;
-           }
+
 
     </style>
 
@@ -145,15 +146,17 @@
 
             </div>
 
+
+
               <paper-button class="dashboard-reserve" on-tap="_onExploreDashboard" data-args="[[item]]">Explore</paper-button>
-              <paper-button class="dashboard-reserve" on-tap="_onDownloadDashboard" data-args="[[item]]">Download</paper-button>
 
-              <!--<a href="[[item.download_link]]">
-                  <paper-button class="dashboard-reserve">Download</paper-button>
-              </a>-->
+             <template is="dom-if" if="[[item.download_link]]">
+                  <paper-button class="dashboard-reserve" on-tap="_onDownloadDashboard" data-args="[[item]]">Download</paper-button>
+             </template>
 
-
-
+              <template is="dom-if" if="[[!item.download_link]]">
+                  <paper-button disabled class="dashboard-reserve-greyed">Download</paper-button>
+              </template>
 
          </paper-card>
 
