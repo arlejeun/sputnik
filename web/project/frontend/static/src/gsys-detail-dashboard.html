@@ -17,7 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/star-rating/star-rating.html">
 <link rel="import" href="../bower_components/l2t-paper-slider/l2t-paper-slider.html">
-<link rel="import" href="../bower_components/s-html/s-html.html">
+<link rel="import" href="components/s-html.html">
 
 <link rel="import" href="market-category-data.html">
 <link rel="import" href="shared-styles.html">
@@ -103,20 +103,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             --paper-divider-color: #ff4f1f;
         }
 
-        :host(aside.special:host)
-            {
-                border-color: #6a6;
-                background: #ded;
-                color: #464;
-            }
+        :host(aside.special:host) {
+            cborder-color: #6a6;
+            background: #ded;
+            color: #464;
+        }
 
+        :host {
+            --s-html-anchor-color: var(--genesys-purple);
+        }
 
         .slider-image {
-               background-repeat: no-repeat;
+            background-repeat: no-repeat;
         }
 
         .dashboard-reserve {
-              color: var(--genesys-purple);
+            color: var(--genesys-purple);
         }
 
         @media (min-width: 500px) {
@@ -153,7 +155,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         }
 
-        .survey{
+        .survey {
             postion:relative;
         }
 
