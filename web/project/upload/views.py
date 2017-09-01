@@ -87,10 +87,10 @@ def add_template():
 
         with open(template_src_file) as fh:
             tmp = json.load(fh)
-            if bool(tmp['definition']):
+            if 'definition' in tmp:
                 definition = tmp['definition']
                 name = definition['guid']
-            elif bool(tmp['template'][0]['definition']):
+            elif 'template' in tmp:
                 definition = tmp['template'][0]['definition']
                 name = definition['guid']
             else:
