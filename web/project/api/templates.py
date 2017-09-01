@@ -42,7 +42,7 @@ def post_template_api():
 
 
 @temp_api.route('/<name>', methods=['DELETE'])
-@auth_token_required
+@login_required
 @admin_permission.require(http_exception=403)
 def delete_template_api(name):
     template = Templates.objects(name=name)
