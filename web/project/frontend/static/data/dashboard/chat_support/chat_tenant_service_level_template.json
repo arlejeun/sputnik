@@ -1,0 +1,491 @@
+{
+  "state": {
+    "body_hash_1": -1888611150,
+    "uscn": 642,
+    "body_hash_2": -1888611150
+  },
+  "definition": {
+    "name": "Chat SL Statistics",
+    "description":"A report presenting the Chat Service Level Performance at the tenant level grouped by Business Attributes (referer, origination page) to summarize the contact center activity and the speed of answer for customer inquiries using the chat channel.",
+    "enable_delta_snapshots": true,
+    "tenant_dbid": 0,
+    "refresh_interval": 10,
+    "default_widget_body": {
+      "column_visibility": [
+        {
+          "visibility": "vVISIBLE",
+          "column_id": "$"
+        }
+      ],
+      "refresh_interval": 10,
+      "view": [
+        {
+          "type": "BarView",
+          "column_selector": [
+            "Service_Level"
+          ],
+          "sorting": [
+            {
+              "is_asc": true
+            }
+          ]
+        }
+      ],
+      "label": "Cloud Chat SL Statistics",
+      "size_y": 2,
+      "size_x": 1
+    },
+    "collector_def": {
+      "allowed_object_type": [
+        "SObjectTenant"
+      ]
+    },
+    "proxy_access_object": {
+      "dbid": 0
+    },
+    "guid": "00505682723f-a7cc-11e6-e4df-30346a32",
+    "layout_type": "ltPCREGULAR",
+    "column": [
+      {
+        "id": "_Object$ID",
+        "type": "ctFORMULA",
+        "category": "ccDIMENSION",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectID"
+          ]
+        },
+        "vt": "vINT",
+        "is_delta_key": true
+      },
+      {
+        "id": "_GBK_PageTitle",
+        "type": "ctSTATSERVER",
+        "format": "string",
+        "category": "ccDIMENSION",
+        "vt": "vSTR",
+        "label": "Page Title",
+        "statistic": {
+          "type": "ssctGROUPKEY",
+          "group_key_alias": "PageTitle"
+        }
+      },
+      {
+        "id": "_Level",
+        "type": "ctFORMULA",
+        "category": "ccDIMENSION",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.RowLevel"
+          ]
+        },
+        "vt": "vINT",
+        "is_delta_key": false
+      },
+      {
+        "id": "_GBK_Referrer",
+        "type": "ctSTATSERVER",
+        "format": "string",
+        "category": "ccDIMENSION",
+        "vt": "vSTR",
+        "label": "Referrer",
+        "statistic": {
+          "type": "ssctGROUPKEY",
+          "group_key_alias": "Referrer"
+        }
+      },
+      {
+        "id": "_Object$Name",
+        "type": "ctFORMULA",
+        "format": "string",
+        "category": "ccDIMENSION",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectName"
+          ]
+        },
+        "vt": "vSTR"
+      },
+      {
+        "id": "_Object$Type",
+        "type": "ctFORMULA",
+        "category": "ccDIMENSION",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectType"
+          ]
+        },
+        "vt": "vINT",
+        "is_delta_key": true
+      },
+      {
+        "id": "Service_Level",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "Service Level",
+        "statistic": {
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_Service_Level",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "Requested",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Requested",
+        "statistic": {
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_TotalNumber_InteractionCreated",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "Answered",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Answered",
+        "statistic": {
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_TotalNumber_InteractionAccepted",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "Abandoned",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Abandoned",
+        "statistic": {
+          "filter": "CHAT_ABANDONED",
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_TotalNumber_InteractionDeleted",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "Requested_15m",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Requested (15min)",
+        "statistic": {
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_TotalNumber_InteractionCreated",
+          "insensitivity": 0,
+          "time_profile": "Last15min",
+          "adm_user_data": false,
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "Answered_15m",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Answered (15min)",
+        "statistic": {
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_TotalNumber_InteractionAccepted",
+          "insensitivity": 0,
+          "time_profile": "Last15min",
+          "adm_user_data": false,
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "Abandoned_15m",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Abandoned (15min)",
+        "statistic": {
+          "filter": "CHAT_ABANDONED",
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_TotalNumber_InteractionDeleted",
+          "insensitivity": 0,
+          "time_profile": "Last15min",
+          "adm_user_data": false,
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "WaitTime",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "category": "ccMEASURE",
+        "vt": "vLONG",
+        "label": "Wait Time",
+        "statistic": {
+          "filter": "CHAT_ABANDONED",
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_TotalTime_Abandoned_or_Accepted",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "ServiceLevel_10s",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "Service Level (10sec)",
+        "statistic": {
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_Service_Level_InTimeRange",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "time_range": "Range0-10",
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "ServiceLevel_30s",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "Service Level (30sec)",
+        "statistic": {
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_Service_Level_InTimeRange",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "time_range": "Range0-30",
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "ServiceLevel_60s",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "Service Level (60sec)",
+        "statistic": {
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_Service_Level_InTimeRange",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "time_range": "Range0-60",
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "Answered_10s",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "Answered (10sec)",
+        "statistic": {
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_TotalNumberInTimeRangePercentage_InteractionAccepted",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "time_range": "Range0-10",
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "Answered_30s",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "Answered (30sec)",
+        "statistic": {
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_TotalNumberInTimeRangePercentage_InteractionAccepted",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "time_range": "Range0-30",
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "Answered_60s",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "Answered (60sec)",
+        "statistic": {
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_TotalNumberInTimeRangePercentage_InteractionAccepted",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "time_range": "Range0-60",
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "ASA",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "category": "ccMEASURE",
+        "vt": "vLONG",
+        "label": "Average Speed of Answer",
+        "statistic": {
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_AverageTime_InteractionAccepted",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "AAT",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "category": "ccMEASURE",
+        "vt": "vLONG",
+        "label": "Average Time to Abandon",
+        "statistic": {
+          "filter": "CHAT_ABANDONED",
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_AverageTime_InteractionDeleted",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "MaxWaitTime",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "category": "ccMEASURE",
+        "vt": "vLONG",
+        "label": "Max Wait Time",
+        "statistic": {
+          "filter": "CHAT_ABANDONED",
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_Max_Wait_Time",
+          "insensitivity": 0,
+          "time_profile": "SlidingHour",
+          "adm_user_data": false,
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "AWT",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "category": "ccMEASURE",
+        "vt": "vLONG",
+        "label": "Average Wait Time",
+        "statistic": {
+          "filter": "CHAT_ABANDONED",
+          "group_by_columns": [
+            "PageTitle",
+            "Referrer"
+          ],
+          "stat_type_name": "Tenant_GB_AverageTime_Abandoned_or_Accepted",
+          "insensitivity": 0,
+          "adm_user_data": false,
+          "notification_mode": "SChangesBasedNotification"
+        }
+      }
+    ],
+    "is_template": true,
+    "default_widget": {
+      "id": 0,
+      "size": "1x2",
+      "view": [
+        {
+          "type": "BarView",
+          "column_selector": [
+            "Service_Level"
+          ],
+          "sorting": [
+            {
+              "is_asc": false
+            }
+          ]
+        }
+      ],
+      "label": "Chat SL Statistics",
+      "layout_id": 71
+    }
+  },
+  "record": {
+    "timestamp": 1485555791,
+    "username": "default                                                                                                                                                                                                                                                        "
+  }
+}

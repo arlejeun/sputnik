@@ -1,0 +1,379 @@
+{
+  "state": {
+    "uscn": 142,
+    "body_hash_1": -189665530,
+    "body_hash_2": -189665530
+  },
+  "definition": {
+    "name": "Agent Group Status",
+    "description": "Include working - Agents are provided logins or devices and are assigned to media that match their skills. With this report, the supervisor can ensure the agents are logged in where they should be and managing the media for which they are responsible.",
+    "template_guid": "000000000000-0000-0000-0000-00000002",
+    "guid": "00505682723f-ac82-11e5-a03f-0163a7f7",
+    "layout_type": "ltPCREGULAR",
+    "column": [
+      {
+        "id": "_Object$ID",
+        "type": "ctFORMULA",
+        "category": "ccDIMENSION",
+        "vt": "vINT",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectID"
+          ]
+        },
+        "is_delta_key": true
+      },
+      {
+        "id": "_Object$Name",
+        "type": "ctFORMULA",
+        "format": "string",
+        "category": "ccDIMENSION",
+        "vt": "vSTR",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectName"
+          ]
+        }
+      },
+      {
+        "id": "_Object$Type",
+        "type": "ctFORMULA",
+        "category": "ccDIMENSION",
+        "vt": "vINT",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectType"
+          ]
+        },
+        "is_delta_key": true
+      },
+      {
+        "id": "Current_Agents_Logged_In",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The number of agents that are currently logged in at all the DNs within a specified agent group, or at all the DNs at places within the specified place group.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Logged In",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrAgentsLoggedIn"
+        }
+      },
+      {
+        "id": "Current_Agents_Ready",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The number of agents who are currently in the Ready state. Typically, it represents the total number of agents waiting for customer interactions or specific tasks.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Ready",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrentReadyAgents"
+        }
+      },
+      {
+        "id": "Current_Agents_Not_Ready",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The number of agents who are currently logged in and who are currently in the NotReady state. Typically, it represents the total number of agents not available to handle incoming interactions.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Not Ready",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrNumberNotReadyStatuses"
+        }
+      },
+      {
+        "id": "Current_Agents_Break",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The number of agents who are in Not Ready state with Reason Break.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Break",
+        "statistic": {
+          "filter": "MOTIF_Break",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrNumberNotReadyStatuses"
+        }
+      },
+      {
+        "id": "Current_Agents_Lunch",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The number of agents who are in Not Ready state with Reason Lunch.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Lunch",
+        "statistic": {
+          "filter": "MOTIF_Lunch",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrNumberNotReadyStatuses"
+        }
+      },
+      {
+        "id": "Current_Agents_Others",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The number of agents who are in Not Ready state with Reason different from Lunch and Break.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Offline",
+        "statistic": {
+          "filter": "MOTIF_Others",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrNumberNotReadyStatuses"
+        }
+      },
+      {
+        "id": "Current_Agents_ACW",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The current number of agents in the AfterCallWork status. Typically this status happens when an agent is no longer talking with the customer but still requires additional time to handle properly customer requests.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "ACW",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrNumberACWStatuses"
+        }
+      },
+      {
+        "id": "Current_Agents_Consult",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The current number of agents in CallConsult status (participating in consultation calls).",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Consult",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrNumberConsultStatuses"
+        }
+      },
+      {
+        "id": "Current_Agents_Dialing",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The current number of agents in CallDialing status (dialing calls).",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Dialing",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrNumberDialingStatuses"
+        }
+      },
+      {
+        "id": "Current_Agents_On_Hold",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The current number of agents in CallOnHold status; that is, where the agent has one or more calls on hold.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "On Hold",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrNumberHoldStatuses"
+        }
+      },
+      {
+        "id": "Current_Agents_Inbound",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The current number of agents in CallInbound status; that is, where the agent is conducting one or more inbound calls.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Inbound",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrNumberInboundStatuses"
+        }
+      },
+      {
+        "id": "Current_Agents_Outbound",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The current number of agents in CallOutbound status; that is, where the agent is conducting one or more outbound calls.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Outbound",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrNumberOutboundStatuses"
+        }
+      },
+      {
+        "id": "Current_Agents_Internal",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The current number of agents in CallInternal status; that is, where the agent is conducting one or more internal calls.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Internal",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrNumberInternalStatuses"
+        }
+      },
+      {
+        "id": "Current_Agents_Ringing",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The current number of agents in CallRinging status; that is, where one or more calls are waiting to be answered by an agent.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Ringing",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrNumberRingingStatuses"
+        }
+      },
+      {
+        "id": "Current_Agents_Logged_Out",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "description": "The number of agents that are currently logged out from Genesys environment.",
+        "category": "ccMEASURE",
+        "vt": "vINT",
+        "label": "Logged Out",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrAgentsLoggedOut"
+        }
+      },
+      {
+        "id": "Perc_Ready",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "description": "The percentage of agents ready to handle customers calls.",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "% Ready",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrAgentsPercReady"
+        }
+      },
+      {
+        "id": "Perc_Not_Ready",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "description": "The percentage of agents in a not ready status.",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "% Not Ready",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrAgentsPercNotReady"
+        }
+      },
+      {
+        "id": "Perc_Inbound",
+        "type": "ctSTATSERVER",
+        "format": "percent",
+        "description": "The percentage of agents handling customer calls.",
+        "category": "ccMEASURE",
+        "vt": "vDBL",
+        "label": "% Inbound",
+        "statistic": {
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60,
+          "stat_type_name": "CurrAgentsPercInbound"
+        }
+      },
+      {
+        "id": "Working",
+        "type": "ctFORMULA",
+        "format": "integer",
+        "description": "Total number of agents currently working",
+        "vt": "vINT",
+        "label": "Working",
+        "formula": {
+          "type": "ftPCSCRIPT",
+          "text": [
+            "Result=Data.Current_Agents_Consult.Value + Data.Current_Agents_Dialing.Value + Data.Current_Agents_On_Hold.Value + Data.Current_Agents_Inbound.Value + Data.Current_Agents_Outbound.Value + Data.Current_Agents_Internal.Value + Data.Current_Agents_Ringing.Value;"
+          ]
+        }
+      }
+    ],
+    "collector_def": {
+      "allowed_object_type": [
+        "SObjectGroupAgents",
+        "SObjectGroupPlaces"
+      ]
+    },
+    "proxy_access_object": {
+      "dbid": 0
+    },
+    "refresh_interval": 60,
+    "default_widget_body": {
+      "view": [
+        {
+          "type": "BarView",
+          "column_selector": [
+            "Current_Agents_Logged_In"
+          ],
+          "sorting": [
+            {
+              "is_asc": true
+            }
+          ]
+        }
+      ],
+      "label": "Agent Group Status - 1",
+      "size_y": 2,
+      "size_x": 1,
+      "column_visibility": [
+        {
+          "column_id": "$",
+          "visibility": "vVISIBLE"
+        },
+        {
+          "column_id": "Current_Agents_Consult",
+          "visibility": "vHIDDENINWIDGET"
+        },
+        {
+          "column_id": "Current_Agents_Dialing",
+          "visibility": "vHIDDENINWIDGET"
+        },
+        {
+          "column_id": "Current_Agents_On_Hold",
+          "visibility": "vHIDDENINWIDGET"
+        },
+        {
+          "column_id": "Current_Agents_Ringing",
+          "visibility": "vHIDDENINWIDGET"
+        }
+      ]
+    },
+    "enable_delta_snapshots": false
+  },
+  "record": {
+    "timestamp": 1449862817,
+    "username": "default                                                                                                                                                                                                                                                        "
+  }
+}

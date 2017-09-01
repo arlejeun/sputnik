@@ -1,0 +1,274 @@
+{
+  "state": {
+    "body_hash_1": 1144372523,
+    "uscn": 634,
+    "body_hash_2": 1144372523
+  },
+  "definition": {
+    "name": "Chat Waiting Statistics (IxnQ, GroupBy)",
+    "description":"A report presenting metrics to monitor the activity of the Genesys interaction queues within Genesys workflow. This report is useful to monitor the number of chat requests currently waiting and give an insight of the current workload for chat inquiries.",
+    "enable_delta_snapshots": true,
+    "refresh_interval": 60,
+    "default_widget_body": {
+      "column_visibility": [
+        {
+          "visibility": "vVISIBLE",
+          "column_id": "$"
+        }
+      ],
+      "refresh_interval": 60,
+      "view": [
+        {
+          "type": "BarView",
+          "column_selector": [
+            "CurrentWaiting"
+          ],
+          "sorting": [
+            {
+              "is_asc": true
+            }
+          ]
+        }
+      ],
+      "label": "Chat Waiting Statistics (IxnQ, GroupBy)",
+      "size_y": 2,
+      "size_x": 1
+    },
+    "collector_def": {
+      "allowed_object_type": [
+        "SObjectStagingArea"
+      ]
+    },
+    "proxy_access_object": {
+      "dbid": 0
+    },
+    "guid": "00505682723f-a7cc-11e6-c3d6-ef150a9b",
+    "layout_type": "ltPCREGULAR",
+    "column": [
+      {
+        "id": "_Object$ID",
+        "type": "ctFORMULA",
+        "category": "ccDIMENSION",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectID"
+          ]
+        },
+        "vt": "vINT",
+        "is_delta_key": true
+      },
+      {
+        "id": "_Level",
+        "type": "ctFORMULA",
+        "category": "ccDIMENSION",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.RowLevel"
+          ]
+        },
+        "vt": "vINT",
+        "is_delta_key": false
+      },
+      {
+        "id": "_GBK_CustomerSegment",
+        "type": "ctSTATSERVER",
+        "format": "string",
+        "category": "ccDIMENSION",
+        "vt": "vSTR",
+        "label": "CustomerSegment",
+        "statistic": {
+          "type": "ssctGROUPKEY",
+          "group_key_alias": "CustomerSegment"
+        }
+      },
+      {
+        "id": "_GBK_Language",
+        "type": "ctSTATSERVER",
+        "format": "string",
+        "category": "ccDIMENSION",
+        "vt": "vSTR",
+        "label": "Language",
+        "statistic": {
+          "type": "ssctGROUPKEY",
+          "group_key_alias": "Language"
+        }
+      },
+      {
+        "id": "_GBK_Inquiry",
+        "type": "ctSTATSERVER",
+        "format": "string",
+        "category": "ccDIMENSION",
+        "vt": "vSTR",
+        "label": "Inquiry",
+        "statistic": {
+          "type": "ssctGROUPKEY",
+          "group_key_alias": "Inquiry"
+        }
+      },
+      {
+        "id": "_Object$Name",
+        "type": "ctFORMULA",
+        "format": "string",
+        "category": "ccDIMENSION",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectName"
+          ]
+        },
+        "vt": "vSTR"
+      },
+      {
+        "id": "_Object$Type",
+        "type": "ctFORMULA",
+        "category": "ccDIMENSION",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectType"
+          ]
+        },
+        "vt": "vINT",
+        "is_delta_key": true
+      },
+      {
+        "id": "CurrentWaiting",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "vt": "vINT",
+        "label": "Current Waiting",
+        "statistic": {
+          "filter": "CHAT_MEDIA",
+          "group_by_columns": [
+            "CustomerSegment",
+            "Language",
+            "Inquiry"
+          ],
+          "stat_type_name": "IxnQ_GB_CurrentWait",
+          "insensitivity": 0,
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "WaitTime",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "vt": "vLONG",
+        "label": "Total Wait Time",
+        "statistic": {
+          "filter": "CHAT_MEDIA",
+          "group_by_columns": [
+            "CustomerSegment",
+            "Language",
+            "Inquiry"
+          ],
+          "stat_type_name": "IxnQ_GB_WaitTime",
+          "insensitivity": 0,
+          "time_profile": "SlidingHour",
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "MaxWaiting",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "vt": "vINT",
+        "label": "Max Waiting",
+        "statistic": {
+          "filter": "CHAT_MEDIA",
+          "group_by_columns": [
+            "CustomerSegment",
+            "Language",
+            "Inquiry"
+          ],
+          "stat_type_name": "IxnQ_GB_MaxWaiting",
+          "insensitivity": 0,
+          "time_profile": "SlidingHour",
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "MaxWaitTime",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "vt": "vLONG",
+        "label": "Max Wait Time",
+        "statistic": {
+          "filter": "CHAT_MEDIA",
+          "group_by_columns": [
+            "CustomerSegment",
+            "Language",
+            "Inquiry"
+          ],
+          "stat_type_name": "IxnQ_GB_MaxWaitTime",
+          "insensitivity": 0,
+          "time_profile": "SlidingHour",
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "MinWaiting",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "vt": "vINT",
+        "label": "Min Waiting",
+        "statistic": {
+          "filter": "CHAT_MEDIA",
+          "group_by_columns": [
+            "CustomerSegment",
+            "Language",
+            "Inquiry"
+          ],
+          "stat_type_name": "IxnQ_GB_MinWaiting",
+          "insensitivity": 0,
+          "time_profile": "SlidingHour",
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "MinWaitTime",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "vt": "vLONG",
+        "label": "Min Wait Time",
+        "statistic": {
+          "filter": "CHAT_MEDIA",
+          "group_by_columns": [
+            "CustomerSegment",
+            "Language",
+            "Inquiry"
+          ],
+          "stat_type_name": "IxnQ_GB_MinWaitTime",
+          "insensitivity": 0,
+          "time_profile": "SlidingHour",
+          "notification_mode": "SChangesBasedNotification"
+        }
+      },
+      {
+        "id": "AWT",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "vt": "vLONG",
+        "label": "Average Wait Time",
+        "statistic": {
+          "filter": "CHAT_MEDIA",
+          "group_by_columns": [
+            "CustomerSegment",
+            "Language",
+            "Inquiry"
+          ],
+          "stat_type_name": "IxnQ_GB_AverageWaitTime",
+          "insensitivity": 0,
+          "time_profile": "SlidingHour",
+          "notification_mode": "SChangesBasedNotification"
+        }
+      }
+    ]
+  },
+  "record": {
+    "timestamp": 1481923962,
+    "username": "default"
+  }
+}

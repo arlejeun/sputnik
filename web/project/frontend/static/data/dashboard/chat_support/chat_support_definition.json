@@ -1,0 +1,36 @@
+{
+    "name":"Chat_Support_Dashboard_v1",
+    "title":"Chat Support Dashboard",
+    "image_src":"../../static/images/Pulse_Chat_Supervisor.jpg",
+    "rating":4,
+    "tags":["Pulse","Smart","eServices","chat"],
+    "short_desc":"The Chat Support dashboard helps you monitor in real-time your agent status as well as the agent capacity and handle additional interactions to support customers engaging with chat interactions.",
+    "templates":[
+                  {"label":"Agent Group Status", "_id":"00505682723f-ac82-11e5-a03f-0163a7f7"},
+                  {"label":"Chat Service Level Performance", "_id":"00505682723f-a7cc-11e6-e4df-30346a32"},
+                  {"label":"Chat Agent Activity", "_id":"000000000000-0000-0000-0000-00000008"},
+                  {"label":"Chat Waiting Statistics", "_id":"00505682723f-a7cc-11e6-c3d6-ef150a9b"}],
+    "download_link": "//drive.google.com/uc?export=download&id=0B82XQciEH8d-SWJra290Qm50dFk",
+    "ss_options_file": "//drive.google.com/uc?export=download&id=0B82XQciEH8d-eW9pQktOT0xGb0U",
+    "overview": {
+          "goals" :["Visualize at glance the current capacity of your skill centers to handle new chat inquiries based on your agent availability",
+                    "Monitor the concurrent chat interactions being served and the ratio of chat answered by your skill centers",
+                    "Visualize the trend of service level and chat interactions handled by skill centers or customer representatives",
+                    "Identify the best performers to handle chat requests and behaviors like who terminated the chat session first - agent or customer?"],
+
+          "prerequisites": ["Genesys CIM 8.1+", "Genesys Pulse 8.5.106+","Stat Server 8.5.106.04+","Chat Server 8.5.107.05","GMS 8.5.107+"],
+          "author": "<p>This dashboard was built by the Genesys Pulse and the eServices Teams. <aside class=\"warning\"><p><b>Note:</b> This dashboard is not shipped out-of-box with Pulse but it is an example of what kind of dashboard can be used to monitor your activities related to chat support.</p></aside>"},
+      "features":{
+          "intro":"<section class=\"style-scope gsys-detail-dashboard\"><p class=\"style-scope gsys-detail-dashboard\">The Chat Support dashboard helps you monitor in real-time your agent status as well as the agent capacity to handle additional interactions to support customers engaging with chat interactions. This dashboard also monitors operational agent KPIs to compare agent performance and identify the top performers of your team to support chat customer interactions.</p></section>",
+          "widgets":[
+              {"shtml":"<section><h3>Agent Group Status</h3><p>In order to manage the workload across different teams, supervisors can monitor their employee availability and behavior in the Agent Group Status reports.<br> This report provides supervisors an at-a-glance view of available staffing and their current states. For example, see which agents are currently handling chat requests, waiting for customer inquiries, or not ready with reason.<br><br><img alt=\"Agent Status - Team Leader\" src=\"/static/images/Chat_Support_Dashboard/01_Agent_Group_Status.png\" style=\"max-width: 624px\"></a><br></p><section>"},
+              {"shtml":"<section><h3>Chat Service Level</h3><p>In this widget, supervisors can monitor the intraday service level of the Chat requests by origination page and referer. The break down can be visualized in the expanded view for additional information. This line chart is displaying the volume of chats answered in the environment, the Service Level (SL) and SL within 60s to help supervisors understand if the current workload is efficiently being distributed to the agents handling the chat inquiries. It helps supervisors to understand if the agents with the right skills can handle the different chat topics. By default, the chat topics are made of two 2 KVPs:<ul><li>Referer</li><li> Page title</li>/ul><img alt=\"Chat Service Level\" src=\"/static/images/Chat_Support_Dashboard/02_Service_Level_Trend.png\" style=\"max-width: 624px\"></p></section>"},
+              {"shtml":"<section><h3>Chat KPIs</h3><p>Supervisors can monitor the KPIs of your Chat activity in their contact center and analyze how many chats are being currently requested on your web site. See below a non-exhaustive list of relevant metrics: <ul><li>volume of customer chat inquiries being concurrently handled by your team</li><li>service level within 60 sec for chat inquiries</li><li>average response time for your team to handle customer chat inquiries</li><li>volume of current customer chat inquiries waiting in your system</li></ul><img alt=\"Chat KPIs\" src=\"/static/images/Chat_Support_Dashboard/03_Chat_KPIs.png\" style=\"max-width: 624px\"></p></section>"},
+              {"shtml":"<section><h3>Agent Capacity</h3><p>For a media like chat, agents can handle more than one interaction at a time so it is really important for Supervisors to understand at a glance what is the current capacity of their teams as well as the number of concurrent chats being handled to determine the agent and team occupancy..<img alt=\"Agent Capacity\" src=\"/static/images/Chat_Support_Dashboard/04_Agent_Capacity.png\" style=\"max-width: 624px\"></p></section>"},
+              {"shtml":"<section><h3>Chat Agent KPIs</h3><p>And finally, Supervisors can monitor the Agent Group KPIs in their contact center, compare the KPIs to assess their best performers and analyze Agent performance in the Chat Agent KPI reports. See below a non-exhaustive list of relevant metrics: <ul><li>volume of chat inquiries handled by agent with their average handle time</li><li>percentage of chat sessions being closed by an agent</li><li>agent occupancy to identify the most available agents</li></ul><img alt=\"Chat Agent KPIsr\" src=\"/static/images/Chat_Support_Dashboard/05_Chat_Agent_KPIs.png\" style=\"max-width: 624px\"></p></section>"}
+          ]},
+      "prerequisites": {
+          "templates":"<h2>Template requirements</h2><p>See below the list of the templates required with this dashboard and links to additional information. <br>Make sure to review the dependencies on your applications (provisioning, callflow,...) for each template to ensure the consistency of the dashboard</p>"
+      }
+
+}

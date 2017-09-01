@@ -105,15 +105,14 @@ class Templates (db.Document, object):
         super(db.Document, self).__init__(*args, **kwargs)
         for key in kwargs:
             setattr(self, key, kwargs[key])
+
+    name = db.StringField(max_length=60, required=True)
     definition = db.DictField(required=True)
     desc = db.StringField()
     metadata = db.DictField(required=True)
     rating = db.IntField()
-  #  image_src = db.StringField()
-  #  template_src = db.StringField()
-  #  ss_option_src = db.StringField()
     pub_date = db.DateTimeField(default=datetime.datetime.now)
-  #  contributor = db.StringField(max_length=125)
+    contributor = db.StringField(max_length=125)
     meta = {'strict': False}
 
     def clean(self):
