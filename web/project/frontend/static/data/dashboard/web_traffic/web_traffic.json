@@ -1,0 +1,60 @@
+{
+  "name": "Web_Traffic_Today_View_v1",
+  "title": "Web Traffic View",
+  "image_src": "../../static/images/Web_Traffic_Dashboard.png",
+  "rating": 3,
+  "tags": [
+    "Pulse",
+    "Digital",
+    "Web Engagement"
+  ],
+  "short_desc": "The expanded view shows a summary of all the customer engagements initiated from the website. Advanced capabilities are offered to monitor the volume of prospects over time while identifying the top categories visited by your customers.",
+  "overview": {
+    "goals": [
+      "Identify where are your online visitors coming from?",
+      "Measure the volume of visitors and pages viewed on your website",
+      "Identify the most visited resources (domains, pages, categories, rules) before engaging with your organization"
+    ],
+    "prerequisites": [
+      "Genesys CIM 8.1+",
+      "Genesys Pulse 8.5.106+",
+      "Genesys Web Engagement 8.5+"
+    ],
+    "author": "<p>This dashboard was built and is supported by the Genesys Web Engagement Team. <br> Additional information can be found in the technical documentation </p><ul><li><a href=\"https://docs.genesys.com/Documentation/GWE/latest/Report/funneldash\" target=\"_blank\">Engagement Summary Today Extended View</a></li><li><a href=\"https://docs.genesys.com/Documentation/GWE/latest/Report/Welcome\" target=\"_blank\">Genesys Web Engagement Reporting Guide</a></li></ul>"
+  },
+  "features": {
+    "intro": "<section class=\"style-scope gsys-detail-dashboard\"><p class=\"style-scope gsys-detail-dashboard\">This view includes a heat map that displays important information about the locations of your visitors, using the time frame established by the time filter.</p> <aside class=\"warning\"> <p>Note: By default Web Engagement does not collect visitor IP addresses. If you want to analyze this data, you must have your system administrator turn this feature on explicitly.</p></aside><p class=\"style-scope gsys-detail-dashboard\"><a href=\"/static/images/Web_Traffic_Today/Gwe-pulse_heat_map.png\" target=\"_blank\" title=\"The Engagement Summary Overview Timeline\" class=\"style-scope gsys-detail-dashboard\"><img alt=\"The Engagement Summary Overview Timeline\" src=\"/static/images/Web_Traffic_Today/Gwe-pulse_heat_map.png\" style=\"max-width: 624px\" class=\"style-scope gsys-detail-dashboard\"></a><br class=\"style-scope gsys-detail-dashboard\"><br class=\"style-scope gsys-detail-dashboard\"></p></section>",
+    "widgets": [
+      {
+        "shtml": "<section><h2>Top 5 Origins</h2><p>This widget shows the distribution of the top 5 origins. It helps supervisors identify whether or not to apply specific behaviors on the website based on the location of the customers.</p><aside class=\"warning\"><p ><b >Note:</b>These statistics are different from the ones displayed in the GWE - Engagement Summary Today basic view.</p></aside><p><a href=\"/static/images/Web_Traffic_Today/Gwe-top_5_origins.png\" target=\"_blank\" title=\"Top 5 origins\"> <img alt=\"Top 5 Origins\" src=\"/static/images/Web_Traffic_Today/Gwe-top_5_origins.png\" style=\"max-width: 400px\" ></a><br></p></section>"
+      },
+      {
+        "shtml": "<section><h2>Top 5 Domains</h2><p>This widget shows the distribution of the top 5 domains visited by the customers. It helps supervisors identify whether or not to apply specific offers (promotions, advertising, chat offer, webhooks..) based on the visited pages.</p><a href=\"/static/images/Web_Traffic_Today/Gwe-top_5_domains.png\" title=\"Top 5 Domains\"><img alt=\"Top 5 Domains\" src=\"/static/images/Web_Traffic_Today/Gwe-top_5_domains.png\" style=\"max-width: 400px\"></a><br><br></p></section>"
+      },
+      {
+        "shtml": "<section><h2>Web KPIs</h2><p>Those widgets monitor basic online KPIs to:</p><ul><li><b>Mobile vs Desktop</b> - visualize if the website is being accessed from a desktop or mobile devices</li><li><b>Languages</b> - identify which languages are being used by your online customers</li><li><b>Browsers</b> - identify which browsers are being used by online visitors</li></ul><p>These values are all based on the time frame established by the time filter.</p><p><a href=\"/static/images/Web_Traffic_Today/GWE-Widgets.png\" target=\"_blank\" title=\"Overview Web Traffic KPI Widgets\"><img alt=\"Overview Web Traffic KPI Widgets\" src=\"/static/images/Web_Traffic_Today/Gwe-Widgets.png\" style=\"max-width: 624px\"></a><br></p></section>"
+      },
+      {
+        "shtml": "<section><h2>Website Traffic</h2><p>This dashboard also includes a layered timeline graph that displays how many visitors have come to your site and how many pages they have viewed, using the time frame established by the time filter.</p><p><a href=\"/static/images/Web_Traffic_Today/Gwe-website-traffic.png\" target=\"_blank\" title=\"Website Traffic\"><img alt=\"Website Traffic\" src=\"/static/images/Web_Traffic_Today/Gwe-website_traffic.png\" style=\"max-width: 624px\"> </a></p></section>"
+      }
+    ]
+  },
+  "prerequisites": {
+    "templates": "<h2>Dashboard requirements</h2><aside class=\"special style-scope gsys-detail-dashboard\"><p>This dashboard cannot be directly downloaded from this website because it is only accessible with the Web Engagement solution. In order to deploy this dashboard into your Pulse environment, you must install the Genesys Data Processing Server and the Web Engagement Reporting Server as described in the technical documentation.<br></p></aside>",
+    "links": [
+      {
+        "label": "Installing Genesys Data Processing Server",
+        "url": "https://docs.genesys.com/Documentation/GWE/latest/Deployment/installgdps"
+      },
+      {
+        "label": "Using Web Engagement with Data Processing Server",
+        "url": "https://docs.genesys.com/Documentation/GWE/latest/Deployment/gdps4gem"
+      },
+      {
+        "label": "Installing the Web Engagement Reporting Server",
+        "url": "https://docs.genesys.com/Documentation/GWE/latest/Deployment/installrptsrvr"
+      }
+    ]
+  }
+}
+
