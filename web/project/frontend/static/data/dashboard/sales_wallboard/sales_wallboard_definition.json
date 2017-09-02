@@ -1,0 +1,33 @@
+{
+    "name":"Basic_Sales_Wallboard_v1",
+    "title":"Basic Sales Wallboard",
+    "image_src":"../../static/images/Sales_Wallboard/Sales_Wallboard_Dark_Theme_screenshot.png",
+    "rating":3,
+    "tags":["Pulse","Inbound","wallboard"],
+    "short_desc":"Supervisors need to know at-a-glance what is happening in their contact centers. This dashboard helps users identify whether or not operational targets are met as well as manage agent workload across different teams for voice interactions.",
+    "templates":[
+        {"label":"Queue KPIs", "_id":"00505682723f-ac82-11e5-a040-d3048daa"},
+        {"label":"Agent Group Status", "_id":"00505682723f-ac82-11e5-a03f-0163a7f7"}
+    ],
+  "download_link": "//drive.google.com//uc?export=download&id=0B82XQciEH8d-YV9KbElNaTVhbUU",
+  "ss_options_file": "//drive.google.com/uc?export=download&id=0B82XQciEH8d-Y2tNVmlDWTZSX3M",
+
+    "overview": {
+          "goals" :["Visualize trends of service level across your queues and volume of customer calls with your organization today",
+                    "Identify at a glance and in real-time the distribution of your teams by status",
+                    "Measure the service level as well as other key performance indicators to measure the performance of your routing distribution"],
+          "prerequisites": ["Genesys CIM 8.1+", "Genesys Pulse 8.5.106+"],
+          "author": "<p>This dashboard was built by the Genesys Pulse Team.</p> <aside class=\"warning\"><p><b>Note:</b> This wallboard is not shipped out-of-box with Pulse but it is an example of what kind of wallboard can be used to monitor your service level across your queues.</p></aside>"
+      },
+      "features":{
+          "intro":"<section><p>Supervisors need to know at-a-glance what is happening in their contact centers. This wallboard helps users identify whether or not operational targets are met as well as manage agent workload across different teams for voice interactions.<br><p>The wallboard presents overall performance metrics for queues and/or group of queues as well as agent performance metrics. It contains relevant information about: </p><ul><li><b>Service Level</b> - SL (10s, 20s, 30s, 45s, 60s)</li><li><b>Speed of Answer</b> - Answered (10s, 20s, 30s, 60s) </li><li><b>Interaction Volume</b> - Entered, Abandoned, Cleared, Answered</li><li><b>Agent Group Status</b> - Ready, Not Ready, ACW, Inbound, Outbound,...</li><li><b>Current Activities</b> - Waiting, Oldest Call Waiting Time, Expected Waiting Time,...</li><li><b>Avergae KPIs</b> - AWT, AHT, ASA, AWA</li><li><b>Min & Max</b> - Max calls, Min calls within last hour</li></ul><br></p></section>",
+          "widgets":[
+              {"shtml":"<h2>Sales Wallboard - White Theme</h2><p>This wallboard is using the dark theme to broadcast KPIs to agent on the floor in the Contact Centers.</p><p><a href=\"/static/images/Sales_Wallboard/Sales_Wallboard_White_Theme_screenshot.png\" target=\"_blank\" title=\"Wallboard White Theme\"><img alt=\"Wallboard White Theme\" src=\"/static/images/Sales_Wallboard/Sales_Wallboard_White_Theme_screenshot.png\" style=\"max-width: 624px\"></a><br></p>"},
+              {"shtml":"<h2>Sales Wallboard - Dark Theme</h2><p>This wallboard is using the dark theme to broadcast KPIs to agent on the floor in the Contact Centers.</p><p><a href=\"/static/images/Sales_Wallboard/Sales_Wallboard_Dark_Theme_screenshot.png\" target=\"_blank\" title=\"Wallboard Dark Theme\"><img alt=\"Wallboard Dark Theme\" src=\"/static/images/Sales_Wallboard/Sales_Wallboard_Dark_Theme_screenshot.png\" style=\"max-width: 624px\"></a><br></p>"},
+              {"shtml":"<h2>Edit widget</h2><p>Supervisors can easily change the visualization in the display options of the edit mode to show the number of the sales agent working or available over time for customer inquiries.<a href=\"/static/images/Sales_Dashboard/Agent_Group_Status.png\" target=\"_blank\" title=\"Agent Group Status\"><img alt=\"Agent Group Status\" src=\"/static/images/Sales_Dashboard/Agent_Group_Status.png\" style=\"max-width: 624px\"></img></a><br><br></p>"}
+          ]
+      },
+      "prerequisites": {
+          "templates":"<h2>Template requirements</h2><p>This example does not contain any specific templates because too many combinations could be offered. Any metric from any template could be used to generate the wallboard and broadcast the information to your audience.</p>"
+      }
+  }
