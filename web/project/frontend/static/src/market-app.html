@@ -100,10 +100,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-weight: bold;
       }
 
+      @media (max-width: 640px) {
+          .toolbar {
+                display:none;
+                padding-left:50px
+           }
+           .button {
+                width:100%;
+           }
+      }
 
-      a {
-            color:#5d3e5d !important;
-       }
 
     </style>
 
@@ -173,21 +179,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
 
-                <div main-title>Reporting & Analytics</div>
+                <div main-title class="toolbar">Reporting & Analytics</div>
 
-                <paper-icon-button title="Home" icon="icons:home" on-tap="_showHome"></paper-icon-button>
-                <paper-icon-button title="Explore Dashboards" icon="icons:dashboard" on-tap="_showDashboards"></paper-icon-button>
-                <paper-icon-button title="Explore Templates" icon="icons:assessment" on-tap="_showTemplates"></paper-icon-button>
-                <paper-icon-button title="Explore Visualizations" icon="icons:timeline" on-tap="_showVisualizations"></paper-icon-button>
-                <div style="margin-left: 20px;"></div>
+                <div class="button" align="right">
+                    <paper-icon-button title="Home" icon="icons:home" on-tap="_showHome"></paper-icon-button>
+                    <paper-icon-button title="Explore Dashboards" icon="icons:dashboard" on-tap="_showDashboards"></paper-icon-button>
+                    <paper-icon-button title="Explore Templates" icon="icons:assessment" on-tap="_showTemplates"></paper-icon-button>
+                    <paper-icon-button title="Explore Visualizations" icon="icons:timeline" on-tap="_showVisualizations"></paper-icon-button>
 
-                <template is="dom-if" if="{{isloggedIn(user)}}">
-                    <paper-icon-button icon="icons:lock" on-tap="_logout"></paper-icon-button>
-                </template>
+                    <template is="dom-if" if="{{isloggedIn(user)}}">
+                        <paper-icon-button icon="icons:lock" on-tap="_logout"></paper-icon-button>
+                    </template>
 
-                <template is="dom-if" if="{{!isloggedIn(user)}}">
-                   <paper-icon-button icon="icons:lock-open" on-tap="_login"></paper-icon-button>
-                </template>
+                    <template is="dom-if" if="{{!isloggedIn(user)}}">
+                       <paper-icon-button icon="icons:lock-open" on-tap="_login"></paper-icon-button>
+                    </template>
+
+                </div>
 
           </app-toolbar>
 

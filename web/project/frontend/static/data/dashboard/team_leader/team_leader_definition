@@ -1,0 +1,35 @@
+{     "name":"Team_Leader_Dashboard_v1",
+      "title":"Team Leader Dashboard",
+      "image_src":"../../static/images/Team_Leader_Dashboard.png",
+      "rating":3,
+      "tags":["Pulse","Inbound","Smart","Cloud"],
+      "short_desc":"The Team Leader dashboard monitors in real-time your agent status as well as the kind of interaction your agents are handling. This dashboard also monitors operational agent KPIs to compare performance and identify top performers of your team.",
+      "templates":[
+                    {"label":"Agent Group Status", "_id":"00505682723f-ac82-11e5-a03f-0163a7f7"},
+                    {"label":"Agent Login", "_id":"000000000000-0000-0000-0000-00000003"},
+                    {"label":"Agent KPIs", "_id":"000000000000-0000-0000-0000-00000001"}
+      ],
+      "download_link": "//drive.google.com/uc?export=download&id=0B82XQciEH8d-cXBfV1hvOFdZU1E",
+      "ss_options_file": "//drive.google.com/uc?export=download&id=0B82XQciEH8d-djlueHpWNnZKYmc",
+
+      "overview": {
+          "goals" :["Monitor the overall time spent by a team, skill center or a customer representative in a specific status",
+                    "Measure the distribution of agent status time spent by a team and skill center",
+                    "Quantify the volume of interactions handled by skill centers or customer representatives with the technical result",
+                    "Identify the best performers to handle customer inquiries within your teams"],
+
+          "prerequisites": ["Genesys CIM 8.1+", "Genesys Pulse 8.5.106+"],
+          "author": "<p>This dashboard was built by the Genesys Pulse Team. <aside class=\"warning\"><p><b>Note:</b> This dashboard is not shipped out-of-box with Pulse but it is an example of what kind of dashboard can be used to monitor your service level across your queues.</p></aside></p>"
+      },
+      "features":{
+          "intro":"<section class=\"style-scope gsys-detail-dashboard\"><p class=\"style-scope gsys-detail-dashboard\">The Team Leader dashboard helps you monitor in real-time your agent status as well as the kind of interaction your agents are handling right now. This dashboard also monitors operational agent KPIs to compare agent performance and identify the top performers of your team.</p></section>",
+          "widgets":[
+              {"shtml":"<section><h3>Agent Group Status</h3><p>In order to manage the workload across different teams, supervisors can monitor their employee availability and behavior in the Agent Group Status reports.<br> This report provides supervisors an at-a-glance view of available staffing and their current states. For example, see which agents are on calls, on hold, waiting for calls, or not ready with reason.<br><br><img alt=\"Agent Status - Team Leader\" src=\"/static/images/Team_Leader_Dashboard/01_Agent_Status.png\" style=\"max-width: 624px\"></a><br></p><section>"},
+              {"shtml":"<section><h3>Agent Login</h3><p>Supervisors need to make sure the agents are logged in where they should be and managing the media and business segmentation for which they are responsible. Pulse users can monitor each individual agent status as well as the properties of the handling interaction in the Agent Login report. <br> The grid shows the properties related to the call currently handled by agents. By default, it includes 4 KVPs:<ul><li>Service Type</li><li> Service Sub Type</li><li> Customer Segment</li><li>Business Result</li></ul><img alt=\"Agent Login - Team Leader\" src=\"/static/images/Team_Leader_Dashboard/02_Agent_Login.png\" style=\"max-width: 624px\"></p></section>"},
+              {"shtml":"<section><h3>Agent KPIs</h3><p>Supervisors can monitor the KPIs of an agent group in their contact center, compare the KPIs to assess their best performers and analyze Agent performance in the Agent KPI reports. See below a non-exhaustive list of relevant metrics: <ul><li>volume of customer inquiries handled by agent with their average handle time</li><li>ratio of transfers which indicates unresolved first contact customer inquiries</li><li>agent occupancy to identify the most available agents</li></ul><img alt=\"Agent KPIs - Team Leader\" src=\"/static/images/Team_Leader_Dashboard/03_Agent_KPIs.png\" style=\"max-width: 624px\"></p></section>"}
+          ]
+      },
+      "prerequisites": {
+          "templates":"<h2>Template requirements</h2><p>See below the list of the templates required with this dashboard and links to additional information. <br>Make sure to review the dependencies on your applications (provisioning, callflow,...) for each template to ensure the consistency of the dashboard</p>"
+      }
+  }

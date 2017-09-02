@@ -52,11 +52,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       .container p {
         line-height: 1.5;
       }
-      @media (max-width: 600px) {
-        .container {
-          @apply --layout-vertical;
-        }
-      }
+
 
       header {
         @apply --layout-vertical;
@@ -72,6 +68,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-weight: 300;
         margin: 0;
       }
+
       header > p {
         font-size: 32px;
       }
@@ -87,9 +84,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         font-size: 56px;
         font-weight: 300;
         margin: 0;
-      }
+     }
 
-      .title > p {
+     .title > p {
         font-size: 32px;
       }
 
@@ -133,11 +130,58 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         }
 
+
+
+
+
         @media (max-width: 640px) {
-            :host {
-              --app-grid-columns: 1;
-              --app-grid-gutter:0px;
+                :host {
+                  --app-grid-columns: 1;
+                  --app-grid-gutter:20px;
+                }
+
+                 .container {
+              @apply --layout-vertical;
             }
+
+            header > h2 {
+                font-size: 34px;
+                font-weight: 280;
+                margin: 0;
+            }
+
+            header > p {
+                font-size: 22px;
+            }
+
+            .title {
+                text-align:center;
+            }
+
+             .title > h2 {
+                font-size: 42px;
+                font-weight: 300;
+                margin: 0;
+              }
+
+              .title > p {
+                font-size:28px;
+              }
+
+            .title > p  {
+                padding-right:20px
+            }
+
+            .title > p >i {
+                color:#FF4F1F;
+            }
+
+            .legend > p > i {
+                padding-left:100px;
+                font-size:28px;
+                color:#FF4F1F;
+            }
+
         }
 
         paper-card.redgen, paper-card.purple, paper-card.lime, paper-card.cyan {
@@ -185,7 +229,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <app-toolbar>
 
               <div class="title">
-                  <p>Welcome to our</p>
+                  <p><i>Welcome to</i></p>
                 <h2>Dashboard Community
                     <br>Center</h2>
 

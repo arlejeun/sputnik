@@ -1,0 +1,2171 @@
+{"query": {
+    "tab": [
+      {
+        "guid": "00505682723f-b2c0-11e7-8f97-02480f08"
+      }
+    ]
+  },
+  "tab": [
+    {
+      "body": {
+        "type": "ttDashboard",
+        "source_guid": "00505682723f-8cae-11e6-f99d-d7ce1ea7",
+        "title": "Team Leader Dashboard",
+        "proxy_access_object": {
+          "dbid": 0
+        },
+        "position": [
+          {
+            "row": 0,
+            "col": 1,
+            "widget_guid": "00505682723f-b2c0-11e7-8f97-02485d29"
+          },
+          {
+            "row": 2,
+            "col": 0,
+            "widget_guid": "00505682723f-b2c0-11e7-8f97-0248ab4a"
+          },
+          {
+            "row": 0,
+            "col": 0,
+            "widget_guid": "00505682723f-b2c0-11e7-8f97-0248f96b"
+          },
+          {
+            "row": 0,
+            "col": 3,
+            "widget_guid": "00505682723f-b2c0-11e7-8f97-0249478c"
+          }
+        ],
+        "guid": "00505682723f-b2c0-11e7-8f97-02480f08",
+        "active": true
+      },
+      "record": {
+        "timestamp": 1504326439,
+        "username": "default                                                                                                                                                                                                                                                        "
+      },
+      "uscn": 60749,
+      "body_hash": -826399931
+    }
+  ],
+  "widget": [
+    {
+      "body": {
+        "layout_body_hash": 556843217,
+        "column_visibility": [
+          {
+            "visibility": "vVISIBLE",
+            "column_id": "$"
+          },
+          {
+            "visibility": "vHIDDENINWIDGET",
+            "column_id": "Current_Agents_Consult"
+          },
+          {
+            "visibility": "vHIDDENINWIDGET",
+            "column_id": "Current_Agents_Dialing"
+          },
+          {
+            "visibility": "vHIDDENINWIDGET",
+            "column_id": "Current_Agents_On_Hold"
+          },
+          {
+            "visibility": "vHIDDENINWIDGET",
+            "column_id": "Current_Agents_Ringing"
+          }
+        ],
+        "refresh_interval": 60,
+        "view": [
+          {
+            "type": "MiniLineChartView",
+            "column_selector": [
+              "Current_Agents_Ready",
+              "Current_Agents_ACW",
+              "Working"
+            ],
+            "row_selector": [
+              {
+                "v": [
+                  "158"
+                ],
+                "k": "_Object$ID"
+              }
+            ],
+            "time_range": "trHour"
+          }
+        ],
+        "label": "Agent Group Status",
+        "layout_guid": "00505682723f-ac82-11e5-a287-80ffcacc",
+        "guid": "00505682723f-b2c0-11e7-8f97-02485d29",
+        "size_y": 2,
+        "size_x": 2
+      },
+      "uscn": 8417,
+      "body_hash": -321364780
+    },
+    {
+      "body": {
+        "layout_body_hash": 556843217,
+        "column_visibility": [
+          {
+            "visibility": "vVISIBLE",
+            "column_id": "$"
+          },
+          {
+            "visibility": "vHIDDENINWIDGET",
+            "column_id": "Current_Agents_Consult"
+          },
+          {
+            "visibility": "vHIDDENINWIDGET",
+            "column_id": "Current_Agents_Dialing"
+          },
+          {
+            "visibility": "vHIDDENINWIDGET",
+            "column_id": "Current_Agents_On_Hold"
+          },
+          {
+            "visibility": "vHIDDENINWIDGET",
+            "column_id": "Current_Agents_Ringing"
+          }
+        ],
+        "refresh_interval": 60,
+        "view": [
+          {
+            "type": "PagedDonutView",
+            "column_selector": [
+              "Current_Agents_Ready",
+              "Current_Agents_Not_Ready",
+              "Current_Agents_ACW",
+              "Current_Agents_Lunch",
+              "Current_Agents_Break",
+              "Current_Agents_Inbound",
+              "Working",
+              "Current_Agents_Others"
+            ],
+            "aggregation_function": "afSUM",
+            "view": [
+              {
+                "type": "ObjDonutView",
+                "column_selector": [
+                  "Current_Agents_Ready",
+                  "Current_Agents_Not_Ready",
+                  "Current_Agents_ACW",
+                  "Current_Agents_Lunch",
+                  "Current_Agents_Break",
+                  "Current_Agents_Inbound",
+                  "Working",
+                  "Current_Agents_Others"
+                ],
+                "row_selector": [
+                  {
+                    "v": [
+                      "158"
+                    ],
+                    "k": "_Object$ID"
+                  }
+                ]
+              }
+            ],
+            "subtype": "ObjDonutView"
+          },
+          {
+            "type": "GridView",
+            "filter": "",
+            "column_selector": [
+              "Current_Agents_Logged_In",
+              "Current_Agents_Ready",
+              "Current_Agents_Not_Ready",
+              "Current_Agents_Break",
+              "Current_Agents_Lunch",
+              "Current_Agents_Others",
+              "Current_Agents_ACW",
+              "Current_Agents_Inbound",
+              "Current_Agents_Outbound",
+              "Current_Agents_Internal",
+              "Current_Agents_Logged_Out",
+              "Perc_Ready",
+              "Perc_Not_Ready",
+              "Perc_Inbound",
+              "Working"
+            ],
+            "table_column_filter_enable": false,
+            "sorting": [
+              {
+                "column_id": "_Object$Name",
+                "is_asc": true
+              }
+            ]
+          },
+          {
+            "type": "GroupedBarView",
+            "column_selector": [
+              "Current_Agents_Logged_In",
+              "Current_Agents_Ready",
+              "Current_Agents_Not_Ready",
+              "Current_Agents_Break",
+              "Current_Agents_Lunch",
+              "Current_Agents_Others",
+              "Current_Agents_ACW",
+              "Current_Agents_Inbound",
+              "Current_Agents_Outbound",
+              "Current_Agents_Internal",
+              "Current_Agents_Logged_Out",
+              "Perc_Ready",
+              "Perc_Not_Ready",
+              "Perc_Inbound",
+              "Working"
+            ],
+            "sorting": [
+              {
+                "column_id": "alphabetically",
+                "is_asc": false
+              }
+            ]
+          },
+          {
+            "type": "LineChartView",
+            "column_selector": [
+              "Current_Agents_Logged_In"
+            ],
+            "row_selector": [
+              {
+                "v": [
+                  "158"
+                ],
+                "k": "_Object$ID"
+              }
+            ]
+          }
+        ],
+        "label": "Agent Group Status",
+        "layout_guid": "00505682723f-ac82-11e5-a287-80ffcacc",
+        "guid": "00505682723f-b2c0-11e7-8f97-0248f96b",
+        "active_view": "GridView",
+        "size_y": 2,
+        "size_x": 1
+      },
+      "uscn": 8419,
+      "body_hash": -1006678605
+    },
+    {
+      "body": {
+        "layout_body_hash": -204069097,
+        "column_visibility": [
+          {
+            "visibility": "vVISIBLE",
+            "column_id": "$"
+          },
+          {
+            "visibility": "vHIDDENINWIDGET",
+            "column_id": "Current_Status_KVP"
+          }
+        ],
+        "refresh_interval": 60,
+        "view": [
+          {
+            "type": "MiniGridView",
+            "column_selector": [
+              "_Object$Name",
+              "Current_Status",
+              "Login_Time",
+              "Reason",
+              "ANI",
+              "DNIS",
+              "Service_Type",
+              "EmployeeId",
+              "Place",
+              "Switch",
+              "columnFilter"
+            ],
+            "table_column_width": [
+              {
+                "v": "113",
+                "k": "Login_Time"
+              },
+              {
+                "v": "107",
+                "k": "Place"
+              },
+              {
+                "v": "128",
+                "k": "Current_Status"
+              },
+              {
+                "v": "96",
+                "k": "ANI"
+              },
+              {
+                "v": "82",
+                "k": "DNIS"
+              },
+              {
+                "v": "186",
+                "k": "Reason"
+              },
+              {
+                "v": "124",
+                "k": "Service_Type"
+              }
+            ],
+            "table_column_filter_enable": false,
+            "sorting": [
+              {
+                "column_id": "_Object$Name",
+                "is_asc": true
+              }
+            ]
+          },
+          {
+            "type": "LineChartView",
+            "column_selector": [
+              "Status_Time"
+            ],
+            "row_selector": [
+              {
+                "v": [
+                  "142"
+                ],
+                "k": "_Object$ID"
+              }
+            ]
+          },
+          {
+            "type": "GroupedBarView"
+          },
+          {
+            "type": "StackedBarView"
+          },
+          {
+            "type": "GridView",
+            "filter": "",
+            "column_selector": [
+              "Current_Status",
+              "Status_Time",
+              "Login_Time",
+              "Continuous_Login_Time",
+              "Reason",
+              "ANI",
+              "DNIS",
+              "EmployeeId",
+              "Place",
+              "LoginId",
+              "Extension",
+              "Service_Type",
+              "Business_Result"
+            ],
+            "table_column_width": [
+              {
+                "v": "197",
+                "k": "Reason"
+              }
+            ],
+            "table_column_filter_enable": false,
+            "prop": [
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "_Object$Name$width"
+              },
+              {
+                "v": {
+                  "v": 139,
+                  "vt": "vINT"
+                },
+                "k": "Current_Status$width"
+              },
+              {
+                "v": {
+                  "v": 106,
+                  "vt": "vINT"
+                },
+                "k": "Status_Time$width"
+              },
+              {
+                "v": {
+                  "v": 111,
+                  "vt": "vINT"
+                },
+                "k": "Login_Time$width"
+              },
+              {
+                "v": {
+                  "v": 114,
+                  "vt": "vINT"
+                },
+                "k": "Continuous_Login_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "ANI$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "DNIS$width"
+              },
+              {
+                "v": {
+                  "v": 124,
+                  "vt": "vINT"
+                },
+                "k": "EmployeeId$width"
+              },
+              {
+                "v": {
+                  "v": 110,
+                  "vt": "vINT"
+                },
+                "k": "Place$width"
+              },
+              {
+                "v": {
+                  "v": 94,
+                  "vt": "vINT"
+                },
+                "k": "LoginId$width"
+              },
+              {
+                "v": {
+                  "v": 110,
+                  "vt": "vINT"
+                },
+                "k": "Extension$width"
+              },
+              {
+                "v": {
+                  "v": 127,
+                  "vt": "vINT"
+                },
+                "k": "Service_Type$width"
+              },
+              {
+                "v": {
+                  "v": 132,
+                  "vt": "vINT"
+                },
+                "k": "Business_Result$width"
+              }
+            ],
+            "sorting": [
+              {
+                "column_id": "EmployeeId",
+                "is_asc": false
+              }
+            ]
+          }
+        ],
+        "label": "Agent Login with DNIS",
+        "layout_guid": "00505682723f-86ba-11e7-8e6b-38f2f24f",
+        "guid": "00505682723f-b2c0-11e7-8f97-0249478c",
+        "active_view": "GridView",
+        "prop": [
+          {
+            "v": {
+              "vt": "vSTR",
+              "v": "GridView"
+            },
+            "k": "active"
+          }
+        ],
+        "size_y": 4,
+        "size_x": 3
+      },
+      "uscn": 8420,
+      "body_hash": 774099328
+    },
+    {
+      "body": {
+        "layout_body_hash": -382698660,
+        "column_visibility": [
+          {
+            "visibility": "vVISIBLE",
+            "column_id": "$"
+          }
+        ],
+        "refresh_interval": 60,
+        "view": [
+          {
+            "type": "MiniGridView",
+            "column_selector": [
+              "Ready_Time",
+              "Answered",
+              "Avg_Handle_Time",
+              "Handle_Time",
+              "Not_Ready_Time"
+            ],
+            "table_column_width": [
+              {
+                "v": "179",
+                "k": "Not_Ready_Time"
+              },
+              {
+                "v": "138",
+                "k": "Handle_Time"
+              }
+            ],
+            "table_column_filter_enable": false,
+            "sorting": [
+              {
+                "column_id": "Answered",
+                "is_asc": false
+              }
+            ]
+          },
+          {
+            "type": "LineChartView",
+            "column_selector": [
+              "Login_Time"
+            ],
+            "row_selector": [
+              {
+                "v": [
+                  "142"
+                ],
+                "k": "_Object$ID"
+              }
+            ]
+          },
+          {
+            "type": "GroupedBarView"
+          },
+          {
+            "type": "StackedBarView"
+          },
+          {
+            "type": "GridView",
+            "filter": "",
+            "column_selector": [
+              "Login_Time",
+              "Ready_Time",
+              "Not_Ready_Time",
+              "Break_Time",
+              "Lunch_Time",
+              "Others_Time",
+              "Ring_Time",
+              "Dialing_Time",
+              "Handle_Time",
+              "Inbound_Time",
+              "Outbound_Time",
+              "Hold_Time",
+              "ACW_Time",
+              "Consult_Time",
+              "Internal_Time",
+              "Offered",
+              "Answered",
+              "Answered_Last_Hr",
+              "Abandoned_From_Ringing",
+              "Dropped",
+              "Outbound_Calls",
+              "Internal_Calls",
+              "Held",
+              "Transferred_Made",
+              "Consult_Made",
+              "Short_Talk",
+              "Avg_Handle_Time",
+              "Avg_ACW_Time",
+              "Avg_Hold_Time",
+              "Avg_In_Time",
+              "Avg_Out_Time",
+              "Avg_Ring_Time",
+              "Agent_Occupancy"
+            ],
+            "table_column_filter_enable": false,
+            "prop": [
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "_Object$Name$width"
+              },
+              {
+                "v": {
+                  "v": 101,
+                  "vt": "vINT"
+                },
+                "k": "Ready_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Not_Ready_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Break_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Lunch_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Others_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Ring_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Dialing_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Handle_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Inbound_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Outbound_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Hold_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "ACW_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Consult_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Internal_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Offered$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Answered$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Answered_Last_Hr$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Abandoned_From_Ringing$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Dropped$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Outbound_Calls$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Internal_Calls$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Held$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Transferred_Made$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Consult_Made$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Short_Talk$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Avg_Handle_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Avg_ACW_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Avg_Hold_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Avg_In_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Avg_Out_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Avg_Ring_Time$width"
+              },
+              {
+                "v": {
+                  "v": 150,
+                  "vt": "vINT"
+                },
+                "k": "Agent_Occupancy$width"
+              },
+              {
+                "v": {
+                  "vt": "vSTR",
+                  "v": "115"
+                },
+                "k": "Login_Time$width"
+              }
+            ],
+            "sorting": [
+              {
+                "column_id": "Login_Time",
+                "is_asc": false
+              }
+            ]
+          }
+        ],
+        "label": "Agent KPIs",
+        "layout_guid": "00505682723f-aa98-11e7-8788-59249090",
+        "guid": "00505682723f-b2c0-11e7-8f97-0248ab4a",
+        "threshold": [
+          {
+            "column_id": "Answered",
+            "value": [
+              10,
+              150,
+              200
+            ]
+          },
+          {
+            "column_id": "Avg_Handle_Time",
+            "direction_up": true,
+            "value": [
+              30,
+              2147483647,
+              300
+            ]
+          }
+        ],
+        "active_view": "GridView",
+        "prop": [
+          {
+            "v": {
+              "vt": "vSTR",
+              "v": "GridView"
+            },
+            "k": "active"
+          }
+        ],
+        "size_y": 2,
+        "size_x": 3
+      },
+      "uscn": 8418,
+      "body_hash": -1031115941
+    }
+  ],
+  "layout": [
+    {
+      "state": {
+        "requested_status": "stACTIVE",
+        "body_hash_1": 556843217,
+        "bucket_id": 39,
+        "uscn": 22,
+        "body_hash_2": 556843217
+      },
+      "definition": {
+        "name": "Agent Group Status - 1",
+        "enable_delta_snapshots": false,
+        "description": "Include working - Agents are provided logins or devices and are assigned to media that match their skills. With this report, the supervisor can ensure the agents are logged in where they should be and managing the media for which they are responsible.",
+        "refresh_interval": 60,
+        "default_widget_body": {
+          "column_visibility": [
+            {
+              "visibility": "vVISIBLE",
+              "column_id": "$"
+            },
+            {
+              "visibility": "vHIDDENINWIDGET",
+              "column_id": "Current_Agents_Consult"
+            },
+            {
+              "visibility": "vHIDDENINWIDGET",
+              "column_id": "Current_Agents_Dialing"
+            },
+            {
+              "visibility": "vHIDDENINWIDGET",
+              "column_id": "Current_Agents_On_Hold"
+            },
+            {
+              "visibility": "vHIDDENINWIDGET",
+              "column_id": "Current_Agents_Ringing"
+            }
+          ],
+          "view": [
+            {
+              "type": "BarView",
+              "column_selector": [
+                "Current_Agents_Logged_In"
+              ],
+              "sorting": [
+                {
+                  "is_asc": true
+                }
+              ]
+            }
+          ],
+          "label": "Agent Group Status - 1",
+          "size_y": 2,
+          "size_x": 1
+        },
+        "collector_def": {
+          "allowed_object_type": [
+            "SObjectGroupAgents",
+            "SObjectGroupPlaces"
+          ]
+        },
+        "proxy_access_object": {
+          "dbid": 0
+        },
+        "guid": "00505682723f-ac82-11e5-a287-80ffcacc",
+        "layout_type": "ltPCREGULAR",
+        "column": [
+          {
+            "id": "_Object$ID",
+            "type": "ctFORMULA",
+            "category": "ccDIMENSION",
+            "formula": {
+              "type": "ftPCREFERENCE",
+              "text": [
+                "Object.ObjectID"
+              ]
+            },
+            "vt": "vINT",
+            "selected_value": {
+              "type": "stCOLLECTOROBJECT",
+              "collector_object": [
+                {
+                  "name": "Bluesky",
+                  "type": "SObjectGroupAgents",
+                  "tenant_dbid": 1,
+                  "dbid": 158,
+                  "inclusion_type": "itSELF"
+                }
+              ]
+            },
+            "is_delta_key": true
+          },
+          {
+            "id": "_Object$Name",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccDIMENSION",
+            "formula": {
+              "type": "ftPCREFERENCE",
+              "text": [
+                "Object.ObjectName"
+              ]
+            },
+            "vt": "vSTR"
+          },
+          {
+            "id": "_Object$Type",
+            "type": "ctFORMULA",
+            "category": "ccDIMENSION",
+            "formula": {
+              "type": "ftPCREFERENCE",
+              "text": [
+                "Object.ObjectType"
+              ]
+            },
+            "vt": "vINT",
+            "is_delta_key": true
+          },
+          {
+            "id": "Current_Agents_Logged_In",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The number of agents that are currently logged in at all the DNs within a specified agent group, or at all the DNs at places within the specified place group.",
+            "vt": "vINT",
+            "label": "Logged In",
+            "statistic": {
+              "stat_type_name": "CurrAgentsLoggedIn",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_Ready",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The number of agents who are currently in the Ready state. Typically, it represents the total number of agents waiting for customer interactions or specific tasks.",
+            "vt": "vINT",
+            "label": "Ready",
+            "statistic": {
+              "stat_type_name": "CurrentReadyAgents",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_Not_Ready",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The number of agents who are currently logged in and who are currently in the NotReady state. Typically, it represents the total number of agents not available to handle incoming interactions.",
+            "vt": "vINT",
+            "label": "Not Ready",
+            "statistic": {
+              "stat_type_name": "CurrNumberNotReadyStatuses",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_Break",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The number of agents who are in Not Ready state with Reason Break.",
+            "vt": "vINT",
+            "label": "Break",
+            "statistic": {
+              "filter": "MOTIF_Break",
+              "stat_type_name": "CurrNumberNotReadyStatuses",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_Lunch",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The number of agents who are in Not Ready state with Reason Lunch.",
+            "vt": "vINT",
+            "label": "Lunch",
+            "statistic": {
+              "filter": "MOTIF_Lunch",
+              "stat_type_name": "CurrNumberNotReadyStatuses",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_Others",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The number of agents who are in Not Ready state with Reason different from Lunch and Break.",
+            "vt": "vINT",
+            "label": "Offline",
+            "statistic": {
+              "filter": "MOTIF_Others",
+              "stat_type_name": "CurrNumberNotReadyStatuses",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_ACW",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The current number of agents in the AfterCallWork status. Typically this status happens when an agent is no longer talking with the customer but still requires additional time to handle properly customer requests.",
+            "vt": "vINT",
+            "label": "ACW",
+            "statistic": {
+              "stat_type_name": "CurrNumberACWStatuses",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_Consult",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The current number of agents in CallConsult status (participating in consultation calls).",
+            "vt": "vINT",
+            "label": "Consult",
+            "statistic": {
+              "stat_type_name": "CurrNumberConsultStatuses",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_Dialing",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The current number of agents in CallDialing status (dialing calls).",
+            "vt": "vINT",
+            "label": "Dialing",
+            "statistic": {
+              "stat_type_name": "CurrNumberDialingStatuses",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_On_Hold",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The current number of agents in CallOnHold status; that is, where the agent has one or more calls on hold.",
+            "vt": "vINT",
+            "label": "On Hold",
+            "statistic": {
+              "stat_type_name": "CurrNumberHoldStatuses",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_Inbound",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The current number of agents in CallInbound status; that is, where the agent is conducting one or more inbound calls.",
+            "vt": "vINT",
+            "label": "Inbound",
+            "statistic": {
+              "stat_type_name": "CurrNumberInboundStatuses",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_Outbound",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The current number of agents in CallOutbound status; that is, where the agent is conducting one or more outbound calls.",
+            "vt": "vINT",
+            "label": "Outbound",
+            "statistic": {
+              "stat_type_name": "CurrNumberOutboundStatuses",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_Internal",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The current number of agents in CallInternal status; that is, where the agent is conducting one or more internal calls.",
+            "vt": "vINT",
+            "label": "Internal",
+            "statistic": {
+              "stat_type_name": "CurrNumberInternalStatuses",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_Ringing",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The current number of agents in CallRinging status; that is, where one or more calls are waiting to be answered by an agent.",
+            "vt": "vINT",
+            "label": "Ringing",
+            "statistic": {
+              "stat_type_name": "CurrNumberRingingStatuses",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Current_Agents_Logged_Out",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The number of agents that are currently logged out from Genesys environment.",
+            "vt": "vINT",
+            "label": "Logged Out",
+            "statistic": {
+              "stat_type_name": "CurrAgentsLoggedOut",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Perc_Ready",
+            "type": "ctSTATSERVER",
+            "format": "percent",
+            "category": "ccMEASURE",
+            "description": "The percentage of agents ready to handle customers calls.",
+            "vt": "vDBL",
+            "label": "% Ready",
+            "statistic": {
+              "stat_type_name": "CurrAgentsPercReady",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Perc_Not_Ready",
+            "type": "ctSTATSERVER",
+            "format": "percent",
+            "category": "ccMEASURE",
+            "description": "The percentage of agents in a not ready status.",
+            "vt": "vDBL",
+            "label": "% Not Ready",
+            "statistic": {
+              "stat_type_name": "CurrAgentsPercNotReady",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Perc_Inbound",
+            "type": "ctSTATSERVER",
+            "format": "percent",
+            "category": "ccMEASURE",
+            "description": "The percentage of agents handling customer calls.",
+            "vt": "vDBL",
+            "label": "% Inbound",
+            "statistic": {
+              "stat_type_name": "CurrAgentsPercInbound",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Working",
+            "type": "ctFORMULA",
+            "format": "integer",
+            "description": "Total number of agents currently working",
+            "formula": {
+              "type": "ftPCSCRIPT",
+              "text": [
+                "Result=Data.Current_Agents_Consult.Value + Data.Current_Agents_Dialing.Value + Data.Current_Agents_On_Hold.Value + Data.Current_Agents_Inbound.Value + Data.Current_Agents_Outbound.Value + Data.Current_Agents_Internal.Value + Data.Current_Agents_Ringing.Value;"
+              ]
+            },
+            "vt": "vINT",
+            "label": "Working"
+          }
+        ],
+        "template_guid": "00505682723f-ac82-11e5-a03f-0163a7f7"
+      },
+      "record": {
+        "timestamp": 1450113857,
+        "username": "default                                                                                                                                                                                                                                                        "
+      }
+    },
+    {
+      "state": {
+        "requested_status": "stACTIVE",
+        "body_hash_1": -382698660,
+        "bucket_id": 96,
+        "uscn": 225,
+        "body_hash_2": -382698660
+      },
+      "definition": {
+        "enable_delta_snapshots": false,
+        "refresh_interval": 60,
+        "collector_def": {
+          "allowed_object_type": [
+            "SObjectAgent",
+            "SObjectAgentPlace",
+            "SObjectGroupAgents",
+            "SObjectGroupPlaces"
+          ]
+        },
+        "proxy_access_object": {
+          "name": "",
+          "dbid": 0
+        },
+        "guid": "00505682723f-aa98-11e7-8788-59249090",
+        "layout_type": "ltPCREGULAR",
+        "column": [
+          {
+            "id": "_Object$ID",
+            "type": "ctFORMULA",
+            "category": "ccDIMENSION",
+            "formula": {
+              "type": "ftPCREFERENCE",
+              "text": [
+                "Object.ObjectID"
+              ]
+            },
+            "vt": "vINT",
+            "selected_value": {
+              "type": "stCOLLECTOROBJECT",
+              "collector_object": [
+                {
+                  "name": "Bluesky",
+                  "type": "SObjectAgent",
+                  "tenant_dbid": 1,
+                  "dbid": 158,
+                  "inclusion_type": "itGROUPMEMBERS"
+                }
+              ]
+            },
+            "is_delta_key": true
+          },
+          {
+            "id": "_Object$Name",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccDIMENSION",
+            "formula": {
+              "type": "ftPCREFERENCE",
+              "text": [
+                "Object.ObjectName"
+              ]
+            },
+            "vt": "vSTR"
+          },
+          {
+            "id": "_Object$Type",
+            "type": "ctFORMULA",
+            "category": "ccDIMENSION",
+            "formula": {
+              "type": "ftPCREFERENCE",
+              "text": [
+                "Object.ObjectType"
+              ]
+            },
+            "vt": "vINT",
+            "is_delta_key": true
+          },
+          {
+            "id": "Login_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total time that monitored agents were logged in. This metric does not include logged-in time when the switch is disconnected from Stat Server. When this metric is applied to an Agent Group, this metric calculates the total login time for all the agents belonging to the specified group.",
+            "vt": "vLONG",
+            "label": "Login Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Login_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Ready_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total time this agent spent waiting for the next call. The total duration of all WaitForNextCall statuses that completed for a particular agent during the reporting interval. When this metric is applied to an Agent Group, this metric calculates the total ready time for all the agents belonging to the specified group.",
+            "vt": "vLONG",
+            "label": "Ready Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Wait_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Not_Ready_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total time that an agent's DN completed being in NotReadyForNextCall status during the reporting interval. When this metric is applied to an Agent Group, this metric calculates the total not ready time for all the agents belonging to the specified group.",
+            "vt": "vLONG",
+            "label": "Not Ready Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Not_Ready_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Break_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total of time an agent was not available to handle incoming interactions because he was not Ready with Reason Break.",
+            "vt": "vLONG",
+            "label": "Break Time",
+            "statistic": {
+              "filter": "MOTIF_Break",
+              "stat_type_name": "Total_Not_Ready_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Lunch_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total of time an agent was not available to handle incoming interactions because he was not Ready with Reason Lunch.",
+            "vt": "vLONG",
+            "label": "Lunch Time",
+            "statistic": {
+              "filter": "MOTIF_Lunch",
+              "stat_type_name": "Total_Not_Ready_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Others_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total of time an agent was not available to handle incoming interactions because he was not Ready with Reason different from Break and Lunch.",
+            "vt": "vLONG",
+            "label": "Offline Time",
+            "statistic": {
+              "filter": "MOTIF_Others",
+              "stat_type_name": "Total_Not_Ready_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Ring_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total amount of time that calls were ringing on an agent's phone.",
+            "vt": "vLONG",
+            "label": "Ringing Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Ringing_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Dialing_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total amount of time that calls were dialing on an agent's phone.",
+            "vt": "vLONG",
+            "label": "Dialing Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Dialing_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Handle_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total time agents spend handling inbound, internal or outbound calls.",
+            "vt": "vLONG",
+            "label": "Handle Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Handle_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Inbound_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total time agents spend handling inbound calls.",
+            "vt": "vLONG",
+            "label": "In Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Inbound_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Outbound_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total time agents spend handling outbound calls.",
+            "vt": "vLONG",
+            "label": "Out Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Outbound_time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Hold_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total time agents spend on hold.",
+            "vt": "vLONG",
+            "label": "Hold Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Hold_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "ACW_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total time an agent's DN(s) completed being in AfterCallWork status during the reporting interval. This typically represents the time an agent spent doing follow-up work after calls.",
+            "vt": "vLONG",
+            "label": "ACW Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Work_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Consult_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total time agents spend handling consultative calls.",
+            "vt": "vLONG",
+            "label": "Consult Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Consult_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Internal_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total time agents spend handling internal calls.",
+            "vt": "vLONG",
+            "label": "Internal Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Internal_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Offered",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The total number of calls offered to an agent.",
+            "vt": "vINT",
+            "label": "Offered",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Calls_Offered",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Answered",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The total number of incoming calls answered by the agent.",
+            "vt": "vINT",
+            "label": "Answered",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "CallsAnswered",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Answered_Last_Hr",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The total number of incoming calls answered by the agent in the last hour.",
+            "vt": "vINT",
+            "label": "Answered (last Hr)",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "CallsAnswered",
+              "time_profile": "LastHour",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Abandoned_From_Ringing",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The total number of calls abaondoned while agent desktop was ringing.",
+            "vt": "vINT",
+            "label": "Abandoned Ringing",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "AbandonedFromRinging",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Dropped",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The total number of calls forwarded from one agent desktop to another (RONA).",
+            "vt": "vINT",
+            "label": "Calls Dropped",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Calls_Forced_Off",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Outbound_Calls",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The total number of outbound calls handled by the agent.",
+            "vt": "vINT",
+            "label": "Out",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Calls_Outbound",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Internal_Calls",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The total number of internal calls handled by the agent.",
+            "vt": "vINT",
+            "label": "Internal",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Calls_Internal",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Held",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The total number of calls put on hold by the agent.",
+            "vt": "vINT",
+            "label": "Held",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Total_Number_on_Hold",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Transferred_Made",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The total number of voice interactions transferred by this agent during the reporting interval.",
+            "vt": "vINT",
+            "label": "Transfers Made",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Transfers_Made",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Consult_Made",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The total number of voice consultations made by this agent.",
+            "vt": "vINT",
+            "label": "Consult Made",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Calls_Consult_Made",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Short_Talk",
+            "type": "ctSTATSERVER",
+            "format": "integer",
+            "category": "ccMEASURE",
+            "description": "The total number of times this agent's DN completed being in Call status of less then specified duration (10s).",
+            "vt": "vINT",
+            "label": "Short Talk(<10s)",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Short_Talk",
+              "time_range": "Range0-10",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Avg_Handle_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The average handling time represents the total time an agent spends handling inbound, outbound, internal, consultation, on hold and after call work tasks divided by the total number of inboud, outbound and internal calls.",
+            "vt": "vLONG",
+            "label": "AHT",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Average_Handle_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Avg_ACW_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The average After-Call-Work time represents the total time an agent spends on ACW status divided by the total number of time this agent was on ACW.",
+            "vt": "vLONG",
+            "label": "Avg ACW Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Average_ACW_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Avg_Hold_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The average Hold time represents the total time an agent spends on Hold status divided by the total number of time this agent put customer on hold.",
+            "vt": "vLONG",
+            "label": "Avg Hold Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Average_Hold_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Avg_In_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The average In time represents the total time an agent spends handling an incoming calls divided by the total number of time this agent was handling inbound calls.",
+            "vt": "vLONG",
+            "label": "Avg In Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Average_In_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Avg_Out_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The average Out time represents the total time an agent spends handling an outbound calls divided by the total number of time this agent was handling outbound calls.",
+            "vt": "vLONG",
+            "label": "Avg Out Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Average_Out_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Avg_Ring_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The average Ring time represents the total time an agent desktop was ringing divided by the total number of time this agent desktop was ringing.",
+            "vt": "vLONG",
+            "label": "Avg Ring Time",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Average_Ringing_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Agent_Occupancy",
+            "type": "ctSTATSERVER",
+            "format": "percent",
+            "category": "ccMEASURE",
+            "description": "The percent of time an agent spends handling calls versus their total login time.",
+            "vt": "vDBL",
+            "label": "Agent Occupancy",
+            "statistic": {
+              "filter": "VoiceCall",
+              "stat_type_name": "Agent_Occupancy",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          }
+        ],
+        "template_guid": "000000000000-0000-0000-0000-00000001"
+      },
+      "record": {
+        "timestamp": 1503440533,
+        "username": "default                                                                                                                                                                                                                                                        "
+      }
+    },
+    {
+      "state": {
+        "requested_status": "stACTIVE",
+        "body_hash_1": -204069097,
+        "bucket_id": 211,
+        "uscn": 234,
+        "body_hash_2": -204069097
+      },
+      "definition": {
+        "enable_delta_snapshots": false,
+        "refresh_interval": 60,
+        "collector_def": {
+          "allowed_object_type": [
+            "SObjectAgent"
+          ]
+        },
+        "proxy_access_object": {
+          "dbid": 0
+        },
+        "guid": "00505682723f-86ba-11e7-8e6b-38f2f24f",
+        "layout_type": "ltPCREGULAR",
+        "column": [
+          {
+            "id": "_Object$ID",
+            "type": "ctFORMULA",
+            "category": "ccDIMENSION",
+            "formula": {
+              "type": "ftPCREFERENCE",
+              "text": [
+                "Object.ObjectID"
+              ]
+            },
+            "vt": "vINT",
+            "selected_value": {
+              "type": "stCOLLECTOROBJECT",
+              "collector_object": [
+                {
+                  "name": "Bluesky",
+                  "type": "SObjectAgent",
+                  "tenant_dbid": 1,
+                  "dbid": 158,
+                  "inclusion_type": "itGROUPMEMBERS"
+                }
+              ]
+            },
+            "is_delta_key": true
+          },
+          {
+            "id": "_Object$Name",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccDIMENSION",
+            "formula": {
+              "type": "ftPCREFERENCE",
+              "text": [
+                "Object.ObjectName"
+              ]
+            },
+            "vt": "vSTR"
+          },
+          {
+            "id": "_Object$Type",
+            "type": "ctFORMULA",
+            "category": "ccDIMENSION",
+            "formula": {
+              "type": "ftPCREFERENCE",
+              "text": [
+                "Object.ObjectType"
+              ]
+            },
+            "vt": "vINT",
+            "is_delta_key": true
+          },
+          {
+            "id": "Current_Status",
+            "type": "ctSTATSERVER",
+            "format": "string",
+            "category": "ccMEASURE",
+            "description": "The current state (status) of a specified agent. Some examples of an agent's status include CallInbound, CallOutbound, and CallConsult.",
+            "vt": "vSTR",
+            "label": "Current Status",
+            "show_state_icon": true,
+            "statistic": {
+              "stat_type_name": "ExtendedCurrentStatus",
+              "notification_mode": "SChangesBasedNotification",
+              "adm_software_reasons": true,
+              "adm_hardware_reasons": true
+            }
+          },
+          {
+            "id": "Status_Time",
+            "type": "ctFORMULA",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The time agent spent in Current State.",
+            "formula": {
+              "type": "ftPCSCRIPT",
+              "text": [
+                "Result = G.GetStatusDuration(Data.Current_Status.Value);"
+              ]
+            },
+            "vt": "vLONG",
+            "label": "Time in Status"
+          },
+          {
+            "id": "Login_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "The total time that monitored agents were logged in. Applied to GroupAgents and GroupPlaces, this stat type calculates the total login time for all the agents belonging to the specified group.",
+            "vt": "vLONG",
+            "label": "Login Time",
+            "statistic": {
+              "stat_type_name": "Total_Login_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Continuous_Login_Time",
+            "type": "ctSTATSERVER",
+            "format": "time",
+            "category": "ccMEASURE",
+            "description": "Current continuous time Agent remained logged in. Applied to GroupAgents and GroupPlaces this statistics calculates total of all Agents (Places) in the Group.",
+            "vt": "vLONG",
+            "label": "Continuous Login Time",
+            "statistic": {
+              "stat_type_name": "Continuous_Login_Time",
+              "notification_mode": "STimeBasedNotification",
+              "notification_interval": 60
+            }
+          },
+          {
+            "id": "Reason",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccMEASURE",
+            "description": "Reason(s) selected by Agent.",
+            "formula": {
+              "type": "ftPCSCRIPT",
+              "text": [
+                "Result = G.GetReasonCodes(Data.Current_Status.Value);"
+              ]
+            },
+            "vt": "vSTR",
+            "label": "Reason"
+          },
+          {
+            "id": "Current_Status_KVP",
+            "type": "ctSTATSERVER",
+            "format": "string",
+            "category": "ccMEASURE",
+            "description": "The current state (status) of a specified agent to use in formulas for KVPs (Service Type, Service_SubType, Customer_Segment, Business_Result).",
+            "vt": "vSTR",
+            "label": "Current Status KVP",
+            "show_state_icon": true,
+            "statistic": {
+              "stat_type_name": "ExtendedCurrentStatus",
+              "adm_user_data": true,
+              "notification_mode": "SChangesBasedNotification"
+            }
+          },
+          {
+            "id": "ANI",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccMEASURE",
+            "description": "ANI",
+            "formula": {
+              "type": "ftPCSCRIPT",
+              "text": [
+                "Result = G.GetANI(Data.Current_Status_KVP.Value);"
+              ]
+            },
+            "vt": "vSTR",
+            "label": "ANI"
+          },
+          {
+            "id": "DNIS",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccMEASURE",
+            "description": "DNIS",
+            "formula": {
+              "type": "ftPCSCRIPT",
+              "text": [
+                "Result = G.GetDNIS(Data.Current_Status_KVP.Value);"
+              ]
+            },
+            "vt": "vSTR",
+            "label": "DNIS"
+          },
+          {
+            "id": "EmployeeId",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccMEASURE",
+            "description": "Agent's Employee ID.",
+            "formula": {
+              "type": "ftPCSCRIPT",
+              "text": [
+                "Result = G.GetEmployeeId(Data.Current_Status.Value);"
+              ]
+            },
+            "vt": "vSTR",
+            "label": "Employee Id"
+          },
+          {
+            "id": "Place",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccMEASURE",
+            "description": "Agent's Place.",
+            "formula": {
+              "type": "ftPCSCRIPT",
+              "text": [
+                "Result = G.GetPlace(Data.Current_Status.Value);"
+              ]
+            },
+            "vt": "vSTR",
+            "label": "Place"
+          },
+          {
+            "id": "Switch",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccMEASURE",
+            "description": "Agent's Switch.",
+            "formula": {
+              "type": "ftPCSCRIPT",
+              "text": [
+                "Result = G.GetSwitch(Data.Current_Status.Value);"
+              ]
+            },
+            "vt": "vSTR",
+            "label": "Switch"
+          },
+          {
+            "id": "LoginId",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccMEASURE",
+            "description": "Agent's Login ID.",
+            "formula": {
+              "type": "ftPCSCRIPT",
+              "text": [
+                "Result = G.GetLoginId(Data.Current_Status.Value);"
+              ]
+            },
+            "vt": "vSTR",
+            "label": "Login Id"
+          },
+          {
+            "id": "Extension",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccMEASURE",
+            "description": "Agent's Extension.",
+            "formula": {
+              "type": "ftPCSCRIPT",
+              "text": [
+                "Result = G.GetExtension(Data.Current_Status.Value);"
+              ]
+            },
+            "vt": "vSTR",
+            "label": "Extension"
+          },
+          {
+            "id": "Position",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccMEASURE",
+            "description": "Agent's Position.",
+            "formula": {
+              "type": "ftPCSCRIPT",
+              "text": [
+                "Result = G.GetPosition(Data.Current_Status.Value);"
+              ]
+            },
+            "vt": "vSTR",
+            "label": "Position"
+          },
+          {
+            "id": "Service_Type",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccMEASURE",
+            "description": "Service Type associated to the call segmentation. Must be defined in the callflow as KVP.",
+            "formula": {
+              "type": "ftPCSCRIPT",
+              "text": [
+                "Result = G.GetUserDataValue(Data.Current_Status_KVP.Value, 'Service');"
+              ]
+            },
+            "vt": "vSTR",
+            "label": "Service"
+          },
+          {
+            "id": "Business_Result",
+            "type": "ctFORMULA",
+            "format": "string",
+            "category": "ccMEASURE",
+            "description": "Business Result associated to the call segmentation. Must be defined in the callflow as KVP.",
+            "formula": {
+              "type": "ftPCSCRIPT",
+              "text": [
+                "Result = G.GetUserDataValue(Data.Current_Status_KVP.Value, 'BS_MemberLevel');"
+              ]
+            },
+            "vt": "vSTR",
+            "label": "Business Result"
+          }
+        ],
+        "template_guid": "00505682723f-ac82-11e5-a288-bf34ab2e"
+      },
+      "record": {
+        "timestamp": 1504197682,
+        "username": "default                                                                                                                                                                                                                                                        "
+      }
+    }
+  ],
+  "generator_info": {
+    "name": "pulse",
+    "timestamp": 1504326631044,
+    "version": "Pulse_Pipeline_default_40_d9975ce803b4",
+    "cme_app_dbid": 366,
+    "cme_app_name": "GAX_Server",
+    "pulse_app_id": 4
+  }
+}
