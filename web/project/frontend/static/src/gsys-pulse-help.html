@@ -1,0 +1,486 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+
+<link rel="import" href="../bower_components/s-html/s-html.html">
+
+<link rel="import" href="market-category-data.html">
+<link rel="import" href="shared-styles.html">
+
+<link rel="import" href="../bower_components/iron-accordions/iron-accordions.html">
+<link rel="import" href="../bower_components/iron-accordions/iron-accordion.html">
+
+<link rel="import" href="../bower_components/codelab-components/google-codelab.html">
+<link rel="import" href="../bower_components/codelab-components/google-codelab-survey.html">
+<link rel="import" href="../bower_components/codelab-components/google-codelab-step.html">
+
+
+<dom-module id="gsys-pulse-help">
+    <template>
+
+        <style include="shared-styles app-grid-style" is="custom-style">
+
+        .vimeo {
+            background-color: #000;
+            margin-bottom: 30px;
+            position: relative;
+            padding-top: 56.25%;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .vimeo img {
+            width: 100%;
+            top: -16.82%;
+            left: 0;
+            opacity: 0.7;
+        }
+        .vimeo .play-button {
+            width: 90px;
+            height: 60px;
+            background-color: #333;
+            box-shadow: 0 0 30px rgba( 0,0,0,0.6 );
+            z-index: 1;
+            opacity: 0.8;
+            border-radius: 6px;
+        }
+        .vimeo .play-button:before {
+            content: "";
+            border-style: solid;
+            border-width: 15px 0 15px 26.0px;
+            border-color: transparent transparent transparent #fff;
+        }
+        .vimeo img,
+        .vimeo .play-button {
+            cursor: pointer;
+        }
+        .vimeo img,
+        .vimeo iframe,
+        .vimeo .play-button,
+        .vimeo .play-button:before {
+            position: absolute;
+        }
+        .vimeo .play-button,
+        .vimeo .play-button:before {
+            top: 50%;
+            left: 50%;
+            transform: translate3d( -50%, -50%, 0 );
+        }
+        .vimeo iframe {
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 28px;
+            margin: 0;
+        }
+
+        wrapper-video {
+            max-width: 680px;
+        }
+
+        .embedded-video {
+            max-width: 680px;
+        }
+
+        paper-divider.divider-for-light-background {
+            --paper-divider-color: #ff4f1f;
+        }
+
+        :host(aside.special:host)
+            {
+                border-color: #6a6;
+                background: #ded;
+                color: #464;
+            }
+
+
+        :host {
+            --s-html-anchor-color: var(--genesys-purple);
+        }
+
+
+        .slider-image {
+               background-repeat: no-repeat;
+        }
+
+        .dashboard-reserve {
+              color: var(--genesys-purple);
+        }
+
+        @media (min-width: 500px) {
+
+            l2t-paper-slider {
+            --paper-slide-dot:#666;
+            --paper-slide-dot-selected:#ff4f1f;
+            --paper-slide-height:550px;
+            /*--paper-slide-width:640px;*/
+            }
+
+            /*.wrapper-video {
+                height:300px;
+                width:500px;
+                margin-left: 100px;
+            }*/
+
+        }
+
+        @media (max-width: 500px) {
+            .slider-image {
+                background-size: 315px 240px;
+            }
+            l2t-paper-slider {
+            --paper-slide-dot:#666;
+            --paper-slide-dot-selected:#ff4f1f;
+            --paper-slide-height:300px;
+            /*--paper-slide-width:640px;*/
+            }
+            /* .wrapper-video {
+                height:120px;
+                width:240px;
+                margin-left: 40px;
+            }*/
+
+            .embedded-video {
+                max-width: 100%;
+            }
+        }
+
+        a.ext-link {
+            color:var(--genesys-purple) !important;
+        }
+
+        .nested iron-accordion h3::before {
+          content: "[+] ";
+          color: var(--genesys-red);
+        }
+
+        .nested iron-accordion[opened] h3::before {
+          content: "[-] ";
+          color: var(--genesys-purple);
+        }
+
+
+
+
+
+        </style>
+        <!--
+            app-route provides the name of the category and the item.
+        -->
+
+        <google-codelab title="Help Center" no-toolbar no-highlight>
+
+            <google-codelab-step label="Help Center" duration="2">
+                <section>
+                    <p>Welcome to the Dashboard Community Center Help Center.<br><br>
+                        The Help Center is divided into sections to quickly find the information you are looking
+                        for on the Dashboard Community Center.
+                        The 3 main sections are:</p>
+                    <ul>
+                        <li>Dashboards</li>
+                        <li>Datasets & Templates</li>
+                        <li>Visualizations</li>
+                    </ul>
+                </section>
+
+
+                <section>
+                    <p>For each section, we will provide you with as much information as possible to consume the
+                        available assets in the Dashboard Community Center.<br><br>
+                        For instance, you will be able to answer the following questions with the Help Center:</p>
+                    <ul class="checklist">
+                        <li>How to import your dashboards into my environment?</li>
+                        <li>What do those dashboard tags mean?</li>
+                        <li>How to import your templates into my environment?</li>
+                        <li>How to deploy your visualizations into my environment?</li>
+                        <li>How to contribute?</li>
+                    </ul>
+                </section>
+
+            </google-codelab-step>
+
+            <google-codelab-step label="Dashboard Q&A" duration="3">
+
+                <section>
+                    <p>This page summarizes the most common questions related to the dashboards of the Community Center. If you have additional question, please <a class="ext-link"
+                                                                                            href="mailto:arnaud.lejeune@genesys.com?Subject=Dashboard%20Question"
+                                                                                            target="_blank">send an email</a> to the team.</p>
+                </section>
+
+                <section>
+
+                    <iron-accordions class="nested">
+
+                        <iron-accordion>
+                            <h3 header>How to import Dashboard into my Pulse environment?</h3>
+                            <p>Genesys Pulse 8.5.106+ can import and export Pulse dashboards and wallboards from one
+                                environment to another which enable users to package them and share them across
+                                environment.
+                                <br>
+                                We are currently using this approach to help administrators speed up the deployment
+                                phase. <br>
+                                To import a dashboard into your environment, you need to download the dashboard from the
+                                Dashboard Community Center and import the json file into your Pulse environment.<br><br>
+
+                                <b>Instructions to import Pulse dashboard</b><br>
+                            </p>
+
+                            <div class="vimeo">
+                                <iframe src="https://player.vimeo.com/video/209254764?title=0&byline=0&portrait=0&color=b80007"
+                                        frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen
+                                        class="embedded-video"></iframe>
+                            </div>
+                        </iron-accordion>
+                    </iron-accordions>
+
+                </section>
+
+                <section>
+                    <iron-accordions class="nested">
+                        <iron-accordion>
+                            <h3 header>Why do I need to select agents and objects after importing dashboards?</h3>
+                            <p>When you import Pulse dashboard into your own environment, Pulse collects all the
+                                metadata
+                                related to the dashboards including the widgets with the list of agents, agent groups or
+                                related
+                                objects and its respective metrics.<br>
+                                It often happens that your environment does not have the same objects in the Genesys
+                                configuration as the one who shared the dashboard, therefore the user must
+                                elect its own objects in its own Genesys configuration environment.</p>
+                        </iron-accordion>
+                    </iron-accordions>
+
+                </section>
+                <section>
+
+                    <iron-accordions class="nested">
+
+                        <iron-accordion>
+
+                            <h3 header>How to share my Pulse Dashboard to the Community Center?</h3>
+                            <p>Everyone can submit a request to share best practice dashboard on the Genesys Community
+                                Center but it has to be reviewed by the Genesys Team responsible for maintaining the
+                                website.<br>
+                                The reason is to ensure the consistency of the presentation layer to easily navigate
+                                through the dashboard related information and keep it simple for new users.
+                                <br>To share a dashboard to the Community Center, please <a class="ext-link"
+                                                                                            href="mailto:arnaud.lejeune@genesys.com?Subject=Share%20My%20Dashboard"
+                                                                                            target="_blank">send
+                                    an email</a>
+                                <br>Additional details will be available soon.</p>
+
+                        </iron-accordion>
+                    </iron-accordions>
+
+                </section>
+
+                <section>
+
+                    <iron-accordions class="nested">
+
+                        <iron-accordion>
+
+                            <h3 header>What is the meaning of the stars?</h3>
+                            <p>The Stars are being used to rank the business relevance of the dashboards. It doesn't
+                                mean that low-rating dashboards cannot be of interest for your business
+                                but they should be used for specific cases. The ranking is also related to the ease of
+                                generalization for this dashboard, i.e the more scenarios can be used with this
+                                dashboard, the higher is the ranking. The ranking is being defined by the Genesys Team
+                                responsible for the maintenance of the website.
+                                <br>You can submit your feedback directly by <a class="ext-link"
+                                                                                href="mailto:arnaud.lejeune@genesys.com?Subject=Dashboard%20Feedback"
+                                                                                target="_blank">Email</a></p>
+
+                        </iron-accordion>
+                    </iron-accordions>
+
+                </section>
+
+                <section>
+
+                    <iron-accordions class="nested">
+
+                        <iron-accordion>
+
+                            <h3 header>What is the meaning of the tags?</h3>
+                            <p>The dashboard tags are being used to classify and segment the dashboards. You can easily
+                                search for dashboards having a specific tags in the search box.
+                                <br>In order to standardize the use of the tags, please use the following tags if your
+                                dashboard meet the criteria:</p>
+                            <ul class="checklist">
+                                <li><b>Pulse</b>: Your dashboard is available into your Pulse application</li>
+                                <li><b>Smart</b>: Your dashboard is being used by a Genesys Smart Use Case. Ideally, the
+                                    description of the dashboard should link the related use cases.
+                                </li>
+                                <li><b>Wallboard</b>: The dashboard is being used in wallboard mode.</li>
+                                <li><b>Cloud</b>: The dashboard is available for Cloud customers.</li>
+                            </ul>
+                            <p>You can also add your own tag to specify a channel or a specific capability.
+                            </p>
+
+                        </iron-accordion>
+                    </iron-accordions>
+
+                </section>
+
+
+            </google-codelab-step>
+
+            <google-codelab-step label="Datasets Q&A" duration="5">
+
+
+                <section>
+
+                    <iron-accordions class="nested">
+
+                        <iron-accordion>
+                            <h3 header>How to import Template into my Pulse environment?</h3>
+                            <p>Genesys Pulse 8.5.106+ can import and export Pulse templates from one
+                                environment to another which enable users to package them and share them across
+                                environment.
+                                <br>
+                                We are currently using this approach to help administrators speed up the deployment
+                                phase. <br>
+                                To import a dashboard into your environment, you need to download the dashboard from the
+                                Dashboard Community Center and import the json file into your Pulse environment.<br><br>
+
+                                <b>Instructions to import Pulse template</b><br>
+                            </p>
+
+                            <div class="vimeo">
+                                <iframe src="https://player.vimeo.com/video/209254764?title=0&byline=0&portrait=0&color=b80007"
+                                        frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen
+                                        class="embedded-video"></iframe>
+                            </div>
+                        </iron-accordion>
+                    </iron-accordions>
+
+                </section>
+
+
+                <section>
+
+                    <iron-accordions class="nested">
+
+                        <iron-accordion>
+
+                            <h3 header>How to share my Pulse Dashboard to the Community Center?</h3>
+                            <p>Everyone can submit a request to share best practice template on the Genesys Community
+                                Center but it has to be reviewed by the Genesys Team responsible for maintaining the
+                                website.<br>
+                                The reason is to ensure the consistency of the presentation layer to easily navigate
+                                through the dashboard related information and keep it simple for new users.
+                                <br>To share a template to the Community Center, please <a class="ext-link"
+                                                                                            href="mailto:arnaud.lejeune@genesys.com?Subject=Share%20My%20Dashboard"
+                                                                                            target="_blank">send
+                                    an email</a>
+                                <br>Additional details will be available soon.</p>
+
+                        </iron-accordion>
+                    </iron-accordions>
+
+                </section>
+
+                <section>
+
+                    <iron-accordions class="nested">
+
+                        <iron-accordion>
+
+                            <h3 header>What is the meaning of the stars?</h3>
+                            <p>The Stars are being used to rank the business relevance of the templates. It doesn't
+                                mean that low-rating templates cannot be of interest for your business
+                                but they should be used for specific cases. The ranking is also related to the ease of
+                                generalization for this dashboard, i.e the more scenarios can be used with this
+                                template, the higher is the ranking. The ranking is being defined by the Genesys Team
+                                responsible for the maintenance of the website.
+                                <br>You can submit your feedback directly by <a class="ext-link"
+                                                                                href="mailto:arnaud.lejeune@genesys.com?Subject=Template%20Feedback"
+                                                                                target="_blank">Email</a></p>
+
+                        </iron-accordion>
+                    </iron-accordions>
+
+                </section>
+
+                <section>
+
+                    <iron-accordions class="nested">
+
+                        <iron-accordion>
+
+                            <h3 header>What is the meaning of the tags?</h3>
+                            <p>The template tags are being used to classify and segment the templates by dimension (object type). You can easily
+                                search for templates having specific dimension in the search box.
+                                <br>In order to standardize the use of the tags, please use the following tags if your
+                                dashboard meet the criteria:</p>
+                            <ul class="checklist">
+                                <li><b>Agent</b>: Your template is applicable to any agent of your Genesys configuration</li>
+                                <li><b>Agent Group</b>: Your template is applicable to any agent group of your Genesys configuration</li>
+                                <li><b>Queue</b>: Your template is applicable to any queue of your Genesys configuration</li>
+                                <li><b>Queue Group</b>: Your template is applicable to any queue group of your Genesys configuration</li>
+                                <li><b>Place Group</b>: Your template is applicable to any place group of your Genesys configuration</li>
+                            </ul>
+                            <p>This tag is directly being extracted from your template definition.
+                            </p>
+
+                        </iron-accordion>
+                    </iron-accordions>
+
+                </section>
+
+            </google-codelab-step>
+
+            <google-codelab-step label="Visualizations Q&A" duration="3">
+                <section>
+                    <h3>Not yet available</h3>
+                </section>
+            </google-codelab-step>
+
+
+        </google-codelab>
+
+
+    </template>
+
+    <script>
+    Polymer({
+
+        is: 'gsys-pulse-help',
+
+        properties: {
+            item: Object,
+            dashboardId: String,
+            route: Object,
+            routeData: Object,
+            visible: Boolean
+        },
+
+        observers: []
+
+    });
+
+
+
+
+    </script>
+
+
+</dom-module>

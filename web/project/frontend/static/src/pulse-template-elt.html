@@ -14,12 +14,11 @@
 <!--<link rel="import" href="../bower_components/iron-grid/iron-grid.html">-->
 
 
-
 <dom-module id="pulse-template-elt">
 
-  <template>
+    <template>
 
-  	<style is="custom-style" include="shared-styles app-grid-style">
+        <style is="custom-style" include="shared-styles app-grid-style">
 
   		  :host {
           --app-grid-columns: 2;
@@ -128,72 +127,78 @@
                 }
             }
 
-    </style>
+
+        </style>
 
 
-      <div class="mycard">
+        <div class="mycard">
 
-        <paper-card>
+            <paper-card>
 
-          <paper-toolbar style="background: rgb(117, 117, 117);">
-              <div title><b>[[item.definition.name]]</b><br>
-              <i>Refresh rate - [[item.definition.refresh_interval]]s / Regular</i>
-            </div>
-          </paper-toolbar>
+                <paper-toolbar style="background: rgb(117, 117, 117);">
+                    <div title><b>[[item.definition.name]]</b><br>
+                        <i>Refresh rate - [[item.definition.refresh_interval]]s / Regular</i>
+                    </div>
+                </paper-toolbar>
 
 
-            <div class="container">
-                    <template is="dom-repeat" items="[[_displayObjectTypes(item.definition.collector_def.allowed_object_type)]]">
+                <div class="container">
+                    <template is="dom-repeat"
+                              items="[[_displayObjectTypes(item.definition.collector_def.allowed_object_type)]]">
                         <paper-chip single-line="">
                             <!--    <iron-icon slot="icon" icon="avatars:avatar-1"></iron-icon>-->
                             <div slot="label">[[item]]</div>
                         </paper-chip>
                     </template>
-                     <star-rating read-only rate="[[item.rating]]"></star-rating>
-            </div>
+                    <star-rating read-only rate="[[item.rating]]"></star-rating>
+                </div>
 
 
-           <!-- <div class="container">
-             <paper-chip single-line="">
-                <div slot="label">Agent Group</div>
-              </paper-chip>
-              <paper-chip single-line="">
-               <iron-icon slot="icon" icon="avatars:avatar-1"></iron-icon>
-                <div slot="label">Place Group</div>
-              </paper-chip>
-          </div>-->
+                <!-- <div class="container">
+                  <paper-chip single-line="">
+                     <div slot="label">Agent Group</div>
+                   </paper-chip>
+                   <paper-chip single-line="">
+                    <iron-icon slot="icon" icon="avatars:avatar-1"></iron-icon>
+                     <div slot="label">Place Group</div>
+                   </paper-chip>
+               </div>-->
 
-          <div class="card-content">[[item.definition.description]]
+                <div class="card-content">[[item.definition.description]]
 
-              <iron-accordions id="nested">
-	              <iron-accordion>
-	                <h4 header>Available Statistics <iron-icon icon="icons:info"></iron-icon></h4>
+                    <iron-accordions id="nested">
+                        <iron-accordion>
+                            <h4 header>Available Statistics
+                                <iron-icon icon="icons:info"></iron-icon>
+                            </h4>
 
-                  <ul class="app-grid">
-                    <template is="dom-repeat" items="[[item.definition.column]]" filter="isEmpty">
-                        <li class="item small">[[item.label]]</li>
-                    </template>
-                  </ul>
+                            <ul class="app-grid">
+                                <template is="dom-repeat" items="[[item.definition.column]]" filter="isEmpty">
+                                    <li class="item small">[[item.label]]</li>
+                                </template>
+                            </ul>
 
-              </iron-accordion>
-            </iron-accordions>
+                        </iron-accordion>
+                    </iron-accordions>
 
-          </div>
+                </div>
 
-          <div class="actions">
+                <div class="actions">
 
-            <paper-button class="dashboard-reserve" on-tap="_onExploreTemplate" data-args="[[item]]">Explore</paper-button>
-            <paper-button class="dashboard-reserve" on-tap="_onDownloadTemplate" data-args="[[item]]">Download</paper-button>
+                    <paper-button class="dashboard-reserve" on-tap="_onExploreTemplate" data-args="[[item]]">Explore
+                    </paper-button>
+                    <paper-button class="dashboard-reserve" on-tap="_onDownloadTemplate" data-args="[[item]]">Download
+                    </paper-button>
 
-          <div>
+                <div>
 
-        </paper-card>
+            </paper-card>
 
-      </div>
+        </div>
 
-  </template>
+    </template>
 
-  <script>
+    <script>
 
       Polymer({
 
@@ -237,6 +242,7 @@
 
 
       });
-  </script>
+
+    </script>
 
 </dom-module>

@@ -46,6 +46,12 @@
             }
         }
 
+        .help {
+            color: #737373;
+            /*padding: 10px;*/
+            margin-top: auto;
+        }
+
       </style>
 
       <app-route
@@ -67,9 +73,11 @@
       </market-category-data>
 
       <template is="dom-if" if="[[!_getTemplateID(route)]]" hidden$="[[failure]]">
+
           <paper-toolbar class="subheader">
             <span class="title"></span>
             <paper-input label="search for dashboard" value="{{filterString}}"></paper-input>
+            
           </paper-toolbar>
 
           <div class="vertical-section">

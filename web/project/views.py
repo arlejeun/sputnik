@@ -17,10 +17,18 @@ def home():
     return app.send_static_file('index.html')
 
 
+# Views
+
 @app.route('/pulse')
 def pulse():
     return redirect(url_for('dashboards.get_dashboard_list'))
     #return render_template('index.html', user=current_user)
+
+
+@app.route('/pulse/help')
+def help():
+    return render_template('index.html', user=current_user)
+
 
 #@app.route('/test')
 #def test():
