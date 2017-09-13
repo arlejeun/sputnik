@@ -6,6 +6,7 @@
     "src/gsys-pulse-dashboards.html",
     "src/gsys-pulse-templates.html",
     "src/gsys-pulse-visualizations.html",
+    "src/gsys-pulse-help.html",
     "src/market-category-data.html",
     "src/shared-styles.html"
   ],
