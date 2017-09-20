@@ -14,12 +14,12 @@ MONGO_DATABASE_URI = 'mongodb://localhost:27017/pulse'
 MONGO_DB = True
 MONGO_USERS_COLLECTION_NAME = 'users'
 
-#MAIL_DEFAULT_SENDER = 'info@overholt.com'
-#MAIL_SERVER = 'smtp.postmarkapp.com'
-#MAIL_PORT = 25
-#MAIL_USE_TLS = True
-#MAIL_USERNAME = 'username'
-#MAIL_PASSWORD = 'password'
+MAIL_DEFAULT_SENDER = 'lejeune.arnaud@gmail.com'
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 465
+MAIL_USE_SSL = True
+MAIL_USERNAME = 'lejeune.arnaud@gmail.com'
+MAIL_PASSWORD = '*********************'
 
 WTF_CSRF_ENABLED = False
 DEBUG_TB_INTERCEPT_REDIRECTS = False
@@ -30,12 +30,26 @@ SECURITY_REMEMBER_SALT = 'remember_salt'
 SECURITY_RESET_SALT = 'reset_salt'
 SECURITY_RESET_WITHIN = '5 days'
 SECURITY_CONFIRM_WITHIN = '5 days'
-SECURITY_SEND_REGISTER_EMAIL = False
-SECURITY_REGISTERABLE = True
 
 SECURITY_PASSWORD_HASH = 'pbkdf2_sha512'
+SECURITY_SEND_REGISTER_EMAIL = True
+SECURITY_REGISTERABLE = True
+SECURITY_RECOVERABLE = True
 SECURITY_TRACKABLE = False
-SECURITY_CONFIRMABLE = False
+SECURITY_CONFIRMABLE = True
+SECURITY_CHANGEABLE = True
+
+SECURITY_EMAIL_SENDER = 'lejeune.arnaud@gmail.com'
+SECURITY_SEND_REGISTER_EMAIL = True
+SECURITY_SEND_PASSWORD_CHANGE_EMAIL = True
+SECURITY_SEND_PASSWORD_RESET_EMAIL = True
+SECURITY_LOGIN_WITHOUT_CONFIRMATION = False
+
+#Email
+
+SECURITY_EMAIL_SUBJECT_REGISTER = 'Welcome to the Genesys Dashboard Community Center'
+SECURITY_EMAIL_SUBJECT_CONFIRM = 'Please confirm your email for the Genesys Dashboard Community Center'
+
 
 # Uploads
 UPLOADS_DEFAULT_DEST = os.path.realpath('.') + '/project/upload/assets/user/'

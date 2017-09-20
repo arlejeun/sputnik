@@ -1,0 +1,55 @@
+{% extends "security/base.html" %}
+{% from "security/_macros.html" import render_field_with_errors, render_field %}
+
+{% block body %}
+
+<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+<div class="login-wrap">
+
+    <div class="login-html">
+
+      <a href="{{ url_for_security('login')}}"><input type="radio" name="tab" class="sign-in"><label class="tab">Sign In</label></a>
+        <a href="{{ url_for_security('register')}}"><input type="radio" name="tab" class="sign-up" checked><label class="tab">Sign Up</label></a>
+
+      <h3>{{ _('Resend confirmation instructions') }}</h3>
+
+        <div class="flashes">
+            {% include "security/_messages.html" %}
+        </div>
+
+        <div class="login-form">
+
+            <form action="{{ url_for_security('login') }}" method="POST" name="send_login_form">
+
+              {{ send_login_form.hidden_tag() }}
+
+              <div class="sign-in-htm">
+                <div class="group">
+                  {{ render_field_with_errors(send_login_form.email, class_="input") }}
+                </div>
+
+                <div class="group">
+                      {{send_login_form.submit (class_= "button")}}
+                </div>
+                <div class="hr"></div>
+                <div class="foot-lnk">
+                    <a href="{{ url_for_security('forgot_password')}}">Forgot Password?</a><br><br>
+                    <a href="{{ url_for_security('change_password')}}">Change Password</a>
+                    {% include "security/_menu.html" %}
+                </div>
+
+
+
+            </div>
+
+
+        </form>
+
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

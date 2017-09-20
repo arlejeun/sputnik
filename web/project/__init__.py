@@ -10,6 +10,7 @@ from flask_security import Security, MongoEngineUserDatastore
 from flask_security.utils import hash_password
 #from flask_principal import Permission, RoleNeed
 from flask_bootstrap import Bootstrap
+from flask_mail import Mail
 
 from wtforms.validators import DataRequired
 from flask_wtf.file import FileField, FileAllowed, FileRequired
@@ -56,6 +57,10 @@ register_blueprints(app)
 # Register flask-upload
 register_uploadsets(app, upload_jar_plugins, upload_images,
                     upload_exported_dashboards, upload_exported_templates, upload_exported_options)
+
+
+#Initialize Flask-Mail
+mail = Mail(app)
 
 # Set up mongo DB and user roles
 from models import db, User, Role

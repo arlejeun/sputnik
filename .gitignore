@@ -19,3 +19,6 @@ __pycache__/
 # Bower components
 bower_components/
 build/
+
+# Old files
+frontend/templates/old/

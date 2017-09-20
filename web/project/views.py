@@ -30,10 +30,6 @@ def help():
     return render_template('index.html', user=current_user)
 
 
-#@app.route('/test')
-#def test():
-#    return render_template('index.html', user=current_user)
-
 @app.route('/lost')
 def lost():
     return 'lost'
