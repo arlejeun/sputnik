@@ -13,6 +13,7 @@ class AddVisualizationForm(FlaskForm):
     vis_options = FileField('Screenshot options', validators=[FileRequired(), FileAllowed(upload_images, 'Images only!')])
     vis_manifest = FileField('Visualization plugin', validators=[FileRequired(), FileAllowed(upload_jar_plugins, 'jar only!')])
     vis_rating = IntegerField('Rating 1-5')
+    vis_credit = TextAreaField('Additional information (external link, ...)')
     recaptcha = RecaptchaField('')
     submit_button = SubmitField('Submit Visualization')
 

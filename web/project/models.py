@@ -84,6 +84,7 @@ class Visualizations (db.Document, object):
     image_edit = db.StringField(required=True)
     plugin_src = db.StringField(required=True)
     pub_date = db.DateTimeField(default=datetime.datetime.now)
+    author = db.StringField()
     status = db.StringField()
     contributor = db.StringField(max_length=125, required=True)
     meta = {'strict': False}

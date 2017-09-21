@@ -42,8 +42,10 @@ def add_visualization():
         plugin_src = "{}{}/plugins/{}".format(blueprint.url_prefix, blueprint.static_url_path, filename3)
         plugin_src = plugin_src[1:]
 
+
+
         viz =Visualizations(title=form.vis_title.data, name=name, short_desc=form.vis_short_desc.data,
-                            desc=form.vis_desc.data, rating=form.vis_rating.data, contributor=current_user.email,
+                            desc=form.vis_desc.data, rating=form.vis_rating.data, author=form.vis_credit.data, contributor=current_user.email,
                             image_src=image_src, image_edit=image_edit, plugin_src=plugin_src)
 
         viz.save()
@@ -97,7 +99,7 @@ def add_template():
                 print 'Template definition not accurate'
                 name = None
 
-        metadata = {'image_src':image_src, 'contributor':current_user.email,
+        metadata = {'image_src':image_src, 'contributor':current_user.email, 'author': form.template_support.data,
                     'template_src':template_src, 'ss_option_src':ss_option_src}
 
         template = Templates(name=name, definition=definition, rating=form.template_rating.data, metadata=metadata)

@@ -85,6 +85,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               color: var(--genesys-purple);
             }
 
+            a.ext-link {
+                color:var(--genesys-purple) !important;
+            }
+
 
         </style>
         <!--
@@ -110,12 +114,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </a>
                 </section>
 
-                <h3>Download plugin</h3>
+                <h3>Pre-requisites</h3>
 
-                <paper-button class="dashboard-reserve" on-tap="_onDownloadVisualization" data-args="[[item]]">[[item.title]] plugin</paper-button>
+                <aside class="special">
+                        <p>The plugin needs to be deployed on your Pulse environment to use this visualization.<br></p>
+                        <p>
+                            <paper-button class="colored" on-tap="_onDownloadVisualization" data-args="[[item]]">
+                               <iron-icon icon="file-download"></iron-icon>
+                                    <b>[[item.title]] plugin</b>
+                            </paper-button>
+
+                        </p>
+                </aside>
+
+                <!--<paper-button class="dashboard-reserve" on-tap="_onDownloadVisualization" data-args="[[item]]">[[item.title]] plugin</paper-button>-->
 
                 <h3>Who developed this template?</h3>
-                <s-html html="[[item.contributor]]"></s-html>
+               <s-html html="<p>[[_urlify(item.author)]]"></s-html><br>
+                <p align='right'>published by: <a class='ext-link' target='_blank' href='mailto:[[item.contributor]]'>[[item.contributor]]</a></p>
+
 
             </google-codelab-step>
 
@@ -190,8 +207,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         _onDownloadVisualization: function(evt) {
           //Retrieve dashboard details
-          var args = evt.target.dataArgs;
-          //console.log ('Download: ' + args.plugin_src);
+          var args = evt.currentTarget.dataArgs;
           window.open('/'+args.plugin_src);
         },
 
@@ -207,6 +223,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         _displayObjectTypes: function(arr) {
             return arr.map(this._replaceObjectType);
+        },
+
+        _urlify: function(text) {
+            if (!text) {
+                return '';
+            }
+            var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
+            //var urlRegex = /(https?:\/\/[^\s]+)/g;
+            return text.replace(urlRegex, function(url,b,c) {
+                var url2 = (c == 'www.') ?  'http://' +url : url;
+                return '<a class="ext-link" href="' +url2+ '" target="_blank">' + url + '</a>';
+            })
         }
 
 

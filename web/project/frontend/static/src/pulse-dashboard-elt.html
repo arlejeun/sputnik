@@ -148,8 +148,6 @@
 
 
 
-              <paper-button class="dashboard-reserve" on-tap="_onExploreDashboard" data-args="[[item]]">Explore</paper-button>
-
              <template is="dom-if" if="[[item.download_link]]">
                   <paper-button class="dashboard-reserve" on-tap="_onDownloadDashboard" data-args="[[item]]">Download</paper-button>
              </template>
@@ -157,6 +155,8 @@
               <template is="dom-if" if="[[!item.download_link]]">
                   <paper-button disabled class="dashboard-reserve-greyed">Download</paper-button>
               </template>
+
+               <paper-button class="dashboard-reserve" on-tap="_onExploreDashboard" data-args="[[item]]">Explore</paper-button>
 
          </paper-card>
 

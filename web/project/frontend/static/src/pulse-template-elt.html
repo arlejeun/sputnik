@@ -137,6 +137,14 @@
             }
         }
 
+        .demo-1 {
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
+          margin:0px;
+        }
+
 
         </style>
 
@@ -189,7 +197,11 @@
                    </paper-chip>
                </div>-->
 
-                <div class="card-content">[[item.definition.description]]
+                <div class="card-content">
+
+                    <p class="demo-1">
+                    [[item.definition.description]]
+                    </p>
 
                     <iron-accordions id="nested">
                         <iron-accordion>

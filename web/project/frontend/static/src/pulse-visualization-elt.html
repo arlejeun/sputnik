@@ -48,6 +48,7 @@
           .dashboard-reserve {
               color: var(--genesys-purple);
               padding:5px;
+              float: right;
           }
 
           .dashboard-delete {
@@ -224,7 +225,7 @@
             this.$['api-ajax'].url = "/api/pulse/visualizations/" + args.name;
             //this.$['api-ajax'].params = {"userId":"1"};
             Polymer.dom(this.root).querySelector('#api-ajax').generateRequest();
-            location.href= '/pulse/visualizations';
+            //location.href= '/pulse/visualizations';
           },
 
 
