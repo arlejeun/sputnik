@@ -12,6 +12,7 @@
   ],
   "sources": [
    "src/**/*",
+   "css/**/*",
    "images/**/*",
    "data/**/*",
    "bower.json",
