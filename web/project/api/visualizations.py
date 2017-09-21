@@ -59,4 +59,4 @@ def delete_visualization_api(name):
         return jsonify({'result': 'KO', 'msg': msg})
     else:
         visualization.delete()
-        return jsonify({'result': 'OK', 'msg': 'visualization deleted'})
+        return jsonify({'result': 'OK', 'msg': 'visualization deleted', 'name':name})

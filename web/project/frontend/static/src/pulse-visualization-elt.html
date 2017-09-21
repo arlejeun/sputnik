@@ -166,8 +166,8 @@
 
               <div class="card-actions" align="right">
 
-                <paper-button class="dashboard-reserve" on-tap="_onExploreVisualization" data-args="[[item]]">Explore</paper-button>
-                <paper-button class="dashboard-reserve" on-tap="_onDownloadVisualization" data-args="[[item]]">Download</paper-button>
+                  <paper-button class="dashboard-reserve" on-tap="_onDownloadVisualization" data-args="[[item]]">Download</paper-button>
+                  <paper-button class="dashboard-reserve" on-tap="_onExploreVisualization" data-args="[[item]]">Explore</paper-button>
 
                 <!--<paper-icon-button icon="open-in-new" class="actions" on-tap="_onExploreVisualization" data-args="[[item]]"></paper-icon-button>-->
                 <!--<paper-icon-button icon="cloud-download" class="actions" on-tap="_onDownloadVisualization" data-args="[[item]]"></paper-icon-button>-->
@@ -232,13 +232,17 @@
             //response data is in both this.results and e.detail.response
             console.log(e.detail.response);
             var resp = e.detail.response;
-            this.$.toast1.text = 'Pulse visualization deleted - ' + resp.result[0].title ;
+            this.$.toast1.text = 'Pulse visualization deleted - ' + resp.name ;
             this.$.toast1.open();
-            window.open('/pulse/visualizations');
+            setTimeout(function(){
+               window.location.reload(1);
+            }, 3000);
          },
 
          _error: function() {
             console.log('error visualization');
+            this.$.toast1.text = 'Pulse Visualization could not be deleted';
+            this.$.toast1.open();
          },
 
          _isAdmin: function (role) {

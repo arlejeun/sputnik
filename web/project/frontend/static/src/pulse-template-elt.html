@@ -6,8 +6,11 @@
 <link rel="import" href="../bower_components/poly-filter/demo/demo-list.html">
 <link rel="import" href="../bower_components/iron-accordions/iron-accordions.html">
 <link rel="import" href="../bower_components/iron-accordions/iron-accordion.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="../bower_components/star-rating/star-rating.html">
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
 
 <link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
 
@@ -25,6 +28,11 @@
           --app-grid-gutter:0px;
         }
 
+        #toast2 {
+             --paper-toast-background-color: red;
+             --paper-toast-color: white;
+        }
+
         ul {
           padding: 5px;
           list-style: none;
@@ -34,101 +42,118 @@
           text-align: justify;
         }
 
-          .mycard {
-              margin: 15px 0px 5px 0px;
-                    padding: 15px;
-                    color: #757575;
-                    border-radius: 5px;
-                    background-color: #fff;
-                    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-            }
+        .mycard {
+          margin: 15px 0px 5px 0px;
+                padding: 15px;
+                color: #757575;
+                border-radius: 5px;
+                background-color: #fff;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        }
 
-          .container{
-            padding: 15px 0 0 5px;
-          }
+      .container{
+        padding: 15px 0 0 5px;
+      }
 
-          .dashboard-header { @apply(--paper-font-headline); }
-          .dashboard-light { color: var(--paper-grey-600); }
-          .dashboard-location {
-            float: right;
-            font-size: 15px;
-            vertical-align: middle;
-          }
-          .dashboard-reserve {
-              color: var(--genesys-red);
-              float: right;
-          }
+      .dashboard-header { @apply(--paper-font-headline); }
+      .dashboard-light { color: var(--paper-grey-600); }
+      .dashboard-location {
+        float: right;
+        font-size: 15px;
+        vertical-align: middle;
+      }
+      .dashboard-reserve {
+          color: var(--genesys-red);
+          float: right;
+      }
 
-          iron-icon.star {
-            --iron-icon-width: 16px;
-            --iron-icon-height: 16px;
-            color: var(--genesys-red);
-          }
-          iron-icon.star:last-of-type { color: var(--paper-grey-500); }
+      iron-icon.star {
+        --iron-icon-width: 16px;
+        --iron-icon-height: 16px;
+        color: var(--genesys-red);
+      }
+      iron-icon.star:last-of-type { color: var(--paper-grey-500); }
 
 
-          .small{
-            font-size: 9pt;
-          }
+      .small{
+        font-size: 9pt;
+      }
 
-          .card-content{
-            font-size: 11pt;
-            padding: 16px 16px 0px 16px;
-          }
+      .card-content{
+        font-size: 11pt;
+        padding: 16px 16px 0px 16px;
+      }
 
-          paper-toolbar.subheader {
-            margin: 20px 0px 40px 0px;
-            --paper-toolbar-background: #adc5ec;
-            --paper-toolbar-title: {
-              font-style: italic;
-              font-weight: bold;
-            };
-          }
-          paper-icon-button.favorite {
+      paper-toolbar.subheader {
+        margin: 20px 0px 40px 0px;
+        --paper-toolbar-background: #adc5ec;
+        --paper-toolbar-title: {
+          font-style: italic;
+          font-weight: bold;
+        };
+      }
+      paper-icon-button.favorite {
+          padding:5px;
+          --iron-icon: {
+              background-color: #12c500;
+              color:#333333;
               padding:5px;
-              --iron-icon: {
-                  background-color: #12c500;
-                  color:#333333;
-                  padding:5px;
-              };
-          }
+          };
+      }
 
-          paper-icon-button {
-              width: 48px;
-              height: 48px;
-              --iron-icon: {
-                border-radius: 50%;
-                background-color: #adc5ec;
-              };
-          }
 
-           paper-fab {
-              display: inline-block;
-              margin: 8px;
+      paper-icon-button.actions {
+            color: var(--genesys-red);
+            --paper-icon-button-ink-color: var(--genesys-red);
+      }
+
+      paper-icon-button.actions:hover {
+            background-color: var(--genesys-red);
+            color: white;
+       }
+
+       paper-fab {
+          display: inline-block;
+          margin: 8px;
+        }
+
+        paper-fab[mini] {
+          --paper-fab-background: #FF5722;
+        }
+
+        paper-fab[label] {
+          font-size: 20px;
+          --paper-fab-background: #2196F3;
+        }
+
+        paper-card-header-image {
+          border: 20px;
+          border-color: black;
+        }
+
+        star-rating {
+            --star-elt-color: {
+                color: #FF4F1F;
             }
-
-            paper-fab[mini] {
-              --paper-fab-background: #FF5722;
-            }
-
-            paper-fab[label] {
-              font-size: 20px;
-              --paper-fab-background: #2196F3;
-            }
-
-            paper-card-header-image {
-              border: 20px;
-              border-color: black;
-            }
-
-            star-rating {
-                --star-elt-color: {
-                    color: #FF4F1F;
-                }
-            }
+        }
 
 
         </style>
+
+
+        <iron-ajax
+            id="api-ajax"
+            url="/api/pulse/templates"
+            handle-as="json"
+            content-type="application/json"
+            method="DELETE"
+            body="[[params]]"
+            last-response="{{results}}"
+            on-response="_gotData"
+            on-error="_error">
+        </iron-ajax>
+
+       <paper-toast id="toast2" class="fit-bottom" text="This toast is red and fits bottom!"></paper-toast>
 
 
         <div class="mycard">
@@ -183,14 +208,17 @@
 
                 </div>
 
-                <div class="actions">
+                <div class="actions" align="right">
 
-                    <paper-button class="dashboard-reserve" on-tap="_onExploreTemplate" data-args="[[item]]">Explore
-                    </paper-button>
-                    <paper-button class="dashboard-reserve" on-tap="_onDownloadTemplate" data-args="[[item]]">Download
-                    </paper-button>
+                    <paper-button class="dashboard-reserve" on-tap="_onDownloadTemplate" data-args="[[item]]">Download</paper-button>
 
-                <div>
+                    <paper-button class="dashboard-reserve" on-tap="_onExploreTemplate" data-args="[[item]]">Explore</paper-button>
+
+                    <template is="dom-if" if="{{_isAdmin(role)}}">
+                        <paper-icon-button icon="delete" class="actions" on-tap="_onDeleteTemplate" data-args="[[item]]"></paper-icon-button>
+                    </template>
+
+                </div>
 
             </paper-card>
 
@@ -225,6 +253,35 @@
           window.open('/' + args.metadata.template_src);
         },
 
+        _onDeleteTemplate: function(evt) {
+            var args = evt.target.dataArgs;
+            console.log ('Delete Template: ');
+            this.$['api-ajax'].url = "/api/pulse/templates/" + args.definition.guid;
+            //this.$['api-ajax'].params = {"userId":"1"};
+            Polymer.dom(this.root).querySelector('#api-ajax').generateRequest();
+            //location.href= '/pulse/templates';
+          },
+
+        _gotData: function(e) {
+            //response data is in both this.results and e.detail.response
+            console.log(e.detail.response);
+            var resp = e.detail.response;
+            this.$.toast2.text = 'Pulse Template deleted - ' + resp.name ;
+            this.$.toast2.open();
+            //window.open('/pulse/templates');
+            setTimeout(function(){
+               window.location.reload(1);
+            }, 3000);
+         },
+
+        _error: function(e) {
+            //response data is in both this.results and e.detail.response
+            console.log(e);
+            this.$.toast2.text = 'Pulse Template could not be deleted';
+            this.$.toast2.open();
+            //window.open('/pulse/templates');
+         },
+
          _displayObjectTypes: function(arr) {
             return arr.map(this._replaceObjectType);
         },
@@ -238,6 +295,10 @@
             if (item == 'SObjectGroupQueues') return 'Queue Group';
             if (item == 'SObjectRoutePoint') return 'Routing Point';
             return item;
+        },
+
+        _isAdmin: function (role) {
+            return role == 'admin';
         }
 
 

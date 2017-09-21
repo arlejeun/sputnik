@@ -45,10 +45,10 @@ def post_template_api():
 @login_required
 @admin_permission.require(http_exception=403)
 def delete_template_api(name):
-    template = Templates.objects(name=name)
+    template = Templates.objects(definition__guid=name)
     if template.count() == 0:
         msg = "No such template for the given name"
         return jsonify({'result': 'KO', 'msg': msg})
     else:
         template.delete()
-        return jsonify({'result': 'OK', 'msg': 'template deleted'})
+        return jsonify({'result': 'OK', 'msg': 'template deleted', 'name':name})
