@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/s-html/s-html.html">
 <link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/codelab-components/syntax-style.html">
 <link rel="import" href="../bower_components/iron-icons/communication-icons.html">
@@ -198,16 +199,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <p>In order to run this template, you need to configure all statistic types properly
                 in your Stat Server applications used by Pulse.</p>
 
-                <!--<paper-button class="dashboard-reserve" on-tap="_onDownloadOptions" data-args="[[item]]">
+                <paper-button class="dashboard-reserve" on-tap="_onDownloadOptions" data-args="[[item]]">
                     Download options
-                </paper-button>-->
+                </paper-button>
 
 
                 <aside class="special">
                         <p>The template is relying on specific statistic types. Those statistics type can be downloaded and should be imported into your Genesys environment in the Stat Server options.<br></p>
                         <p>
-                            <paper-button raised class="colored" on-tap="_onDownloadOptions" data-args="[[item]]">
-                                <iron-icon icon="file-download"></iron-icon>
+                            <paper-button class="colored" on-tap="_onDownloadOptions" data-args="[[item]]">
+                               <iron-icon icon="file-download"></iron-icon>
                                     <b>Download Stat Server Options</b>
                             </paper-button>
                         </p>
@@ -359,9 +360,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         _onDownloadOptions: function(evt) {
           //Retrieve dashboard details
-          var args = evt.target.dataArgs;
+          var args = evt.currentTarget.dataArgs;
           window.open('/'+ args.metadata.ss_option_src);
         }
+
 
     });
     </script>

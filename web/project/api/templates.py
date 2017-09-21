@@ -22,7 +22,7 @@ def get_templates_api():
 
 @temp_api.route('/<name>', methods=['GET'])
 def get_template_api(name):
-    template = Templates.objects(name=name)
+    template = Templates.objects(definition__guid=name)
     if template.count() == 0:
         template = "No such template for the given name"
     return jsonify({'result': template})
