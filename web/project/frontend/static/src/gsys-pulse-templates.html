@@ -55,6 +55,11 @@
             }
         }
 
+        .add {
+            color:var(--genesys-red);;
+            margin:15px 15px 0px 0px;
+        }
+
 
       </style>
 
@@ -79,7 +84,10 @@
       <template is="dom-if" if="[[!_getTemplateID(route)]]" hidden$="[[failure]]">
           <paper-toolbar class="subheader">
             <span class="title"></span>
+
+            <paper-icon-button class="add" icon="icons:add-circle" on-tap="_addTemplate"></paper-icon-button>
             <paper-input label="search for template" value="{{filterString}}"></paper-input>
+
           </paper-toolbar>
 
           <div class="vertical-section">
@@ -187,6 +195,10 @@
 
       _showPage404: function() {
           this.page = 'view404';
+      },
+
+      _addTemplate: function (evt) {
+        location.href= '/pulse/upload/templates';
       }
 
       });

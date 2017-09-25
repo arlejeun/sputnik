@@ -15,11 +15,11 @@
 <link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
 
 
-  <dom-module id="gsys-pulse-visualizations">
+<dom-module id="gsys-pulse-visualizations">
 
-  <template>
+    <template>
 
-      <style include="shared-styles app-grid-style">
+        <style include="shared-styles app-grid-style">
 
         :host {
           --app-grid-columns: 4;
@@ -55,63 +55,74 @@
             }
         }
 
+        .add {
+            color:var(--genesys-red);;
+            margin:15px 15px 0px 0px;
 
-      </style>
-
-          <app-route
-            id="appRoute"
-            route="[[route]]"
-            pattern="/:visualizationId"
-            data="{{routeData}}"
-            use-hash-as-path>
-          </app-route>
-
-    <!--
-      shop-category-data provides the category data for a given category name.
-    -->
-
-      <market-category-data
-        id="categoryData"
-        category-name="[[_computeCategoryName(route)]]"
-        category="{{category}}"
-        failure="{{failure}}">
-      </market-category-data>
-
-      <template is="dom-if" if="[[!_getTemplateID(route)]]" hidden$="[[failure]]">
-          <paper-toolbar class="subheader">
-            <span class="title"></span>
-            <paper-input label="search for visualization" value="{{filterString}}"></paper-input>
-          </paper-toolbar>
-
-          <div class="vertical-section">
-            <poly-filter
-              array-to-filter="[[_getListItems(category.items)]]"
-              filter="[[filterString]]"
-              filtered-array="{{filteredItems}}"
-              filterDebounceDelay="300">
-            </poly-filter>
-          </div>
-      </template>
+        }
 
 
-          <ul class="app-grid">
+
+        </style>
+
+        <app-route
+                id="appRoute"
+                route="[[route]]"
+                pattern="/:visualizationId"
+                data="{{routeData}}"
+                use-hash-as-path>
+        </app-route>
+
+        <!--
+          shop-category-data provides the category data for a given category name.
+        -->
+
+        <market-category-data
+                id="categoryData"
+                category-name="[[_computeCategoryName(route)]]"
+                category="{{category}}"
+                failure="{{failure}}">
+        </market-category-data>
+
+        <template is="dom-if" if="[[!_getTemplateID(route)]]" hidden$="[[failure]]">
+
+
+            <paper-toolbar class="subheader">
+                <span class="title"></span>
+
+                <paper-icon-button class="add" icon="icons:add-circle" on-tap="_addVisualization"></paper-icon-button>
+
+                <paper-input label="search for visualization" value="{{filterString}}"></paper-input>
+            </paper-toolbar>
+
+            <div class="vertical-section">
+                <poly-filter
+                        array-to-filter="[[_getListItems(category.items)]]"
+                        filter="[[filterString]]"
+                        filtered-array="{{filteredItems}}"
+                        filterDebounceDelay="300">
+                </poly-filter>
+            </div>
+        </template>
+
+
+        <ul class="app-grid">
             <template is="dom-repeat" items="[[_getListItems(filteredItems)]]">
-               <li class="item">
-                  <pulse-visualization-elt item="[[item]]" user="[[user]]" role="[[role]]"></pulse-visualization-elt>
+                <li class="item">
+                    <pulse-visualization-elt item="[[item]]" user="[[user]]" role="[[role]]"></pulse-visualization-elt>
                 </li>
             </template>
-          </ul>
+        </ul>
 
 
-          <template is="dom-if" if="[[_getTemplateID(route)]]" hidden$="[[failure]]">
-              <gsys-detail-visualization route="[[route]]" user="[[user]]" role="[[role]]"></gsys-detail-visualization>
-          </template>
-
+        <template is="dom-if" if="[[_getTemplateID(route)]]" hidden$="[[failure]]">
+            <gsys-detail-visualization route="[[route]]" user="[[user]]" role="[[role]]"></gsys-detail-visualization>
+        </template>
 
 
     </template>
 
-  <script>
+    <script>
 
       Polymer({
 
@@ -196,9 +207,14 @@
 
       _showPage404: function() {
           this.page = 'view404';
+      },
+
+      _addVisualization: function (evt) {
+        location.href= '/pulse/upload/visualizations';
       }
 
       });
-  </script>
+
+    </script>
 
 </dom-module>
