@@ -22,6 +22,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-accordions/iron-accordions.html">
 <link rel="import" href="../bower_components/iron-accordions/iron-accordion.html">
 
+<link rel="import" href="../bower_components/google-youtube/google-youtube.html">
+
+
 <link rel="import" href="../bower_components/codelab-components/google-codelab.html">
 <link rel="import" href="../bower_components/codelab-components/google-codelab-survey.html">
 <link rel="import" href="../bower_components/codelab-components/google-codelab-step.html">
@@ -176,6 +179,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           color: var(--genesys-purple);
         }
 
+        .video-container {
+            height:500px;
+            width:600px;
+
+        }
+
+
 
 
 
@@ -219,9 +229,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <google-codelab-step label="Dashboard Q&A" duration="3">
 
                 <section>
-                    <p>This page summarizes the most common questions related to the dashboards of the Community Center. If you have additional question, please <a class="ext-link"
-                                                                                            href="mailto:arnaud.lejeune@genesys.com?Subject=Dashboard%20Question"
-                                                                                            target="_blank">send an email</a> to the team.</p>
+                    <p>This page summarizes the most common questions related to the dashboards of the Community Center.
+                        If you have additional question, please <a class="ext-link"
+                                                                   href="mailto:dashboardcommunitycenter@genesys.com?Subject=Dashboard%20Question"
+                                                                   target="_blank">send an email</a> to the team.</p>
                 </section>
 
                 <section>
@@ -281,7 +292,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 The reason is to ensure the consistency of the presentation layer to easily navigate
                                 through the dashboard related information and keep it simple for new users.
                                 <br>To share a dashboard to the Community Center, please <a class="ext-link"
-                                                                                            href="mailto:arnaud.lejeune@genesys.com?Subject=Share%20My%20Dashboard"
+                                                                                            href="mailto:dashboardcommunitycenter@genesys.com?Subject=Share%20My%20Dashboard"
                                                                                             target="_blank">send
                                     an email</a>
                                 <br>Additional details will be available soon.</p>
@@ -305,7 +316,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 dashboard, the higher is the ranking. The ranking is being defined by the Genesys Team
                                 responsible for the maintenance of the website.
                                 <br>You can submit your feedback directly by <a class="ext-link"
-                                                                                href="mailto:arnaud.lejeune@genesys.com?Subject=Dashboard%20Feedback"
+                                                                                href="mailto:dashboardcommunitycenter@genesys.com?Subject=Dashboard%20Feedback"
                                                                                 target="_blank">Email</a></p>
 
                         </iron-accordion>
@@ -388,8 +399,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 The reason is to ensure the consistency of the presentation layer to easily navigate
                                 through the dashboard related information and keep it simple for new users.
                                 <br>To share a template to the Community Center, please <a class="ext-link"
-                                                                                            href="mailto:arnaud.lejeune@genesys.com?Subject=Share%20My%20Dashboard"
-                                                                                            target="_blank">send
+                                                                                           href="mailto:dashboardcommunitycenter@genesys.com?Subject=Share%20My%20Dashboard"
+                                                                                           target="_blank">send
                                     an email</a>
                                 <br>Additional details will be available soon.</p>
 
@@ -412,8 +423,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 template, the higher is the ranking. The ranking is being defined by the Genesys Team
                                 responsible for the maintenance of the website.
                                 <br>You can submit your feedback directly by <a class="ext-link"
-                                                                                href="mailto:arnaud.lejeune@genesys.com?Subject=Template%20Feedback"
-                                                                                target="_blank">Email</a></p>
+                                                                                href="mailto:dashboardcommunitycenter@genesys.com?Subject=Template%20Feedback"
+                                                                                target="_blank">email</a></p>
 
                         </iron-accordion>
                     </iron-accordions>
@@ -427,16 +438,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <iron-accordion>
 
                             <h3 header>What is the meaning of the tags?</h3>
-                            <p>The template tags are being used to classify and segment the templates by dimension (object type). You can easily
+                            <p>The template tags are being used to classify and segment the templates by dimension
+                                (object type). You can easily
                                 search for templates having specific dimension in the search box.
                                 <br>In order to standardize the use of the tags, please use the following tags if your
                                 dashboard meet the criteria:</p>
                             <ul class="checklist">
-                                <li><b>Agent</b>: Your template is applicable to any agent of your Genesys configuration</li>
-                                <li><b>Agent Group</b>: Your template is applicable to any agent group of your Genesys configuration</li>
-                                <li><b>Queue</b>: Your template is applicable to any queue of your Genesys configuration</li>
-                                <li><b>Queue Group</b>: Your template is applicable to any queue group of your Genesys configuration</li>
-                                <li><b>Place Group</b>: Your template is applicable to any place group of your Genesys configuration</li>
+                                <li><b>Agent</b>: Your template is applicable to any agent of your Genesys configuration
+                                </li>
+                                <li><b>Agent Group</b>: Your template is applicable to any agent group of your Genesys
+                                    configuration
+                                </li>
+                                <li><b>Queue</b>: Your template is applicable to any queue of your Genesys configuration
+                                </li>
+                                <li><b>Queue Group</b>: Your template is applicable to any queue group of your Genesys
+                                    configuration
+                                </li>
+                                <li><b>Place Group</b>: Your template is applicable to any place group of your Genesys
+                                    configuration
+                                </li>
                             </ul>
                             <p>This tag is directly being extracted from your template definition.
                             </p>
@@ -450,8 +470,83 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <google-codelab-step label="Visualizations Q&A" duration="3">
                 <section>
-                    <h3>Not yet available</h3>
+
+                    <iron-accordions class="nested">
+
+                        <iron-accordion>
+
+                            <h3 header>How to share my Pulse Visualization with the Community Center?</h3>
+
+                            <p>Everyone can submit a request to share best practice template on the Genesys Community
+                                Center but it has to be reviewed by the Genesys Team responsible for maintaining the
+                                website.<br>
+                                The reason is to ensure the consistency of the presentation layer to easily navigate
+                                through the dashboard related information and keep it simple for new users.
+                            </p>
+
+                            <google-youtube
+                                    video-id="tmmj0g2Ky60"
+                                    height="400px"
+                                    width="600px"
+                                    autoplay="0">
+                            </google-youtube>
+
+                            <p>
+                                <br>To share a template to the Community Center, please <a class="ext-link"
+                                                                                           href="mailto:dashboardcommunitycenter@genesys.com?Subject=Share%20My%20Visualization"
+                                                                                           target="_blank">send
+                                an email</a> to get the right user credentials.
+                                <br>Once you have the appropriate credentials to log in to Dashboard Community Center,
+                                you will be able to submit your own visualizations.</p>
+
+
+                        </iron-accordion>
+                    </iron-accordions>
+
                 </section>
+
+
+                 <section>
+
+                    <iron-accordions class="nested">
+
+                        <iron-accordion>
+                            <h3 header>How to import Visualization plugin into my Pulse environment?</h3>
+                            <p>Genesys Pulse 8.5.108+ can display additional visualizations based on its new modular mechanism to add new visualization plugins.
+                                A visualization plugin is packaged as a jar file and can be downloaded from the Dashboard Community Center.<br>
+                                To be visible from your Pulse environment, you must deploy the visualization plugin into the Pulse application <i>(usually in the 'webapp/WEB-INF-lib folder')</i>.<br>
+                                Once deployed and restarted, you should be able to change the visualization in the option menu of the widget.
+                            </p>
+
+                        </iron-accordion>
+                    </iron-accordions>
+
+                </section>
+
+
+                 <section>
+
+                    <iron-accordions class="nested">
+
+                        <iron-accordion>
+
+                            <h3 header>What is the meaning of the stars?</h3>
+                            <p>The Stars are being used to rank the business relevance of the visualizations. It doesn't
+                                mean that low-rating visualizations cannot be of interest for your business
+                                but they should be used for specific cases. The ranking is also related to the ease of
+                                generalization for this visualization, i.e the more scenarios can be used with this
+                                template, the higher is the ranking. The ranking is being defined by the Genesys Team
+                                responsible for the maintenance of the website.
+                                <br>You can submit your feedback directly by <a class="ext-link"
+                                                                                href="mailto:dashboardcommunitycenter@genesys.com?Subject=Template%20Feedback"
+                                                                                target="_blank">email</a></p>
+
+                        </iron-accordion>
+                    </iron-accordions>
+
+                </section>
+
+
             </google-codelab-step>
 
 
@@ -476,6 +571,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         observers: []
 
     });
+
 
 
 
