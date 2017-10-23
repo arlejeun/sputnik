@@ -48,6 +48,7 @@ class Dashboards (db.Document, object):
     rating = db.IntField()
     image_src = db.StringField(max_length=255, required=True)
     tags = db.ListField(required=True)
+    product = db.StringField(default='Pulse')
     overview = db.DictField()
     features = db.DictField()
     prerequisites = db.DictField()
@@ -55,6 +56,9 @@ class Dashboards (db.Document, object):
     ss_options_file = db.StringField()
     pub_date = db.DateTimeField(default=datetime.datetime.now)
     templates = db.ListField()
+    author = db.StringField()
+    status = db.StringField()
+    contributor = db.StringField(max_length=125)
     meta = {'strict': False}
 
     def clean(self):
@@ -113,7 +117,6 @@ class Templates (db.Document, object):
     metadata = db.DictField(required=True)
     rating = db.IntField()
     pub_date = db.DateTimeField(default=datetime.datetime.now)
-    contributor = db.StringField(max_length=125)
     meta = {'strict': False}
 
     def clean(self):

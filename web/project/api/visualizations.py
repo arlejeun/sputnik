@@ -14,6 +14,7 @@ admin_permission = Permission(RoleNeed('admin'))
 editor_permission = Permission(RoleNeed('editor'))
 
 
+#Improve the logic here
 @viz_api.route('', methods=['GET'])
 @viz_api.route('/', methods=['GET'])
 def get_visualizations_api():
@@ -21,7 +22,7 @@ def get_visualizations_api():
         visualizations = Visualizations.objects.all()
     else:
         #public_viz = Visualizations.objects.filter(status='draft')
-        visualizations = Visualizations.objects(Q(contributor='alejeune@genesys.com') | Q(status='public'))
+        visualizations = Visualizations.objects(Q(contributor='alejeune@genesys.com') | Q(status='public')).order_by('-pub_date')
         #visualizations = own_viz
 
     return jsonify({'result': visualizations})

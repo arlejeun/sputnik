@@ -3,10 +3,11 @@ import glob, os, json
 import errno
 from project.visualizations.forms import AddVisualizationForm
 from project.templates.forms import AddTemplateForm
+from project.dashboards.forms import AddDashboardForm
 from project.utils.uploadsets import upload_jar_plugins, upload_images, \
     upload_exported_templates, upload_exported_options
 from flask_security import login_required, auth_token_required, current_user
-from project.models import Visualizations, Templates
+from project.models import Visualizations, Templates, Dashboards
 from flask_principal import Permission, RoleNeed
 
 
@@ -110,6 +111,32 @@ def add_template():
         #return redirect(url_for('upload.complete', user_email=current_user.email))
 
     return render_template('upload/add_template.html', form=form)
+
+
+
+
+
+
+@blueprint.route('/dashboards', methods=['GET', 'POST'])
+@login_required
+#@admin_permission.require(http_exception=403)
+def add_dashboard():
+
+    form = AddDashboardForm()
+
+    if request.method == 'POST':
+        dashboard = Dashboards(name='Test', title='My Dashboard', rating=2, short_desc='This is a test',
+                               image_src='./test.png', tags=['Pulse', 'Smart'])
+        dashboard.save()
+        return redirect(url_for('dashboards.get_dashboard_list'))
+
+    return render_template('upload/add_dashboard.html', form=form)
+
+
+
+
+
+
 
 
 

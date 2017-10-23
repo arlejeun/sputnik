@@ -168,6 +168,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 
+
+
+
         </style>
         <!--
             app-route provides the name of the category and the item.
@@ -175,180 +178,243 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-route route="[[route]]" pattern="/:dashboardId" data="{{routeData}}"></app-route>
 
         <market-category-data id="categoryData"
-            category-name="pulse_dashboards"
-            item-name="{{_getDashboardName(routeData.dashboardId)}}"
-            item="{{item}}"
-            failure="{{failure}}">
+                              category-name="pulse_dashboards"
+                              item-name="{{_getDashboardName(routeData.dashboardId)}}"
+                              item="{{item}}"
+                              failure="{{failure}}">
         </market-category-data>
 
-         <google-codelab title="Pulse Dashboard" environment="web" last-updated="2017-04-18" noToolbar=true noHighlight=true>
+        <!-- Simplified view of dashboard -->
+        <template is="dom-if" if="[[_hasFeatures(item)]]">
+            <google-codelab title="Pulse Dashboard" environment="web" last-updated="2017-04-18" noToolbar=true
+                            noHighlight=true>
 
-            <google-codelab-step label="Overview" duration="2">
 
-                <h2>{{item.title}}</h2>
-                <p>
-                    <br>
-                            {{item.short_desc}}
-                    <br><br>
+                <google-codelab-step label="Overview" duration="2">
+
+                    <h2>{{item.title}}</h2>
+                    <p>
+                        <br>
+                        {{item.short_desc}}
+                        <br><br>
                         <a href="[[item.image_src]]" title="[[item.title]]" target="_blank">
                             <img src="[[item.image_src]]" style="max-width: 624px"></img>
                         </a>
-                </p>
+                    </p>
 
-                <h3>What you'll learn</h3>
+                    <h3>What you'll learn</h3>
 
-                <ul class="checklist">
-                    <template is="dom-repeat" items="[[item.overview.goals]]">
-                        <li>[[item]]</li>
-                    </template>
-                </ul>
-
-                <h3>What you'll need</h3>
-                <p></p>
-                <ul>
-                    <template is="dom-repeat" items="[[item.overview.prerequisites]]">
-                        <li>[[item]]</li>
-                    </template>
-                </ul>
-
-                <h3>Who developed this dashboard?</h3>
-                    <s-html html="[[item.overview.author]]"></s-html>
-            </google-codelab-step>
-
-            <google-codelab-step label="Features" duration="3">
-                <h2>[[item.title]]</h2>
-                <s-html html="[[item.features.intro]]"></s-html>
-                <template is="dom-repeat" items="[[item.features.widgets]]">
-                 <section>
-                    <s-html html="[[item.shtml]]"></s-html>
-                    <template is="dom-if" if="[[item.slides]]">
-                    <l2t-paper-slider  total-slides="3">
-                        <template is="dom-repeat" items="[[item.slides]]">
-                            <paper-slide class="slider-image" style="background-image: url([[item]]);"></paper-slide>
+                    <ul class="checklist">
+                        <template is="dom-repeat" items="[[item.overview.goals]]">
+                            <li>[[item]]</li>
                         </template>
-                    </l2t-paper-slider>
-                    </template>
-                </section>
-                <paper-divider class="divider-for-light-background"></paper-divider>
-                </template>
-            </google-codelab-step>
+                    </ul>
+
+                    <h3>What you'll need</h3>
+                    <p></p>
+                    <ul>
+                        <template is="dom-repeat" items="[[item.overview.prerequisites]]">
+                            <li>[[item]]</li>
+                        </template>
+                    </ul>
+
+                    <h3>Who developed this dashboard?</h3>
+                        <s-html html="[[item.overview.author]]"></s-html><br>
+                        <p align='right'>published by: <a class='ext-link' target='_blank' href='mailto:[[_getContributor(item)]]'>[[_getContributor(item)]]</a></p>
+                </google-codelab-step>
 
 
-            <google-codelab-step label="Pre-requisites" duration="5">
-                <section>
-                    <s-html html="[[item.prerequisites.templates]]"></s-html>
+                    <google-codelab-step label="Features" duration="3">
+                        <h2>[[item.title]]</h2>
+                        <s-html html="[[item.features.intro]]"></s-html>
+                        <template is="dom-repeat" items="[[item.features.widgets]]">
+                            <section>
+                                <s-html html="[[item.shtml]]"></s-html>
+                                <template is="dom-if" if="[[item.slides]]">
+                                    <l2t-paper-slider total-slides="3">
+                                        <template is="dom-repeat" items="[[item.slides]]">
+                                            <paper-slide class="slider-image"
+                                                         style="background-image: url([[item]]);"></paper-slide>
+                                        </template>
+                                    </l2t-paper-slider>
+                                </template>
+                            </section>
+                            <paper-divider class="divider-for-light-background"></paper-divider>
+                        </template>
+                    </google-codelab-step>
 
 
-                    <template is="dom-if" if="[[item.ss_options_file]]">
-
-                        <div class="card-actions justified">
-                            <template is="dom-repeat" items="[[item.templates]]" as="template">
-                                <paper-button on-tap="_onLookTemplate" data-args="[[template]]" class="dashboard-reserve">[[template.label]]</paper-button>
-                            </template>
-                        </div>
-                    </template>
+                <google-codelab-step label="Pre-requisites" duration="5">
+                    <section>
+                        <s-html html="[[item.prerequisites.templates]]"></s-html>
 
 
-                     <template is="dom-if" if="[[item.prerequisites.links]]">
+                        <template is="dom-if" if="[[item.ss_options_file]]">
 
-                        <div class="card-actions justified">
-
-                            <ul>
-
-                            <template is="dom-repeat" items="[[item.prerequisites.links]]" as="link">
-
-                                <!--<a href="[[link.url]]">
-                                  <paper-button class="dashboard-reserve">[[link.label]]</paper-button>
-                                </a>-->
-
-                                <li>[[link.label]] <a href="[[link.url]]" class="ext-link" target="_blank"><i>[[link.url]]</i></a> </li>
-
-                            </template>
-
-                            </ul>
-                        </div>
-                    </template>
-
-                    <template is="dom-if" if="[[item.ss_options_file]]">
-
-                        <aside class="special">
-                            <p>The templates used for this dashboard are relying on specific statistic types. Those statistics type can be downloaded and should be imported into your Genesys environment in the Stat Server options.<br></p>
-                            <p>
-                                <paper-button raised class="colored">
-                                    <iron-icon icon="file-download"></iron-icon>
-                                   <!-- <a href="[[item.ss_options_file]]" target="_blank">-->
-                                   <a href="[[item.ss_options_file]]" target="_blank">
-                                        <b>Download Stat Server Options</b>
-                                    </a>
-                                </paper-button>
-                            </p>
-                        </aside>
-                    </template>
+                            <div class="card-actions justified">
+                                <template is="dom-repeat" items="[[item.templates]]" as="template">
+                                    <paper-button on-tap="_onLookTemplate" data-args="[[template]]"
+                                                  class="dashboard-reserve">[[template.label]]
+                                    </paper-button>
+                                </template>
+                            </div>
+                        </template>
 
 
-                </section>
+                        <template is="dom-if" if="[[item.prerequisites.links]]">
 
-                <section>
+                            <div class="card-actions justified">
 
-                    <template is="dom-if" if="[[item.download_link]]">
+                                <ul>
 
-                    <h2>Environment settings</h2>
+                                    <template is="dom-repeat" items="[[item.prerequisites.links]]" as="link">
 
-                        <p>Genesys Pulse 8.5.106+ can import and export Pulse templates, dashboards and wallboards from one environment to another which enable users to package them and share them across environment.
-                        <br>
-                        We are currently using this approach to help administrators speed up the deployment phase.<br><br>
+                                        <!--<a href="[[link.url]]">
+                                          <paper-button class="dashboard-reserve">[[link.label]]</paper-button>
+                                        </a>-->
 
-                        <b>Instructions to import Pulse dashboard are available in the Help Center:</b>
-                        <br>
-                        <a class="ext-link" href="/pulse/help#1" target="_blank">How to import dashboard into my Pulse environment</a>
-                        </p>
+                                        <li>[[link.label]] <a href="[[link.url]]" class="ext-link" target="_blank"><i>[[link.url]]</i></a>
+                                        </li>
 
-                        <!--<div class="vimeo">
-                            <iframe src="https://player.vimeo.com/video/209254764?title=0&byline=0&portrait=0&color=b80007" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen class="embedded-video"></iframe>
-                        </div>-->
+                                    </template>
 
+                                </ul>
+                            </div>
+                        </template>
 
-                    <aside class="special">
+                        <template is="dom-if" if="[[item.ss_options_file]]">
 
-                        <p>The dashboard can be downloaded from this website but keep in mind that when you import the dashboard into your environment, you might have to select the objects (agent group, queues) from your environment because the one used by our demo environment might not be available with your Genesys configuration.<br></p>
+                            <aside class="special">
+                                <p>The templates used for this dashboard are relying on specific statistic types. Those
+                                    statistics type can be downloaded and should be imported into your Genesys environment
+                                    in the Stat Server options.<br></p>
+                                <p>
+                                    <paper-button raised class="colored">
+                                        <iron-icon icon="file-download"></iron-icon>
+                                        <!-- <a href="[[item.ss_options_file]]" target="_blank">-->
+                                        <a href="[[item.ss_options_file]]" target="_blank">
+                                            <b>Download Stat Server Options</b>
+                                        </a>
+                                    </paper-button>
+                                </p>
+                            </aside>
+                        </template>
 
-                        <p>
-                            <paper-button raised class="colored">
-                                <iron-icon icon="file-download"></iron-icon>
-                                <a href="[[item.download_link]]" target="_blank">
-                                    <b>Download [[item.title]]</b>
-                                </a>
-                            </paper-button>
-                        </p>
-                    </aside>
-
-                    </template>
 
                     </section>
-            </google-codelab-step>
 
-           <!-- <google-codelab-step  label="Feedback" duration="2">
+                    <section>
 
-            <div class="survey">
+                        <template is="dom-if" if="[[item.download_link]]">
 
-                <google-codelab-survey>
-                  <h4>How would rate your experience with Polymer?</h4>
-                  <paper-radio-group>
-                    <paper-radio-button name="novice">Novice</paper-radio-button>
-                    <paper-radio-button name="intermediate">Intermediate</paper-radio-button>
-                    <paper-radio-button name="advanced">Advanced</paper-radio-button>
-                  </paper-radio-group>
-                </google-codelab-survey>
+                            <h2>Environment settings</h2>
 
-                <h4>Would you recommend this dashboard for your organization?</h4>
-                    <star-rating rate=[[item.rating]]>
-                    </star-rating>
-            </div>
+                            <p>Genesys Pulse 8.5.106+ can import and export Pulse templates, dashboards and wallboards from
+                                one environment to another which enable users to package them and share them across
+                                environment.
+                                <br>
+                                We are currently using this approach to help administrators speed up the deployment
+                                phase.<br><br>
 
-            </google-codelab-step>-->
+                                <b>Instructions to import Pulse dashboard are available in the Help Center:</b>
+                                <br>
+                                <a class="ext-link" href="/pulse/help#1" target="_blank">How to import dashboard into my
+                                    Pulse environment</a>
+                            </p>
+
+                            <!--<div class="vimeo">
+                                <iframe src="https://player.vimeo.com/video/209254764?title=0&byline=0&portrait=0&color=b80007" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen class="embedded-video"></iframe>
+                            </div>-->
+
+
+                            <aside class="special">
+
+                                <p>The dashboard can be downloaded from this website but keep in mind that when you import
+                                    the dashboard into your environment, you might have to select the objects (agent group,
+                                    queues) from your environment because the one used by our demo environment might not be
+                                    available with your Genesys configuration.<br></p>
+
+                                <p>
+                                    <paper-button raised class="colored">
+                                        <iron-icon icon="file-download"></iron-icon>
+                                        <a href="[[item.download_link]]" target="_blank">
+                                            <b>Download [[item.title]]</b>
+                                        </a>
+                                    </paper-button>
+                                </p>
+                            </aside>
+
+                        </template>
+
+                    </section>
+                </google-codelab-step>
+
+            <!-- <google-codelab-step  label="Feedback" duration="2">
+
+             <div class="survey">
+
+                 <google-codelab-survey>
+                   <h4>How would rate your experience with Polymer?</h4>
+                   <paper-radio-group>
+                     <paper-radio-button name="novice">Novice</paper-radio-button>
+                     <paper-radio-button name="intermediate">Intermediate</paper-radio-button>
+                     <paper-radio-button name="advanced">Advanced</paper-radio-button>
+                   </paper-radio-group>
+                 </google-codelab-survey>
+
+                 <h4>Would you recommend this dashboard for your organization?</h4>
+                     <star-rating rate=[[item.rating]]>
+                     </star-rating>
+             </div>
+
+             </google-codelab-step>-->
 
 
         </google-codelab>
+        </template>
+
+        <!-- Simplified view of dashboard -->
+        <template is="dom-if" if="[[!_hasFeatures(item)]]">
+            <google-codelab title="Pulse Dashboard" environment="web" last-updated="2017-04-19" noToolbar=true
+                            noHighlight=true>
+
+                <google-codelab-step label="Overview" duration="2">
+
+                    <h2>{{item.title}}</h2>
+                    <p>
+                        <br>
+                        {{item.short_desc}}
+                        <br><br>
+                        <a href="[[item.image_src]]" title="[[item.title]]" target="_blank">
+                            <img src="[[item.image_src]]" style="max-width: 624px"></img>
+                        </a>
+                    </p>
+
+                    <h3>What you'll learn</h3>
+
+                    <ul class="checklist">
+                        <template is="dom-repeat" items="[[item.overview.goals]]">
+                            <li>[[item]]</li>
+                        </template>
+                    </ul>
+
+                    <h3>What you'll need</h3>
+                    <p></p>
+                    <ul>
+                        <template is="dom-repeat" items="[[item.overview.prerequisites]]">
+                            <li>[[item]]</li>
+                        </template>
+                    </ul>
+
+                    <h3>Who developed this dashboard?</h3>
+
+                        <s-html html="<p>[[_urlify(item.overview.author)]]</p>"></s-html><br>
+                        <p align='right'>published by: <a class='ext-link' target='_blank' href='mailto:[[_getContributor(item)]]'>[[_getContributor(item)]]</a></p>
+
+                </google-codelab-step>
+
+        </google-codelab>
+        </template>
 
 
     </template>
@@ -385,10 +451,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         },
 
+        _getContributor: function (item) {
+
+            if (item) {
+                return item.contributor!= null ? item.contributor : 'alejeune@genesys.com';
+            }
+
+        },
+
+        _hasFeatures: function(item) {
+            if (item) {
+                if (Object.keys(item.features).length > 0) {
+                    return true;
+                }
+            }
+            return false;
+        },
+
         _itemChanged:function(item) {
           //console.log(JSON.stringify(item));
-
-
           return item;
         },
 
@@ -416,9 +497,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             if (!offline) {
                 this._tryReconnect();
             }
+        },
+
+        _urlify: function(text) {
+            if (!text) {
+                return '';
+            }
+            var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
+            //var urlRegex = /(https?:\/\/[^\s]+)/g;
+            return text.replace(urlRegex, function(url,b,c) {
+                var url2 = (c == 'www.') ?  'http://' +url : url;
+                return '<a class="ext-link" href="' +url2+ '" target="_blank">' + url + '</a>';
+            })
         }
 
     });
+
+
+
     </script>
 
 
