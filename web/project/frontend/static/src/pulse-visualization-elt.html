@@ -240,7 +240,8 @@
             }, 3000);
          },
 
-         _error: function() {
+         _error: function(evt) {
+            console.log(evt);
             console.log('error visualization');
             this.$.toast1.text = 'Pulse Visualization could not be deleted';
             this.$.toast1.open();

@@ -30,9 +30,8 @@ def get_visualizations_api():
 
 @viz_api.route('/<name>', methods=['GET'])
 def get_visualization_api(name):
-    visualization = Visualizations.objects(name=name)
-    if visualization.count() == 0:
-        visualization = "No such visualization for the given name"
+    visualization = Visualizations.objects.filter(name=name).first_or_404()
+    #visualization = Visualizations.objects.get_or_404(name=name)
     return jsonify({'result': visualization})
 
 
@@ -49,15 +48,24 @@ def post_visualization_api():
 
 
 @viz_api.route('/<name>', methods=['DELETE'])
-@login_required
-#@auth_token_required
-#@http_auth_required
+@http_auth_required
 @admin_permission.require(http_exception=403)
 def delete_visualization_api(name):
-    visualization = Visualizations.objects(name=name)
-    if visualization.count() == 0:
-        msg = "No such visualization for the given name"
-        return jsonify({'result': 'KO', 'msg': msg})
-    else:
-        visualization.delete()
-        return jsonify({'result': 'OK', 'msg': 'visualization deleted', 'name':name})
+    visualization = Visualizations.objects.filter(name=name).first_or_404()
+#    visualization = Visualizations.objects.get_or_404(name=name)
+    visualization.delete()
+    return jsonify({'result': 'OK', 'msg': 'visualization deleted', 'name':name})
+
+
+@viz_api.route('/<string:viz>', methods=['PUT'])
+@http_auth_required
+@admin_permission.require(http_exception=403)
+def put_visualization_api(viz):
+    #visualization = Visualizations.objects.get_or_404(name=viz)
+    visualization = Visualizations.objects.filter(name=viz).first_or_404()
+    payload = request.json
+    validfields = set(Visualizations._fields) & set(payload)
+    subset = {k: payload[k] for k in validfields}
+    visualization.update(**subset)
+    visualization.save()
+    return jsonify({'result': visualization})

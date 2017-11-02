@@ -5,28 +5,23 @@
     Flask project application package
 """
 from flask import Flask
-from flask_script import Manager
 from flask_security import Security, MongoEngineUserDatastore
 from flask_security.utils import hash_password
-#from flask_principal import Permission, RoleNeed
 from flask_bootstrap import Bootstrap
 from flask_mail import Mail
-
-from wtforms.validators import DataRequired
-from flask_wtf.file import FileField, FileAllowed, FileRequired
-from flask_uploads import UploadSet, configure_uploads, IMAGES, DATA
-from project.utils.uploadsets import upload_jar_plugins, upload_images, \
+from flask_uploads import configure_uploads
+from utils.uploadsets import upload_plugins, upload_images, \
     upload_exported_dashboards, upload_exported_templates, upload_exported_options
-from project import upload, api, dashboards, visualizations, templates, settings
+from . import upload, api, dashboards, visualizations, templates, settings
 
 
-def register_uploadsets(app, upload_jar_plugins, upload_images, upload_exported_dashboards,
+def register_uploadsets(app, upload_plugins, upload_images, upload_exported_dashboards,
                         upload_exported_templates, upload_exported_options):
     configure_uploads(app, upload_images)
     configure_uploads(app, upload_exported_dashboards)
     configure_uploads(app, upload_exported_templates)
     configure_uploads(app, upload_exported_options)
-    configure_uploads(app, upload_jar_plugins)
+    configure_uploads(app, upload_plugins)
 
 def register_blueprints(app):
     """Register Flask blueprints."""
@@ -55,7 +50,7 @@ Bootstrap(app)
 register_blueprints(app)
 
 # Register flask-upload
-register_uploadsets(app, upload_jar_plugins, upload_images,
+register_uploadsets(app, upload_plugins, upload_images,
                     upload_exported_dashboards, upload_exported_templates, upload_exported_options)
 
 

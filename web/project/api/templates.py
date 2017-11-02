@@ -22,9 +22,8 @@ def get_templates_api():
 
 @temp_api.route('/<name>', methods=['GET'])
 def get_template_api(name):
-    template = Templates.objects(definition__guid=name)
-    if template.count() == 0:
-        template = "No such template for the given name"
+    #template = Templates.objects.get_or_404(definition__guid=name)
+    template = Templates.objects.filter(definition__guid=name).first_or_404()
     return jsonify({'result': template})
 
 
@@ -42,13 +41,24 @@ def post_template_api():
 
 
 @temp_api.route('/<name>', methods=['DELETE'])
-@login_required
+@http_auth_required
 @admin_permission.require(http_exception=403)
 def delete_template_api(name):
-    template = Templates.objects(definition__guid=name)
-    if template.count() == 0:
-        msg = "No such template for the given name"
-        return jsonify({'result': 'KO', 'msg': msg})
-    else:
-        template.delete()
-        return jsonify({'result': 'OK', 'msg': 'template deleted', 'name':name})
+    template = Templates.objects.filter(definition__guid=name).first_or_404()
+    #template = Templates.objects.get_or_404(definition__guid=name)
+    template.delete()
+    return jsonify({'result': 'OK', 'msg': 'template deleted', 'name':name})
+
+
+@temp_api.route('/<string:tmp>', methods=['PUT'])
+@http_auth_required
+@admin_permission.require(http_exception=403)
+def put_template_api(tmp):
+    template = Templates.objects.filter(definition__guid=tmp).first_or_404()
+    #template = Templates.objects.get_or_404(definition__guid=tmp)
+    payload = request.json
+    validfields = set(Templates._fields) & set(payload)
+    subset = {k: payload[k] for k in validfields}
+    template.update(**subset)
+    template.save()
+    return jsonify({'result': 'OK', 'msg': 'Template updated', 'name':tmp})

@@ -10,6 +10,17 @@
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/poly-filter/demo/demo-list.html">
 
+
+
+
+  <link rel="import" href="../bower_components/iron-image/iron-image.html">
+  <link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+  <link rel="import" href="../bower_components/paper-item/paper-item.html">
+
+  <!-- Ensure Web Animations polyfill is loaded since neon-animation 2.0 doesn't import it -->
+  <link rel="import" href="../bower_components/neon-animation/web-animations.html">
+  <link rel="import" href="../bower_components/paper-menu-button/paper-menu-button.html">
+
 <link rel="import" href="gsys-view404.html">
 <link rel="import" href="pulse-dashboard-elt.html">
 <link rel="import" href="gsys-detail-dashboard.html">
@@ -30,6 +41,16 @@
 
         ul {
           list-style: none;
+        }
+
+        .paper-item {
+             color: inherit;
+             text-decoration: none;
+       }
+
+        .add {
+            color:var(--genesys-red);;
+            margin:15px 15px 0px 0px;
         }
 
         @media (max-width: 840px) {
@@ -74,10 +95,36 @@
 
       <template is="dom-if" if="[[!_getTemplateID(route)]]" hidden$="[[failure]]">
 
+
           <paper-toolbar class="subheader">
+
+          <!--<label id="label3"></label>
+            <paper-radio-group selected="b" allow-empty-selection aria-labelledby="label3">
+              <paper-radio-button name="a">Pulse</paper-radio-button>
+              <paper-radio-button name="b">CX Insigths</paper-radio-button>
+            </paper-radio-group>-->
+
             <span class="title"></span>
+
+            <!--<paper-menu-button>
+              <paper-icon-button class="add" icon="icons:add-circle" slot="dropdown-trigger"></paper-icon-button>
+              <paper-listbox slot="dropdown-content">
+                   <paper-item on-tap="_addDashboard">Pulse</paper-item>
+                   <paper-item on-tap="_addCXInsightsDashboard">CX Insights</paper-item>
+              </paper-listbox>
+            </paper-menu-button>-->
+
+            <paper-icon-button class="add" icon="icons:add-circle" on-tap="_addDashboard"></paper-icon-button>
+
             <paper-input label="search for dashboard" value="{{filterString}}"></paper-input>
-            
+
+            <!--<paper-tooltip for="add-dashboard" class="custom" animation-delay="0">
+              <img src="./donuts.png">
+              Rich-text tooltips are doable but against the Material Design spec.
+            </paper-tooltip>-->
+
+
+
           </paper-toolbar>
 
           <div class="vertical-section">
@@ -191,9 +238,14 @@
              console.log('_refreshGrid' + this.$.grid.applyResponsive);
             this.$.grid.applyResponsive(this.$.grid.currentScreenformat, this.$.grid.currentScreenformat);
           }, 300);
-        }
+        },
+
+      _addDashboard: function(evt) {
+        location.href= '/upload/dashboards';
+      }
 
       });
+
   </script>
 
 </dom-module>

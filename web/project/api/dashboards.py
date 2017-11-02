@@ -22,9 +22,7 @@ def get_dashboards_api():
 
 @dashboard_api.route('/<name>', methods=['GET'])
 def get_dashboard_api(name):
-    dashboard = Dashboards.objects(name=name)
-    if dashboard.count() == 0:
-        dashboard = "No such dashboard for the given name"
+    dashboard = Dashboards.objects.filter(name=name).first_or_404()
     return jsonify({'result': dashboard})
 
 
@@ -44,10 +42,19 @@ def post_dashboard_api():
 @http_auth_required
 @admin_permission.require(http_exception=403)
 def delete_dashboard_api(name):
-    dashboard = Dashboards.objects(name=name)
-    if dashboard.count() == 0:
-        msg = "No such dashboard for the given name"
-        return jsonify({'result': 'KO', 'msg': msg})
-    else:
-        dashboard.delete()
-        return jsonify({'result': 'OK', 'msg': 'Dashboard deleted'})
+    dashboard = Dashboards.objects.filter(name=name).first_or_404()
+    dashboard.delete()
+    return jsonify({'result': 'OK', 'msg': 'Dashboard deleted'})
+
+
+@dashboard_api.route('/<string:dash>', methods=['PUT'])
+@http_auth_required
+@admin_permission.require(http_exception=403)
+def put_dashboard_api(dash):
+    dashboard = Dashboards.objects.filter(name=dash).first_or_404()
+    payload = request.json
+    validfields = set(Dashboards._fields) & set(payload)
+    subset = {k: payload[k] for k in validfields}
+    dashboard.update(**subset)
+    dashboard.save()
+    return jsonify({'result': 'OK', 'msg': 'visualization updated', 'name':dash})

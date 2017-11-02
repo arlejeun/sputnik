@@ -1,17 +1,16 @@
 from flask import Blueprint, render_template, abort, request, redirect, url_for, flash, send_from_directory
 import glob, os, json
-import errno
-from project.visualizations.forms import AddVisualizationForm
-from project.templates.forms import AddTemplateForm
-from project.dashboards.forms import AddDashboardForm
-from project.utils.uploadsets import upload_jar_plugins, upload_images, \
-    upload_exported_templates, upload_exported_options
+from ..visualizations.forms import AddVisualizationForm
+from ..templates.forms import AddTemplateForm
+from ..dashboards.forms import AddDashboardForm
+from ..utils.uploadsets import upload_plugins, upload_images, \
+    upload_exported_templates, upload_exported_options, upload_exported_dashboards
+from ..models import Visualizations, Templates, Dashboards
 from flask_security import login_required, auth_token_required, current_user
-from project.models import Visualizations, Templates, Dashboards
 from flask_principal import Permission, RoleNeed
 
 
-blueprint = Blueprint('upload', __name__, url_prefix='/pulse/upload', static_url_path='/assets', static_folder='assets/user', template_folder='templates')
+blueprint = Blueprint('upload', __name__, url_prefix='/upload', static_url_path='/assets', static_folder='assets/community', template_folder='templates')
 
 # Create a permission with a single Need, in this case a RoleNeed.
 admin_permission = Permission(RoleNeed('admin'))
@@ -25,25 +24,20 @@ def add_visualization():
 
     form = AddVisualizationForm()
 
-#    if form.validate_on_submit(): # to get error messages to the browser
-
     if request.method == 'POST' and 'vis_image' in request.files:
-        filename1 = upload_images.save(request.files['vis_image'], current_user.email)
-        filename2 = upload_images.save(request.files['vis_options'], current_user.email)
-        filename3 = upload_jar_plugins.save(request.files['vis_manifest'], current_user.email)
 
-        name = "{}-{}".format(form.vis_title.data.replace(" ", ""), current_user.email)
+        alias = current_user['email'].split('@')[0]
+        product = form.vis_type.data
 
-        image_src = "{}{}/screenshots/{}".format(blueprint.url_prefix, blueprint.static_url_path, filename1)
-        image_src = image_src[1:]
+        filename1 = upload_images.save(request.files['vis_image'], folder='visualizations/'+product+'/screenshot/'+alias)
+        filename2 = upload_images.save(request.files['vis_options'], folder='visualizations/'+product+'/screenshot/'+alias)
+        filename3 = upload_plugins.save(request.files['vis_manifest'], folder='visualizations/'+product+'/plugin/'+alias)
 
-        image_edit = "{}{}/screenshots/{}".format(blueprint.url_prefix, blueprint.static_url_path, filename2)
-        image_edit = image_edit[1:]
+        image_src = "_uploads/community/{}".format(filename1)
+        image_edit = "_uploads/community/{}".format(filename2)
+        plugin_src = "_uploads/community/{}".format(filename3)
 
-        plugin_src = "{}{}/plugins/{}".format(blueprint.url_prefix, blueprint.static_url_path, filename3)
-        plugin_src = plugin_src[1:]
-
-
+        name = "{}-{}".format(form.vis_title.data.replace(" ", ""), alias)
 
         viz =Visualizations(title=form.vis_title.data, name=name, short_desc=form.vis_short_desc.data,
                             desc=form.vis_desc.data, rating=form.vis_rating.data, author=form.vis_credit.data, contributor=current_user.email,
@@ -51,9 +45,7 @@ def add_visualization():
 
         viz.save()
 
-        #return redirect(url_for('upload.complete', user_email=current_user.email))
         return redirect(url_for('visualizations.get_visualization_list'))
-
 
     return render_template('upload/add_visualization.html', form=form)
 
@@ -67,25 +59,24 @@ def add_template():
 
     if request.method == 'POST' and 'template_export' in request.files and 'ss_options_export' in request.files:
 
-        filename1 = upload_exported_templates.save(request.files['template_export'], current_user.email)
+        alias = current_user['email'].split('@')[0]
+        product = form.template_type.data
+
+        filename1 = upload_exported_templates.save(request.files['template_export'], folder='templates/'+product+'/definition/'+alias)
 
         if request.files['template_image'].filename == '':
             print "No available screenshot"
             image_src = ''
         else:
-            filename2 = upload_images.save(request.files['template_image'], current_user.email)
-            image_src = "{}{}/screenshots/{}".format(blueprint.url_prefix, blueprint.static_url_path, filename2)
-            image_src = image_src[1:]
+            filename2 = upload_images.save(request.files['template_image'],
+                                           folder='templates/'+product+'/screenshot/'+alias)
 
-        filename3 = upload_exported_options.save(request.files['ss_options_export'], current_user.email)
+            image_src = "_uploads/community/{}".format(filename2)
 
-        template_src = "{}{}/definitions/{}".format(blueprint.url_prefix, blueprint.static_url_path, filename1)
-        template_src = template_src[1:]
-
-        template_src_file = "{}/definitions/{}".format(blueprint.static_folder, filename1)
-
-        ss_option_src = "{}{}/options/{}".format(blueprint.url_prefix, blueprint.static_url_path, filename3)
-        ss_option_src = ss_option_src[1:]
+        filename3 = upload_exported_options.save(request.files['ss_options_export'], folder='templates/'+product+'/option/'+alias)
+        ss_option_src = "_uploads/community/{}".format(filename3)
+        template_src = "_uploads/community/{}".format(filename1)
+        template_src_file = "{}/{}".format(blueprint.static_folder, filename1)
 
 
         with open(template_src_file) as fh:
@@ -113,10 +104,6 @@ def add_template():
     return render_template('upload/add_template.html', form=form)
 
 
-
-
-
-
 @blueprint.route('/dashboards', methods=['GET', 'POST'])
 @login_required
 #@admin_permission.require(http_exception=403)
@@ -124,19 +111,42 @@ def add_dashboard():
 
     form = AddDashboardForm()
 
-    if request.method == 'POST':
-        dashboard = Dashboards(name='Test', title='My Dashboard', rating=2, short_desc='This is a test',
-                               image_src='./test.png', tags=['Pulse', 'Smart'])
+    if request.method == 'POST' and 'dashboard_image' in request.files and 'dashboard_metadata' in request.files:
+
+        alias = current_user['email'].split('@')[0]
+        product = form.dashboard_type.data
+
+        new_dashboard = {}
+
+        filename1 = upload_exported_dashboards.save(request.files['dashboard_metadata'], folder='dashboards/'+product+'/metadata/'+alias)
+        filename2 = upload_images.save(request.files['dashboard_image'], folder='dashboards/'+product+'/screenshot/'+alias)
+        filename3 = upload_exported_dashboards.save(request.files['dashboard_export'], folder='dashboards/'+product+'/export/'+alias)
+
+        image_src = "_uploads/community/{}".format(filename2)
+        download_link = "_uploads/community/{}".format(filename3)
+        dashboard_metadata_file = "{}/{}".format(blueprint.static_folder, filename1)
+
+        with open(dashboard_metadata_file) as fh:
+            tmp = json.load(fh)
+
+            new_dashboard['title'] = tmp['title']
+            new_dashboard['name'] ="{}-{}".format(tmp['title'].replace(" ", "_"), alias)
+            new_dashboard['short_desc'] = tmp['short_desc']
+            new_dashboard['rating'] = tmp['rating']
+            new_dashboard['tags'] = tmp['tags']
+            new_dashboard['overview'] = tmp['overview']
+            new_dashboard['prerequisites'] = tmp['prerequisites']
+            new_dashboard['author'] = tmp['overview']['author']
+            new_dashboard['product'] = form.dashboard_type.data
+            new_dashboard['contributor'] = current_user.email
+            new_dashboard['download_link'] = download_link
+            new_dashboard['image_src'] = image_src
+
+        dashboard = Dashboards(**new_dashboard)
         dashboard.save()
         return redirect(url_for('dashboards.get_dashboard_list'))
 
     return render_template('upload/add_dashboard.html', form=form)
-
-
-
-
-
-
 
 
 
@@ -162,7 +172,6 @@ def upload():
 
         return redirect(url_for('upload.complete', user_email=current_user.email))
     return render_template('upload/post.html', form=form)
-'''
 
 
 @blueprint.route("/files/<user_email>", methods=['GET', 'POST'])
@@ -181,3 +190,4 @@ def complete(user_email):
         files.append(fname)
 
     return render_template('upload/complete.html', user_email=user_email, files=files)
+'''

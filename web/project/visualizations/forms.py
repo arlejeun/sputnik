@@ -1,8 +1,8 @@
 from flask_wtf import FlaskForm, RecaptchaField
-from wtforms import StringField, FieldList, TextAreaField, IntegerField, SubmitField, FileField
+from wtforms import StringField, FieldList, TextAreaField, IntegerField, SubmitField, FileField, RadioField
 from wtforms.validators import DataRequired
 from flask_wtf.file import FileAllowed, FileRequired
-from project import upload_images, upload_jar_plugins
+from ..utils.uploadsets import upload_images, upload_plugins
 
 
 class AddVisualizationForm(FlaskForm):
@@ -11,10 +11,11 @@ class AddVisualizationForm(FlaskForm):
     vis_desc = TextAreaField('Description')
     vis_image = FileField('Screenshot widget', validators=[FileRequired(), FileAllowed(upload_images, 'Images only!')])
     vis_options = FileField('Screenshot options', validators=[FileRequired(), FileAllowed(upload_images, 'Images only!')])
-    vis_manifest = FileField('Visualization plugin', validators=[FileRequired(), FileAllowed(upload_jar_plugins, 'jar only!')])
+    vis_manifest = FileField('Visualization plugin', validators=[FileRequired(), FileAllowed(upload_plugins, 'jar or mstr only!')])
     vis_rating = IntegerField('Rating 1-5')
     vis_credit = TextAreaField('Additional information (external link, ...)')
-    recaptcha = RecaptchaField('')
+    vis_type = RadioField('Label', choices=[('pulse', 'Pulse Visualization'), ('cx_insights', 'CX Insights Visualization')], default='pulse', validators=[DataRequired()])
+    #recaptcha = RecaptchaField('')
     submit_button = SubmitField('Submit Visualization')
 
 

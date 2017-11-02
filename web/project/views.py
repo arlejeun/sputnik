@@ -18,7 +18,6 @@ def home():
 
 
 # Views
-
 @app.route('/pulse')
 def pulse():
     return redirect(url_for('dashboards.get_dashboard_list'))

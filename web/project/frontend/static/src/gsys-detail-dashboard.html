@@ -171,6 +171,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 
+
+
         </style>
         <!--
             app-route provides the name of the category and the item.
@@ -184,7 +186,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                               failure="{{failure}}">
         </market-category-data>
 
-        <!-- Simplified view of dashboard -->
+        <!-- Initial view of dashboard -->
         <template is="dom-if" if="[[_hasFeatures(item)]]">
             <google-codelab title="Pulse Dashboard" environment="web" last-updated="2017-04-18" noToolbar=true
                             noHighlight=true>
@@ -219,29 +221,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </ul>
 
                     <h3>Who developed this dashboard?</h3>
-                        <s-html html="[[item.overview.author]]"></s-html><br>
-                        <p align='right'>published by: <a class='ext-link' target='_blank' href='mailto:[[_getContributor(item)]]'>[[_getContributor(item)]]</a></p>
+                    <s-html html="[[item.overview.author]]"></s-html>
+                    <br>
+                    <p align='right'>published by: <a class='ext-link' target='_blank'
+                                                      href='mailto:[[_getContributor(item)]]'>[[_getContributor(item)]]</a>
+                    </p>
                 </google-codelab-step>
 
 
-                    <google-codelab-step label="Features" duration="3">
-                        <h2>[[item.title]]</h2>
-                        <s-html html="[[item.features.intro]]"></s-html>
-                        <template is="dom-repeat" items="[[item.features.widgets]]">
-                            <section>
-                                <s-html html="[[item.shtml]]"></s-html>
-                                <template is="dom-if" if="[[item.slides]]">
-                                    <l2t-paper-slider total-slides="3">
-                                        <template is="dom-repeat" items="[[item.slides]]">
-                                            <paper-slide class="slider-image"
-                                                         style="background-image: url([[item]]);"></paper-slide>
-                                        </template>
-                                    </l2t-paper-slider>
-                                </template>
-                            </section>
-                            <paper-divider class="divider-for-light-background"></paper-divider>
-                        </template>
-                    </google-codelab-step>
+                <google-codelab-step label="Features" duration="3">
+                    <h2>[[item.title]]</h2>
+                    <s-html html="[[item.features.intro]]"></s-html>
+                    <template is="dom-repeat" items="[[item.features.widgets]]">
+                        <section>
+                            <s-html html="[[item.shtml]]"></s-html>
+                            <template is="dom-if" if="[[item.slides]]">
+                                <l2t-paper-slider total-slides="3">
+                                    <template is="dom-repeat" items="[[item.slides]]">
+                                        <paper-slide class="slider-image"
+                                                     style="background-image: url([[item]]);"></paper-slide>
+                                    </template>
+                                </l2t-paper-slider>
+                            </template>
+                        </section>
+                        <paper-divider class="divider-for-light-background"></paper-divider>
+                    </template>
+                </google-codelab-step>
 
 
                 <google-codelab-step label="Pre-requisites" duration="5">
@@ -286,7 +291,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                             <aside class="special">
                                 <p>The templates used for this dashboard are relying on specific statistic types. Those
-                                    statistics type can be downloaded and should be imported into your Genesys environment
+                                    statistics type can be downloaded and should be imported into your Genesys
+                                    environment
                                     in the Stat Server options.<br></p>
                                 <p>
                                     <paper-button raised class="colored">
@@ -309,7 +315,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                             <h2>Environment settings</h2>
 
-                            <p>Genesys Pulse 8.5.106+ can import and export Pulse templates, dashboards and wallboards from
+                            <p>Genesys Pulse 8.5.106+ can import and export Pulse templates, dashboards and wallboards
+                                from
                                 one environment to another which enable users to package them and share them across
                                 environment.
                                 <br>
@@ -329,9 +336,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                             <aside class="special">
 
-                                <p>The dashboard can be downloaded from this website but keep in mind that when you import
-                                    the dashboard into your environment, you might have to select the objects (agent group,
-                                    queues) from your environment because the one used by our demo environment might not be
+                                <p>The dashboard can be downloaded from this website but keep in mind that when you
+                                    import
+                                    the dashboard into your environment, you might have to select the objects (agent
+                                    group,
+                                    queues) from your environment because the one used by our demo environment might not
+                                    be
                                     available with your Genesys configuration.<br></p>
 
                                 <p>
@@ -349,28 +359,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </section>
                 </google-codelab-step>
 
-            <!-- <google-codelab-step  label="Feedback" duration="2">
+                <!-- <google-codelab-step  label="Feedback" duration="2">
 
-             <div class="survey">
+                 <div class="survey">
 
-                 <google-codelab-survey>
-                   <h4>How would rate your experience with Polymer?</h4>
-                   <paper-radio-group>
-                     <paper-radio-button name="novice">Novice</paper-radio-button>
-                     <paper-radio-button name="intermediate">Intermediate</paper-radio-button>
-                     <paper-radio-button name="advanced">Advanced</paper-radio-button>
-                   </paper-radio-group>
-                 </google-codelab-survey>
+                     <google-codelab-survey>
+                       <h4>How would rate your experience with Polymer?</h4>
+                       <paper-radio-group>
+                         <paper-radio-button name="novice">Novice</paper-radio-button>
+                         <paper-radio-button name="intermediate">Intermediate</paper-radio-button>
+                         <paper-radio-button name="advanced">Advanced</paper-radio-button>
+                       </paper-radio-group>
+                     </google-codelab-survey>
 
-                 <h4>Would you recommend this dashboard for your organization?</h4>
-                     <star-rating rate=[[item.rating]]>
-                     </star-rating>
-             </div>
+                     <h4>Would you recommend this dashboard for your organization?</h4>
+                         <star-rating rate=[[item.rating]]>
+                         </star-rating>
+                 </div>
 
-             </google-codelab-step>-->
+                 </google-codelab-step>-->
 
 
-        </google-codelab>
+            </google-codelab>
         </template>
 
         <!-- Simplified view of dashboard -->
@@ -385,8 +395,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <br>
                         {{item.short_desc}}
                         <br><br>
-                        <a href="[[item.image_src]]" title="[[item.title]]" target="_blank">
-                            <img src="[[item.image_src]]" style="max-width: 624px"></img>
+                        <a href="/[[item.image_src]]" title="[[item.title]]" target="_blank">
+                            <img src="/[[item.image_src]]" style="max-width: 624px"></img>
                         </a>
                     </p>
 
@@ -406,14 +416,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         </template>
                     </ul>
 
+                    <section>
+
+                        <template is="dom-if" if="[[item.download_link]]">
+
+                            <!--<p>
+                                <b>Instructions to import Pulse dashboard are available in the Help Center:</b>
+                                <br>
+                                <a class="ext-link" href="/pulse/help#1" target="_blank">How to import dashboard into my
+                                    Pulse environment</a>
+                            </p>-->
+
+                            <aside class="special">
+
+                                <p>The dashboard can be downloaded from this website but keep in mind that when you
+                                    import the dashboard into your environment.<br></p>
+
+                                <p>
+                                    <paper-button raised class="colored">
+                                        <iron-icon icon="file-download"></iron-icon>
+                                        <a href="/[[item.download_link]]" target="_blank">
+                                            <b>Download [[item.title]]</b>
+                                        </a>
+                                    </paper-button>
+                                </p>
+                            </aside>
+
+                        </template>
+
+                    </section>
+
                     <h3>Who developed this dashboard?</h3>
 
-                        <s-html html="<p>[[_urlify(item.overview.author)]]</p>"></s-html><br>
-                        <p align='right'>published by: <a class='ext-link' target='_blank' href='mailto:[[_getContributor(item)]]'>[[_getContributor(item)]]</a></p>
+                    <s-html html="<p>[[_urlify(item.overview.author)]]</p>"></s-html>
+                    <br>
+                    <p align='right'>published by: <a class='ext-link' target='_blank'
+                                                      href='mailto:[[_getContributor(item)]]'>[[_getContributor(item)]]</a>
+                    </p>
 
                 </google-codelab-step>
 
-        </google-codelab>
+            </google-codelab>
         </template>
 
 
@@ -504,7 +547,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 return '';
             }
             var urlRegex = /(((https?:\/\/)|(www\.))[^\s]+)/g;
-            //var urlRegex = /(https?:\/\/[^\s]+)/g;
             return text.replace(urlRegex, function(url,b,c) {
                 var url2 = (c == 'www.') ?  'http://' +url : url;
                 return '<a class="ext-link" href="' +url2+ '" target="_blank">' + url + '</a>';
@@ -513,9 +555,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     });
 
-
-
     </script>
-
 
 </dom-module>

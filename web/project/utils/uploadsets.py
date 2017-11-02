@@ -8,16 +8,17 @@ from flask_uploads import UploadSet, IMAGES, extension, DATA, ALL
 
 # Set up Flask Uploads
 # Constants fir the allowed extension of jar plugins
-PLUGINS = tuple('jar'.split())
+PLUGINS = tuple('jar zip mstr'.split())
+EXPORT = tuple('json mstr'.split())
 OPTIONS = tuple('cfg'.split())
 
-#upload_images_dashboards = UploadSet('screenshots', IMAGES)
-upload_images = UploadSet('screenshots', IMAGES)
-upload_exported_dashboards = UploadSet('definitions', DATA)
-upload_exported_templates = UploadSet('definitions', DATA)
-upload_exported_options = UploadSet('options', OPTIONS)
-upload_jar_plugins = UploadSet('plugins', PLUGINS)
 
+#upload_images_dashboards = UploadSet('screenshots', IMAGES)
+upload_images = UploadSet('community', IMAGES)
+upload_exported_dashboards = UploadSet('community', EXPORT)
+upload_exported_templates = UploadSet('community', DATA)
+upload_exported_options = UploadSet('community', OPTIONS)
+upload_plugins = UploadSet('community', PLUGINS)
 
 
 def process_user_avatar(file_storage, upload_set, border):

@@ -3,8 +3,6 @@ import datetime
 from flask_mongoengine import MongoEngine, ValidationError
 from flask_security import UserMixin, RoleMixin
 from werkzeug.security import check_password_hash
-from mongoengine.fields import ListField, EmbeddedDocumentField, GenericEmbeddedDocumentField, ReferenceField, GenericReferenceField, SortedListField
-
 
 from . import settings
 
@@ -12,7 +10,6 @@ from . import settings
 # Create database connection object and instantiation of mongodb
 db = MongoEngine()
 db.connect('project1', host=settings.MONGO_DATABASE_URI)
-
 
 class Role(db.Document, RoleMixin):
     name = db.StringField(max_length=80, unique=True)
