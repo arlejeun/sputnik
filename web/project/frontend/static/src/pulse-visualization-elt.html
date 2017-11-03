@@ -63,7 +63,6 @@
           }
           iron-icon.star:last-of-type { color: var(--paper-grey-500); }
 
-
            star-rating {
                 --star-elt-color: {
                     color: #FF4F1F;
@@ -79,6 +78,7 @@
                     font-size: 11pt;
                     padding: 10px 10px 5px 10px;
                 };
+
             }
 
 	        .card-actions {
@@ -109,6 +109,7 @@
               margin: 8px;
             }
 
+
             paper-fab[mini] {
               --paper-fab-background: #FF5722;
             }
@@ -118,9 +119,13 @@
               --paper-fab-background: #2196F3;
             }
 
-            paper-card-header-image {
-              border: 20px;
-              border-color: black;
+
+            paper-card.visualization {
+                 --paper-card-header-image: {
+                    border-color: black;
+                    max-height:220px;
+                    width:100%;
+                 }
             }
 
 
@@ -149,7 +154,7 @@
 
         <div class="mycard">
 
-          <paper-card image="/[[item.image_src]]" alt="Visualization">
+          <paper-card image="/[[item.image_src]]" class="visualization" alt="Visualization">
 
             <div class="card-content">
 

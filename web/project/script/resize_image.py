@@ -9,8 +9,8 @@ def usage():
 
 def main(argv):
 
-    baseheight = 350
-    basewidth = 624
+    baseheight = 300
+    basewidth = 300
     height = 0
     width = 0
     input = ''
@@ -53,22 +53,26 @@ def main(argv):
         width = basewidth
         height = baseheight
 
+    #img = Image.open(input)
+    #img = img.resize((width, height), PIL.Image.BICUBIC)
+    #img.save(output)
+
+    # Keep the same height
+    #img = Image.open(input)
+    #hpercent = (height / float(img.size[1]))
+    #width = int((float(img.size[0]) * float(hpercent)))
+    #img = img.resize((width, height), PIL.Image.ANTIALIAS)
+    #img.save(output)
+
+    # Keep the same width
+
     img = Image.open(input)
-    img = img.resize((width, height), PIL.Image.BICUBIC)
+    wpercent = (width / float(img.size[0]))
+    height = int((float(img.size[1]) * float(wpercent)))
+    img = img.resize((width, height), PIL.Image.ANTIALIAS)
     img.save(output)
 
     print 'Resize Image Completed...'
-
-
-
-    #img = Image.open('../upload/assets/user/screenshots/alejeune@genesys.com/gauge-viz_2.png')
-    #hpercent = (baseheight / float(img.size[1]))
-    #wsize = int((float(img.size[0]) * float(hpercent)))
-    #img = img.resize((wsize, baseheight), PIL.Image.ANTIALIAS)
-    #img = img.resize((basewidth, baseheight), PIL.Image.BICUBIC)
-    #img.save('../upload/assets/user/screenshots/alejeune@genesys.com/gauge-viz_2-modified.png')
-
-
 
 if __name__ == '__main__':
     main(sys.argv[1:])

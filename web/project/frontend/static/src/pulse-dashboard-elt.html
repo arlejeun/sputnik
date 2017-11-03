@@ -103,9 +103,13 @@
               --paper-fab-background: #2196F3;
             }
 
-            paper-card-header-image {
-              border: 20px;
-              border-color: black;
+
+            paper-card.dashboard {
+                 --paper-card-header-image: {
+                    border-color: black;
+                    max-height:320px;
+                    width:100%;
+                 }
             }
 
             star-rating {
@@ -121,7 +125,7 @@
 
         <div class="mycard">
 
-          <paper-card image="/[[item.image_src]]" alt="Visualization">
+          <paper-card image="/[[item.image_src]]" class="dashboard" alt="Dashboard">
 
             <div class="card-content">
 
