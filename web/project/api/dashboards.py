@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from flask import json, jsonify, request, Blueprint, flash
-from flask_security import auth_token_required, http_auth_required, login_required
+from flask_security import auth_token_required, http_auth_required, login_required, current_user
 from ..models import db, Dashboards
 from flask_principal import Permission, RoleNeed
+from mongoengine.queryset import Q
 
 
 dashboard_api = Blueprint('dashboard_api', __name__, url_prefix='/api/pulse/dashboards')
@@ -16,7 +17,14 @@ editor_permission = Permission(RoleNeed('editor'))
 @dashboard_api.route('', methods=['GET'])
 @dashboard_api.route('/', methods=['GET'])
 def get_dashboards_api():
-    dashboards = Dashboards.objects.all()
+    if current_user.has_role('admin'):
+        dashboards = Dashboards.objects.all().order_by('-pub_date')
+    elif current_user.has_role('editor'):
+        dashboards = Dashboards.objects(Q(status='public') | Q(contributor=current_user.email)).order_by(
+            '-pub_date')
+    else:
+        dashboards = Dashboards.objects(Q(status='public')).order_by('-pub_date')
+
     return jsonify({'result': dashboards})
 
 

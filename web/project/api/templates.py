@@ -2,8 +2,10 @@
 
 from flask_principal import Permission, RoleNeed
 from flask import json, jsonify, request, Blueprint, flash
-from flask_security import auth_token_required, http_auth_required, login_required
+from flask_security import auth_token_required, http_auth_required, login_required, current_user
 from ..models import db, Templates
+from mongoengine.queryset import Q
+
 
 
 temp_api = Blueprint('template_api', __name__, url_prefix='/api/pulse/templates')
@@ -16,7 +18,13 @@ editor_permission = Permission(RoleNeed('editor'))
 @temp_api.route('', methods=['GET'])
 @temp_api.route('/', methods=['GET'])
 def get_templates_api():
-    templates = Templates.objects.all()
+    if current_user.has_role('admin'):
+        templates = Templates.objects.all().order_by('-pub_date')
+    elif current_user.has_role('editor'):
+        templates = Templates.objects(Q(status='public') | Q(contributor=current_user.email)).order_by(
+            '-pub_date')
+    else:
+        templates = Templates.objects(Q(status='public')).order_by('-pub_date')
     return jsonify({'result': templates})
 
 
