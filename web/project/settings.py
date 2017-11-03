@@ -14,12 +14,12 @@ MONGO_DATABASE_URI = 'mongodb://localhost:27017/pulse'
 MONGO_DB = True
 MONGO_USERS_COLLECTION_NAME = 'users'
 
-MAIL_DEFAULT_SENDER = 'lejeune.arnaud@gmail.com'
+MAIL_DEFAULT_SENDER = 'dashboard.community.center@gmail.com'
 MAIL_SERVER = 'smtp.gmail.com'
 MAIL_PORT = 465
 MAIL_USE_SSL = True
-MAIL_USERNAME = 'lejeune.arnaud@gmail.com'
-MAIL_PASSWORD = '*********************'
+MAIL_USERNAME = 'dashboard.community.center@gmail.com'
+MAIL_PASSWORD = 'blackmail32'
 
 WTF_CSRF_ENABLED = False
 DEBUG_TB_INTERCEPT_REDIRECTS = False
@@ -39,23 +39,19 @@ SECURITY_TRACKABLE = False
 SECURITY_CONFIRMABLE = True
 SECURITY_CHANGEABLE = True
 
-SECURITY_EMAIL_SENDER = 'lejeune.arnaud@gmail.com'
+SECURITY_EMAIL_SENDER = 'dashboard.community.center@gmail.com'
 SECURITY_SEND_REGISTER_EMAIL = True
 SECURITY_SEND_PASSWORD_CHANGE_EMAIL = True
 SECURITY_SEND_PASSWORD_RESET_EMAIL = True
 SECURITY_LOGIN_WITHOUT_CONFIRMATION = False
 
 #Email
-
 SECURITY_EMAIL_SUBJECT_REGISTER = 'Welcome to the Genesys Dashboard Community Center'
 SECURITY_EMAIL_SUBJECT_CONFIRM = 'Please confirm your email for the Genesys Dashboard Community Center'
 
-
 # Uploads
-UPLOADS_DEFAULT_DEST = os.path.realpath('.') + '/project/upload/assets/user/'
-#UPLOADS_SCREENSHOTS_URL = 'http://127.0.0.1:5000/pulse/upload/assets/screenshots/'
-UPLOADED_IMAGES_DEST = os.path.realpath('.') + '/project/upload/assets/user/'
-#UPLOADED_PLUGINS_URL = 'http://127.0.0.1:5000/pulse/upload/assets/plugins/'
+UPLOADS_DEFAULT_DEST = os.path.realpath('.') + '/project/upload/assets/community/'
+UPLOADED_IMAGES_DEST = os.path.realpath('.') + '/project/upload/assets/community/'
 
 # Recaptcha
 RECAPTCHA_USE_SSL = False
