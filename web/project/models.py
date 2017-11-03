@@ -114,6 +114,7 @@ class Templates (db.Document, object):
     metadata = db.DictField(required=True)
     rating = db.IntField()
     pub_date = db.DateTimeField(default=datetime.datetime.now)
+    status = db.StringField()
     meta = {'strict': False}
 
     def clean(self):
