@@ -1,0 +1,42 @@
+{
+
+            "title": "CX Insight Supervisor",
+            "short_desc": "Team Leader dashboard helps you monitor in real-time agent status as well as the kind of interaction agents are handling right now. This dashboard monitors operational KPIs to compare agent performance and identify the top performers of your team.",
+            "tags": [
+                "CX Insights",
+                "Inbound",
+                "Smart",
+                "Cloud"
+            ],
+
+            "overview": {
+                "author": "<p>This dashboard was built by the Genesys CX Insights Team. <aside class=\"warning\"><p><b>Note:</b> This dashboard is not shipped out-of-box with CX Insights but it is an example of what kind of dashboard can be used to monitor your service level across your queues.</p></aside></p>",
+                "goals": [
+                    "Monitor the overall time spent by a team, skill center or a customer representative in a specific status",
+                    "Measure the distribution of agent status time spent by a team and skill center",
+                    "Quantify the volume of interactions handled by skill centers or customer representatives with the technical result",
+                    "Identify the best performers to handle customer inquiries within your teams"
+                ],
+                "prerequisites": [
+                    "Genesys CIM 8.1+",
+                    "Genesys Pulse 8.5.106+"
+                ]
+            },
+
+            "prerequisites": {
+              "links": [
+                {
+                  "label": "How to install Genesys CX Insights?",
+                  "url": "https://docs.genesys.com/Documentation/PMA/latest/PMADep/Welcome"
+                },
+                {
+                  "label": "How to deploy the dashboard into CX Insights?",
+                  "url": "https://docs.genesys.com/Documentation/PMA/latest/CCAWAHelp/Using"
+                }
+              ],
+              "templates": "This dashboard cannot be directly downloaded from this website because it is only accessible with the Genesys Advisors Sellable Items. In order to deploy this dashboard into your environment, you must install the Genesys Advisors and deploy the SSO for Pulse and Advisors as described in the technical documentation."
+            },
+
+            "rating": 4
+
+}
