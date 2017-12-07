@@ -142,8 +142,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                role="navigation">
 
                     <!--Courtesy of http://jsbin.com/sutavom/edit?html,output-->
-                    <paper-menu id="menu" on-iron-select="_menuItemSelected" multi>
-                        <!--<paper-item xyz="0"></paper-item>-->
+                    <!--<paper-menu id="menu" on-iron-select="_menuItemSelected" multi>
+
                         <paper-submenu xyz="1">
 
                             <paper-item xyz="2" class="menu-trigger">Pulse &rtri;</paper-item>
@@ -172,10 +172,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <paper-item class="menu-trigger">CX Insigths &rtri;</paper-item>
                             <paper-menu class="menu-content">
                                 <paper-item xyz="6">Dashboards</paper-item>
-                                <paper-item xyz="7">Reports</paper-item>
+                                <paper-item xyz="7">Visualizations</paper-item>
+                            </paper-menu>
+                        </paper-submenu>
+                    </paper-menu>  -->
+
+
+                    <paper-menu id="menu" on-iron-select="_menuItemSelected" multi>
+
+                        <paper-submenu xyz="1">
+
+                            <paper-item xyz="2" class="menu-trigger">Pulse &rtri;</paper-item>
+
+                            <paper-menu class="menu-content">
+
+                                <a class="paper-item-link" name="pulse-templates" href="/pulse/dashboards">
+                                    <paper-item xyz="a">Dashboards</paper-item>
+                                </a>
+                                <a class="paper-item-link" name="pulse-templates" href="/pulse/templates">
+                                    <paper-item xyz="b">Templates</paper-item>
+                                </a>
+                                <a class="paper-item-link" name="pulse-templates" href="/pulse/visualizations">
+                                    <paper-item xyz="c">Visualizations</paper-item>
+                                </a>
+                            </paper-menu>
+
+                        </paper-submenu>
+
+                        <paper-submenu xyz="5">
+                            <paper-item class="menu-trigger">CX Insigths &rtri;</paper-item>
+                            <paper-menu class="menu-content">
+                                <paper-item xyz="e">Dashboards</paper-item>
+                                <paper-item xyz="f">Visualizations</paper-item>
                             </paper-menu>
                         </paper-submenu>
                     </paper-menu>
+
+
+
+
                 </iron-selector>
 
             </app-drawer>
