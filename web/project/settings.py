@@ -14,12 +14,12 @@ MONGO_DATABASE_URI = 'mongodb://localhost:27017/pulse'
 MONGO_DB = True
 MONGO_USERS_COLLECTION_NAME = 'users'
 
-MAIL_DEFAULT_SENDER = 'dashboard.community.center@gmail.com'
+MAIL_DEFAULT_SENDER = 'lejeune.arnaud@gmail.com'
 MAIL_SERVER = 'smtp.gmail.com'
 MAIL_PORT = 465
 MAIL_USE_SSL = True
-MAIL_USERNAME = 'dashboard.community.center@gmail.com'
-MAIL_PASSWORD = 'blackmail32'
+MAIL_USERNAME = 'lejeune.arnaud@gmail.com'
+MAIL_PASSWORD = '*********************'
 
 WTF_CSRF_ENABLED = False
 DEBUG_TB_INTERCEPT_REDIRECTS = False
