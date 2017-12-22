@@ -53,6 +53,10 @@ SECURITY_EMAIL_SUBJECT_CONFIRM = 'Please confirm your email for the Genesys Dash
 UPLOADS_DEFAULT_DEST = os.path.realpath('.') + '/project/upload/assets/community/'
 UPLOADED_IMAGES_DEST = os.path.realpath('.') + '/project/upload/assets/community/'
 
+# Pagination
+PAGINATION_PAGE = 20
+PAGINATION_DASHBOARD_PAGE = 15
+
 # Recaptcha
 RECAPTCHA_USE_SSL = False
 RECAPTCHA_PUBLIC_KEY = '6LfdtC4UAAAAAHjjL08N7pE5FqgsD2x5zLcCh32Z'
