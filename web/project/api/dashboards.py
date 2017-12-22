@@ -5,6 +5,7 @@ from flask_security import auth_token_required, http_auth_required, login_requir
 from ..models import db, Dashboards
 from flask_principal import Permission, RoleNeed
 from mongoengine.queryset import Q
+from ..settings import PAGINATION_DASHBOARD_PAGE
 
 
 dashboard_api = Blueprint('dashboard_api', __name__, url_prefix='/api/pulse/dashboards')
@@ -13,19 +14,30 @@ dashboard_api = Blueprint('dashboard_api', __name__, url_prefix='/api/pulse/dash
 admin_permission = Permission(RoleNeed('admin'))
 editor_permission = Permission(RoleNeed('editor'))
 
+PER_PAGE = PAGINATION_DASHBOARD_PAGE
+
 
 @dashboard_api.route('', methods=['GET'])
 @dashboard_api.route('/', methods=['GET'])
 def get_dashboards_api():
-    if current_user.has_role('admin'):
-        dashboards = Dashboards.objects.all().order_by('-pub_date')
-    elif current_user.has_role('editor'):
-        dashboards = Dashboards.objects(Q(status='public') | Q(contributor=current_user.email)).order_by(
-            '-pub_date')
-    else:
-        dashboards = Dashboards.objects(Q(status='public')).order_by('-pub_date')
 
-    return jsonify({'result': dashboards})
+    total = Dashboards.objects().count()
+    page = 1
+
+    if 'page' in request.args:
+        page = int(request.args['page'])
+
+    if current_user.has_role('admin'):
+        dashboards = Dashboards.objects.all().order_by('-pub_date').paginate(page=page, per_page=PER_PAGE).items
+
+    elif current_user.has_role('editor'):
+        dashboards = Dashboards.objects(Q(status='public') | Q(contributor=current_user.email)).order_by('-pub_date').paginate(page=page, per_page=PER_PAGE).items
+
+    else:
+        #dashboards = Dashboards.objects(Q(status='public')).order_by('-pub_date')
+        dashboards = Dashboards.objects(Q(status='public')).order_by('-pub_date').paginate(page=page, per_page=PER_PAGE).items
+
+    return jsonify({'total': total, 'per_page': PER_PAGE, 'result': dashboards})
 
 
 @dashboard_api.route('/<name>', methods=['GET'])

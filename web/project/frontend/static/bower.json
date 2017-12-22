@@ -39,7 +39,8 @@
     "star-rating": "arlejeun/star-rating#^2.0.6",
     "s-html": "arlejeun/s-html#^0.1.4",
     "show-json": "arlejeun/show-json",
-    "google-youtube":"GoogleWebComponents/google-youtube"
+    "google-youtube":"GoogleWebComponents/google-youtube",
+    "tk-pagination":"arlejeun/tk-pagination"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

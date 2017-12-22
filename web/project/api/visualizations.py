@@ -5,6 +5,7 @@ from flask import json, jsonify, request, Blueprint, flash
 from flask_security import auth_token_required, http_auth_required, login_required, current_user
 from ..models import db, Visualizations
 from mongoengine.queryset import Q
+from ..settings import PAGINATION_PAGE
 
 
 viz_api = Blueprint('visualization_api', __name__, url_prefix='/api/pulse/visualizations')
@@ -13,19 +14,28 @@ viz_api = Blueprint('visualization_api', __name__, url_prefix='/api/pulse/visual
 admin_permission = Permission(RoleNeed('admin'))
 editor_permission = Permission(RoleNeed('editor'))
 
+PER_PAGE = PAGINATION_PAGE
 
 #Improve the logic here
 @viz_api.route('', methods=['GET'])
 @viz_api.route('/', methods=['GET'])
 def get_visualizations_api():
+
+    total = Visualizations.objects().count()
+    page = 1
+
+    if 'page' in request.args:
+        page = int(request.args['page'])
+
     if current_user.has_role('admin'):
-        visualizations = Visualizations.objects.all().order_by('-pub_date')
+        visualizations = Visualizations.objects.all().order_by('-pub_date').paginate(page=page, per_page=PER_PAGE).items
     elif current_user.has_role('editor'):
         visualizations = Visualizations.objects(Q(status='public') | Q(contributor=current_user.email)).order_by(
-            '-pub_date')
+            '-pub_date').paginate(page=page, per_page=PER_PAGE).items
     else:
-        visualizations = Visualizations.objects(Q(status='public')).order_by('-pub_date')
-    return jsonify({'result': visualizations})
+        visualizations = Visualizations.objects(Q(status='public')).order_by('-pub_date').paginate(page=page, per_page=PER_PAGE).items
+
+    return jsonify({'total': total, 'per_page': PER_PAGE, 'result': visualizations})
 
 
 @viz_api.route('/<name>', methods=['GET'])

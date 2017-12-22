@@ -48,6 +48,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         itemName: String,
 
+        page: {
+            type: Number,
+            observer: '_pageChanged'
+        },
+
         categories: {
           type: Array,
           value: categoryList,
@@ -112,14 +117,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _fetchItems: function(category, attempts) {
         this._setFailure(false);
         // Only fetch the items of a category if it has not been previously set.
-        if (!category || category.items) {
+        //if (!category || category.items) {
+        if (!category) {
           return;
         }
         this._getResource({
          // url: '/data/' + category.name + '.json',
           url: category.url ,
+          page: this.page,
           onLoad: function(e) {
             this.set('category.items', JSON.parse(e.target.responseText).result);
+            this.set('category.total', JSON.parse(e.target.responseText).total);
+            this.set('category.per_page', JSON.parse(e.target.responseText).per_page);
+
           },
           onError: function(e) {
             this._setFailure(true);
@@ -139,7 +149,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           }
         }.bind(this));
 
-        xhr.open('GET', rq.url);
+        if (rq.page > 0) {
+            url = rq.url + '?page=' + rq.page;
+        } else {
+            url = rq.url;
+        }
+
+        xhr.open('GET', url);
         xhr.send();
       },
 
@@ -148,6 +164,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           // Try at most 3 times to get the items.
           this._fetchItems(this._getCategoryObject(this.categoryName), 3);
         }
+      },
+
+      _pageChanged: function(value) {
+            this.refresh();
       }
 
     });

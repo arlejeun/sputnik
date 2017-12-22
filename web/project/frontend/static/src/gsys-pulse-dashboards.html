@@ -10,9 +10,11 @@
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/poly-filter/demo/demo-list.html">
 
+<link rel="import" href="../bower_components/poly-filter/demo/demo-list.html">
+
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
-<!--<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">-->
-<link rel="import" href="../bower_components/paper-item/paper-item.html">
+
+<link rel="import" href="../bower_components/tk-pagination/tk-pagination.html">
 
 <!-- Ensure Web Animations polyfill is loaded since neon-animation 2.0 doesn't import it -->
 <link rel="import" href="../bower_components/neon-animation/web-animations.html">
@@ -34,6 +36,27 @@
         :host {
           --app-grid-columns: 3;
           --app-grid-gutter:20px;
+
+          --tk-pagination-span-theme: {
+                display: inline-block;
+                font-size: 12px;
+                color: #5d3e5d78;
+                width: 24px;
+                height: 24px;
+                text-align: center;
+                cursor: pointer;
+                color: #5d3e5d78;
+                margin-left: 10px;
+                border: 1px solid #5d3e5d78;
+                box-sizing: border-box;
+
+           }
+
+           --tk-pagination-span-selected-theme: {
+                color: #5d3e5d;
+                border: 1px solid #5d3e5d;
+           }
+
         }
 
         ul {
@@ -70,6 +93,7 @@
             margin-top: auto;
         }
 
+
       </style>
 
       <app-route
@@ -87,6 +111,7 @@
         id="categoryData"
         category-name="[[_computeCategoryName(route)]]"
         category="{{category}}"
+        page="{{currentPage}}"
         failure="{{failure}}">
       </market-category-data>
 
@@ -95,32 +120,11 @@
 
           <paper-toolbar class="subheader">
 
-          <!--<label id="label3"></label>
-            <paper-radio-group selected="b" allow-empty-selection aria-labelledby="label3">
-              <paper-radio-button name="a">Pulse</paper-radio-button>
-              <paper-radio-button name="b">CX Insigths</paper-radio-button>
-            </paper-radio-group>-->
-
             <span class="title"></span>
-
-            <!--<paper-menu-button>
-              <paper-icon-button class="add" icon="icons:add-circle" slot="dropdown-trigger"></paper-icon-button>
-              <paper-listbox slot="dropdown-content">
-                   <paper-item on-tap="_addDashboard">Pulse</paper-item>
-                   <paper-item on-tap="_addCXInsightsDashboard">CX Insights</paper-item>
-              </paper-listbox>
-            </paper-menu-button>-->
 
             <paper-icon-button class="add" icon="icons:add-circle" on-tap="_addDashboard"></paper-icon-button>
 
             <paper-input label="search for dashboard" value="{{filterString}}"></paper-input>
-
-            <!--<paper-tooltip for="add-dashboard" class="custom" animation-delay="0">
-              <img src="./donuts.png">
-              Rich-text tooltips are doable but against the Material Design spec.
-            </paper-tooltip>-->
-
-
 
           </paper-toolbar>
 
@@ -132,16 +136,20 @@
                   filterDebounceDelay="300">
                 </poly-filter>
           </div>
-      </template>
 
+          <ul class="app-grid">
+                <template is="dom-repeat" items="[[_getListItems(filteredItems)]]">
+                   <li class="item">
+                      <pulse-dashboard-elt item="[[item]]"></pulse-dashboard-elt>
+                    </li>
+                </template>
+          </ul>
 
-      <ul class="app-grid">
-            <template is="dom-repeat" items="[[_getListItems(filteredItems)]]">
-               <li class="item">
-                  <pulse-dashboard-elt item="[[item]]"></pulse-dashboard-elt>
-                </li>
-            </template>
-      </ul>
+          <div style="text-align:center;">
+              <tk-pagination no-jump-device no-page-count total="[[category.total]]" page-size="[[category.per_page]]" current-page="{{currentPage}}"></tk-pagination>
+          </div>
+
+       </template>
 
       <template is="dom-if" if="[[_getTemplateID(route)]]" hidden$="[[failure]]">
           <gsys-detail-dashboard id='detail' route="[[route]]"></gsys-detail-dashboard>
@@ -240,6 +248,7 @@
       _addDashboard: function(evt) {
         location.href= '/upload/dashboards';
       }
+
 
       });
 

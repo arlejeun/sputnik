@@ -24,6 +24,26 @@
         :host {
           --app-grid-columns: 4;
           --app-grid-gutter:20px;
+
+          --tk-pagination-span-theme: {
+                display: inline-block;
+                font-size: 12px;
+                color: #5d3e5d78;
+                width: 24px;
+                height: 24px;
+                text-align: center;
+                cursor: pointer;
+                color: #5d3e5d78;
+                margin-left: 10px;
+                border: 1px solid #5d3e5d78;
+                box-sizing: border-box;
+
+           }
+
+           --tk-pagination-span-selected-theme: {
+                color: #5d3e5d;
+                border: 1px solid #5d3e5d;
+           }
         }
 
         ul {
@@ -79,6 +99,7 @@
                 id="categoryData"
                 category-name="[[_computeCategoryName(route)]]"
                 category="{{category}}"
+                page="{{currentPage}}"
                 failure="{{failure}}">
         </market-category-data>
 
@@ -101,17 +122,20 @@
                         filterDebounceDelay="300">
                 </poly-filter>
             </div>
+
+            <ul class="app-grid">
+                <template is="dom-repeat" items="[[_getListItems(filteredItems)]]">
+                    <li class="item">
+                        <pulse-visualization-elt item="[[item]]" user="[[user]]" role="[[role]]"></pulse-visualization-elt>
+                    </li>
+                </template>
+            </ul>
+
+            <div style="text-align:center;">
+              <tk-pagination no-jump-device no-page-count total="[[category.total]]" page-size="[[category.per_page]]" current-page="{{currentPage}}"></tk-pagination>
+            </div>
+
         </template>
-
-
-        <ul class="app-grid">
-            <template is="dom-repeat" items="[[_getListItems(filteredItems)]]">
-                <li class="item">
-                    <pulse-visualization-elt item="[[item]]" user="[[user]]" role="[[role]]"></pulse-visualization-elt>
-                </li>
-            </template>
-        </ul>
-
 
         <template is="dom-if" if="[[_getTemplateID(route)]]" hidden$="[[failure]]">
             <gsys-detail-visualization route="[[route]]" user="[[user]]" role="[[role]]"></gsys-detail-visualization>
