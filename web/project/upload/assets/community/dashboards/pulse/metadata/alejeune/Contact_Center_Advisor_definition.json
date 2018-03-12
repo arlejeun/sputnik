@@ -1,0 +1,66 @@
+{
+  "features": {
+      "intro": "<section><p>Supervisors need to know at-a-glance what is happening in their contact centers. This dashboard helps users identify whether or not operational targets are met as well as manage agent workload across different teams for multi-channel interactions.<br class=\"style-scope gsys-detail-dashboard\">This dashboard is made of several panes which can be grouped into 3 categories:</p><ul class=\"checklist style-scope gsys-detail-dashboard\"><li class=\"style-scope gsys-detail-dashboard\">Contact Centers (by Operating Unit, Geography,...)</li><li class=\"style-scope gsys-detail-dashboard\">Applications</li><li class=\"style-scope gsys-detail-dashboard\">Agent Groups</li><li class=\"style-scope gsys-detail-dashboard\">Alerts</li></ul></section>",
+      "widgets": [
+        {
+          "shtml": "<h2>Contact Centers & Applications</h2><p>The Contact Centers and Applications panes are showing real-time operational KPIs like the Service Level across your different queues or group of queues.</p><a href=\"/static/images/Advisors/CCA_Business_Hierarchy.png\" target=\"_blank\" title=\"Contact Centers & Applications Panes\"><img alt=\"Contact Centers & Applications Panes\" src=\"/static/images/Advisors/CCA_Business_Hierarchy.png\" style=\"max-width: 624px\"></img></a><aside class=\"special style-scope gsys-detail-dashboard\"><p class=\"style-scope gsys-detail-dashboard\">In this view, supervisors can monitor the intraday service level within the Enterprise Performance View with customizable business hierarchy by Contact Center, Operating Unit and Region.</p><br><p>The user can change the selector dynamically to shift focus from a Regional to Operating Unit Performance view and they can apply a quick search to filter applications based on user criteria.</p></aside>"
+        },
+        {
+          "shtml": "<h2>Agent Groups</h2><p>This pane shows a summary of KPIs to identify the current workforce available to manage the workload of the Contact Centers.<br></p><aside class=\"special\"><p>In this dashboard, supervisors can monitor their current agent availability for the selected applications (line of business or queues) as well as the current status of associated agents (on calls, on hold, waiting for calls,...).</p></aside><br><p><a href=\"/static/images/Advisors/CCA_Targeted_Agent_Groups.png\" target=\"_blank\" title=\"Agent Groups Pane\"><img alt=\"Agent Groups Pane\" src=\"/static/images/Advisors/CCA_Targeted_Agent_Groups.png\" style=\"max-width: 624px\"></a><br></p>"
+        },
+        {
+          "shtml": "<h2>Alerts</h2><p>The Alerts pane shows the alerts triggered based on configured thresholds with out-of-range KPIs and its associated criticality. For each alert, the user can expand the view to show the alert trends and visualize at-a-glance if the situation is getting better or worse.<br><p><a href=\"/static/images/Advisors/CCA_1_alerts.png\" target=\"_blank\" title=\"Alerts Pane\"><img alt=\"Alerts Pane\" src=\"/static/images/Advisors/CCA_1_alerts.png\" style=\"max-width: 624px\"></img></a><br></p>"
+        }
+      ]
+    },
+  "image_src": "../../static/images/Advisors/CCA_Summary.png",
+  "name": "Contact_Center_Advisor_v1",
+  "overview": {
+    "author": "<p class=\"s-html\">This dashboard was built by the Genesys Advisors Team.</p> <aside class=\"warning\"><p><b>Note:</b> This dashboard is not shipped out-of-box with Pulse and it is an adds-on (additional sellable item) to help Analylists and Supervisors monitor their service level within a unified business-centric view across multi-operational and multi-channel customer service.</p></aside>",
+    "goals": [
+      "Measure the service level as well as other key performance indicators in real time within multi-operational and multi-channel customer service",
+      "Improve real-time customer service and resources management by bringing information together in consolidated and business-centric views",
+      "Root Cause analysis with the correlation of contextual business hierarchy and real-time alerts",
+      "Identify at a glance and in real-time if the Operations Units or Contact Centers are properly staffed to handle customer inquiries"
+    ],
+    "prerequisites": [
+      "Genesys CIM 8.1+",
+      "Genesys Pulse 8.5.108+",
+      "Advisors Genesys Adapter 8.5.2+",
+      "Advisors Platform 8.5.2+",
+      "Contact Center Advisor and Workforce Advisor 8.5.2+"
+    ]
+  },
+
+  "prerequisites": {
+      "links": [
+        {
+          "label": "How to install Genesys Contact Center Advisor?",
+          "url": "https://docs.genesys.com/Documentation/PMA/latest/PMADep/Welcome"
+        },
+        {
+          "label": "How to use Contact Center Advisor Dashboard?",
+          "url": "https://docs.genesys.com/Documentation/PMA/latest/CCAWAHelp/Using"
+        },
+        {
+          "label": "How to administer and provision Contact Center Advisor?",
+          "url": "https://docs.genesys.com/Documentation/PMA/latest/CCAWAHelp/Using"
+        },
+        {
+          "label": "See available KPIs with Genesys Advisors",
+          "url": "https://docs.genesys.com/Documentation/PMA/latest/PMAMetric/Welcome"
+        }
+      ],
+      "templates": "<h2>Dashboard requirements</h2><aside class=\"special style-scope gsys-detail-dashboard\"><p>This dashboard cannot be directly downloaded from this website because it is only accessible with the Genesys Advisors Sellable Items. In order to deploy this dashboard into your environment, you must install the Genesys Advisors and deploy the SSO for Pulse and Advisors as described in the technical documentation.<br></p></aside>"
+  },
+
+  "rating": 5,
+  "short_desc": "This dashboard offers managers with a unified view of operational KPIs providing coherent and useful answers in real-time, and empowering users to take action in a multi-operational and multi-channel customer service.",
+  "tags": [
+    "Pulse",
+    "Advisors",
+    "Inbound",
+    "Voice"
+  ],
+  "title": "Contact Center Advisor"
+}

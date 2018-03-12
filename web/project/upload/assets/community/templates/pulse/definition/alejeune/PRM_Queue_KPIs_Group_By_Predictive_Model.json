@@ -1,0 +1,479 @@
+{
+  "state": {
+    "body_hash_1": -261318846,
+    "uscn": 2256,
+    "body_hash_2": -261318846
+  },
+  "definition": {
+    "name": "PRM Queue KPIs By Predictive Model",
+    "enable_delta_snapshots": false,
+    "description": "Monitor your Queue performance with the prediction scores provided by Genesys Predictive Matching to optimize your business KPIs. This template requires Stat Server 8.5.103+ and Pulse 8.5.106+ version to group by Business Attributes provided by Predictive Matching",
+    "refresh_interval": 30,
+    "default_widget_body": {
+      "column_visibility": [
+        {
+          "visibility": "vVISIBLE",
+          "column_id": "$"
+        }
+      ],
+      "refresh_interval": 60,
+      "view": [
+        {
+          "type": "BarView",
+          "column_selector": [
+            "Current_Calls"
+          ],
+          "sorting": [
+            {
+              "is_asc": true
+            }
+          ]
+        }
+      ],
+      "label": "PRM Queue KPIs By Predictive Model",
+      "size_y": 2,
+      "size_x": 1
+    },
+    "collector_def": {
+      "allowed_object_type": [
+        "SObjectGroupQueues",
+        "SObjectQueue",
+        "SObjectRoutePoint"
+      ]
+    },
+    "proxy_access_object": {
+      "dbid": 0
+    },
+    "guid": "00505682723f-b2c0-11e7-9e1b-d143173e",
+    "layout_type": "ltPCREGULAR",
+    "column": [
+      {
+        "id": "_Object$ID",
+        "type": "ctFORMULA",
+        "category": "ccDIMENSION",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectID"
+          ]
+        },
+        "vt": "vINT",
+        "is_delta_key": true
+      },
+      {
+        "id": "_Level",
+        "type": "ctFORMULA",
+        "category": "ccDIMENSION",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.RowLevel"
+          ]
+        },
+        "vt": "vINT",
+        "is_delta_key": false
+      },
+      {
+        "id": "_GBK_PRMUSE",
+        "type": "ctSTATSERVER",
+        "format": "string",
+        "category": "ccDIMENSION",
+        "vt": "vSTR",
+        "label": "PRRUSE",
+        "statistic": {
+          "type": "ssctGROUPKEY",
+          "group_key_alias": "PRRUSE"
+        }
+      },
+	  {
+        "id": "_GBK_PRMMODEL",
+        "type": "ctSTATSERVER",
+        "format": "string",
+        "category": "ccDIMENSION",
+        "vt": "vSTR",
+        "label": "PRMMODEL",
+        "statistic": {
+          "type": "ssctGROUPKEY",
+          "group_key_alias": "PRMMODEL"
+        }
+      },
+      {
+        "id": "_Object$Type",
+        "type": "ctFORMULA",
+        "category": "ccDIMENSION",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectType"
+          ]
+        },
+        "vt": "vINT",
+        "is_delta_key": true
+      },
+      {
+        "id": "_Object$Name",
+        "type": "ctFORMULA",
+        "format": "string",
+        "category": "ccDIMENSION",
+        "formula": {
+          "type": "ftPCREFERENCE",
+          "text": [
+            "Object.ObjectName"
+          ]
+        },
+        "vt": "vSTR"
+      },
+	  
+	  {
+        "id": "Current_by_PRM",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "category": "ccMEASURE",
+        "description": "The current number of live or virtual interactions currently waiting at a distribution DN, typically a VQ.",
+        "vt": "vINT",
+        "label": "Current",
+        "statistic": {
+          "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+          "stat_type_name": "PRM_QUEUE_GB_CURRENT",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 10
+        }
+      },
+	  
+	  {
+        "id": "Oldest_by_PRM",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "category": "ccMEASURE",
+        "description": "The longest waiting time for live or virtual interactions currently on a queue or at a route point.",
+        "vt": "vLONG",
+        "label": "Oldest Waiting",
+        "statistic": {
+          "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+          "stat_type_name": "PRM_QUEUE_GB_OLDEST",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 10
+        }
+      },
+	  
+	  {
+        "id": "Entered_by_PRM",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "category": "ccMEASURE",
+        "description": "The total number of first entries of interactions on a specified queue or at a specified route point. This metric is grouped by PRRUSE to indicate whether or not the Predictive Matching was used to distribute this interaction.",
+        "vt": "vINT",
+        "label": "Entered",
+        "statistic": {
+          "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+          "stat_type_name": "PRM_QUEUE_GB_ENTERED",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60
+        }
+      },
+      {
+        "id": "Abandoned_by_PRM",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+		"category": "ccMEASURE",
+        "description": "The total number of virtual or live interactions abandoned on a specified queue or route point when a caller hangs up while waiting on that queue or at that route point or if the customer line is dropped for any reason. This metric does not include the voice interactions abandoned while ringing.",
+        "vt": "vINT",
+        "label": "Abandoned",
+        "statistic": {
+          "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+          "stat_type_name": "PRM_QUEUE_GB_ABANDONED",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60
+        }
+      },
+	  
+	  {
+        "id": "Distributed_by_PRM",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+		"category": "ccMEASURE",
+        "description": "The total number of virtual or live interactions distributed from a queue or route point directly to an agent typically.",
+        "vt": "vINT",
+        "label": "Distributed",
+        "statistic": {
+          "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+          "stat_type_name": "PRM_QUEUE_GB_DISTRIBUTED",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60
+        }
+      },
+	  
+	  {
+        "id": "Answered_by_PRM",
+        "type": "ctSTATSERVER",
+        "format": "integer",
+        "category": "ccMEASURE",
+        "description": "The total number of virtual or live interactions distributed from a queue or route point directly to an agent and answered by an agent.",
+        "vt": "vINT",
+        "label": "Answered",
+        "statistic": {
+          "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+          "stat_type_name": "PRM_QUEUE_GB_ANSWERED",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60
+        }
+      },
+	  
+	  {
+        "id": "ASA_by_PRM",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "category": "ccMEASURE",
+        "description": "The average amount of time an interaction waits on a specified queue or at a specified route point before the interaction is answered.",
+        "vt": "vLONG",
+        "label": "ASA",
+        "statistic": {
+          "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+          "stat_type_name": "PRM_QUEUE_GB_ASA",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60
+        }
+      },
+	  
+	  {
+        "id": "AWA_by_PRM",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "category": "ccMEASURE",
+        "description": "The average amount of time an interaction waits on a specified queue or at a specified route point before the interaction is abandoned.",
+        "vt": "vLONG",
+        "label": "AWA",
+        "statistic": {
+          "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+          "stat_type_name": "PRM_QUEUE_GB_AWA",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60
+        }
+      },
+	  
+	  {
+        "id": "AWT_by_PRM",
+        "type": "ctSTATSERVER",
+        "format": "time",
+        "category": "ccMEASURE",
+        "description": "The average amount of time an interaction waits on a specified queue or at a specified route point.",
+        "vt": "vLONG",
+        "label": "AWT",
+        "statistic": {
+          "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+          "stat_type_name": "PRM_QUEUE_GB_AWT",
+          "notification_mode": "STimeBasedNotification",
+          "notification_interval": 60
+        }
+      },
+	  
+	  {
+	  "category": "ccMEASURE",
+	  "description": "The total number of incoming interactions distributed to the agent with prediction scores comprise between 0 and 10.",
+	  "format": "integer",
+	  "id": "Distributed10",
+	  "label": "0-10",
+	  "statistic": {
+		"group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+		"filter": "PRR_0to10",
+		"notification_interval": 60,
+		"notification_mode": "STimeBasedNotification",
+		"stat_type_name": "PRM_QUEUE_GB_DISTRIBUTED"
+	  },
+	  "type": "ctSTATSERVER",
+	  "vt": "vINT"
+	},	
+	  
+	 {
+		  "category": "ccMEASURE",
+		  "description": "The total number of incoming interactions distributed to the agent with prediction scores comprise between 10 and 20.",
+		  "format": "integer",
+		  "id": "Distributed1020",
+		  "label": "10-20",
+		  "statistic": {
+		  "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+			"filter": "PRR_10to20",
+			"notification_interval": 60,
+			"notification_mode": "STimeBasedNotification",
+			"stat_type_name": "PRM_QUEUE_GB_DISTRIBUTED"
+		  },
+		  "type": "ctSTATSERVER",
+		  "vt": "vINT"
+		},	
+	  {
+		  "category": "ccMEASURE",
+		  "description": "The total number of incoming interactions distributed to the agent with prediction scores comprise between 20 and 30.",
+		  "format": "integer",
+		  "id": "Distributed2030",
+		  "label": "20-30",
+		  "statistic": {
+			"group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+			"filter": "PRR_20to30",
+			"notification_interval": 60,
+			"notification_mode": "STimeBasedNotification",
+			"stat_type_name": "PRM_QUEUE_GB_DISTRIBUTED"
+		  },
+		  "type": "ctSTATSERVER",
+		  "vt": "vINT"
+		},	
+	  {
+		  "category": "ccMEASURE",
+		  "description": "The total number of incoming interactions distributed to the agent with prediction scores comprise between 30 and 40.",
+		  "format": "integer",
+		  "id": "Distributed3040",
+		  "label": "30-40",
+		  "statistic": {
+		  "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+			"filter": "PRR_30to40",
+			"notification_interval": 60,
+			"notification_mode": "STimeBasedNotification",
+			"stat_type_name": "PRM_QUEUE_GB_DISTRIBUTED"
+		  },
+		  "type": "ctSTATSERVER",
+		  "vt": "vINT"
+		},
+	  {
+		  "category": "ccMEASURE",
+		  "description": "The total number of incoming interactions distributed to the agent with prediction scores comprise between 40 and 50.",
+		  "format": "integer",
+		  "id": "Distributed4050",
+		  "label": "40-50",
+		  "statistic": {
+		  "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+			"filter": "PRR_40to50",
+			"notification_interval": 60,
+			"notification_mode": "STimeBasedNotification",
+			"stat_type_name": "PRM_QUEUE_GB_DISTRIBUTED"
+		  },
+		  "type": "ctSTATSERVER",
+		  "vt": "vINT"
+		},
+	  {
+		  "category": "ccMEASURE",
+		  "description": "The total number of incoming interactions distributed to the agent with prediction scores comprise between 50 and 60.",
+		  "format": "integer",
+		  "id": "Distributed5060",
+		  "label": "50-60",
+		  "statistic": {
+		  "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+			"filter": "PRR_50to60",
+			"notification_interval": 60,
+			"notification_mode": "STimeBasedNotification",
+			"stat_type_name": "PRM_QUEUE_GB_DISTRIBUTED"
+		  },
+		  "type": "ctSTATSERVER",
+		  "vt": "vINT"
+		},
+	  {
+		  "category": "ccMEASURE",
+		  "description": "The total number of incoming interactions distributed to the agent with prediction scores comprise between 60 and 70.",
+		  "format": "integer",
+		  "id": "Distributed6070",
+		  "label": "60-70",
+		  "statistic": {
+		  "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+			"filter": "PRR_60to70",
+			"notification_interval": 60,
+			"notification_mode": "STimeBasedNotification",
+			"stat_type_name": "PRM_QUEUE_GB_DISTRIBUTED"
+		  },
+		  "type": "ctSTATSERVER",
+		  "vt": "vINT"
+		},
+	  {
+		  "category": "ccMEASURE",
+		  "description": "The total number of incoming interactions distributed to the agent with prediction scores comprise between 70 and 80.",
+		  "format": "integer",
+		  "id": "Distributed7080",
+		  "label": "70-80",
+		  "statistic": {
+		  "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+			"filter": "PRR_70to80",
+			"notification_interval": 60,
+			"notification_mode": "STimeBasedNotification",
+			"stat_type_name": "PRM_QUEUE_GB_DISTRIBUTED"
+		  },
+		  "type": "ctSTATSERVER",
+		  "vt": "vINT"
+		},
+	  {
+		  "category": "ccMEASURE",
+		  "description": "The total number of incoming interactions distributed to the agent with prediction scores comprise between 80 and 90.",
+		  "format": "integer",
+		  "id": "Distributed8090",
+		  "label": "80-90",
+		  "statistic": {
+		  "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+			"filter": "PRR_80to90",
+			"notification_interval": 60,
+			"notification_mode": "STimeBasedNotification",
+			"stat_type_name": "PRM_QUEUE_GB_DISTRIBUTED"
+		  },
+		  "type": "ctSTATSERVER",
+		  "vt": "vINT"
+		},
+	  {
+		  "category": "ccMEASURE",
+		  "description": "The total number of incoming interactions distributed to the agent with prediction scores above 90",
+		  "format": "integer",
+		  "id": "Distributed90",
+		  "label": "90+",
+		  "statistic": {
+		  "group_by_columns": [
+            "PRMUSE","PRMMODEL"
+          ],
+			"filter": "PRR_90plus",
+			"notification_interval": 60,
+			"notification_mode": "STimeBasedNotification",
+			"stat_type_name": "PRM_QUEUE_GB_DISTRIBUTED"
+		  },
+		  "type": "ctSTATSERVER",
+		  "vt": "vINT"
+		}
+	  
+      
+      
+    ],
+    "template_guid": "00505682723f-b2c0-11e7-9a53-28e886e5"
+  },
+  "record": {
+    "timestamp": 1505922797,
+    "username": "default                                                                                                                                                                                                                                                        "
+  }
+}
