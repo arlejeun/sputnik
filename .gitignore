@@ -8,6 +8,11 @@ __pycache__/
 
 # PyCharm files
 .idea/
+.vscode/
+
+# virtualenv
+dcc-27/
+
 
 # Database files
 /data/
