@@ -10,7 +10,7 @@ DEBUG = True
 SECRET_KEY = 'super-secret-key'
 
 #MONGO_DATABASE_URI = 'mongodb://mongo:27017/pulse'
-MONGO_DATABASE_URI = 'mongodb://localhost:27017/pulse'
+MONGO_DATABASE_URI = 'mongodb://localhost:27017/dcc'
 MONGO_DB = True
 MONGO_USERS_COLLECTION_NAME = 'users'
 
@@ -50,8 +50,8 @@ SECURITY_EMAIL_SUBJECT_REGISTER = 'Welcome to the Genesys Dashboard Community Ce
 SECURITY_EMAIL_SUBJECT_CONFIRM = 'Please confirm your email for the Genesys Dashboard Community Center'
 
 # Uploads
-UPLOADS_DEFAULT_DEST = os.path.realpath('.') + '/project/upload/assets/community/'
-UPLOADED_IMAGES_DEST = os.path.realpath('.') + '/project/upload/assets/community/'
+UPLOADS_DEFAULT_DEST = os.path.realpath('.') + '/project/upload/assets/'
+UPLOADED_IMAGES_DEST = os.path.realpath('.') + '/project/upload/assets/'
 
 # Pagination
 PAGINATION_PAGE = 20
