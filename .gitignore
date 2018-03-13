@@ -27,3 +27,4 @@ build/
 
 # Old files
 frontend/templates/old/
+frontend/settings.py
