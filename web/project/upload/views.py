@@ -1,8 +1,9 @@
-from flask import Blueprint, render_template, abort, request, redirect, url_for, flash, send_from_directory
+from flask import Blueprint, render_template, abort, request, redirect, url_for, g, flash, send_from_directory
 import glob, os, json
 from ..visualizations.forms import AddVisualizationForm
 from ..templates.forms import AddTemplateForm
 from ..dashboards.forms import AddDashboardForm
+
 from ..utils.uploadsets import upload_plugins, upload_images, \
     upload_exported_templates, upload_exported_options, upload_exported_dashboards
 from ..models import Visualizations, Templates, Dashboards
@@ -104,6 +105,15 @@ def add_template():
     return render_template('upload/add_template.html', form=form)
 
 
+def get_dashboard_type(dash_type):
+    switcher = {
+        'pulse': 'pulse',
+        'gcxi': 'gcxi'
+    }
+    return switcher.get(dash_type, "pureEngage")
+
+
+
 @blueprint.route('/dashboards', methods=['GET', 'POST'])
 @login_required
 #@admin_permission.require(http_exception=403)
@@ -117,11 +127,9 @@ def add_dashboard():
         product = form.dashboard_type.data
 
         new_dashboard = {}
-
         filename1 = upload_exported_dashboards.save(request.files['dashboard_metadata'], folder='dashboards/'+product+'/metadata/'+alias)
         filename2 = upload_images.save(request.files['dashboard_image'], folder='dashboards/'+product+'/screenshot/'+alias)
         filename3 = upload_exported_dashboards.save(request.files['dashboard_export'], folder='dashboards/'+product+'/export/'+alias)
-
         image_src = "_uploads/community/{}".format(filename2)
         download_link = "_uploads/community/{}".format(filename3)
         dashboard_metadata_file = "{}/{}".format(blueprint.static_folder, filename1)
@@ -144,50 +152,7 @@ def add_dashboard():
 
         dashboard = Dashboards(**new_dashboard)
         dashboard.save()
-        return redirect(url_for('dashboards.get_dashboard_list'))
+        return redirect(url_for('dashboards.get_dashboard_list', dashboard_type='pureEngage'))
 
     return render_template('upload/add_dashboard.html', form=form)
 
-
-
-'''
-# Route that will process the file upload
-@blueprint.route('/', methods=['GET','POST'])
-@login_required
-def upload():
-    form = request.form
-    if request.method == 'POST':
-        target = "{}/users/{}".format(blueprint.root_path, current_user.email)
-        try:
-            os.mkdir(target)
-        except OSError as e:
-            if e.errno == errno.EEXIST:
-                print("Couldn't create directory {}".format(target))
-
-        for upload in request.files.getlist("file"):
-            filename = upload.filename.rsplit("/")[0]
-            destination = '/'.join([target, filename])
-            print( "Accepting: {}\n and saving to: {}".format(filename, destination))
-            upload.save(destination)
-
-        return redirect(url_for('upload.complete', user_email=current_user.email))
-    return render_template('upload/post.html', form=form)
-
-
-@blueprint.route("/files/<user_email>", methods=['GET', 'POST'])
-def complete(user_email):
-    location = "{}/assets/user/screenshots/{}".format(blueprint.root_path, user_email)
-
-    if not os.path.isdir(location):
-        return "Error! {} not found!".format(location)
-
-    print url_for('static', filename='test/')
-    print url_for('upload.static', filename='test/')
-
-    files = []
-    for file in glob.glob("{}/*.*".format(location)):
-        fname = file.split(os.sep)[-1]
-        files.append(fname)
-
-    return render_template('upload/complete.html', user_email=user_email, files=files)
-'''

@@ -24,6 +24,13 @@ def pulse():
     #return render_template('index.html', user=current_user)
 
 
+# Views
+@app.route('/gcxi')
+def gcxi():
+    return redirect(url_for('dashboards.get_dashboard_list'))
+    #return render_template('index.html', user=current_user)
+
+
 @app.route('/pulse/help')
 def help():
     return render_template('index.html', user=current_user)

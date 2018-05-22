@@ -180,7 +180,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-route route="[[route]]" pattern="/:dashboardId" data="{{routeData}}"></app-route>
 
         <market-category-data id="categoryData"
-                              category-name="pulse_dashboards"
+                              category-name="[[_getCategoryName(route, routeData)]]"
                               item-name="{{_getDashboardName(routeData.dashboardId)}}"
                               item="{{item}}"
                               failure="{{failure}}">
@@ -188,7 +188,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!-- Initial view of dashboard -->
         <template is="dom-if" if="[[_hasFeatures(item)]]">
-            <google-codelab title="Pulse Dashboard" environment="web" last-updated="2017-04-18" noToolbar=true
+            <google-codelab title="Dashboard" environment="web" last-updated="2017-04-18" noToolbar=true
                             noHighlight=true>
 
 
@@ -385,7 +385,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!-- Simplified view of dashboard -->
         <template is="dom-if" if="[[!_hasFeatures(item)]]">
-            <google-codelab title="Pulse Dashboard" environment="web" last-updated="2017-04-19" noToolbar=true
+            <google-codelab title="Dashboard" environment="web" last-updated="2017-04-19" noToolbar=true
                             noHighlight=true>
 
                 <google-codelab-step label="Overview" duration="2">
@@ -516,6 +516,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           return item;
         },
 
+        _getCategoryName: function (route, routeData) {
+            if (route.prefix == "/gcxi/dashboards") {
+                return "gcxi_dashboards";
+            } else if (route.prefix == "/pulse/dashboards") {
+                return "pulse_dashboards";
+            } else {
+                return "pureEngage_dashboards";
+            }
+        },
 
         _getDashboardName:function(dashboardId) {
           console.log(dashboardId);

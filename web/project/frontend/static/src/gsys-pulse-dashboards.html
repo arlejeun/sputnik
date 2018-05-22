@@ -189,6 +189,25 @@
             return 'pulse_dashboards';
           }
         }
+        if (route.prefix && route.prefix.replace(/\//g,"_").slice(1)=='gcxi_dashboards') {
+            if (route.path) {
+                console.log("Search for a specific Dashboard: " + route.path);
+                // return 'gcxi_dashboards';
+            } else {
+               return 'gcxi_dashboards';
+            }
+
+        }
+
+        if (route.prefix && route.prefix.replace(/\//g,"_").slice(1)=='pureEngage_dashboards') {
+            if (route.path) {
+                console.log("Search for a specific Dashboard: " + route.path);
+                // return 'pureEngage_dashboards';
+            } else {
+               return 'pureEngage_dashboards';
+            }
+
+        }
       },
 
       //Not called
@@ -205,7 +224,8 @@
 
       _getTemplateID: function(route) {
           console.log(route);
-          return  (route.prefix=='/pulse/dashboards' & route.path != "")
+          //return  (route.prefix=='/pulse/dashboards' & route.path != "");
+          return  (route.prefix && route.prefix.includes('dashboards') && route.path != "");
       },
 
       _categoryChanged: function(category, visible) {

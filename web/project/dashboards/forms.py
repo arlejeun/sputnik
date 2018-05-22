@@ -9,6 +9,6 @@ class AddDashboardForm(FlaskForm):
     dashboard_metadata = FileField('Dashboard CC Metadata definition', validators=[DataRequired(),FileAllowed(upload_exported_templates, 'JSON only!')])
     dashboard_image = FileField('Dashboard screenshot', validators=[FileRequired(), FileAllowed(upload_images, 'Images only!')])
     dashboard_export = FileField('Dashboard export', validators=[FileRequired(), FileAllowed(upload_exported_templates, 'JSON only!')])
-    dashboard_type = RadioField('Label', choices=[('pulse', 'Pulse Dashboard'), ('cx_insights', 'CX Insights Dashboard')], validators=[DataRequired()])
+    dashboard_type = RadioField('Label', choices=[('pulse', 'Pulse Dashboard'), ('gcxi', 'CX Insights Dashboard')], validators=[DataRequired()])
 
     submit_button = SubmitField('Submit Dashboard')

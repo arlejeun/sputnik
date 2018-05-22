@@ -8,7 +8,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-
+To follow-up on this item
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
 <link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
@@ -142,41 +142,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                role="navigation">
 
                     <!--Courtesy of http://jsbin.com/sutavom/edit?html,output-->
-                    <!--<paper-menu id="menu" on-iron-select="_menuItemSelected" multi>
-
-                        <paper-submenu xyz="1">
-
-                            <paper-item xyz="2" class="menu-trigger">Pulse &rtri;</paper-item>
-
-                            <paper-menu class="menu-content">
-
-                                <a class="paper-item-link" name="pulse-dashboards" href="/pulse/dashboards">
-                                    <paper-item xyz="a">Dashboards</paper-item>
-                                </a>
-
-                                <a class="paper-item-link" name="pulse-visualizations" href="/pulse/visualizations">
-                                    <paper-item xyz="c">Visualizations</paper-item>
-                                </a>
-
-                                <a class="paper-item-link" name="pulse-templates" href="/pulse/templates">
-                                    <paper-item xyz="c">Templates</paper-item>
-                                </a>
-                                <paper-item xyz="d">Contact Center Advisor</paper-item>
-                                <paper-item xyz="e">Frontline Advisor</paper-item>
-                                <paper-item xyz="f">Workforce Advisor</paper-item>
-                            </paper-menu>
-
-                        </paper-submenu>
-
-                        <paper-submenu xyz="5">
-                            <paper-item class="menu-trigger">CX Insigths &rtri;</paper-item>
-                            <paper-menu class="menu-content">
-                                <paper-item xyz="6">Dashboards</paper-item>
-                                <paper-item xyz="7">Visualizations</paper-item>
-                            </paper-menu>
-                        </paper-submenu>
-                    </paper-menu>  -->
-
 
                     <paper-menu id="menu" on-iron-select="_menuItemSelected" multi>
 
@@ -202,8 +167,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <paper-submenu xyz="5">
                             <paper-item class="menu-trigger">CX Insigths &rtri;</paper-item>
                             <paper-menu class="menu-content">
+                                <a class="paper-item-link" name="gcxi-dashboards" href="/gcxi/dashboards">
                                 <paper-item xyz="e">Dashboards</paper-item>
-                                <paper-item xyz="f">Visualizations</paper-item>
+                                </a>
                             </paper-menu>
                         </paper-submenu>
                     </paper-menu>
@@ -260,9 +226,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         fallback-selection="view404"
                         role="main">
 
+                    <gsys-pulse name="pureEngage" route="[[subroute]]" user="[[user]]"
+                                role="[[_roleChanged(role)]]"></gsys-pulse>
                     <gsys-pulse name="pulse" route="[[subroute]]" user="[[user]]"
                                 role="[[_roleChanged(role)]]"></gsys-pulse>
-                    <gsys-insights name="insights" route="[[subroute]]"></gsys-insights>
+                    <gsys-pulse name="gcxi" route="[[subroute]]" user="[[user]]"
+                                role="[[_roleChanged(role)]]"></gsys-pulse>
                     <gsys-detail-template name="detail" route="[[subroute]]"
                                           category="pulse_wallboards"></gsys-detail-template>
 
@@ -341,7 +310,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return user != 'anonymous';
         var self = this;
         // Load page import on demand. Show 404 page if fails
-        var routes = ["pulse", "insights", "view404"]
+        var routes = ["pulse", "gcxi", "view404"]
         if (routes.indexOf(this.page) > -1) {
             var resolvedPageUrl = this.resolveUrl('gsys-' + page + '.html');
             this.importHref(resolvedPageUrl, null, this._showPage404, true);
@@ -360,7 +329,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _onExploreDashboard: function (evt) {
         this.$.appLocation.set('__hash',0);
-        this.$.appLocation.set('path','pulse/dashboards/'+ evt.detail.name);
+        if (evt.detail && evt.detail.product) {
+            this.$.appLocation.set('path',evt.detail.product + '/dashboards/'+ evt.detail.name);
+        } else {
+            this.$.appLocation.set('path','pulse/dashboards/'+ evt.detail.name);
+        }
       },
 
       _onExploreVisualization: function (evt) {
@@ -372,7 +345,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _onExploreTemplate: function (evt) {
         this.$.appLocation.set('__hash',0);
         this.$.appLocation.set('path','pulse/templates/'+ evt.detail.definition.guid);
-
       },
 
        _onLookTemplate: function (evt) {
@@ -396,7 +368,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       _showDashboards: function (evt) {
         //this.$.appLocation.set('path','pulse/dashboards');
-        location.href= '/pulse/dashboards';
+        location.href= '/pureEngage/dashboards';
       },
 
       _showVisualizations: function (evt) {
